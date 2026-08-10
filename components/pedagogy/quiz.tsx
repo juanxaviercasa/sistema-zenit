@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ClipboardCheck, CircleCheck, CircleX, Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MathText } from "@/components/pedagogy/math-text";
 
 export interface PreguntaQuiz {
   enunciado: string;
@@ -56,7 +57,7 @@ export function Quiz({
               className="border-t border-navy-foreground/10 pt-6 first:border-t-0 first:pt-0"
             >
               <p className="font-medium">
-                {i + 1}. {pregunta.enunciado}
+                {i + 1}. <MathText text={pregunta.enunciado} />
               </p>
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 {pregunta.opciones.map((opcion, j) => {
@@ -103,7 +104,7 @@ export function Quiz({
                         )}
                         strokeWidth={2.25}
                       />
-                      {opcion}
+                      <MathText text={opcion} />
                     </button>
                   );
                 })}
@@ -118,7 +119,7 @@ export function Quiz({
                   >
                     {elegida === pregunta.correcta ? "Correcto. " : "Incorrecto. "}
                   </span>
-                  {pregunta.explicacion}
+                  <MathText text={pregunta.explicacion} />
                 </p>
               )}
             </div>
