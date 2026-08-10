@@ -1,26 +1,101 @@
 @import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+/*
+  Sistema Zenit — design tokens.
+  "Zenit" = el punto más alto de un astro. Azul noche profundo (el cielo en
+  el momento del zenit) + dorado/ámbar (el logro, el punto más alto).
+*/
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f7f3;
+  --foreground: #14171f;
+
+  --surface: #ffffff;
+  --surface-muted: #efece2;
+  --border: #e2ddcc;
+
+  --navy-950: #060d1c;
+  --navy-900: #0b1d3a;
+  --navy-800: #122a4f;
+  --navy-700: #1b3a67;
+  --navy-foreground: #f8f7f3;
+
+  --gold-300: #e8c574;
+  --gold-500: #c9962c;
+  --gold-600: #a97918;
+  --gold-foreground: #14171f;
+
+  --success: #2f7a4f;
+  --warning: #b3791f;
+  --danger: #b23a3a;
+  --info: #2a5f8f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #080e1c;
+    --foreground: #e9eaf0;
+
+    --surface: #101a2e;
+    --surface-muted: #16213a;
+    --border: #223252;
+
+    --navy-950: #04070f;
+    --navy-900: #0e1c38;
+    --navy-800: #16294a;
+    --navy-700: #1f3a63;
+    --navy-foreground: #f0f1f5;
+
+    --gold-300: #f0d38c;
+    --gold-500: #e0b84b;
+    --gold-600: #c99a2e;
+    --gold-foreground: #14171f;
+
+    --success: #4caf7d;
+    --warning: #dba54a;
+    --danger: #e07070;
+    --info: #6ea8d8;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-navy-foreground: var(--navy-foreground);
+
+  --color-gold-300: var(--gold-300);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-foreground: var(--gold-foreground);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25rem;
 }
