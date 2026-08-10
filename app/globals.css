@@ -3,59 +3,80 @@
 
 /*
   Sistema Zenit — design tokens.
-  "Zenit" = el punto más alto de un astro. Azul noche profundo (el cielo en
-  el momento del zenit) + dorado/ámbar (el logro, el punto más alto).
+  "Zenit" = el punto más alto de un astro: azul noche (el cielo en el
+  momento del zenit) como base de marca, dorado como acento de logro, y un
+  color vivo distinto por área (aritmética/álgebra/geometría/trigonometría)
+  para que navegar el temario se sienta como estudiar, no como leer un libro.
 */
 
 :root {
-  --background: #f8f7f3;
-  --foreground: #14171f;
+  --background: #f6f7fc;
+  --foreground: #161923;
 
   --surface: #ffffff;
-  --surface-muted: #efece2;
-  --border: #e2ddcc;
+  --surface-muted: #eef0f9;
+  --border: #e1e4f2;
 
-  --navy-950: #060d1c;
-  --navy-900: #0b1d3a;
-  --navy-800: #122a4f;
-  --navy-700: #1b3a67;
-  --navy-foreground: #f8f7f3;
+  --navy-950: #050b18;
+  --navy-900: #0e1b33;
+  --navy-800: #16294a;
+  --navy-700: #21406e;
+  --navy-foreground: #f5f7ff;
 
-  --gold-300: #e8c574;
-  --gold-500: #c9962c;
-  --gold-600: #a97918;
-  --gold-foreground: #14171f;
+  --gold-300: #f3d27a;
+  --gold-500: #e3a62f;
+  --gold-600: #c48a16;
+  --gold-foreground: #171923;
 
-  --success: #2f7a4f;
+  --success: #16915a;
   --warning: #b3791f;
-  --danger: #b23a3a;
-  --info: #2a5f8f;
+  --danger: #d43d3d;
+  --info: #2563eb;
+
+  /* Acentos por área — base (texto/íconos) + tint (fondos suaves). */
+  --aritmetica: #0f9b8e;
+  --aritmetica-tint: #e3faf6;
+  --algebra: #7c3aed;
+  --algebra-tint: #f2ecfe;
+  --geometria: #2563eb;
+  --geometria-tint: #e9f0fe;
+  --trigonometria: #ea580c;
+  --trigonometria-tint: #feede1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #080e1c;
-    --foreground: #e9eaf0;
+    --background: #0a0e1a;
+    --foreground: #e9eaf5;
 
-    --surface: #101a2e;
-    --surface-muted: #16213a;
-    --border: #223252;
+    --surface: #131a2c;
+    --surface-muted: #19223a;
+    --border: #263050;
 
     --navy-950: #04070f;
-    --navy-900: #0e1c38;
-    --navy-800: #16294a;
-    --navy-700: #1f3a63;
-    --navy-foreground: #f0f1f5;
+    --navy-900: #101d38;
+    --navy-800: #182c4e;
+    --navy-700: #223e6a;
+    --navy-foreground: #f0f1f8;
 
     --gold-300: #f0d38c;
     --gold-500: #e0b84b;
     --gold-600: #c99a2e;
     --gold-foreground: #14171f;
 
-    --success: #4caf7d;
+    --success: #3ec37f;
     --warning: #dba54a;
-    --danger: #e07070;
-    --info: #6ea8d8;
+    --danger: #e6685f;
+    --info: #6ea8ff;
+
+    --aritmetica: #2dd4c4;
+    --aritmetica-tint: #10281f;
+    --algebra: #a78bfa;
+    --algebra-tint: #221a3a;
+    --geometria: #6f9fff;
+    --geometria-tint: #16233f;
+    --trigonometria: #fb923c;
+    --trigonometria-tint: #2c1c10;
   }
 }
 
@@ -83,7 +104,16 @@
   --color-danger: var(--danger);
   --color-info: var(--info);
 
-  --font-serif: var(--font-fraunces);
+  --color-aritmetica: var(--aritmetica);
+  --color-aritmetica-tint: var(--aritmetica-tint);
+  --color-algebra: var(--algebra);
+  --color-algebra-tint: var(--algebra-tint);
+  --color-geometria: var(--geometria);
+  --color-geometria-tint: var(--geometria-tint);
+  --color-trigonometria: var(--trigonometria);
+  --color-trigonometria-tint: var(--trigonometria-tint);
+
+  --font-display: var(--font-lexend);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }

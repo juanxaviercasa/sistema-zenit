@@ -7,10 +7,10 @@ export const metadata: Metadata = { title: "Demo interactiva" };
 export default function DemoInteractivoPage() {
   return (
     <Container className="max-w-xl py-16">
-      <p className="font-serif text-sm uppercase tracking-[0.3em] text-gold-600">
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-gold-600">
         Cimientos técnicos
       </p>
-      <h1 className="mt-3 font-serif text-3xl font-semibold">
+      <h1 className="mt-3 font-display text-3xl font-semibold">
         Demo de visualización interactiva
       </h1>
       <p className="mt-4 text-foreground/70">

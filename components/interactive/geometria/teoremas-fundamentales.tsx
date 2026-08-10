@@ -132,7 +132,7 @@ export function TeoremasFundamentales() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/50">
             Suma de ángulos internos
           </p>
-          <p className="mt-1 font-serif text-2xl font-semibold text-navy-900">
+          <p className="mt-1 font-display text-2xl font-semibold text-navy-900">
             {(estado.angulos[0] + estado.angulos[1] + estado.angulos[2]).toFixed(1)}°
           </p>
 

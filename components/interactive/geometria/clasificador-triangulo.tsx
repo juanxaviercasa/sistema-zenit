@@ -74,14 +74,14 @@ export function ClasificadorTriangulo() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/50">
             Por sus lados
           </p>
-          <p className="mt-1 font-serif text-2xl font-semibold text-navy-900">
+          <p className="mt-1 font-display text-2xl font-semibold text-navy-900">
             {estado.porLados}
           </p>
 
           <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/50">
             Por sus ángulos
           </p>
-          <p className="mt-1 font-serif text-2xl font-semibold text-navy-900">
+          <p className="mt-1 font-display text-2xl font-semibold text-navy-900">
             {estado.porAngulos}
           </p>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ClipboardCheck, CircleCheck, CircleX, Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface PreguntaQuiz {
@@ -25,9 +26,20 @@ export function Quiz({
   ).length;
 
   return (
-    <div className="my-8 rounded-2xl border border-navy-900/15 bg-navy-950 p-6 text-navy-foreground sm:p-8">
+    <div
+      className="my-8 rounded-2xl border border-navy-900/15 p-6 text-navy-foreground sm:p-8"
+      style={{
+        background:
+          "radial-gradient(120% 100% at 0% 0%, var(--color-navy-800) 0%, var(--color-navy-950) 60%)",
+      }}
+    >
       <div className="flex items-center justify-between gap-4">
-        <h3 className="font-serif text-xl font-semibold">{titulo}</h3>
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-9 items-center justify-center rounded-full bg-gold-300/15 text-gold-300">
+            <ClipboardCheck className="size-4" strokeWidth={2.25} />
+          </span>
+          <h3 className="font-display text-xl font-semibold">{titulo}</h3>
+        </div>
         <span className="whitespace-nowrap rounded-full bg-navy-foreground/10 px-3 py-1 text-sm font-medium text-gold-300">
           {correctas}/{preguntas.length} correctas
         </span>
@@ -50,6 +62,13 @@ export function Quiz({
                 {pregunta.opciones.map((opcion, j) => {
                   const esCorrecta = j === pregunta.correcta;
                   const esElegida = j === elegida;
+                  const Icono = !respondida
+                    ? Circle
+                    : esCorrecta
+                      ? CircleCheck
+                      : esElegida
+                        ? CircleX
+                        : Circle;
 
                   return (
                     <button
@@ -60,7 +79,7 @@ export function Quiz({
                         setRespuestas((prev) => ({ ...prev, [i]: j }))
                       }
                       className={cn(
-                        "rounded-lg border px-4 py-2.5 text-left text-sm transition-colors",
+                        "flex items-center gap-2.5 rounded-xl border px-4 py-2.5 text-left text-sm transition-colors",
                         !respondida &&
                           "border-navy-foreground/20 hover:border-gold-300 hover:bg-navy-foreground/5",
                         respondida &&
@@ -73,9 +92,17 @@ export function Quiz({
                         respondida &&
                           !esElegida &&
                           !esCorrecta &&
-                          "border-navy-foreground/10 text-navy-foreground/50"
+                          "border-navy-foreground/10 text-navy-foreground/40"
                       )}
                     >
+                      <Icono
+                        className={cn(
+                          "size-4 shrink-0",
+                          respondida && esCorrecta && "text-success",
+                          respondida && esElegida && !esCorrecta && "text-danger"
+                        )}
+                        strokeWidth={2.25}
+                      />
                       {opcion}
                     </button>
                   );

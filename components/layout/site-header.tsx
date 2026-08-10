@@ -1,13 +1,17 @@
 import Link from "next/link";
+import { Mountain } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { pruebas } from "@/lib/curriculum";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-serif text-xl font-semibold tracking-tight">
+        <Link href="/" className="group flex items-center gap-2">
+          <span className="flex size-8 items-center justify-center rounded-lg bg-gold-500 text-gold-foreground transition-transform group-hover:scale-105">
+            <Mountain className="size-5" strokeWidth={2.5} />
+          </span>
+          <span className="font-display text-lg font-semibold tracking-tight">
             Sistema <span className="text-gold-600">Zenit</span>
           </span>
         </Link>
@@ -16,7 +20,7 @@ export function SiteHeader() {
           {pruebas.map((prueba) => (
             <Link
               key={prueba.slug}
-              href={prueba.disponible ? `/${prueba.slug}` : `/${prueba.slug}`}
+              href={`/${prueba.slug}`}
               className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-surface-muted hover:text-foreground"
             >
               {prueba.nombre}

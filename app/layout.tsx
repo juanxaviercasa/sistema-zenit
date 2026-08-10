@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, Geist_Mono } from "next/font/google";
+import { Lexend, Inter, Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const lexend = Lexend({
+  variable: "--font-lexend",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
 });
 
 const inter = Inter({
@@ -33,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${fraunces.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${lexend.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <SiteHeader />

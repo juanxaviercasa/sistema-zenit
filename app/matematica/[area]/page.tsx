@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { CardLink } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { getAreaStyle } from "@/components/ui/area-style";
 import { getArea, getPrueba } from "@/lib/curriculum";
 
 export function generateStaticParams() {
@@ -27,12 +28,22 @@ export default async function AreaPage(props: PageProps<"/matematica/[area]">) {
   const area = getArea("matematica", areaSlug);
   if (!area) notFound();
 
+  const { icon: Icon, color, tint } = getAreaStyle(areaSlug);
+
   return (
     <Container className="py-16">
-      <p className="font-serif text-sm uppercase tracking-[0.3em] text-gold-600">
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-gold-600">
         Matemática
       </p>
-      <h1 className="mt-3 font-serif text-4xl font-semibold">{area.nombre}</h1>
+      <div className="mt-3 flex items-center gap-4">
+        <span
+          className="inline-flex size-14 items-center justify-center rounded-2xl"
+          style={{ backgroundColor: tint, color }}
+        >
+          <Icon className="size-7" strokeWidth={2} />
+        </span>
+        <h1 className="font-display text-4xl font-semibold">{area.nombre}</h1>
+      </div>
       <p className="mt-4 max-w-2xl text-foreground/70">{area.descripcion}</p>
 
       <ol className="mt-12 space-y-3">
@@ -42,10 +53,14 @@ export default async function AreaPage(props: PageProps<"/matematica/[area]">) {
             <li key={tema.slug}>
               <CardLink
                 href={`/matematica/${area.slug}/${tema.slug}`}
+                accent={color}
                 className="flex items-center justify-between gap-4 py-4"
               >
-                <div className="flex items-baseline gap-4">
-                  <span className="font-serif text-lg text-foreground/40">
+                <div className="flex items-center gap-4">
+                  <span
+                    className="inline-flex size-9 shrink-0 items-center justify-center rounded-full font-display text-sm font-semibold"
+                    style={{ backgroundColor: tint, color }}
+                  >
                     {String(tema.numero).padStart(2, "0")}
                   </span>
                   <div>
@@ -55,9 +70,16 @@ export default async function AreaPage(props: PageProps<"/matematica/[area]">) {
                     )}
                   </div>
                 </div>
-                <Badge variant={listo ? "gold" : "neutral"}>
-                  {listo ? "Disponible" : "Próximamente"}
-                </Badge>
+                {listo ? (
+                  <Badge
+                    variant="neutral"
+                    style={{ backgroundColor: tint, color, borderColor: "transparent" }}
+                  >
+                    Disponible
+                  </Badge>
+                ) : (
+                  <Badge variant="neutral">Próximamente</Badge>
+                )}
               </CardLink>
             </li>
           );

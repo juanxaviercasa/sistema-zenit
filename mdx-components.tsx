@@ -2,17 +2,18 @@ import type { MDXComponents } from "mdx/types";
 
 const components: MDXComponents = {
   h1: ({ children }) => (
-    <h1 className="mt-0 mb-4 font-serif text-3xl font-semibold sm:text-4xl">
+    <h1 className="mt-0 mb-4 font-display text-3xl font-semibold sm:text-4xl">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="mt-12 mb-4 font-serif text-2xl font-semibold sm:text-3xl">
+    <h2 className="mt-12 mb-4 flex items-center gap-3 font-display text-2xl font-semibold sm:text-3xl">
+      <span className="h-6 w-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden />
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mt-8 mb-3 font-serif text-xl font-semibold">{children}</h3>
+    <h3 className="mt-8 mb-3 font-display text-xl font-semibold">{children}</h3>
   ),
   p: ({ children }) => (
     <p className="my-4 leading-relaxed text-foreground/85">{children}</p>
