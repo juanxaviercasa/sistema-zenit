@@ -7,6 +7,11 @@
   momento del zenit) como base de marca, dorado como acento de logro, y un
   color vivo distinto por área (aritmética/álgebra/geometría/trigonometría)
   para que navegar el temario se sienta como estudiar, no como leer un libro.
+
+  Modo claro/oscuro: prefers-color-scheme es la señal por defecto; el botón
+  de tema (components/layout/theme-toggle.tsx, via next-themes) estampa
+  data-theme="light"|"dark" en <html>, y esos bloques deben ganar siempre —
+  por eso van duplicados en vez de depender solo de la media query.
 */
 
 :root {
@@ -78,6 +83,74 @@
     --trigonometria: #fb923c;
     --trigonometria-tint: #2c1c10;
   }
+}
+
+:root[data-theme="light"] {
+  --background: #f6f7fc;
+  --foreground: #161923;
+
+  --surface: #ffffff;
+  --surface-muted: #eef0f9;
+  --border: #e1e4f2;
+
+  --navy-950: #050b18;
+  --navy-900: #0e1b33;
+  --navy-800: #16294a;
+  --navy-700: #21406e;
+  --navy-foreground: #f5f7ff;
+
+  --gold-300: #f3d27a;
+  --gold-500: #e3a62f;
+  --gold-600: #c48a16;
+  --gold-foreground: #171923;
+
+  --success: #16915a;
+  --warning: #b3791f;
+  --danger: #d43d3d;
+  --info: #2563eb;
+
+  --aritmetica: #0f9b8e;
+  --aritmetica-tint: #e3faf6;
+  --algebra: #7c3aed;
+  --algebra-tint: #f2ecfe;
+  --geometria: #2563eb;
+  --geometria-tint: #e9f0fe;
+  --trigonometria: #ea580c;
+  --trigonometria-tint: #feede1;
+}
+
+:root[data-theme="dark"] {
+  --background: #0a0e1a;
+  --foreground: #e9eaf5;
+
+  --surface: #131a2c;
+  --surface-muted: #19223a;
+  --border: #263050;
+
+  --navy-950: #04070f;
+  --navy-900: #101d38;
+  --navy-800: #182c4e;
+  --navy-700: #223e6a;
+  --navy-foreground: #f0f1f8;
+
+  --gold-300: #f0d38c;
+  --gold-500: #e0b84b;
+  --gold-600: #c99a2e;
+  --gold-foreground: #14171f;
+
+  --success: #3ec37f;
+  --warning: #dba54a;
+  --danger: #e6685f;
+  --info: #6ea8ff;
+
+  --aritmetica: #2dd4c4;
+  --aritmetica-tint: #10281f;
+  --algebra: #a78bfa;
+  --algebra-tint: #221a3a;
+  --geometria: #6f9fff;
+  --geometria-tint: #16233f;
+  --trigonometria: #fb923c;
+  --trigonometria-tint: #2c1c10;
 }
 
 @theme inline {

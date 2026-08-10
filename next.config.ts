@@ -9,7 +9,9 @@ const withMDX = createMDX({
   options: {
     // Turbopack no puede recibir funciones de plugin directamente — deben ir
     // como nombre de paquete (string) para que las resuelva del lado de Rust.
-    remarkPlugins: ["remark-math"],
+    // remark-gfm habilita tablas con sintaxis de pipes (|---|---|); sin él,
+    // el markdown de tabla se renderiza como texto plano con los pipes literales.
+    remarkPlugins: ["remark-gfm", "remark-math"],
     rehypePlugins: ["rehype-katex"],
   },
 });

@@ -43,7 +43,7 @@ function ConexionLista({ items }: { items?: Conexion[] }) {
         <li key={item.href}>
           <Link
             href={item.href}
-            className="group flex items-center gap-1 text-sm font-medium text-info transition-colors hover:text-navy-900"
+            className="group flex items-center gap-1 text-sm font-medium text-info transition-colors hover:text-foreground"
           >
             <ChevronRight className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
             {item.label}

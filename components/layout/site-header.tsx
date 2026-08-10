@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mountain } from "lucide-react";
 import { Container } from "@/components/ui/container";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { pruebas } from "@/lib/curriculum";
 
 export function SiteHeader() {
@@ -16,22 +17,26 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="flex items-center gap-1">
-          {pruebas.map((prueba) => (
-            <Link
-              key={prueba.slug}
-              href={`/${prueba.slug}`}
-              className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-surface-muted hover:text-foreground"
-            >
-              {prueba.nombre}
-              {!prueba.disponible && (
-                <span className="ml-1.5 text-xs text-foreground/40">
-                  próx.
-                </span>
-              )}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex items-center gap-1">
+          <nav className="flex items-center gap-1">
+            {pruebas.map((prueba) => (
+              <Link
+                key={prueba.slug}
+                href={`/${prueba.slug}`}
+                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-surface-muted hover:text-foreground"
+              >
+                {prueba.nombre}
+                {!prueba.disponible && (
+                  <span className="ml-1.5 text-xs text-foreground/40">
+                    próx.
+                  </span>
+                )}
+              </Link>
+            ))}
+          </nav>
+          <div className="ml-1 h-5 w-px bg-border" aria-hidden />
+          <ThemeToggle />
+        </div>
       </Container>
     </header>
   );

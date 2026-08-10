@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type JXG from "jsxgraph";
 import { JSXGraphBoard } from "@/components/interactive/jsxgraph-board";
-import { FiguraInteractiva } from "@/components/interactive/figura-interactiva";
+import { FiguraInteractiva, PanelEtiqueta } from "@/components/interactive/figura-interactiva";
 import { createEl, type PolygonLike } from "@/components/interactive/jsxgraph-utils";
 import { cn } from "@/lib/utils";
 
@@ -123,9 +123,7 @@ export function CongruenciaTriangulos() {
       }
       panel={
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/50">
-            Postulado de congruencia
-          </p>
+          <PanelEtiqueta>Postulado de congruencia</PanelEtiqueta>
           <div className="mt-2 grid grid-cols-3 gap-1.5">
             {(["LLL", "LAL", "ALA"] as Criterio[]).map((c) => (
               <button
@@ -135,18 +133,18 @@ export function CongruenciaTriangulos() {
                 className={cn(
                   "rounded-lg border px-3 py-2 text-sm font-medium transition-colors",
                   criterio === c
-                    ? "border-info bg-info/10 text-info"
-                    : "border-border text-foreground/70 hover:bg-surface-muted"
+                    ? "border-blue-600 bg-blue-50 text-blue-600"
+                    : "border-slate-200 text-slate-500 hover:bg-slate-50"
                 )}
               >
                 {c}
               </button>
             ))}
           </div>
-          <p className="mt-4 text-sm leading-relaxed text-foreground/75">
+          <p className="mt-4 text-sm leading-relaxed text-slate-600">
             {CONFIG[criterio].texto}
           </p>
-          <p className="mt-4 border-t border-border pt-3 text-xs text-foreground/50">
+          <p className="mt-4 border-t border-slate-200 pt-3 text-xs text-slate-500">
             A&apos;B&apos;C&apos; es una copia rígida (rotada y trasladada) de ABC — por
             construcción, siempre es congruente con él, sin importar cómo arrastres los
             vértices.

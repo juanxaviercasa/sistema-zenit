@@ -3,7 +3,12 @@
 import { useState } from "react";
 import type JXG from "jsxgraph";
 import { JSXGraphBoard } from "@/components/interactive/jsxgraph-board";
-import { FiguraInteractiva, EstadisticaFila } from "@/components/interactive/figura-interactiva";
+import {
+  FiguraInteractiva,
+  EstadisticaFila,
+  PanelEtiqueta,
+  PanelValor,
+} from "@/components/interactive/figura-interactiva";
 import { createEl, angleDeg, type PolygonLike } from "@/components/interactive/jsxgraph-utils";
 
 interface Desigualdad {
@@ -129,20 +134,18 @@ export function TeoremasFundamentales() {
       }
       panel={
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/50">
-            Suma de ángulos internos
-          </p>
-          <p className="mt-1 font-display text-2xl font-semibold text-navy-900">
+          <PanelEtiqueta>Suma de ángulos internos</PanelEtiqueta>
+          <PanelValor>
             {(estado.angulos[0] + estado.angulos[1] + estado.angulos[2]).toFixed(1)}°
-          </p>
+          </PanelValor>
 
-          <div className="mt-3 border-t border-border pt-3">
+          <div className="mt-3 border-t border-slate-200 pt-1">
             <EstadisticaFila label="Ángulo A" valor={`${estado.angulos[0].toFixed(1)}°`} />
             <EstadisticaFila label="Ángulo B" valor={`${estado.angulos[1].toFixed(1)}°`} />
             <EstadisticaFila label="Ángulo C" valor={`${estado.angulos[2].toFixed(1)}°`} />
           </div>
 
-          <div className="mt-4 border-t border-border pt-3">
+          <div className="mt-4 border-t border-slate-200 pt-1">
             <EstadisticaFila
               label="Externo en C"
               valor={`${estado.anguloExterior.toFixed(1)}°`}
@@ -153,19 +156,19 @@ export function TeoremasFundamentales() {
             />
           </div>
 
-          <div className="mt-4 border-t border-border pt-3">
-            <p className="text-xs text-foreground/50">
+          <div className="mt-4 border-t border-slate-200 pt-3">
+            <p className="text-xs text-slate-500">
               Lado opuesto al ángulo más grande ({estado.verticeMayor}):{" "}
-              <span className="font-medium text-gold-600">resaltado en dorado</span>
+              <span className="font-medium text-amber-600">resaltado en dorado</span>
             </p>
           </div>
 
-          <div className="mt-4 space-y-1 border-t border-border pt-3">
+          <div className="mt-4 space-y-1.5 border-t border-slate-200 pt-3">
             {estado.desigualdades.map((d) => (
               <div key={d.etiqueta} className="flex items-center justify-between text-sm">
-                <span className="font-mono text-foreground/70">{d.etiqueta}</span>
+                <span className="font-mono text-slate-500">{d.etiqueta}</span>
                 <span
-                  className={d.cumple ? "text-success" : "text-danger"}
+                  className={d.cumple ? "text-emerald-600" : "text-red-600"}
                   title={`${d.suma.toFixed(2)} vs ${d.lado.toFixed(2)}`}
                 >
                   {d.cumple ? "✓" : "✗"}

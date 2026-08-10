@@ -63,7 +63,7 @@ function BaseMediaDemo() {
           <EstadisticaFila label="MN (base media)" valor={estado.mn.toFixed(2)} />
           <EstadisticaFila label="BC (tercer lado)" valor={estado.bc.toFixed(2)} />
           <EstadisticaFila label="BC ÷ 2" valor={(estado.bc / 2).toFixed(2)} />
-          <p className="mt-4 border-t border-border pt-3 text-sm text-foreground/70">
+          <p className="mt-4 border-t border-slate-200 pt-3 text-sm text-slate-500">
             M y N son los puntos medios de AB y AC. MN siempre resulta paralelo a BC y
             mide la mitad de BC — sin importar cómo arrastres los vértices.
           </p>
@@ -131,7 +131,7 @@ function MedianaHipotenusaDemo() {
           <EstadisticaFila label="Hipotenusa PQ" valor={estado.hipotenusa.toFixed(2)} />
           <EstadisticaFila label="Mediana RM" valor={estado.mediana.toFixed(2)} />
           <EstadisticaFila label="PQ ÷ 2" valor={(estado.hipotenusa / 2).toFixed(2)} />
-          <p className="mt-4 border-t border-border pt-3 text-sm text-foreground/70">
+          <p className="mt-4 border-t border-slate-200 pt-3 text-sm text-slate-500">
             El ángulo en R se mantiene recto por construcción. M es el punto medio de la
             hipotenusa PQ; la mediana RM siempre mide la mitad de PQ.
           </p>

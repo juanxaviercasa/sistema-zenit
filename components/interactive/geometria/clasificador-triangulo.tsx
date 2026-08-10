@@ -3,7 +3,12 @@
 import { useState } from "react";
 import type JXG from "jsxgraph";
 import { JSXGraphBoard } from "@/components/interactive/jsxgraph-board";
-import { FiguraInteractiva, EstadisticaFila } from "@/components/interactive/figura-interactiva";
+import {
+  FiguraInteractiva,
+  EstadisticaFila,
+  PanelEtiqueta,
+  PanelValor,
+} from "@/components/interactive/figura-interactiva";
 import { createEl, angleDeg, type PolygonLike } from "@/components/interactive/jsxgraph-utils";
 
 interface Estado {
@@ -71,21 +76,15 @@ export function ClasificadorTriangulo() {
       }
       panel={
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/50">
-            Por sus lados
-          </p>
-          <p className="mt-1 font-display text-2xl font-semibold text-navy-900">
-            {estado.porLados}
-          </p>
+          <PanelEtiqueta>Por sus lados</PanelEtiqueta>
+          <PanelValor>{estado.porLados}</PanelValor>
 
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/50">
-            Por sus ángulos
-          </p>
-          <p className="mt-1 font-display text-2xl font-semibold text-navy-900">
-            {estado.porAngulos}
-          </p>
+          <div className="mt-5">
+            <PanelEtiqueta>Por sus ángulos</PanelEtiqueta>
+            <PanelValor>{estado.porAngulos}</PanelValor>
+          </div>
 
-          <div className="mt-5 border-t border-border pt-3">
+          <div className="mt-5 border-t border-slate-200 pt-1">
             <EstadisticaFila label="Lado BC (a)" valor={estado.lados[0].toFixed(2)} />
             <EstadisticaFila label="Lado CA (b)" valor={estado.lados[1].toFixed(2)} />
             <EstadisticaFila label="Lado AB (c)" valor={estado.lados[2].toFixed(2)} />

@@ -46,7 +46,7 @@ export function Problema({
         </div>
         {solucion && (
           <details className="group mt-4 rounded-xl border border-border bg-surface-muted open:pb-4">
-            <summary className="flex cursor-pointer select-none items-center gap-1.5 px-4 py-3 text-sm font-medium text-navy-900 marker:content-none">
+            <summary className="flex cursor-pointer select-none items-center gap-1.5 px-4 py-3 text-sm font-medium text-foreground marker:content-none">
               <ChevronRight className="size-3.5 text-gold-600 transition-transform group-open:rotate-90" />
               Ver solución
             </summary>

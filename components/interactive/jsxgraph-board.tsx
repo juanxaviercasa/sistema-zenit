@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef } from "react";
 import JXG from "jsxgraph";
+import { cn } from "@/lib/utils";
 
 interface JSXGraphBoardProps {
   boundingBox?: [number, number, number, number];
@@ -49,9 +50,11 @@ export function JSXGraphBoard({
           public/vendor/jsxgraph.css instead (Next hoists this <link> to <head>). */}
       {/* eslint-disable-next-line @next/next/no-css-tags -- vendored CSS, see comment above */}
       <link rel="stylesheet" href="/vendor/jsxgraph.css" />
+      {/* Fondo blanco fijo, como el lienzo de un applet de GeoGebra — el
+          tablero no sigue el modo claro/oscuro del sitio (ver figura-interactiva.tsx). */}
       <div
         id={containerId}
-        className={className}
+        className={cn("rounded-lg bg-white", className)}
         style={{ width: "100%", aspectRatio: "1 / 1" }}
       />
     </>
