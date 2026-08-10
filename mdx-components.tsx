@@ -46,16 +46,16 @@ const components: MDXComponents = {
   ),
   table: ({ children }) => (
     <div className="my-6 overflow-x-auto">
-      <table className="w-full border-collapse text-sm">{children}</table>
+      <table className="w-full border-collapse text-base">{children}</table>
     </div>
   ),
   th: ({ children }) => (
-    <th className="border-b border-border px-3 py-2 text-left font-semibold">
+    <th className="border-b border-border px-4 py-2.5 text-left text-sm font-semibold">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="border-b border-border px-3 py-2">{children}</td>
+    <td className="border-b border-border px-4 py-3">{children}</td>
   ),
   hr: () => <hr className="my-10 border-border" />,
   a: ({ children, ...props }) => (
