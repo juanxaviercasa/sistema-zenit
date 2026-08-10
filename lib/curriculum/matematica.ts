@@ -1,8 +1,25 @@
-import type { Area, Tema } from "./types";
+import type { Area, Subtema, Tema } from "./types";
 
-function tema(numero: number, slug: string, titulo: string, nota?: string): Tema {
-  return { numero, slug, titulo, nota, subtemas: [] };
+function tema(
+  numero: number,
+  slug: string,
+  titulo: string,
+  nota?: string,
+  subtemas: Subtema[] = []
+): Tema {
+  return { numero, slug, titulo, nota, subtemas };
 }
+
+function subtema(slug: string, titulo: string): Subtema {
+  return { slug, titulo };
+}
+
+const subtemasTriangulos: Subtema[] = [
+  subtema("definicion-y-clasificacion", "Definición y clasificación de triángulos"),
+  subtema("teoremas-fundamentales", "Teoremas fundamentales del triángulo"),
+  subtema("congruencia-de-triangulos", "Congruencia de triángulos"),
+  subtema("aplicaciones-de-la-congruencia", "Aplicaciones de la congruencia"),
+];
 
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
@@ -61,7 +78,7 @@ const geometria: Area = {
     "Del plano al espacio: triángulos, circunferencia, áreas y los sólidos geométricos, con demostración rigurosa.",
   temas: [
     tema(1, "nociones-basicas", "Nociones básicas"),
-    tema(2, "triangulos", "Triángulos"),
+    tema(2, "triangulos", "Triángulos", undefined, subtemasTriangulos),
     tema(3, "poligonos", "Polígonos"),
     tema(4, "circunferencia", "Circunferencia"),
     tema(5, "proporcionalidad", "Proporcionalidad"),

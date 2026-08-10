@@ -1,8 +1,9 @@
 # CONTENT_PROGRESS.md — Sistema Zenit
 
 > Memoria persistente entre sesiones. Se actualiza al terminar cada subtema/tema.
-> Estado del proyecto: **Fase 0 completada (cimientos)**. Ningún tema tiene contenido
-> matemático todavía — el siguiente paso es la Fase 1 (tema piloto), ver `PROJECT_BRIEF.md` §7.
+> Estado del proyecto: **Fase 1 en curso (tema piloto)**. "Triángulos" (Geometría) está
+> completo con sus 4 subtemas — es el patrón validado a replicar en el resto de temas.
+> Ver `PROJECT_BRIEF.md` §7 para el roadmap por fases.
 
 Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (todos los subtemas)
 
@@ -35,10 +36,14 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 8. Optimización lineal
 - ⬜ 9. Sucesiones y series numéricas
 
-### C. Geometría (0/19)
+### C. Geometría (1/19)
 
 - ⬜ 1. Nociones básicas
-- ⬜ 2. Triángulos
+- ✅ 2. Triángulos — *tema piloto de la Fase 1*
+  - ✅ Definición y clasificación de triángulos
+  - ✅ Teoremas fundamentales del triángulo
+  - ✅ Congruencia de triángulos
+  - ✅ Aplicaciones de la congruencia
 - ⬜ 3. Polígonos
 - ⬜ 4. Circunferencia
 - ⬜ 5. Proporcionalidad
@@ -71,7 +76,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 0/51 temas completos.**
+**Total Matemática: 1/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -88,8 +93,14 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
 
 - [x] Fase 0 — Cimientos del proyecto (scaffold, sistema de diseño, rutas de 4 niveles,
       MDX + KaTeX, JSXGraph, `PROJECT_BRIEF.md`, `CONTENT_PROGRESS.md`)
-- [ ] Fase 1 — Tema piloto (elegir 1 tema, desarrollarlo completo con el molde
-      pedagógico, validar calidad antes de escalar)
+- [x] Fase 1 — Tema piloto: **Triángulos** (Geometría), 4 subtemas completos con el
+      molde pedagógico íntegro (objetivo, marco teórico con demostraciones,
+      visualización interactiva JSXGraph, 5 ejemplos resueltos, 6 problemas en 3
+      niveles con solución desplegable, quiz de 6 preguntas, errores frecuentes,
+      conexiones). Componentes reutilizables listos para el resto del temario:
+      `components/pedagogy/*` (Objetivo, EjemploResuelto, Problema/Solucion, Quiz,
+      ErroresFrecuentes, Conexiones) y `components/interactive/*`
+      (JSXGraphBoard, FiguraInteractiva, jsxgraph-utils).
 - [ ] Fase 2 — Aritmética completa (12 temas)
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)

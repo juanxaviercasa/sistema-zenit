@@ -3,10 +3,6 @@
 import { useEffect, useId, useRef } from "react";
 import JXG from "jsxgraph";
 
-// jsxgraph's package.json "exports" map only allows importing ".", so its CSS
-// can't be pulled in with a normal deep import — it's vendored into
-// public/vendor/jsxgraph.css instead and linked here (Next hoists <link> to <head>).
-
 interface JSXGraphBoardProps {
   boundingBox?: [number, number, number, number];
   axis?: boolean;
@@ -48,7 +44,10 @@ export function JSXGraphBoard({
 
   return (
     <>
-      {/* eslint-disable-next-line @next/next/no-css-tags -- vendored CSS, see import note above */}
+      {/* jsxgraph's package.json "exports" map only allows importing ".", so its
+          CSS can't be pulled in with a normal deep import — it's vendored into
+          public/vendor/jsxgraph.css instead (Next hoists this <link> to <head>). */}
+      {/* eslint-disable-next-line @next/next/no-css-tags -- vendored CSS, see comment above */}
       <link rel="stylesheet" href="/vendor/jsxgraph.css" />
       <div
         id={containerId}

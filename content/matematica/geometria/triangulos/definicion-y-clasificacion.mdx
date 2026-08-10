@@ -1,0 +1,324 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ClasificadorTriangulo } from "@/components/interactive/geometria";
+
+# Definición y clasificación de triángulos
+
+<Objetivo>
+
+Definir con precisión un triángulo, nombrar sus elementos y clasificarlo correctamente
+por sus lados y por sus ángulos — dos criterios independientes que se combinan en todo
+problema de clasificación del examen UNI.
+
+</Objetivo>
+
+## Marco teórico
+
+### Definición
+
+Dados tres puntos no colineales $A$, $B$ y $C$, el **triángulo $ABC$** (denotado
+$\triangle ABC$) es la unión de los tres segmentos que determinan:
+
+$$
+\triangle ABC = \overline{AB} \cup \overline{BC} \cup \overline{CA}
+$$
+
+La condición "no colineales" no es decorativa: si $A$, $B$, $C$ estuvieran alineados,
+la unión de los tres segmentos sería un segmento degenerado, no una región con área.
+Esta es la primera verificación que exige cualquier problema que dé un triángulo por
+sus tres lados — la retomamos como **desigualdad triangular** en el siguiente subtema.
+
+**Elementos.** $A$, $B$, $C$ son los **vértices**; $\overline{AB}$, $\overline{BC}$,
+$\overline{CA}$ son los **lados**. Por convención, cada lado se nombra con la letra
+minúscula del vértice opuesto:
+
+$$
+a = BC \quad (\text{opuesto a } A), \qquad
+b = CA \quad (\text{opuesto a } B), \qquad
+c = AB \quad (\text{opuesto a } C)
+$$
+
+Esta convención (lado minúsculo, vértice opuesto en mayúscula) es la que usa el resto
+del curso — consérvala, porque el teorema de la correspondencia ángulo-lado del
+siguiente subtema depende de ella. Los tres **ángulos internos** se denotan $\hat{A}$,
+$\hat{B}$, $\hat{C}$ (o simplemente $A$, $B$, $C$ cuando no hay ambigüedad).
+
+### Clasificación por sus lados
+
+| Nombre | Condición | Ángulos base iguales |
+|---|---|---|
+| **Escaleno** | $a \neq b \neq c \neq a$ | Ninguno |
+| **Isósceles** | exactamente dos lados iguales (p. ej. $a = b \neq c$) | Sí, los opuestos a los lados iguales |
+| **Equilátero** | $a = b = c$ | Los tres ángulos miden $60°$ |
+
+### Clasificación por sus ángulos
+
+| Nombre | Condición |
+|---|---|
+| **Acutángulo** | los tres ángulos son agudos ($< 90°$) |
+| **Rectángulo** | tiene un ángulo recto ($= 90°$); el lado opuesto se llama **hipotenusa** |
+| **Obtusángulo** | tiene un ángulo obtuso ($> 90°$) |
+
+Recuerda (lo demostraremos en el siguiente subtema) que la suma de los tres ángulos
+internos siempre es $180°$ — por eso un triángulo **nunca** puede tener dos ángulos
+rectos ni dos obtusos: ya usarás esto en los problemas de esta sección.
+
+Las dos clasificaciones son **ejes independientes**: se combinan libremente. Un
+triángulo puede ser, por ejemplo, "isósceles rectángulo" o "escaleno obtusángulo".
+Solo el equilátero fuerza el otro eje: todo triángulo equilátero es necesariamente
+acutángulo (sus tres ángulos miden $60°$).
+
+## Visualización interactiva
+
+<ClasificadorTriangulo />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Clasifica por sus lados un triángulo cuyos lados miden $7$ cm, $7$ cm y
+$7$ cm.
+
+**Solución.** Los tres lados son iguales: $a = b = c = 7$. Por definición, es
+**equilátero**. En consecuencia, también es acutángulo, con sus tres ángulos de $60°$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Un triángulo tiene ángulos de $90°$, $40°$ y $50°$. Clasifícalo por sus
+ángulos y verifica que la clasificación es consistente.
+
+**Solución.** Verificamos primero que sea un triángulo válido: $90° + 40° + 50° =
+180°$. ✓. Tiene un ángulo de $90°$, así que es **rectángulo**. El lado opuesto al
+ángulo de $90°$ es la hipotenusa.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En el triángulo $ABC$, $AB = BC$. ¿Qué tipo de triángulo es por sus
+lados, y qué par de ángulos son iguales entre sí?
+
+**Solución.** Con la convención $a = BC$, $b = CA$, $c = AB$: la condición $AB = BC$
+equivale a $c = a$. Dos lados son iguales, así que el triángulo es **isósceles** con
+vértice principal en $B$ (el vértice donde concurren los dos lados iguales). Los
+ángulos opuestos a los lados iguales también son iguales: como $c$ es opuesto a
+$\hat{C}$ y $a$ es opuesto a $\hat{A}$, se cumple $\hat{A} = \hat{C}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="intermedio">
+
+**Enunciado.** Los ángulos internos de un triángulo están en la razón $2:3:4$.
+Halla cada ángulo y clasifica el triángulo por sus ángulos.
+
+**Solución.** Sea $k$ la constante de proporcionalidad: los ángulos son $2k$, $3k$,
+$4k$. Su suma es $180°$:
+
+$$
+2k + 3k + 4k = 180° \;\Longrightarrow\; 9k = 180° \;\Longrightarrow\; k = 20°
+$$
+
+Los ángulos miden $40°$, $60°$ y $80°$ — los tres agudos, así que el triángulo es
+**acutángulo**.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={5} dificultad="uni">
+
+**Enunciado.** En un triángulo isósceles, el ángulo del vértice (el comprendido entre
+los dos lados iguales) mide $30°$ más que cada ángulo de la base. Halla los tres
+ángulos y clasifica el triángulo por sus ángulos.
+
+**Solución.** Sea $x$ la medida de cada ángulo de la base (son iguales, por ser
+isósceles). El ángulo del vértice mide $x + 30°$. La suma de los tres es $180°$:
+
+$$
+x + x + (x + 30°) = 180° \;\Longrightarrow\; 3x = 150° \;\Longrightarrow\; x = 50°
+$$
+
+Los ángulos de la base miden $50°$ cada uno y el del vértice mide $80°$. Los tres son
+menores que $90°$, así que el triángulo es **acutángulo** (y, por dato, isósceles).
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Clasifica por sus lados un triángulo cuyos lados miden $5$, $12$ y $13$.
+
+<Solucion>
+
+Los tres lados son distintos entre sí ($5 \neq 12 \neq 13$), así que es **escaleno**.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Un triángulo tiene dos lados de $9$ cm y uno de $9$ cm. Clasifícalo por sus lados.
+
+<Solucion>
+
+Los tres lados miden $9$ cm: es **equilátero**.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Los ángulos internos de un triángulo están en progresión aritmética de razón $15°$.
+Halla los tres ángulos y clasifica el triángulo por sus ángulos.
+
+<Solucion>
+
+Sean los ángulos $x - 15°$, $x$, $x + 15°$. Su suma es $180°$:
+
+$$
+(x - 15°) + x + (x + 15°) = 180° \;\Longrightarrow\; 3x = 180° \;\Longrightarrow\; x = 60°
+$$
+
+Los ángulos son $45°$, $60°$ y $75°$ — todos agudos: **acutángulo**.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+En un triángulo isósceles, cada ángulo de la base mide el doble del ángulo del
+vértice. Halla las tres medidas y clasifica el triángulo por sus ángulos.
+
+<Solucion>
+
+Sea $y$ el ángulo del vértice; cada ángulo de la base mide $2y$. La suma es $180°$:
+
+$$
+2y + 2y + y = 180° \;\Longrightarrow\; 5y = 180° \;\Longrightarrow\; y = 36°
+$$
+
+El vértice mide $36°$ y cada ángulo de la base mide $72°$. Los tres son agudos:
+**acutángulo**.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un triángulo equilátero tiene perímetro $45$ cm. Un segundo triángulo, isósceles,
+comparte con él la medida del lado desigual (la base), y sus lados iguales miden $4$
+cm más que el lado del triángulo equilátero. Calcula el perímetro del triángulo
+isósceles y clasifícalo por sus lados.
+
+<Solucion>
+
+El lado del equilátero es $45° \div 3$... cuidado con las unidades: es
+$45 \text{ cm} \div 3 = 15$ cm. La base del isósceles es esos mismos $15$ cm; sus
+lados iguales miden $15 + 4 = 19$ cm cada uno. El perímetro es:
+
+$$
+19 + 19 + 15 = 53 \text{ cm}
+$$
+
+Por sus lados, es **isósceles** (dato del enunciado, con dos lados de $19$ cm).
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que ningún triángulo puede tener dos ángulos rectos.
+
+<Solucion>
+
+Supongamos, por contradicción, que un triángulo tuviera dos ángulos rectos: dos
+ángulos de $90°$ cada uno. Su suma ya sería $90° + 90° = 180°$, dejando $0°$ para el
+tercer ángulo. Pero todo ángulo interior de un triángulo mide más de $0°$ (los tres
+vértices son puntos distintos y no colineales, así que ningún ángulo puede degenerar
+a $0°$). Contradicción. Por lo tanto, ningún triángulo tiene dos ángulos rectos —y,
+por el mismo argumento con $90° + 90°$ como cota mínima, tampoco puede tener dos
+ángulos obtusos.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "¿Cuál es la condición mínima para que tres puntos A, B y C determinen un triángulo?",
+      opciones: ["Que sean distintos", "Que no sean colineales", "Que formen un ángulo agudo", "Que estén a la misma distancia del origen"],
+      correcta: 1,
+      explicacion: "Tres puntos distintos pero colineales no forman un triángulo (la unión de los segmentos sería un segmento degenerado). La condición es que no sean colineales.",
+    },
+    {
+      enunciado: "Un triángulo tiene lados 6, 6 y 10. ¿Cómo se clasifica por sus lados?",
+      opciones: ["Escaleno", "Isósceles", "Equilátero", "No es un triángulo válido"],
+      correcta: 1,
+      explicacion: "Exactamente dos lados son iguales (6 y 6), así que es isósceles.",
+    },
+    {
+      enunciado: "En el triángulo ABC con la convención a = BC, b = CA, c = AB, ¿qué lado es opuesto al vértice B?",
+      opciones: ["a", "b", "c", "Ninguno, B no tiene lado opuesto"],
+      correcta: 1,
+      explicacion: "Por convención, el lado b = CA es el que no toca al vértice B — es su opuesto.",
+    },
+    {
+      enunciado: "¿Puede un triángulo ser isósceles y rectángulo a la vez?",
+      opciones: ["No, son clasificaciones incompatibles", "Sí, son ejes independientes de clasificación", "Solo si además es equilátero", "Solo si es obtusángulo"],
+      correcta: 1,
+      explicacion: "La clasificación por lados y por ángulos son independientes. Un triángulo con ángulos 90°, 45°, 45° es isósceles Y rectángulo.",
+    },
+    {
+      enunciado: "Un triángulo tiene ángulos 100°, 100° y -20°. ¿Qué es incorrecto en este enunciado?",
+      opciones: ["Nada, es un triángulo obtusángulo válido", "Un ángulo no puede ser negativo, y además la suma no da 180°", "Debería ser isósceles para ser válido", "Le falta especificar los lados"],
+      correcta: 1,
+      explicacion: "Ningún ángulo interior puede ser negativo o cero, y la suma de los tres siempre debe ser exactamente 180°. Este enunciado describe una figura imposible.",
+    },
+    {
+      enunciado: "Todo triángulo equilátero es también:",
+      opciones: ["Obtusángulo", "Rectángulo", "Acutángulo", "Escaleno"],
+      correcta: 2,
+      explicacion: "Sus tres ángulos miden 60° — los tres son agudos, así que todo equilátero es acutángulo.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Tratar "isósceles" y "equilátero" como si nunca se solaparan.** Formalmente, un
+  triángulo equilátero también cumple la definición de isósceles (tiene *al menos* dos
+  lados iguales). En los problemas de clasificación del examen, sin embargo, se listan
+  como **tres categorías mutuamente excluyentes** — si los tres lados son iguales, la
+  respuesta esperada es "equilátero", no "isósceles". Usa esa convención práctica,
+  pero no te sorprendas si un enunciado teórico asume la definición formal.
+- **Mezclar los dos criterios de clasificación.** "Isósceles" no dice nada por sí solo
+  sobre si el triángulo es acutángulo, rectángulo u obtusángulo — son ejes
+  independientes. Hay que evaluarlos por separado.
+- **Olvidar la desigualdad triangular al inventar lados.** No cualquier terna de
+  números forma un triángulo (por ejemplo, $2$, $3$ y $10$ no lo forman). Este
+  subtema no exige aún verificarlo, pero acostúmbrate a hacerlo — es el primer
+  teorema del siguiente subtema.
+- **Asumir que el vértice del "ángulo del vértice" en un isósceles es siempre el que
+  aparece primero en la notación.** El vértice principal es el que forman los dos
+  lados *iguales* — identifícalo por los datos, no por el orden alfabético de las
+  letras.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/geometria/nociones-basicas", label: "Nociones básicas (punto, recta, ángulo)" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/geometria/triangulos/teoremas-fundamentales", label: "Teoremas fundamentales del triángulo" },
+    { href: "/matematica/geometria/triangulos/congruencia-de-triangulos", label: "Congruencia de triángulos" },
+    { href: "/matematica/geometria/poligonos", label: "Polígonos" },
+    { href: "/matematica/geometria/relaciones-metricas-en-un-triangulo", label: "Relaciones métricas en un triángulo" },
+  ]}
+/>

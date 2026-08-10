@@ -1,0 +1,318 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { CongruenciaTriangulos } from "@/components/interactive/geometria";
+
+# Congruencia de triángulos
+
+<Objetivo>
+
+Reconocer cuándo dos triángulos son congruentes usando los postulados LLL, LAL y ALA,
+y usarlos como herramienta para demostrar propiedades de figuras compuestas —la base
+de casi toda demostración geométrica que verás de aquí en adelante.
+
+</Objetivo>
+
+## Marco teórico
+
+### Correspondencia biunívoca y definición
+
+Dos triángulos son **congruentes** cuando existe una correspondencia biunívoca
+(uno a uno) entre sus vértices tal que **todos** los pares de lados y ángulos
+correspondientes son congruentes. Si la correspondencia es $A \leftrightarrow A'$,
+$B \leftrightarrow B'$, $C \leftrightarrow C'$, escribimos $\triangle ABC \cong
+\triangle A'B'C'$ y eso significa, en conjunto, seis condiciones:
+
+$$
+AB \cong A'B', \quad BC \cong B'C', \quad CA \cong C'A',
+$$
+$$
+\hat{A} \cong \hat{A}', \quad \hat{B} \cong \hat{B}', \quad \hat{C} \cong \hat{C}'.
+$$
+
+**El orden de las letras importa.** $\triangle ABC \cong \triangle A'B'C'$ no es lo
+mismo que $\triangle ABC \cong \triangle B'C'A'$ — cada notación declara una
+correspondencia de vértices distinta.
+
+Verificar las seis condiciones cada vez sería impráctico. Los tres postulados
+siguientes garantizan las seis a partir de solo tres.
+
+### Postulados de congruencia
+
+Estos tres enunciados son **postulados**: se aceptan sin demostración, como punto de
+partida axiomático (igual que los postulados de distancia o de la regla que ya usas
+desde *Nociones básicas*).
+
+**LLL (lado–lado–lado).** Si los tres lados de un triángulo son congruentes,
+respectivamente, a los tres lados de otro triángulo, los triángulos son congruentes.
+
+**LAL (lado–ángulo–lado).** Si dos lados y el ángulo que forman (el ángulo
+*comprendido* entre ellos) son congruentes, respectivamente, a dos lados y el ángulo
+comprendido de otro triángulo, los triángulos son congruentes.
+
+**ALA (ángulo–lado–ángulo).** Si dos ángulos y el lado comprendido entre ellos son
+congruentes, respectivamente, a dos ángulos y el lado comprendido de otro triángulo,
+los triángulos son congruentes.
+
+**Nota (AAL no es un postulado nuevo).** Si conoces dos ángulos de un triángulo, el
+tercero queda determinado por la suma de ángulos internos (subtema anterior). Por eso,
+"dos ángulos y un lado *no* comprendido" (a veces llamado AAL) también garantiza
+congruencia — pero no es un postulado independiente, es ALA disfrazado: el lado no
+comprendido en un triángulo sí es el comprendido entre esos mismos dos ángulos vistos
+en el orden correspondiente del otro triángulo.
+
+## Visualización interactiva
+
+<CongruenciaTriangulos />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** El triángulo $ABC$ tiene lados $AB = 5$, $BC = 7$, $CA = 9$. El
+triángulo $DEF$ tiene lados $DE = 9$, $EF = 5$, $FD = 7$. ¿Son congruentes?
+
+**Solución.** Comparamos lado por lado buscando la correspondencia correcta:
+$CA = 9 = DE$, $AB = 5 = EF$, $BC = 7 = FD$. Los tres pares coinciden, así que por
+**LLL**, $\triangle ABC \cong \triangle EFD$ (nota el orden: $A \leftrightarrow E$,
+$B \leftrightarrow F$, $C \leftrightarrow D$).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** En los triángulos $ABC$ y $DEF$: $AB = DE$, $\hat{B} = \hat{E}$,
+$BC = EF$. ¿Qué postulado garantiza su congruencia?
+
+**Solución.** $\hat{B}$ es el ángulo comprendido entre $AB$ y $BC$; $\hat{E}$ es el
+comprendido entre $DE$ y $EF$. Tenemos dos lados y el ángulo comprendido
+respectivamente congruentes: es **LAL**, y $\triangle ABC \cong \triangle DEF$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** $AB = AC$ y $\overline{AD}$ es bisectriz del ángulo $\hat{A}$
+(con $D$ sobre $\overline{BC}$). Demuestra que $\triangle ABD \cong \triangle ACD$.
+
+**Solución.**
+
+| Afirmación | Justificación |
+|---|---|
+| $AB = AC$ | Dato |
+| $\angle BAD = \angle CAD$ | $AD$ es bisectriz de $\hat{A}$ (dato) |
+| $AD = AD$ | Propiedad reflexiva (lado común) |
+| $\triangle ABD \cong \triangle ACD$ | LAL (con $\angle BAD, \angle CAD$ como ángulos comprendidos) |
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="intermedio">
+
+**Enunciado.** $\overline{BD}$ es común a los triángulos $ABD$ y $CBD$;
+$\angle ABD = \angle CBD$ y $\angle ADB = \angle CDB$. ¿Son congruentes los
+triángulos? ¿Por qué postulado?
+
+**Solución.** El lado $BD$ es común a ambos triángulos y es precisamente el lado
+comprendido entre los dos pares de ángulos congruentes dados
+($\angle ABD = \angle CBD$ y $\angle ADB = \angle CDB$). Por **ALA**,
+$\triangle ABD \cong \triangle CBD$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={5} dificultad="uni">
+
+**Enunciado.** $M$ es el punto medio de $\overline{BC}$, y $\overline{AM} \perp
+\overline{BC}$. Demuestra que $AB = AC$.
+
+**Solución.** Consideramos los triángulos $ABM$ y $ACM$:
+
+| Afirmación | Justificación |
+|---|---|
+| $BM = CM$ | $M$ es punto medio de $BC$ (dato) |
+| $\angle AMB = \angle AMC = 90°$ | $AM \perp BC$ (dato) |
+| $AM = AM$ | Propiedad reflexiva |
+| $\triangle ABM \cong \triangle ACM$ | LAL ($BM$, $\angle AMB$, $AM$ vs. $CM$, $\angle AMC$, $AM$) |
+| $AB = AC$ | Lados correspondientes de triángulos congruentes |
+
+Este resultado es, de hecho, el **teorema de la mediatriz**: todo punto de la
+perpendicular a un segmento por su punto medio equidista de los extremos. Lo verás
+formalmente en el siguiente subtema.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+$\triangle PQR$ tiene $PQ = 6$, $QR = 8$, $RP = 10$. $\triangle XYZ$ tiene
+$XY = 10$, $YZ = 6$, $ZX = 8$. ¿Son congruentes? Si lo son, indica la
+correspondencia y el postulado.
+
+<Solucion>
+
+$RP = 10 = XY$, $PQ = 6 = YZ$, $QR = 8 = ZX$. Coinciden los tres pares: por **LLL**,
+$\triangle PQR \cong \triangle YZX$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+En los triángulos $ABC$ y $DEF$: $\hat{A} = \hat{D}$, $AB = DE$, $\hat{B} = \hat{E}$.
+¿Qué postulado aplica?
+
+<Solucion>
+
+$AB$ es el lado comprendido entre $\hat{A}$ y $\hat{B}$ (y $DE$ entre $\hat{D}$ y
+$\hat{E}$): es **ALA**.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+$ABCD$ es un cuadrilátero con $AB = CD$ y $AB \parallel CD$. Traza la diagonal
+$\overline{AC}$. Demuestra que $\triangle ABC \cong \triangle CDA$.
+
+<Solucion>
+
+| Afirmación | Justificación |
+|---|---|
+| $AB = CD$ | Dato |
+| $\angle BAC = \angle DCA$ | Alternos internos entre $AB \parallel CD$ cortadas por $AC$ |
+| $AC = CA$ | Propiedad reflexiva |
+| $\triangle ABC \cong \triangle CDA$ | LAL |
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+$\overline{AB}$ y $\overline{CD}$ se cortan en $M$, que es punto medio de ambos
+segmentos. Demuestra que $\triangle AMC \cong \triangle BMD$.
+
+<Solucion>
+
+| Afirmación | Justificación |
+|---|---|
+| $AM = BM$ | $M$ es punto medio de $AB$ |
+| $\angle AMC = \angle BMD$ | Ángulos opuestos por el vértice |
+| $CM = DM$ | $M$ es punto medio de $CD$ |
+| $\triangle AMC \cong \triangle BMD$ | LAL |
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+En el triángulo $ABC$, $D$ es un punto sobre $\overline{BC}$ tal que
+$\overline{AD} \perp \overline{BC}$ y $AD$ también resulta ser mediana (es decir,
+$D$ es punto medio de $BC$). Demuestra que $\triangle ABC$ es isósceles con
+$AB = AC$, y determina qué postulado usaste.
+
+<Solucion>
+
+Es el mismo argumento del Ejemplo 5: en $\triangle ABD$ y $\triangle ACD$,
+$BD = CD$ ($D$ punto medio), $\angle ADB = \angle ADC = 90°$ ($AD \perp BC$),
+$AD = AD$ (común). Por **LAL**, $\triangle ABD \cong \triangle ACD$, y por lo tanto
+$AB = AC$: el triángulo es isósceles.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Dos triángulos tienen dos lados respectivamente congruentes (5 y 8 en ambos) y un
+ángulo de $40°$ opuesto al lado de longitud 5 en ambos. Un estudiante afirma que esto
+basta para garantizar que los triángulos son congruentes, por "LLA". ¿Es correcto su
+razonamiento? Explica.
+
+<Solucion>
+
+**No es correcto en general.** LLA (dos lados y un ángulo *no comprendido*, es decir,
+opuesto a uno de ellos) **no** es un postulado válido de congruencia: con esos mismos
+datos pueden construirse dos triángulos distintos, no congruentes entre sí (es el
+caso ambiguo, el mismo que aparece al resolver triángulos con la ley de senos). Los
+únicos criterios válidos con la información dada (dos lados y un ángulo) son LAL
+—cuando el ángulo sí es el comprendido entre esos dos lados— y algunos casos
+especiales (por ejemplo, cuando el ángulo dado es recto u obtuso). Con un ángulo de
+$40°$ opuesto a un lado, sin más información, no puede garantizarse la congruencia.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "¿Cuántas condiciones (lados y ángulos) define la congruencia de dos triángulos?",
+      opciones: ["3", "4", "6", "9"],
+      correcta: 2,
+      explicacion: "3 pares de lados congruentes + 3 pares de ángulos congruentes = 6 condiciones en total.",
+    },
+    {
+      enunciado: "Dos lados y el ángulo comprendido entre ellos, respectivamente congruentes, corresponden al postulado:",
+      opciones: ["LLL", "LAL", "ALA", "AAA"],
+      correcta: 1,
+      explicacion: "LAL exige exactamente eso: lado, ángulo comprendido, lado.",
+    },
+    {
+      enunciado: "¿Es \"AAA\" (tres ángulos respectivamente congruentes) un criterio válido de congruencia de triángulos?",
+      opciones: ["Sí, siempre", "No — solo garantiza semejanza, no congruencia", "Solo si el triángulo es isósceles", "Solo si es rectángulo"],
+      correcta: 1,
+      explicacion: "Dos triángulos con los mismos tres ángulos pueden tener tamaños distintos (uno más grande que otro) — son semejantes, no necesariamente congruentes.",
+    },
+    {
+      enunciado: "En △ABC ≅ △DEF, ¿a qué vértice del segundo triángulo corresponde el vértice B del primero?",
+      opciones: ["D", "E", "F", "No se puede saber"],
+      correcta: 1,
+      explicacion: "El orden de las letras en la notación de congruencia declara la correspondencia: A↔D, B↔E, C↔F.",
+    },
+    {
+      enunciado: "Dos triángulos comparten un lado. En una demostración, ¿qué justifica que ese lado es congruente consigo mismo?",
+      opciones: ["El postulado LAL", "La propiedad reflexiva", "El teorema del ángulo externo", "No necesita justificación"],
+      correcta: 1,
+      explicacion: "Todo segmento es congruente consigo mismo por la propiedad reflexiva de la congruencia — es la justificación estándar para un \"lado común\".",
+    },
+    {
+      enunciado: "\"LLA\" (dos lados y un ángulo no comprendido, opuesto a uno de ellos) es, en general:",
+      opciones: ["Un postulado válido, equivalente a LAL", "No un criterio válido de congruencia (caso ambiguo)", "Equivalente a ALA", "Válido solo para triángulos equiláteros"],
+      correcta: 1,
+      explicacion: "Con esos datos pueden existir dos triángulos no congruentes (salvo casos especiales, como ángulo recto u obtuso) — no es un criterio general.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar "AAA" como si probara congruencia.** Solo prueba que los triángulos tienen la
+  misma forma (semejanza), no el mismo tamaño.
+- **Aplicar "LLA" como si fuera siempre válido.** No lo es en general — es el caso
+  ambiguo. Solo LLL, LAL y ALA (y su equivalente AAL) son postulados garantizados.
+- **No verificar que el ángulo dado sea el *comprendido*.** LAL exige que el ángulo
+  esté exactamente entre los dos lados mencionados — si el ángulo dado es opuesto a
+  uno de ellos, no aplica LAL.
+- **Omitir la justificación de "lado común" o "ángulo común" (ángulos opuestos por el
+  vértice, o propiedad reflexiva) en figuras compuestas.** Una demostración formal
+  necesita esa línea explícita, no basta con que sea "obvio" en el dibujo.
+- **Escribir la correspondencia de vértices sin cuidado.** $\triangle ABC \cong
+  \triangle DEF$ y $\triangle ABC \cong \triangle EFD$ afirman correspondencias
+  distintas — solo una (o ninguna) puede ser la correcta según los datos.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/geometria/triangulos/definicion-y-clasificacion", label: "Definición y clasificación de triángulos" },
+    { href: "/matematica/geometria/triangulos/teoremas-fundamentales", label: "Teoremas fundamentales del triángulo" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/geometria/triangulos/aplicaciones-de-la-congruencia", label: "Aplicaciones de la congruencia" },
+    { href: "/matematica/geometria/poligonos", label: "Polígonos" },
+    { href: "/matematica/geometria/relaciones-metricas-en-un-triangulo", label: "Relaciones métricas en un triángulo" },
+    { href: "/matematica/geometria/proporcionalidad", label: "Proporcionalidad (semejanza)" },
+  ]}
+/>

@@ -1,0 +1,338 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { AplicacionesCongruencia } from "@/components/interactive/geometria";
+
+# Aplicaciones de la congruencia
+
+<Objetivo>
+
+Demostrar, a partir de los postulados de congruencia, cuatro teoremas que reaparecen
+constantemente en Geometría: la bisectriz de un ángulo, la mediatriz de un segmento,
+la base media de un triángulo y la mediana relativa a la hipotenusa.
+
+</Objetivo>
+
+## Marco teórico
+
+### Teorema de la bisectriz de un ángulo
+
+**Enunciado.** Todo punto de la bisectriz de un ángulo equidista de los lados del
+ángulo (y, recíprocamente, todo punto que equidiste de los lados está sobre la
+bisectriz).
+
+**Demostración.** Sea $\overrightarrow{AD}$ la bisectriz del ángulo $\hat{A}$, y sea
+$P$ un punto cualquiera de ella. Traza las perpendiculares desde $P$ a cada lado del
+ángulo, con pies $M$ (sobre un lado) y $N$ (sobre el otro). En los triángulos $APM$ y
+$APN$:
+
+$$
+\angle PAM = \angle PAN \ (\text{bisectriz}), \qquad
+\angle AMP = \angle ANP = 90°, \qquad
+AP = AP \ (\text{común}).
+$$
+
+Dos ángulos y el lado no comprendido a uno de ellos ($AP$, opuesto a los ángulos
+rectos) determinan el tercer ángulo por suma $180°$, así que en realidad tenemos ALA
+con $AP$ como lado comprendido entre $\angle PAM$ (o $\angle PAN$) y el ángulo recto
+correspondiente. Luego $\triangle APM \cong \triangle APN$, y por lo tanto
+$PM = PN$: $P$ equidista de los lados. $\blacksquare$
+
+### Teorema de la mediatriz de un segmento
+
+**Enunciado.** Todo punto de la mediatriz de un segmento equidista de sus extremos
+(y recíprocamente).
+
+**Demostración.** Sea $M$ el punto medio de $\overline{AB}$ y $\ell$ la mediatriz
+(perpendicular a $AB$ por $M$). Sea $P$ un punto cualquiera de $\ell$. En los
+triángulos $PMA$ y $PMB$:
+
+$$
+MA = MB \ (M \text{ es punto medio}), \qquad
+\angle PMA = \angle PMB = 90°, \qquad
+PM = PM \ (\text{común}).
+$$
+
+Por LAL, $\triangle PMA \cong \triangle PMB$, así que $PA = PB$: $P$ equidista de $A$
+y $B$. $\blacksquare$
+
+### Teorema de la base media
+
+**Enunciado.** El segmento que une los puntos medios de dos lados de un triángulo
+(la **base media**) es paralelo al tercer lado y mide la mitad de su longitud.
+
+**Demostración.** En $\triangle ABC$, sean $M$ el punto medio de $AB$ y $N$ el punto
+medio de $AC$. Sobre la prolongación de $\overline{MN}$, marca el punto $D$ tal que
+$N$ sea también punto medio de $\overline{MD}$ (es decir, $ND = MN$).
+
+**Paso 1.** En $\triangle ANM$ y $\triangle CND$: $AN = CN$ ($N$ punto medio de $AC$),
+$\angle ANM = \angle CND$ (opuestos por el vértice), $MN = ND$ (construcción). Por
+LAL, $\triangle ANM \cong \triangle CND$. De aquí, $CD = AM = MB$ y
+$\angle NAM = \angle NCD$; como estos son ángulos alternos internos para las rectas
+$AM$ y $CD$ cortadas por la transversal $AC$, se sigue que $AM \parallel CD$, es
+decir, $MB \parallel CD$.
+
+**Paso 2.** En $\triangle MBC$ y $\triangle CDM$ (con diagonal común $MC$): $MB = CD$
+(paso 1), $\angle BMC = \angle DCM$ (alternos internos, ya que $MB \parallel CD$ con
+transversal $MC$), $MC = CM$ (común). Por LAL, $\triangle MBC \cong \triangle CDM$.
+De aquí, $BC = DM$ y $\angle BCM = \angle DMC$ (alternos internos), lo que da además
+$BC \parallel DM$.
+
+**Conclusión.** Como $N$ es punto medio de $MD$, $DM = 2\,MN$; combinando con
+$BC = DM$:
+
+$$
+MN = \tfrac{1}{2}BC, \qquad MN \parallel BC. \qquad \blacksquare
+$$
+
+### Teorema de la mediana relativa a la hipotenusa
+
+**Enunciado.** En un triángulo rectángulo, la mediana relativa a la hipotenusa mide
+la mitad de la hipotenusa.
+
+**Demostración.** Sea $\triangle ABC$ recto en $A$, con $M$ punto medio de la
+hipotenusa $BC$ y $N$ punto medio de $AB$. Por el teorema de la base media aplicado
+al lado $AC$: $MN \parallel AC$. Como $\hat{A} = 90°$ (es decir, $AC \perp AB$) y
+$MN \parallel AC$, también $MN \perp AB$.
+
+Pero $N$ es el punto medio de $AB$ y $MN \perp AB$: eso significa que $M$ está sobre
+la **mediatriz** de $AB$. Por el teorema de la mediatriz, todo punto de ella equidista
+de $A$ y $B$, así que $MA = MB$.
+
+Como $M$ es punto medio de $BC$, $MB = \tfrac{1}{2}BC$. Combinando:
+
+$$
+MA = MB = \tfrac{1}{2}BC. \qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<AplicacionesCongruencia />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** $P$ está sobre la bisectriz del ángulo $\hat{A}$, a una distancia de
+$6$ cm de uno de los lados del ángulo. ¿A qué distancia está del otro lado?
+
+**Solución.** Por el teorema de la bisectriz, todo punto de ella equidista de los
+dos lados. La distancia al otro lado también es $6$ cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** $M$ y $N$ son los puntos medios de $AB$ y $AC$ en $\triangle ABC$,
+con $BC = 18$ cm. Halla $MN$.
+
+**Solución.** Por el teorema de la base media, $MN = \tfrac{1}{2}BC =
+\tfrac{1}{2}(18) = 9$ cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En un triángulo rectángulo con hipotenusa $BC = 26$ cm, halla la
+longitud de la mediana relativa a la hipotenusa.
+
+**Solución.** Por el teorema de la mediana relativa a la hipotenusa, esta mide la
+mitad de la hipotenusa: $\tfrac{1}{2}(26) = 13$ cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="intermedio">
+
+**Enunciado.** Un punto $P$ equidista de los extremos de un segmento $AB$. ¿Qué puedes
+afirmar sobre $P$, y qué construcción usarías para hallar todos los puntos con esa
+propiedad?
+
+**Solución.** Por el recíproco del teorema de la mediatriz, si $PA = PB$ entonces $P$
+está sobre la mediatriz de $AB$. El conjunto de **todos** los puntos que equidistan de
+$A$ y $B$ es exactamente la mediatriz — la recta perpendicular a $AB$ por su punto
+medio.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={5} dificultad="uni">
+
+**Enunciado.** En el triángulo rectángulo $ABC$, recto en $A$, la mediana $AM$
+(relativa a la hipotenusa $BC$) mide $10$ cm. Si además $\hat{B} = \hat{C}$, halla
+$AB$ y $AC$.
+
+**Solución.** Por el teorema de la mediana relativa a la hipotenusa,
+$BC = 2 \cdot AM = 20$ cm. Como $\hat{B} = \hat{C}$, el triángulo es isósceles con
+$AB = AC$ (lados opuestos a ángulos iguales); junto con $\hat{A} = 90°$, esto lo hace
+un **triángulo rectángulo isósceles**, así que $\hat{B} = \hat{C} = 45°$. Usando el
+teorema de Pitágoras (que formalizarás en *Relaciones métricas en un triángulo*) con
+$AB = AC = x$: $x^2 + x^2 = 20^2 \Rightarrow 2x^2 = 400 \Rightarrow x = \sqrt{200} =
+10\sqrt{2}$ cm.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+$P$ equidista de los lados del ángulo $\hat{A}$ y de los extremos del segmento $BC$.
+¿Sobre qué dos rectas notables está $P$?
+
+<Solucion>
+
+Sobre la **bisectriz** de $\hat{A}$ (por equidistar de los lados del ángulo) y sobre
+la **mediatriz** de $BC$ (por equidistar de sus extremos).
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+$M$ y $N$ son puntos medios de dos lados de un triángulo, y $MN = 7{,}5$ cm.
+¿Cuánto mide el tercer lado?
+
+<Solucion>
+
+Por el teorema de la base media, el tercer lado mide el doble: $2(7{,}5) = 15$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+En un triángulo rectángulo, la mediana relativa a la hipotenusa mide $9$ cm. ¿Cuál es
+el circunradio (la distancia del punto medio de la hipotenusa a cada vértice) del
+triángulo?
+
+<Solucion>
+
+El teorema de la mediana a la hipotenusa dice que $M$ (punto medio de la hipotenusa)
+equidista de los tres vértices: $MA = MB = MC = 9$ cm. El circunradio es $9$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Los puntos medios de los tres lados de un triángulo de perímetro $40$ cm se unen
+formando un segundo triángulo. Halla el perímetro del triángulo formado por los
+puntos medios.
+
+<Solucion>
+
+Cada lado del triángulo medio es una base media del triángulo original: mide la mitad
+del lado correspondiente. Si los tres lados se reducen a la mitad, el perímetro
+también: $\tfrac{1}{2}(40) = 20$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+En el triángulo $ABC$, $D$ es punto medio de $AB$ y $E$ es punto medio de $AC$, con
+$DE = 6$. Sea $F$ punto medio de $BC$. Demuestra que $DEFC$... más precisamente,
+demuestra que el segmento $DF$ (uniendo $D$ con el punto medio de $BC$) también es
+una base media, y halla su longitud si $AC = 16$.
+
+<Solucion>
+
+$D$ es punto medio de $AB$ y $F$ es punto medio de $BC$: por definición, $DF$ es la
+base media relativa al lado $AC$ en $\triangle ABC$. Por el teorema de la base media,
+$DF = \tfrac{1}{2}AC = \tfrac{1}{2}(16) = 8$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+En el triángulo rectángulo $ABC$, recto en $A$, sea $M$ el punto medio de la
+hipotenusa $BC$. Demuestra —sin usar el teorema de la mediana a la hipotenusa
+directamente, sino reconstruyendo el argumento— que $\angle BAM = \angle ABM$.
+
+<Solucion>
+
+Por el teorema de la mediana relativa a la hipotenusa, $MA = MB$ (ambas iguales a
+$\tfrac{1}{2}BC$). Como $\triangle ABM$ tiene $MA = MB$, es isósceles con esos dos
+lados iguales; los ángulos opuestos a lados iguales son iguales (subtema
+*Teoremas fundamentales*, ejemplo de correspondencia ángulo-lado aplicado a
+triángulos isósceles): el ángulo opuesto a $MB$ es $\angle BAM$, y el opuesto a $MA$
+es $\angle ABM$. Luego $\angle BAM = \angle ABM$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Un punto P está sobre la bisectriz de un ángulo. ¿Qué distancias son iguales?",
+      opciones: ["Las distancias de P a los dos lados del ángulo", "Las distancias de P a los dos extremos de un segmento", "P no determina distancias iguales", "La distancia de P al vértice y a un lado"],
+      correcta: 0,
+      explicacion: "La bisectriz es el lugar geométrico de los puntos que equidistan de los dos lados del ángulo.",
+    },
+    {
+      enunciado: "La mediatriz de un segmento AB es el lugar geométrico de los puntos que:",
+      opciones: ["Están sobre AB", "Equidistan de A y B", "Forman un ángulo recto con A", "Bisecan cualquier ángulo"],
+      correcta: 1,
+      explicacion: "Por definición y por el teorema de la mediatriz, es el conjunto de puntos equidistantes de los dos extremos.",
+    },
+    {
+      enunciado: "En un triángulo, la base media relativa a un lado de 20 cm mide:",
+      opciones: ["10 cm", "20 cm", "40 cm", "No se puede determinar"],
+      correcta: 0,
+      explicacion: "La base media mide siempre la mitad del lado al que es paralela.",
+    },
+    {
+      enunciado: "En un triángulo rectángulo con hipotenusa 14 cm, la mediana relativa a la hipotenusa mide:",
+      opciones: ["7 cm", "14 cm", "28 cm", "Depende de los catetos"],
+      correcta: 0,
+      explicacion: "Siempre mide la mitad de la hipotenusa, sin importar la forma exacta del triángulo rectángulo.",
+    },
+    {
+      enunciado: "¿Cuál de estos NO es uno de los cuatro teoremas de este subtema?",
+      opciones: ["Teorema de la bisectriz", "Teorema de la mediatriz", "Teorema de Pitágoras", "Teorema de la base media"],
+      correcta: 2,
+      explicacion: "El teorema de Pitágoras pertenece a Relaciones métricas en un triángulo, un tema posterior.",
+    },
+    {
+      enunciado: "En un triángulo rectángulo, el punto medio de la hipotenusa equidista de:",
+      opciones: ["Solo del vértice del ángulo recto", "Los tres vértices del triángulo", "Solo de los dos extremos de la hipotenusa", "Del incentro del triángulo"],
+      correcta: 1,
+      explicacion: "Por el teorema de la mediana a la hipotenusa, MA = MB = MC — el punto medio de la hipotenusa es el circuncentro.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir bisectriz con mediatriz.** La bisectriz reparte un *ángulo* en dos
+  partes iguales y sus puntos equidistan de los *lados del ángulo*; la mediatriz es
+  perpendicular a un *segmento* por su punto medio y sus puntos equidistan de los
+  *extremos del segmento*. Son conceptos distintos aunque ambos producen "equidistancia".
+- **Aplicar la base media a un segmento que no une dos puntos medios.** El teorema
+  exige explícitamente que ambos extremos del segmento sean puntos medios de lados
+  del triángulo — no aplica a un segmento cualquiera dentro de la figura.
+- **Olvidar que el teorema de la mediana a la hipotenusa exige un triángulo
+  rectángulo.** En un triángulo cualquiera, la mediana no mide la mitad del lado
+  opuesto — esa igualdad es exclusiva del caso rectángulo (y del lado que es,
+  específicamente, la hipotenusa).
+- **Perder de vista qué lado es "el tercero"** en la base media: si $M$ y $N$ son
+  puntos medios de $AB$ y $AC$, la base media $MN$ es paralela a $BC$ — no a $AB$ ni
+  a $AC$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/geometria/triangulos/congruencia-de-triangulos", label: "Congruencia de triángulos" },
+    { href: "/matematica/geometria/triangulos/teoremas-fundamentales", label: "Teoremas fundamentales del triángulo" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/geometria/relaciones-metricas-en-un-triangulo", label: "Relaciones métricas en un triángulo" },
+    { href: "/matematica/geometria/circunferencia", label: "Circunferencia" },
+    { href: "/matematica/geometria/proporcionalidad", label: "Proporcionalidad" },
+    { href: "/matematica/geometria/poligonos", label: "Polígonos" },
+  ]}
+/>

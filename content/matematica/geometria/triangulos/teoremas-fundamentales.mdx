@@ -1,0 +1,363 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TeoremasFundamentales } from "@/components/interactive/geometria";
+
+# Teoremas fundamentales del triángulo
+
+<Objetivo>
+
+Demostrar y aplicar los cuatro teoremas que gobiernan todo triángulo: la suma de sus
+ángulos internos, la medida de un ángulo externo, la correspondencia entre lados y
+ángulos, y la desigualdad triangular — la caja de herramientas que usarás en el resto
+de Geometría.
+
+</Objetivo>
+
+## Marco teórico
+
+### Teorema de la suma de los ángulos internos
+
+**Enunciado.** En todo triángulo $ABC$, $\hat{A} + \hat{B} + \hat{C} = 180°$.
+
+**Demostración.** Por el vértice $C$ traza la recta $\ell$ paralela a $\overline{AB}$
+(existe y es única por el postulado de la paralela). Esta paralela, cortada por las
+rectas $\overleftrightarrow{AC}$ y $\overleftrightarrow{BC}$, forma en $C$ dos ángulos
+alternos internos:
+
+- El ángulo entre $\ell$ y $\overline{CA}$ es congruente a $\hat{A}$ (alternos internos
+  entre paralelas cortadas por $\overleftrightarrow{AC}$).
+- El ángulo entre $\ell$ y $\overline{CB}$ es congruente a $\hat{B}$ (alternos internos
+  entre paralelas cortadas por $\overleftrightarrow{BC}$).
+
+Estos dos ángulos, junto con $\hat{C}$, forman un ángulo llano sobre $\ell$ (postulado
+de la adición de ángulos + suplemento): su suma mide $180°$. Como los dos primeros son
+congruentes a $\hat{A}$ y $\hat{B}$ respectivamente,
+
+$$
+\hat{A} + \hat{B} + \hat{C} = 180°. \qquad \blacksquare
+$$
+
+### Teorema del ángulo externo
+
+Un **ángulo externo** de un triángulo se forma al prolongar un lado más allá de un
+vértice; es el suplementario del ángulo interno en ese vértice.
+
+**Enunciado.** Un ángulo externo es igual a la suma de los dos ángulos internos no
+adyacentes a él.
+
+**Demostración.** Sea $\theta_C$ el ángulo externo en $C$ (prolongando $\overline{BC}$
+más allá de $C$). Por ser par lineal con $\hat{C}$: $\theta_C + \hat{C} = 180°$. Por el
+teorema anterior, $\hat{A} + \hat{B} + \hat{C} = 180°$, es decir
+$\hat{A} + \hat{B} = 180° - \hat{C}$. Comparando ambas igualdades:
+
+$$
+\theta_C = 180° - \hat{C} = \hat{A} + \hat{B}. \qquad \blacksquare
+$$
+
+**Corolario.** Un ángulo externo es siempre mayor que cualquiera de los dos ángulos
+internos no adyacentes a él (ya que $\hat{A}, \hat{B} > 0°$).
+
+### Teorema de la correspondencia entre ángulos y lados
+
+**Enunciado.** En un triángulo, a mayor lado se opone mayor ángulo — y recíprocamente,
+a mayor ángulo se opone mayor lado.
+
+**Demostración (a mayor lado, mayor ángulo).** Sea el triángulo $ABC$ con $a > b$
+(es decir, $BC > CA$). Sobre $\overline{CB}$ marca el punto $D$ tal que
+$CD = CA = b$ (posible porque $a > b$). El triángulo $ACD$ es isósceles
+($CA = CD$), así que sus ángulos base son congruentes:
+$\angle CAD = \angle CDA$.
+
+Como $D$ está entre $B$ y $C$, el ángulo $\angle CDA$ es un ángulo externo del
+triángulo $ABD$ en el vértice $D$. Por el teorema del ángulo externo,
+
+$$
+\angle CDA > \hat{B}.
+$$
+
+Además, el rayo $AD$ divide a $\hat{A} = \angle CAB$ en dos partes:
+$\hat{A} = \angle CAD + \angle DAB > \angle CAD = \angle CDA$.
+
+Encadenando ambas desigualdades: $\hat{A} > \angle CDA > \hat{B}$, es decir
+$\hat{A} > \hat{B}$. $\blacksquare$
+
+**El recíproco** (a mayor ángulo, mayor lado) se prueba por contradicción: si
+$\hat{A} > \hat{B}$ pero no fuera $a > b$, entonces $a = b$ o $a < b$; el primer caso
+forzaría $\hat{A} = \hat{B}$ (triángulo isósceles) y el segundo forzaría
+$\hat{A} < \hat{B}$ (por la parte ya demostrada) — ambos contradicen la hipótesis
+$\hat{A} > \hat{B}$. Luego $a > b$.
+
+### Desigualdad triangular
+
+**Enunciado.** En todo triángulo, cada lado es menor que la suma de los otros dos:
+$a < b + c$, $b < a + c$, $c < a + b$.
+
+**Demostración (de $b + c > a$).** Prolonga $\overline{CA}$ más allá de $A$ hasta un
+punto $D$ con $AD = AB = c$. El triángulo $ABD$ es isósceles ($AD = AB$), luego
+$\angle ADB = \angle ABD$.
+
+En el triángulo $DBC$, el rayo $BA$ divide a $\angle DBC$ en $\angle DBA$ y
+$\angle ABC$, así que $\angle DBC = \angle DBA + \hat{B} > \angle DBA = \angle ADB$.
+Es decir, en el triángulo $DBC$: $\angle DBC > \angle BDC$.
+
+Por el teorema de correspondencia ángulo-lado, el lado opuesto al ángulo mayor es más
+largo: el lado opuesto a $\angle DBC$ es $DC$, y el opuesto a $\angle BDC$ es
+$BC = a$. Luego $DC > a$. Pero $DC = DA + AC = c + b$, así que
+
+$$
+b + c > a. \qquad \blacksquare
+$$
+
+Las otras dos desigualdades se obtienen por el mismo argumento, prolongando otro lado.
+Como consecuencia algebraica inmediata (despejando), también se cumple
+$|b - c| < a < b + c$ — el lado $a$ queda acotado por arriba y por abajo.
+
+## Visualización interactiva
+
+<TeoremasFundamentales />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Dos ángulos de un triángulo miden $72°$ y $55°$. Halla el tercero.
+
+**Solución.** Por la suma de ángulos internos: $72° + 55° + \hat{C} = 180°$, así que
+$\hat{C} = 180° - 127° = 53°$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Un ángulo externo de un triángulo mide $130°$. Uno de los ángulos
+internos no adyacentes mide $48°$. Halla el otro.
+
+**Solución.** Por el teorema del ángulo externo, $130° = 48° + x$, así que
+$x = 82°$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En el triángulo $ABC$, $\hat{A} = 70°$, $\hat{B} = 50°$,
+$\hat{C} = 60°$. Ordena sus lados de menor a mayor.
+
+**Solución.** Con la convención $a$ opuesto a $\hat{A}$, $b$ opuesto a $\hat{B}$,
+$c$ opuesto a $\hat{C}$: ordenando los ángulos, $\hat{B} < \hat{C} < \hat{A}$
+($50° < 60° < 70°$). Por correspondencia ángulo-lado, el orden de los lados opuestos
+es el mismo:
+
+$$
+b < c < a.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="intermedio">
+
+**Enunciado.** ¿Pueden $4$ cm, $5$ cm y $10$ cm ser los lados de un triángulo?
+
+**Solución.** Basta comprobar la desigualdad con los dos lados menores:
+$4 + 5 = 9$, que **no** es mayor que $10$. La desigualdad triangular falla, así que
+esos tres segmentos **no** forman un triángulo.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={5} dificultad="uni">
+
+**Enunciado.** Un triángulo tiene lados $a = 2x - 1$, $b = x + 4$, $c = 11$, con $x$
+entero positivo. Halla los valores posibles de $x$.
+
+**Solución.** Aplicamos las tres desigualdades:
+
+$$
+a + b > c: \quad (2x-1)+(x+4) > 11 \;\Longrightarrow\; 3x > 8 \;\Longrightarrow\; x > \tfrac{8}{3}
+$$
+
+$$
+a + c > b: \quad (2x-1)+11 > x+4 \;\Longrightarrow\; x > -6 \quad (\text{siempre cierto})
+$$
+
+$$
+b + c > a: \quad (x+4)+11 > 2x-1 \;\Longrightarrow\; 16 > x
+$$
+
+Combinando $x > \tfrac{8}{3} \approx 2{,}67$ con $x < 16$, y siendo $x$ entero:
+
+$$
+x \in \{3, 4, 5, \ldots, 15\}.
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Dos ángulos de un triángulo miden $38°$ y $95°$. Halla el tercero y clasifica el
+triángulo por sus ángulos.
+
+<Solucion>
+
+$\hat{C} = 180° - 38° - 95° = 47°$. Tiene un ángulo obtuso ($95°$): es **obtusángulo**.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Un ángulo externo de un triángulo mide $115°$ y uno de los internos no adyacentes
+mide $60°$. Halla el otro ángulo interno no adyacente y el interno adyacente al
+externo.
+
+<Solucion>
+
+Por el ángulo externo: $115° = 60° + x \Rightarrow x = 55°$. El interno adyacente al
+externo es su suplementario: $180° - 115° = 65°$. (Verificación:
+$55° + 60° + 65° = 180°$ ✓.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+En el triángulo $ABC$, $a = 8$, $b = 6$, $c = 5$. Ordena los ángulos de mayor a
+menor.
+
+<Solucion>
+
+Ordenando los lados: $a > b > c$ ($8 > 6 > 5$). Por correspondencia ángulo-lado, el
+orden de los ángulos opuestos es el mismo: $\hat{A} > \hat{B} > \hat{C}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Para qué valores enteros de $x$ pueden $x$, $x+2$ y $10$ ser los lados de un
+triángulo?
+
+<Solucion>
+
+$x + (x+2) > 10 \Rightarrow 2x > 8 \Rightarrow x > 4$.
+$x + 10 > x+2$: siempre cierto.
+$(x+2) + 10 > x$: siempre cierto.
+
+Además $x > 0$. Combinando, $x > 4$ con $x$ entero: $x \in \{5, 6, 7, \ldots\}$
+(sin cota superior explícita en este problema, ya que las otras dos desigualdades no
+la imponen).
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+En un triángulo isósceles $ABC$ ($AB = AC$), el ángulo externo en $B$ mide $140°$.
+Halla los tres ángulos internos.
+
+<Solucion>
+
+El ángulo externo en $B$ es suplementario al interno en $B$: $\hat{B} = 180° - 140° =
+40°$. Como el triángulo es isósceles con $AB = AC$, los ángulos opuestos a esos lados
+son iguales: el opuesto a $AB$ es $\hat{C}$ y el opuesto a $AC$ es $\hat{B}$, así que
+$\hat{B} = \hat{C} = 40°$. Por la suma de ángulos internos:
+$\hat{A} = 180° - 40° - 40° = 100°$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Los lados de un triángulo son $a = 3x + 1$, $b = 2x + 5$, $c = 20$, con $x$ entero
+positivo. Halla el menor y el mayor valor posible de $x$.
+
+<Solucion>
+
+$a + b > c: (3x+1)+(2x+5) > 20 \Rightarrow 5x > 14 \Rightarrow x > 2{,}8$.
+
+$a + c > b: (3x+1)+20 > 2x+5 \Rightarrow x > -16$ (siempre cierto).
+
+$b + c > a: (2x+5)+20 > 3x+1 \Rightarrow 24 > x$.
+
+Combinando: $2{,}8 < x < 24$, con $x$ entero: el menor valor es $x = 3$ y el mayor es
+$x = 23$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Un triángulo tiene ángulos 55° y 65°. ¿Cuánto mide el tercero?",
+      opciones: ["50°", "60°", "70°", "120°"],
+      correcta: 1,
+      explicacion: "180° − 55° − 65° = 60°.",
+    },
+    {
+      enunciado: "Un ángulo externo mide 100° y uno de los internos no adyacentes mide 30°. ¿Cuánto mide el otro interno no adyacente?",
+      opciones: ["30°", "50°", "70°", "100°"],
+      correcta: 2,
+      explicacion: "100° = 30° + x, así que x = 70°.",
+    },
+    {
+      enunciado: "En un triángulo, el lado más largo es siempre opuesto a:",
+      opciones: ["El ángulo más pequeño", "El ángulo más grande", "Un ángulo recto", "Ninguno en particular"],
+      correcta: 1,
+      explicacion: "Por correspondencia ángulo-lado, a mayor lado se opone mayor ángulo.",
+    },
+    {
+      enunciado: "¿Cuál terna de segmentos NO puede formar un triángulo?",
+      opciones: ["3, 4, 5", "5, 5, 8", "2, 3, 7", "6, 6, 6"],
+      correcta: 2,
+      explicacion: "2 + 3 = 5, que no es mayor que 7 — falla la desigualdad triangular.",
+    },
+    {
+      enunciado: "Si un triángulo tiene ángulos A > B > C, ¿cuál es el orden correcto de sus lados opuestos a, b, c?",
+      opciones: ["a > b > c", "c > b > a", "a = b = c", "No se puede determinar"],
+      correcta: 0,
+      explicacion: "El orden de los lados sigue el mismo orden que sus ángulos opuestos.",
+    },
+    {
+      enunciado: "El ángulo externo de un triángulo, comparado con cada ángulo interno no adyacente, siempre es:",
+      opciones: ["Menor", "Igual", "Mayor", "Puede ser cualquiera"],
+      correcta: 2,
+      explicacion: "Es la suma de ambos ángulos internos no adyacentes (que son positivos), así que es mayor que cada uno por separado.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir el ángulo externo de un triángulo con la suma de ángulos externos de un
+  polígono.** Aquí un ángulo externo individual equivale a la suma de los dos internos
+  no adyacentes; la propiedad "los ángulos externos de un polígono convexo suman 360°"
+  es un teorema distinto, para *Polígonos* (tema siguiente).
+- **Invertir la correspondencia ángulo-lado.** El lado $a$ es opuesto a $\hat{A}$, no
+  adyacente a él — un error común es comparar un lado con un ángulo que sí lo toca.
+- **Verificar la desigualdad triangular con una sola combinación.** Aunque en la
+  práctica basta comprobar que la suma de los dos lados *menores* supere al *mayor*
+  (las otras dos desigualdades se cumplen automáticamente), si no identificas cuál es
+  el mayor puedes pasar por alto el caso que sí falla.
+- **Olvidar que la desigualdad es estricta.** Si la suma de dos lados es *igual* al
+  tercero (no mayor), los tres puntos son colineales — no forman un triángulo, sino un
+  triángulo degenerado.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/geometria/nociones-basicas", label: "Nociones básicas" },
+    { href: "/matematica/geometria/triangulos/definicion-y-clasificacion", label: "Definición y clasificación de triángulos" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/geometria/triangulos/congruencia-de-triangulos", label: "Congruencia de triángulos" },
+    { href: "/matematica/geometria/triangulos/aplicaciones-de-la-congruencia", label: "Aplicaciones de la congruencia" },
+    { href: "/matematica/geometria/poligonos", label: "Polígonos" },
+    { href: "/matematica/geometria/relaciones-metricas-en-un-triangulo", label: "Relaciones métricas en un triángulo" },
+  ]}
+/>
