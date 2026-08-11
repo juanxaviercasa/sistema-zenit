@@ -1,0 +1,276 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TeoremaMediatriz, DiagramaMediatriz } from "@/components/interactive/geometria";
+
+# Teorema de la mediatriz de un segmento
+
+<Objetivo>
+
+Demostrar, a partir de la congruencia de triángulos, que todo punto de la mediatriz de
+un segmento equidista de sus extremos — y usar el teorema y su recíproco para
+localizar puntos de equidistancia, incluido el circuncentro de un triángulo.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado.** Todo punto de la mediatriz de un segmento equidista de sus extremos (y,
+recíprocamente, todo punto que equidiste de los extremos está sobre la mediatriz).
+Recuerda: la **mediatriz** de $AB$ es la recta perpendicular a $AB$ que pasa por su
+punto medio $M$.
+
+**Demostración (directa).** Sea $P$ un punto cualquiera de la mediatriz de $AB$, con
+$M$ el punto medio de $AB$.
+
+<DiagramaMediatriz />
+
+**Paso 1 — identificar lo que ya es igual.** En los triángulos $PMA$ y $PMB$:
+
+$$
+\begin{aligned}
+AM &= MB & &(M \text{ es punto medio}) \\
+\angle PMA &= \angle PMB = 90^\circ & &(PM \perp AB, \text{ definición de mediatriz}) \\
+PM &= PM & &(\text{común})
+\end{aligned}
+$$
+
+**Paso 2 — reconocer el postulado.** Dos lados ($AM$ y $PM$) y el ángulo comprendido
+entre ellos (el recto en $M$) son iguales en ambos triángulos: es el postulado **LAL**.
+
+**Conclusión.** Por LAL, $\triangle PMA \cong \triangle PMB$, y por lo tanto
+
+$$
+PA = PB: \qquad P \text{ equidista de los extremos.} \qquad \blacksquare
+$$
+
+**Demostración (recíproca).** Si $PA = PB$, el triángulo $PAB$ es isósceles, y por el
+teorema de la mediana relativa a la base de un triángulo isósceles (ver *Teoremas
+fundamentales*), la mediana desde $P$ hacia el punto medio $M$ de $AB$ es también
+altura y bisectriz — es decir, $PM \perp AB$ con $M$ punto medio de $AB$. Eso es
+exactamente la definición de mediatriz: $P$ está sobre ella. $\blacksquare$
+
+## Visualización interactiva
+
+<TeoremaMediatriz />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** $P$ está sobre la mediatriz de $\overline{AB}$, y $PA = 7{,}3$ cm.
+Halla $PB$.
+
+**Solución.** Por el teorema de la mediatriz, todo punto de ella equidista de los
+extremos del segmento: $PB = PA = 7{,}3$ cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Un punto $Q$ cumple $QA = QB = 5$ cm para dos puntos fijos $A$ y $B$.
+¿Qué puedes afirmar sobre $Q$?
+
+**Solución.** Por el **recíproco** del teorema de la mediatriz: si $Q$ equidista de
+$A$ y $B$, entonces $Q$ está sobre la mediatriz de $\overline{AB}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En el triángulo $ABC$, las mediatrices de $\overline{AB}$ y
+$\overline{BC}$ se cortan en un punto $O$. Explica por qué $O$ equidista de los
+**tres** vértices del triángulo.
+
+**Solución.** $O$ está sobre la mediatriz de $\overline{AB}$, así que $OA = OB$. $O$
+también está sobre la mediatriz de $\overline{BC}$, así que $OB = OC$. Combinando
+ambas: $OA = OB = OC$ — $O$ equidista de los tres vértices. (Este punto es el
+**circuncentro** del triángulo, centro de la circunferencia que pasa por $A$, $B$ y
+$C$; lo retomarás en *Circunferencia*. Nota la conexión con el subtema anterior: para
+un triángulo **rectángulo**, ya viste que el circuncentro es exactamente el punto
+medio de la hipotenusa — ver *Teorema de la mediana relativa a la hipotenusa*.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** $P$ está sobre la mediatriz de $\overline{AB}$. Si $PA = (3x - 4)$ cm y
+$PB = (x + 10)$ cm, halla la longitud común $PA = PB$.
+
+**Solución.** Por el teorema de la mediatriz, $PA = PB$:
+
+$$
+3x - 4 = x + 10 \;\Longrightarrow\; 2x = 14 \;\Longrightarrow\; x = 7.
+$$
+
+La longitud común es $x + 10 = 17$ cm (verificación: $3(7) - 4 = 17$ ✓).
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+$P$ está sobre la mediatriz de $\overline{AB}$ y $PB = 11$ cm. Halla $PA$.
+
+<Solucion>
+
+$PA = 11$ cm, por el teorema de la mediatriz.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Un punto $R$ cumple $RA = 6$ cm y $RB = 6{,}4$ cm. ¿Está $R$ sobre la mediatriz de
+$\overline{AB}$? Justifica.
+
+<Solucion>
+
+**No.** El recíproco exige distancias **iguales** a ambos extremos. Como
+$6 \neq 6{,}4$, $R$ no equidista de $A$ y $B$, así que no está sobre la mediatriz.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+En un triángulo isósceles $ABC$ con $AB = AC$, demuestra que el vértice $A$ está sobre
+la mediatriz de la base $\overline{BC}$.
+
+<Solucion>
+
+Como $AB = AC$, el punto $A$ equidista de $B$ y $C$. Por el recíproco del teorema de
+la mediatriz, todo punto que equidiste de los extremos de un segmento está sobre su
+mediatriz — así que $A$ está sobre la mediatriz de $\overline{BC}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+$O$ es el punto donde concurren las tres mediatrices de un triángulo $ABC$, y
+$OA = 5$ cm. Si además se traza una circunferencia de centro $O$ y radio $OA$, explica
+por qué esa circunferencia pasa también por $B$ y por $C$.
+
+<Solucion>
+
+Por ser $O$ el punto de concurrencia de las tres mediatrices, equidista de los tres
+vértices: $OA = OB = OC = 5$ cm. Una circunferencia de centro $O$ y radio $5$ cm
+contiene todos los puntos a distancia $5$ de $O$ — en particular, $B$ y $C$, ya que
+$OB = OC = 5$ cm también.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+$P$ está sobre la mediatriz de $\overline{AB}$, con $PA = (2x + 1)$ cm y
+$PB = (5x - 8)$ cm. Además, el punto medio $M$ de $\overline{AB}$ cumple
+$AM = (x + 3)$ cm. Halla la longitud de $\overline{AB}$.
+
+<Solucion>
+
+Por el teorema de la mediatriz: $PA = PB$, así que
+
+$$
+2x + 1 = 5x - 8 \;\Longrightarrow\; 3x = 9 \;\Longrightarrow\; x = 3.
+$$
+
+Entonces $AM = x + 3 = 6$ cm. Como $M$ es punto medio, $AB = 2 \cdot AM = 12$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Sea $ABC$ un triángulo cualquiera. Demuestra que el circuncentro $O$ (intersección de
+las tres mediatrices) es único — es decir, que las mediatrices de $\overline{AB}$,
+$\overline{BC}$ y $\overline{CA}$ no pueden tener más de un punto en común, a menos
+que $A$, $B$, $C$ sean colineales.
+
+<Solucion>
+
+Supón que dos puntos distintos $O_1$ y $O_2$ estuvieran ambos sobre las mediatrices de
+$\overline{AB}$ y de $\overline{BC}$. Entonces $O_1A = O_1B$ y $O_1B = O_1C$, así que
+$O_1$ equidista de $A$, $B$, $C$; lo mismo para $O_2$. Pero dos mediatrices distintas
+(de segmentos no paralelos, como es el caso si $A$, $B$, $C$ no son colineales) se
+cortan en **exactamente un punto** —dos rectas no paralelas del plano se cortan en un
+único punto—, así que $O_1 = O_2$. Por lo tanto el circuncentro es único.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Un punto P está sobre la mediatriz de AB. ¿Qué es igual?",
+      opciones: ["Los ángulos que P forma con A y B", "Las distancias PA y PB", "El punto medio de AB y P", "Nada en particular"],
+      correcta: 1,
+      explicacion: "La mediatriz es el lugar geométrico de los puntos que equidistan de los dos extremos del segmento.",
+    },
+    {
+      enunciado: "¿Cuál es la definición de la mediatriz de un segmento AB?",
+      opciones: ["Cualquier recta que pase por A o B", "La bisectriz del ángulo en A", "La recta perpendicular a AB que pasa por su punto medio", "Una recta paralela a AB"],
+      correcta: 2,
+      explicacion: "Mediatriz = perpendicular a AB por el punto medio de AB.",
+    },
+    {
+      enunciado: "En la demostración directa del teorema, ¿qué postulado de congruencia se aplica?",
+      opciones: ["ALA", "LAL, con el ángulo recto en M como ángulo comprendido", "LLL", "No se necesita congruencia"],
+      correcta: 1,
+      explicacion: "Los lados AM=MB y PM=PM, con el ángulo recto comprendido entre ellos, dan LAL.",
+    },
+    {
+      enunciado: "El punto de concurrencia de las tres mediatrices de un triángulo se llama:",
+      opciones: ["Incentro", "Baricentro", "Ortocentro", "Circuncentro"],
+      correcta: 3,
+      explicacion: "Es el circuncentro: equidista de los tres vértices y es el centro de la circunferencia circunscrita.",
+    },
+    {
+      enunciado: "Si QA = QB, ¿qué garantiza el recíproco del teorema de la mediatriz?",
+      opciones: ["Que Q es punto medio de AB", "Que Q está sobre la mediatriz de AB", "Que el triángulo QAB es equilátero", "Nada, falta más información"],
+      correcta: 1,
+      explicacion: "El recíproco: equidistar de los extremos de un segmento implica estar sobre su mediatriz.",
+    },
+    {
+      enunciado: "Para un triángulo rectángulo, ¿dónde está su circuncentro?",
+      opciones: ["En el vértice del ángulo recto", "Fuera del triángulo siempre", "En el punto medio de la hipotenusa", "No tiene circuncentro"],
+      correcta: 2,
+      explicacion: "Conexión directa con el teorema de la mediana a la hipotenusa: ese punto medio equidista de los tres vértices.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir mediatriz con mediana.** La *mediana* es el segmento del vértice al
+  punto medio del lado opuesto; la *mediatriz* es la recta perpendicular a un lado por
+  su punto medio. Solo coinciden como recta cuando el triángulo es isósceles y se
+  trata del vértice opuesto a la base.
+- **Olvidar la condición de perpendicularidad.** No basta con pasar por el punto
+  medio: si la recta no es perpendicular al segmento, no es la mediatriz y el teorema
+  no aplica.
+- **Aplicar el recíproco sin verificar igualdad exacta.** Si las distancias son solo
+  "parecidas" pero no matemáticamente iguales, el punto no está sobre la mediatriz.
+- **Pensar que el circuncentro siempre está dentro del triángulo.** Es cierto solo si
+  el triángulo es acutángulo; en un triángulo obtusángulo el circuncentro cae **fuera**
+  del triángulo, y en uno rectángulo cae exactamente sobre la hipotenusa.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/geometria/triangulos/congruencia-de-triangulos", label: "Congruencia de triángulos" },
+    { href: "/matematica/geometria/triangulos/teoremas-fundamentales", label: "Teoremas fundamentales del triángulo" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/geometria/triangulos/teorema-de-la-mediana-a-la-hipotenusa", label: "Teorema de la mediana relativa a la hipotenusa" },
+    { href: "/matematica/geometria/circunferencia", label: "Circunferencia (circuncentro)" },
+    { href: "/matematica/geometria/poligonos", label: "Polígonos" },
+  ]}
+/>

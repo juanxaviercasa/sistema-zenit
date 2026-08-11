@@ -1,5 +1,11 @@
 import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
-import { TeoremasFundamentales } from "@/components/interactive/geometria";
+import {
+  TeoremasFundamentales,
+  DiagramaSumaAngulos,
+  DiagramaAnguloExterno,
+  DiagramaCorrespondenciaAnguloLado,
+  DiagramaDesigualdadTriangular,
+} from "@/components/interactive/geometria";
 
 # Teoremas fundamentales del triángulo
 
@@ -19,18 +25,25 @@ de Geometría.
 **Enunciado.** En todo triángulo $ABC$, $\hat{A} + \hat{B} + \hat{C} = 180^\circ$.
 
 **Demostración.** Por el vértice $C$ traza la recta $\ell$ paralela a $\overline{AB}$
-(existe y es única por el postulado de la paralela). Esta paralela, cortada por las
-rectas $\overleftrightarrow{AC}$ y $\overleftrightarrow{BC}$, forma en $C$ dos ángulos
-alternos internos:
+(existe y es única por el postulado de la paralela).
+
+<DiagramaSumaAngulos />
+
+**Paso 1 — identificar los ángulos alternos internos.** La paralela $\ell$, cortada
+por las rectas $\overleftrightarrow{AC}$ y $\overleftrightarrow{BC}$, forma en $C$ dos
+ángulos:
 
 - El ángulo entre $\ell$ y $\overline{CA}$ es congruente a $\hat{A}$ (alternos internos
   entre paralelas cortadas por $\overleftrightarrow{AC}$).
 - El ángulo entre $\ell$ y $\overline{CB}$ es congruente a $\hat{B}$ (alternos internos
   entre paralelas cortadas por $\overleftrightarrow{BC}$).
 
-Estos dos ángulos, junto con $\hat{C}$, forman un ángulo llano sobre $\ell$ (postulado
-de la adición de ángulos + suplemento): su suma mide $180^\circ$. Como los dos primeros son
-congruentes a $\hat{A}$ y $\hat{B}$ respectivamente,
+**Paso 2 — sumar el ángulo llano.** Estos dos ángulos, junto con $\hat{C}$, cubren
+exactamente el ángulo llano que $\ell$ forma en $C$ (postulado de la adición de
+ángulos + suplemento): su suma mide $180^\circ$.
+
+**Conclusión.** Como los dos primeros ángulos son congruentes a $\hat{A}$ y $\hat{B}$
+respectivamente,
 
 $$
 \hat{A} + \hat{B} + \hat{C} = 180^\circ. \qquad \blacksquare
@@ -45,9 +58,22 @@ vértice; es el suplementario del ángulo interno en ese vértice.
 adyacentes a él.
 
 **Demostración.** Sea $\theta_C$ el ángulo externo en $C$ (prolongando $\overline{BC}$
-más allá de $C$). Por ser par lineal con $\hat{C}$: $\theta_C + \hat{C} = 180^\circ$. Por el
-teorema anterior, $\hat{A} + \hat{B} + \hat{C} = 180^\circ$, es decir
-$\hat{A} + \hat{B} = 180^\circ - \hat{C}$. Comparando ambas igualdades:
+más allá de $C$, hasta un punto $D$).
+
+<DiagramaAnguloExterno />
+
+**Paso 1 — par lineal.** $\theta_C$ y $\hat{C}$ forman un par lineal sobre la recta
+$\overleftrightarrow{BC}$, así que son suplementarios:
+
+$$
+\theta_C + \hat{C} = 180^\circ.
+$$
+
+**Paso 2 — sustituir el teorema anterior.** Por el teorema de la suma de ángulos
+internos, $\hat{A} + \hat{B} + \hat{C} = 180^\circ$, es decir
+$\hat{A} + \hat{B} = 180^\circ - \hat{C}$.
+
+**Conclusión.** Comparando ambas igualdades (las dos son "$180^\circ - \hat{C}$"):
 
 $$
 \theta_C = 180^\circ - \hat{C} = \hat{A} + \hat{B}. \qquad \blacksquare
@@ -63,22 +89,37 @@ a mayor ángulo se opone mayor lado.
 
 **Demostración (a mayor lado, mayor ángulo).** Sea el triángulo $ABC$ con $a > b$
 (es decir, $BC > CA$). Sobre $\overline{CB}$ marca el punto $D$ tal que
-$CD = CA = b$ (posible porque $a > b$). El triángulo $ACD$ es isósceles
-($CA = CD$), así que sus ángulos base son congruentes:
-$\angle CAD = \angle CDA$.
+$CD = CA = b$ (posible porque $a > b$, así que $D$ cae entre $C$ y $B$).
 
-Como $D$ está entre $B$ y $C$, el ángulo $\angle CDA$ es un ángulo externo del
-triángulo $ABD$ en el vértice $D$. Por el teorema del ángulo externo,
+<DiagramaCorrespondenciaAnguloLado />
+
+**Paso 1 — el triángulo auxiliar $ACD$ es isósceles.** Como $CA = CD$, sus ángulos
+base son congruentes:
+
+$$
+\angle CAD = \angle CDA.
+$$
+
+**Paso 2 — $\angle CDA$ es un ángulo externo de $\triangle ABD$.** Como $D$ está entre
+$B$ y $C$, el ángulo $\angle CDA$ es externo al triángulo $ABD$ en el vértice $D$. Por
+el teorema del ángulo externo:
 
 $$
 \angle CDA > \hat{B}.
 $$
 
-Además, el rayo $AD$ divide a $\hat{A} = \angle CAB$ en dos partes:
-$\hat{A} = \angle CAD + \angle DAB > \angle CAD = \angle CDA$.
+**Paso 3 — comparar con $\hat{A}$.** El rayo $AD$ divide a $\hat{A} = \angle CAB$ en
+dos partes, así que $\hat{A}$ es estrictamente mayor que una de ellas:
 
-Encadenando ambas desigualdades: $\hat{A} > \angle CDA > \hat{B}$, es decir
-$\hat{A} > \hat{B}$. $\blacksquare$
+$$
+\hat{A} = \angle CAD + \angle DAB > \angle CAD = \angle CDA.
+$$
+
+**Conclusión.** Encadenando los pasos 2 y 3: $\hat{A} > \angle CDA > \hat{B}$, es decir
+
+$$
+\hat{A} > \hat{B}. \qquad \blacksquare
+$$
 
 **El recíproco** (a mayor ángulo, mayor lado) se prueba por contradicción: si
 $\hat{A} > \hat{B}$ pero no fuera $a > b$, entonces $a = b$ o $a < b$; el primer caso
@@ -92,16 +133,28 @@ $\hat{A} > \hat{B}$. Luego $a > b$.
 $a < b + c$, $b < a + c$, $c < a + b$.
 
 **Demostración (de $b + c > a$).** Prolonga $\overline{CA}$ más allá de $A$ hasta un
-punto $D$ con $AD = AB = c$. El triángulo $ABD$ es isósceles ($AD = AB$), luego
-$\angle ADB = \angle ABD$.
+punto $D$ con $AD = AB = c$.
 
-En el triángulo $DBC$, el rayo $BA$ divide a $\angle DBC$ en $\angle DBA$ y
-$\angle ABC$, así que $\angle DBC = \angle DBA + \hat{B} > \angle DBA = \angle ADB$.
+<DiagramaDesigualdadTriangular />
+
+**Paso 1 — el triángulo auxiliar $ABD$ es isósceles.** Como $AD = AB$, sus ángulos base
+son congruentes: $\angle ADB = \angle ABD$.
+
+**Paso 2 — comparar los ángulos en $\triangle DBC$.** El rayo $BA$ divide a
+$\angle DBC$ en $\angle DBA$ y $\angle ABC$, así que $\angle DBC$ es estrictamente
+mayor que una de sus partes:
+
+$$
+\angle DBC = \angle DBA + \hat{B} > \angle DBA = \angle ADB.
+$$
+
 Es decir, en el triángulo $DBC$: $\angle DBC > \angle BDC$.
 
-Por el teorema de correspondencia ángulo-lado, el lado opuesto al ángulo mayor es más
-largo: el lado opuesto a $\angle DBC$ es $DC$, y el opuesto a $\angle BDC$ es
-$BC = a$. Luego $DC > a$. Pero $DC = DA + AC = c + b$, así que
+**Paso 3 — aplicar la correspondencia ángulo-lado.** El lado opuesto al ángulo mayor
+es más largo: el lado opuesto a $\angle DBC$ es $DC$, y el opuesto a $\angle BDC$ es
+$BC = a$. Luego $DC > a$.
+
+**Conclusión.** Pero $DC = DA + AC = c + b$, así que
 
 $$
 b + c > a. \qquad \blacksquare
@@ -170,15 +223,25 @@ entero positivo. Halla los valores posibles de $x$.
 **Solución.** Aplicamos las tres desigualdades:
 
 $$
-a + b > c: \quad (2x-1)+(x+4) > 11 \;\Longrightarrow\; 3x > 8 \;\Longrightarrow\; x > \tfrac{8}{3}
+\begin{aligned}
+a + b > c: \quad & (2x-1)+(x+4) > 11 \\
+                  & 3x > 8 \\
+                  & x > \tfrac{8}{3}
+\end{aligned}
 $$
 
 $$
-a + c > b: \quad (2x-1)+11 > x+4 \;\Longrightarrow\; x > -6 \quad (\text{siempre cierto})
+\begin{aligned}
+a + c > b: \quad & (2x-1)+11 > x+4 \\
+                  & x > -6 \quad (\text{siempre cierto})
+\end{aligned}
 $$
 
 $$
-b + c > a: \quad (x+4)+11 > 2x-1 \;\Longrightarrow\; 16 > x
+\begin{aligned}
+b + c > a: \quad & (x+4)+11 > 2x-1 \\
+                  & 16 > x
+\end{aligned}
 $$
 
 Combinando $x > \tfrac{8}{3} \approx 2{,}67$ con $x < 16$, y siendo $x$ entero:
@@ -356,7 +419,8 @@ $x = 23$.
   ]}
   seUsaEn={[
     { href: "/matematica/geometria/triangulos/congruencia-de-triangulos", label: "Congruencia de triángulos" },
-    { href: "/matematica/geometria/triangulos/aplicaciones-de-la-congruencia", label: "Aplicaciones de la congruencia" },
+    { href: "/matematica/geometria/triangulos/teorema-de-la-bisectriz", label: "Teorema de la bisectriz de un ángulo" },
+    { href: "/matematica/geometria/triangulos/teorema-de-la-mediatriz", label: "Teorema de la mediatriz de un segmento" },
     { href: "/matematica/geometria/poligonos", label: "Polígonos" },
     { href: "/matematica/geometria/relaciones-metricas-en-un-triangulo", label: "Relaciones métricas en un triángulo" },
   ]}

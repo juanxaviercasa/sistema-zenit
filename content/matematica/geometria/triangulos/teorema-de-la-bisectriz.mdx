@@ -1,0 +1,282 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TeoremaBisectriz, DiagramaBisectriz } from "@/components/interactive/geometria";
+
+# Teorema de la bisectriz de un ángulo
+
+<Objetivo>
+
+Demostrar, a partir de la congruencia de triángulos, que todo punto de la bisectriz de
+un ángulo equidista de sus lados — y usar tanto el teorema como su recíproco para
+resolver problemas de equidistancia.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado.** Todo punto de la bisectriz de un ángulo equidista de los lados del
+ángulo (y, recíprocamente, todo punto que equidiste de los lados está sobre la
+bisectriz).
+
+**Demostración (directa).** Sea $\overrightarrow{AD}$ la bisectriz del ángulo
+$\hat{A}$, y sea $P$ un punto cualquiera de ella. Traza las perpendiculares desde $P$
+a cada lado del ángulo, con pies $M$ (sobre un lado) y $N$ (sobre el otro).
+
+<DiagramaBisectriz />
+
+**Paso 1 — identificar lo que ya es igual.** En los triángulos $APM$ y $APN$:
+
+$$
+\begin{aligned}
+\angle PAM &= \angle PAN & &(\overrightarrow{AD} \text{ es bisectriz}) \\
+\angle AMP &= \angle ANP = 90^\circ & &(\text{perpendiculares}) \\
+AP &= AP & &(\text{común})
+\end{aligned}
+$$
+
+**Paso 2 — reconocer el postulado.** Dos ángulos ($\angle PAM$ y el recto $\angle AMP$)
+y el lado no comprendido a uno de ellos ($AP$) determinan el tercer ángulo por suma
+$180°$ — así que en realidad tenemos **ALA**, con $AP$ como lado comprendido entre
+$\angle PAM$ y el ángulo recto correspondiente.
+
+**Conclusión.** Por ALA, $\triangle APM \cong \triangle APN$, y por lo tanto
+
+$$
+PM = PN: \qquad P \text{ equidista de los lados.} \qquad \blacksquare
+$$
+
+**Demostración (recíproca).** Si $PM = PN$ (con $PM \perp$ un lado y $PN \perp$ el
+otro), los triángulos rectángulos $APM$ y $APN$ comparten la hipotenusa $AP$ y tienen
+un cateto igual ($PM = PN$) — son congruentes por el criterio hipotenusa-cateto para
+triángulos rectángulos (lo formalizarás con más herramientas en *Relaciones métricas
+en un triángulo*). De ahí, $\angle PAM = \angle PAN$: $AP$ biseca el ángulo. $\blacksquare$
+
+## Visualización interactiva
+
+<TeoremaBisectriz />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** $P$ está sobre la bisectriz del ángulo $\hat{A}$, a una distancia de
+$6$ cm de uno de los lados del ángulo. ¿A qué distancia está del otro lado?
+
+**Solución.** Por el teorema de la bisectriz, todo punto de ella equidista de los dos
+lados. La distancia al otro lado también es $6$ cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Un punto $P$ dista $4{,}2$ cm de cada uno de los dos lados de un
+ángulo $\hat{A}$. ¿Qué puedes concluir sobre $P$?
+
+**Solución.** Por el **recíproco** del teorema de la bisectriz: si $P$ equidista de
+los dos lados de un ángulo, entonces $P$ está sobre la bisectriz de ese ángulo.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En el triángulo $ABC$, las bisectrices de $\hat{A}$ y $\hat{B}$ se
+cortan en un punto $I$. Explica por qué $I$ equidista de los **tres** lados del
+triángulo.
+
+**Solución.** $I$ está sobre la bisectriz de $\hat{A}$, así que equidista de los lados
+$AB$ y $AC$. $I$ también está sobre la bisectriz de $\hat{B}$, así que equidista de
+$AB$ y $BC$. Combinando ambas: la distancia de $I$ a $AC$, a $AB$ y a $BC$ es la misma
+—$I$ equidista de los tres lados. (Este punto es el **incentro** del triángulo, que
+estudiarás con más detalle en *Circunferencia*.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** $\overrightarrow{AD}$ biseca el ángulo $\hat{A}$ de un triángulo, con
+$\angle BAD = (2x + 10)°$ y $\angle DAC = (3x - 5)°$. Si además $P$ es un punto de
+$\overrightarrow{AD}$ que dista $(x + 1)$ cm del lado $AB$, halla la distancia de $P$
+al lado $AC$.
+
+**Solución.** Como $\overrightarrow{AD}$ biseca $\hat{A}$: $\angle BAD = \angle DAC$.
+
+$$
+2x + 10 = 3x - 5 \;\Longrightarrow\; x = 15.
+$$
+
+La distancia de $P$ a $AB$ es $x + 1 = 16$ cm. Por el teorema de la bisectriz, la
+distancia a $AC$ es la **misma**: $16$ cm.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+$P$ está sobre la bisectriz de $\hat{A}$ y dista $9$ cm de un lado. ¿Cuánto dista del
+otro lado?
+
+<Solucion>
+
+$9$ cm, por el teorema de la bisectriz.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Un punto $Q$ dista $3$ cm del lado $AB$ de un ángulo y $5$ cm del lado $AC$. ¿Está $Q$
+sobre la bisectriz de $\hat{A}$? Justifica.
+
+<Solucion>
+
+**No.** El recíproco del teorema exige que las dos distancias sean **iguales** para
+garantizar que el punto está sobre la bisectriz. Como $3 \neq 5$, $Q$ no equidista de
+los lados y no está sobre la bisectriz.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+$\overrightarrow{AD}$ biseca $\hat{A}$, con $\angle BAD = (4x)°$ y
+$\angle BAC = (9x - 10)°$. Halla $\angle DAC$.
+
+<Solucion>
+
+Como $AD$ biseca $\hat{A}$: $\angle BAC = 2 \angle BAD$, es decir
+$9x - 10 = 2(4x) = 8x$, así que $x = 10$. Entonces $\angle BAD = 40°$ y
+$\angle DAC = \angle BAD = 40°$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+En el triángulo $ABC$, $P$ está sobre la bisectriz de $\hat{A}$ y también sobre la
+bisectriz de $\hat{C}$. Si la distancia de $P$ al lado $AB$ es $2{,}5$ cm, halla su
+distancia a $BC$.
+
+<Solucion>
+
+$P$ en la bisectriz de $\hat{A}$ equidista de $AB$ y $AC$: distancia a $AC$ = $2{,}5$
+cm. $P$ en la bisectriz de $\hat{C}$ equidista de $AC$ y $BC$: distancia a $BC$ =
+distancia a $AC$ = $2{,}5$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+$\overrightarrow{AD}$ biseca el ángulo $\hat{A}$ de un triángulo. Un punto $P$ sobre
+$\overrightarrow{AD}$ dista $(2x - 3)$ cm de $AB$ y $(x + 7)$ cm de $AC$. Halla la
+distancia común de $P$ a los dos lados.
+
+<Solucion>
+
+Por el teorema de la bisectriz, las dos distancias son iguales:
+
+$$
+2x - 3 = x + 7 \;\Longrightarrow\; x = 10.
+$$
+
+La distancia común es $x + 7 = 17$ cm (verificación: $2(10) - 3 = 17$ ✓).
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que las tres bisectrices interiores de un triángulo no pueden ser paralelas
+entre sí ni concurrir fuera del triángulo con distancias negativas — es decir, que el
+punto donde concurren dos de ellas equidista de los tres lados con una distancia
+**positiva**.
+
+<Solucion>
+
+Sean $I$ el punto de intersección de las bisectrices de $\hat{A}$ y $\hat{B}$ (dos
+bisectrices interiores de un triángulo no son paralelas, porque cada una entra al
+interior del triángulo desde vértices distintos y ambas cruzan la región interior, que
+es acotada — deben cortarse dentro de ella). Por el Ejemplo 3, $I$ equidista de los
+tres lados. Como $I$ es un punto interior del triángulo (no sobre ningún lado), su
+distancia perpendicular a cada lado es estrictamente positiva — nunca cero ni
+negativa, porque una distancia entre un punto y una recta que no lo contiene siempre
+es positiva por el postulado de la distancia.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Un punto P está sobre la bisectriz de un ángulo. ¿Qué distancias son iguales?",
+      opciones: ["Las distancias de P a los dos lados del ángulo", "Las distancias de P a los dos extremos de un segmento", "P no determina distancias iguales", "La distancia de P al vértice y a un lado"],
+      correcta: 0,
+      explicacion: "La bisectriz es el lugar geométrico de los puntos que equidistan de los dos lados del ángulo.",
+    },
+    {
+      enunciado: "¿Qué tipo de distancia mide el teorema de la bisectriz: la distancia a lo largo de cualquier segmento, o la distancia perpendicular?",
+      opciones: ["Cualquier segmento hacia el lado", "Específicamente la distancia perpendicular (la más corta)", "La distancia al vértice", "No importa la dirección"],
+      correcta: 1,
+      explicacion: "La \"distancia de un punto a una recta\" en geometría siempre se refiere a la distancia perpendicular — la más corta posible.",
+    },
+    {
+      enunciado: "Un punto Q dista 5 cm de cada lado de un ángulo. ¿Qué garantiza el recíproco del teorema?",
+      opciones: ["Que el ángulo mide 90°", "Que Q está sobre la bisectriz del ángulo", "Que el ángulo es agudo", "Nada, se necesita más información"],
+      correcta: 1,
+      explicacion: "El recíproco dice exactamente eso: equidistar de los dos lados implica estar sobre la bisectriz.",
+    },
+    {
+      enunciado: "El punto donde concurren las tres bisectrices de un triángulo se llama:",
+      opciones: ["Circuncentro", "Baricentro", "Incentro", "Ortocentro"],
+      correcta: 2,
+      explicacion: "Es el incentro — equidista de los tres lados, y es el centro de la circunferencia inscrita.",
+    },
+    {
+      enunciado: "En la demostración directa del teorema, ¿qué postulado de congruencia se usa?",
+      opciones: ["LLL", "LAL", "ALA (con los dos ángulos y el lado AP)", "Ninguno, es un axioma"],
+      correcta: 2,
+      explicacion: "Se usa ALA: los dos ángulos (uno de bisección, uno recto) y el lado común AP entre ellos.",
+    },
+    {
+      enunciado: "Si AD biseca el ángulo A con ∠BAD = 35°, ¿cuánto mide ∠BAC completo?",
+      opciones: ["35°", "70°", "17,5°", "No se puede saber"],
+      correcta: 1,
+      explicacion: "La bisectriz reparte el ángulo en dos partes iguales, así que ∠BAC = 2 × 35° = 70°.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Medir cualquier distancia, no la perpendicular.** El teorema habla de la distancia
+  *perpendicular* de un punto a una recta (la más corta) — no de la longitud de un
+  segmento cualquiera trazado hacia el lado.
+- **Aplicar el teorema a una recta que no es bisectriz.** Si el punto no está
+  exactamente sobre la bisectriz (por ejemplo, sobre otra ceviana), no hay garantía de
+  equidistancia.
+- **Olvidar la condición del recíproco.** Que un punto equidiste de dos rectas
+  cualesquiera no basta — deben ser los dos *lados de un mismo ángulo*, y el punto debe
+  estar del lado correcto (dentro del ángulo, no en su prolongación).
+- **Confundir bisectriz con mediatriz.** La bisectriz corresponde a un *ángulo* y
+  equidistancia a sus *lados*; la mediatriz corresponde a un *segmento* y equidistancia
+  a sus *extremos* — verás la mediatriz en el siguiente subtema.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/geometria/triangulos/congruencia-de-triangulos", label: "Congruencia de triángulos" },
+    { href: "/matematica/geometria/triangulos/teoremas-fundamentales", label: "Teoremas fundamentales del triángulo" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/geometria/circunferencia", label: "Circunferencia (incentro)" },
+    { href: "/matematica/geometria/poligonos", label: "Polígonos" },
+    { href: "/matematica/geometria/proporcionalidad", label: "Proporcionalidad" },
+  ]}
+/>

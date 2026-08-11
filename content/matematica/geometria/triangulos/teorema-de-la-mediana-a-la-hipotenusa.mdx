@@ -1,0 +1,292 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TeoremaMedianaHipotenusa, DiagramaMedianaHipotenusa } from "@/components/interactive/geometria";
+
+# Teorema de la mediana relativa a la hipotenusa
+
+<Objetivo>
+
+Demostrar, apoyándote en el teorema de la base media, que en todo triángulo
+rectángulo la mediana relativa a la hipotenusa mide la mitad de ella — y reconocer su
+consecuencia más importante: el circuncentro de un triángulo rectángulo es el punto
+medio de la hipotenusa.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado.** En todo triángulo rectángulo, la mediana relativa a la hipotenusa mide
+la mitad de la hipotenusa.
+
+**Demostración.** Sea $ABC$ un triángulo rectángulo con el ángulo recto en $A$, y sea
+$N$ el punto medio de la hipotenusa $BC$. Sea también $M$ el punto medio del cateto
+$AC$.
+
+<DiagramaMedianaHipotenusa />
+
+**Paso 1 — aplicar la base media.** En el triángulo $ABC$, $M$ y $N$ son puntos medios
+de $AC$ y $BC$ respectivamente. Por el **teorema de la base media**:
+
+$$
+MN \parallel AB \qquad \text{y} \qquad MN = \frac{AB}{2}.
+$$
+
+**Paso 2 — heredar la perpendicularidad.** Como $MN \parallel AB$ y $AB \perp AC$
+(el ángulo recto está en $A$), la recta $MN$ también es perpendicular a $AC$:
+
+$$
+\angle NMC = 90^\circ.
+$$
+
+**Paso 3 — dos triángulos congruentes.** En los triángulos $NMA$ y $NMC$:
+
+$$
+\begin{aligned}
+AM &= MC & &(M \text{ es punto medio de } AC) \\
+\angle NMA &= \angle NMC = 90^\circ & &(\text{Paso 2}) \\
+NM &= NM & &(\text{común})
+\end{aligned}
+$$
+
+Por **LAL**, $\triangle NMA \cong \triangle NMC$, de donde $NA = NC$.
+
+**Conclusión.** Como $N$ es punto medio de $BC$: $NB = NC$. Combinando con $NA = NC$
+del Paso 3:
+
+$$
+NA = NB = NC = \frac{BC}{2}. \qquad \blacksquare
+$$
+
+En particular, $NA$ —la mediana desde el vértice recto $A$ hasta el punto medio $N$ de
+la hipotenusa— mide $\dfrac{BC}{2}$, la mitad de la hipotenusa.
+
+**Consecuencia (circuncentro).** La igualdad $NA = NB = NC$ dice que $N$ equidista de
+los tres vértices del triángulo — por definición, $N$ **es el circuncentro** de
+$\triangle ABC$. Así, en todo triángulo rectángulo, el circuncentro es exactamente el
+punto medio de la hipotenusa (compara con lo que viste en *Teorema de la mediatriz*).
+
+## Visualización interactiva
+
+<TeoremaMedianaHipotenusa />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** En el triángulo rectángulo $PQR$ (recto en $R$), la hipotenusa
+$PQ = 26$ cm. Halla la longitud de la mediana relativa a la hipotenusa.
+
+**Solución.** Por el teorema, la mediana mide $\dfrac{PQ}{2} = \dfrac{26}{2} = 13$ cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** En un triángulo rectángulo, la mediana relativa a la hipotenusa mide
+$9$ cm. Halla la longitud de la hipotenusa.
+
+**Solución.** Como la mediana es la mitad de la hipotenusa: $\text{hipotenusa} =
+2 \times 9 = 18$ cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En el triángulo rectángulo $ABC$ (recto en $A$), $M$ es el punto medio
+de la hipotenusa $BC$. Explica por qué $\triangle ABM$ y $\triangle ACM$ son ambos
+isósceles.
+
+**Solución.** Por el teorema, $MA = MB = MC$ (el circuncentro equidista de los tres
+vértices). En $\triangle ABM$: $MA = MB$, así que es isósceles. En $\triangle ACM$:
+$MA = MC$, así que también es isósceles.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un triángulo rectángulo isósceles tiene sus dos catetos iguales a $10$
+cm cada uno. Halla la longitud de la mediana relativa a la hipotenusa.
+
+**Solución.** Primero se necesita la hipotenusa. Por el teorema de Pitágoras (que
+formalizarás en *Relaciones métricas en un triángulo*, pero cuyo resultado ya conoces):
+
+$$
+\text{hipotenusa} = \sqrt{10^2 + 10^2} = \sqrt{200} = 10\sqrt{2} \text{ cm.}
+$$
+
+La mediana relativa a la hipotenusa mide la mitad de ella:
+
+$$
+\text{mediana} = \frac{10\sqrt{2}}{2} = 5\sqrt{2} \text{ cm.}
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+En el triángulo rectángulo $XYZ$ (recto en $Y$), la hipotenusa $XZ = 34$ cm. Halla la
+mediana relativa a la hipotenusa.
+
+<Solucion>
+
+$34 / 2 = 17$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+La mediana relativa a la hipotenusa de un triángulo rectángulo mide $15$ cm. Halla la
+hipotenusa.
+
+<Solucion>
+
+$15 \times 2 = 30$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+En el triángulo rectángulo $ABC$ (recto en $A$), $M$ es punto medio de la hipotenusa
+$BC$, y se sabe que $\angle B = 35°$. Como $\triangle ABM$ es isósceles con
+$MA = MB$, halla $\angle MAB$ y $\angle AMB$.
+
+<Solucion>
+
+Como $MA = MB$, $\triangle ABM$ es isósceles con los ángulos de la base iguales:
+$\angle MAB = \angle B = 35°$. Por suma de ángulos internos:
+$\angle AMB = 180° - 35° - 35° = 110°$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Un triángulo tiene una mediana que mide exactamente la mitad del lado al que es
+relativa. ¿Qué puedes concluir sobre ese triángulo? *(Usa el recíproco del resultado
+de este subtema.)*
+
+<Solucion>
+
+Se puede demostrar (es el recíproco de este teorema) que si la mediana relativa a un
+lado mide la mitad de ese lado, entonces el ángulo opuesto a ese lado es recto — el
+triángulo es rectángulo, con la hipotenusa igual al lado en cuestión.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+En el triángulo rectángulo $ABC$ (recto en $A$), la mediana relativa a la hipotenusa
+mide $(3x - 1)$ cm y la hipotenusa mide $(4x + 6)$ cm. Halla la hipotenusa.
+
+<Solucion>
+
+$$
+3x - 1 = \frac{4x + 6}{2} \;\Longrightarrow\; 6x - 2 = 4x + 6
+\;\Longrightarrow\; 2x = 8 \;\Longrightarrow\; x = 4.
+$$
+
+Hipotenusa $= 4(4) + 6 = 22$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Reconstruye, sin mirar el desarrollo anterior, el argumento completo que demuestra que
+$NA = NB = NC$ en un triángulo rectángulo con ángulo recto en $A$ y $N$ punto medio de
+la hipotenusa $BC$ — indicando en qué paso se usa el teorema de la base media y en
+cuál la congruencia LAL.
+
+<Solucion>
+
+**Base media:** con $M$ punto medio de $AC$, el segmento $MN$ (que une los puntos
+medios de $AC$ y $BC$) es paralelo a $AB$ y mide $AB/2$ — esto viene del teorema de la
+base media aplicado al triángulo $ABC$. **Perpendicularidad heredada:** como
+$MN \parallel AB$ y $AB \perp AC$, se sigue que $MN \perp AC$. **Congruencia LAL:** en
+los triángulos $NMA$ y $NMC$, $AM = MC$ (M es punto medio), $\angle NMA = \angle NMC =
+90°$, y $NM$ es común — por LAL, $\triangle NMA \cong \triangle NMC$, de donde
+$NA = NC$. **Conclusión:** como $N$ también es punto medio de $BC$, $NB = NC$;
+combinando, $NA = NB = NC$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "En un triángulo rectángulo, la mediana relativa a la hipotenusa mide:",
+      opciones: ["Lo mismo que la hipotenusa", "La mitad de la hipotenusa", "El doble de la hipotenusa", "Depende del triángulo"],
+      correcta: 1,
+      explicacion: "Es el resultado central del teorema: mediana = hipotenusa/2.",
+    },
+    {
+      enunciado: "¿Qué teorema previo es la pieza clave de esta demostración?",
+      opciones: ["Teorema de la bisectriz", "Teorema de la base media", "Teorema de la mediatriz", "Desigualdad triangular"],
+      correcta: 1,
+      explicacion: "Se aplica primero el teorema de la base media para obtener MN ∥ AB y MN = AB/2, y de ahí se deriva todo lo demás.",
+    },
+    {
+      enunciado: "El punto medio de la hipotenusa de un triángulo rectángulo coincide con:",
+      opciones: ["El incentro", "El baricentro", "El circuncentro", "El ortocentro"],
+      correcta: 2,
+      explicacion: "Equidista de los tres vértices (NA=NB=NC), así que es el circuncentro.",
+    },
+    {
+      enunciado: "Si la hipotenusa de un triángulo rectángulo mide 40 cm, ¿cuánto mide la mediana relativa a ella?",
+      opciones: ["40 cm", "80 cm", "20 cm", "No se puede saber"],
+      correcta: 2,
+      explicacion: "40 / 2 = 20 cm.",
+    },
+    {
+      enunciado: "En la demostración, ¿por qué ∠NMC resulta ser 90°?",
+      opciones: ["Es un dato del problema", "Porque MN ∥ AB y AB ⊥ AC, así que MN hereda la perpendicularidad con AC", "Porque N es punto medio", "Por el teorema de Pitágoras"],
+      correcta: 1,
+      explicacion: "Al ser MN paralela a AB, y AB perpendicular a AC, MN también resulta perpendicular a AC.",
+    },
+    {
+      enunciado: "¿A qué postulado de congruencia se recurre en el último paso de la demostración?",
+      opciones: ["LLL", "ALA", "LAL", "No se usa congruencia"],
+      correcta: 2,
+      explicacion: "AM=MC, el ángulo recto entre ellos, y NM común: dos lados y el ángulo comprendido, es decir LAL.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Aplicar el teorema a un triángulo que no es rectángulo.** El resultado depende
+  esencialmente del ángulo recto — en un triángulo cualquiera, la mediana relativa a
+  un lado **no** mide la mitad de ese lado en general.
+- **Confundir "la hipotenusa" con cualquier lado.** El teorema habla específicamente
+  de la mediana relativa a la **hipotenusa** (el lado opuesto al ángulo recto), no de
+  las medianas relativas a los catetos.
+- **Olvidar que la conclusión da tres igualdades, no solo una.** El resultado completo
+  es $NA = NB = NC$ — no solo que la mediana es la mitad de la hipotenusa, sino que el
+  punto medio de la hipotenusa es literalmente el circuncentro.
+- **Intentar usar Pitágoras antes de tenerlo disponible.** En el Ejemplo 4, la
+  hipotenusa se calculó con Pitágoras solo como un resultado ya conocido de cursos
+  previos — su demostración formal llega en *Relaciones métricas en un triángulo*.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/geometria/triangulos/teorema-de-la-base-media", label: "Teorema de la base media" },
+    { href: "/matematica/geometria/triangulos/teorema-de-la-mediatriz", label: "Teorema de la mediatriz de un segmento" },
+    { href: "/matematica/geometria/triangulos/congruencia-de-triangulos", label: "Congruencia de triángulos" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/geometria/circunferencia", label: "Circunferencia" },
+    { href: "/matematica/geometria/relaciones-metricas-en-un-triangulo", label: "Relaciones métricas en un triángulo" },
+  ]}
+/>

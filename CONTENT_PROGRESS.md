@@ -2,7 +2,7 @@
 
 > Memoria persistente entre sesiones. Se actualiza al terminar cada subtema/tema.
 > Estado del proyecto: **Fase 1 en curso (tema piloto)**. "Triángulos" (Geometría) está
-> completo con sus 4 subtemas — es el patrón validado a replicar en el resto de temas.
+> completo con sus 7 subtemas — es el patrón validado a replicar en el resto de temas.
 > Ver `PROJECT_BRIEF.md` §7 para el roadmap por fases.
 
 Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (todos los subtemas)
@@ -43,7 +43,10 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Definición y clasificación de triángulos
   - ✅ Teoremas fundamentales del triángulo
   - ✅ Congruencia de triángulos
-  - ✅ Aplicaciones de la congruencia
+  - ✅ Teorema de la bisectriz de un ángulo
+  - ✅ Teorema de la mediatriz de un segmento
+  - ✅ Teorema de la base media
+  - ✅ Teorema de la mediana relativa a la hipotenusa
 - ⬜ 3. Polígonos
 - ⬜ 4. Circunferencia
 - ⬜ 5. Proporcionalidad
@@ -93,14 +96,17 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
 
 - [x] Fase 0 — Cimientos del proyecto (scaffold, sistema de diseño, rutas de 4 niveles,
       MDX + KaTeX, JSXGraph, `PROJECT_BRIEF.md`, `CONTENT_PROGRESS.md`)
-- [x] Fase 1 — Tema piloto: **Triángulos** (Geometría), 4 subtemas completos con el
-      molde pedagógico íntegro (objetivo, marco teórico con demostraciones,
-      visualización interactiva JSXGraph, 5 ejemplos resueltos, 6 problemas en 3
-      niveles con solución desplegable, quiz de 6 preguntas, errores frecuentes,
-      conexiones). Componentes reutilizables listos para el resto del temario:
+- [x] Fase 1 — Tema piloto: **Triángulos** (Geometría), 7 subtemas completos con el
+      molde pedagógico íntegro (objetivo, marco teórico con demostraciones paso a
+      paso acompañadas de diagramas JSXGraph, visualización interactiva, 4-5 ejemplos
+      resueltos, 6 problemas en 3 niveles con solución desplegable, quiz de 6
+      preguntas, errores frecuentes, conexiones). El subtema original "Aplicaciones de
+      la congruencia" se dividió en 4 subtemas independientes (bisectriz, mediatriz,
+      base media, mediana relativa a la hipotenusa) para no sobrecargar una sola
+      página. Componentes reutilizables listos para el resto del temario:
       `components/pedagogy/*` (Objetivo, EjemploResuelto, Problema/Solucion, Quiz,
       ErroresFrecuentes, Conexiones) y `components/interactive/*`
-      (JSXGraphBoard, FiguraInteractiva, jsxgraph-utils).
+      (JSXGraphBoard, FiguraInteractiva, FiguraDemostracion, jsxgraph-utils).
 - [ ] Fase 2 — Aritmética completa (12 temas)
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)

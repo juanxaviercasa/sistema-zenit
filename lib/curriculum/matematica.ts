@@ -18,7 +18,13 @@ const subtemasTriangulos: Subtema[] = [
   subtema("definicion-y-clasificacion", "Definición y clasificación de triángulos"),
   subtema("teoremas-fundamentales", "Teoremas fundamentales del triángulo"),
   subtema("congruencia-de-triangulos", "Congruencia de triángulos"),
-  subtema("aplicaciones-de-la-congruencia", "Aplicaciones de la congruencia"),
+  subtema("teorema-de-la-bisectriz", "Teorema de la bisectriz de un ángulo"),
+  subtema("teorema-de-la-mediatriz", "Teorema de la mediatriz de un segmento"),
+  subtema("teorema-de-la-base-media", "Teorema de la base media"),
+  subtema(
+    "teorema-de-la-mediana-a-la-hipotenusa",
+    "Teorema de la mediana relativa a la hipotenusa"
+  ),
 ];
 
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).

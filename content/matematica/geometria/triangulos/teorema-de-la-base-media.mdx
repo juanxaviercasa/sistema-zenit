@@ -1,0 +1,289 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TeoremaBaseMedia, DiagramaBaseMedia } from "@/components/interactive/geometria";
+
+# Teorema de la base media
+
+<Objetivo>
+
+Demostrar, mediante congruencia de triángulos, que el segmento que une los puntos
+medios de dos lados de un triángulo es paralelo al tercer lado y mide la mitad de él —
+y aplicar este resultado en problemas de longitudes y perímetros.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado.** El segmento que une los puntos medios de dos lados de un triángulo (la
+**base media**) es paralelo al tercer lado y mide la mitad de su longitud.
+
+**Demostración.** Sea $ABC$ un triángulo, con $M$ punto medio de $AB$ y $N$ punto
+medio de $AC$. Prolonga $\overline{MN}$ hasta un punto $D$ tal que $N$ sea también
+punto medio de $\overline{MD}$.
+
+<DiagramaBaseMedia />
+
+**Paso 1 — construir el paralelogramo auxiliar.** En los triángulos $AMN$ y $CDN$:
+
+$$
+\begin{aligned}
+AN &= NC & &(N \text{ es punto medio de } AC) \\
+\angle ANM &= \angle CND & &(\text{ángulos opuestos por el vértice}) \\
+MN &= ND & &(\text{construcción})
+\end{aligned}
+$$
+
+Por **LAL**, $\triangle AMN \cong \triangle CDN$.
+
+**Paso 2 — extraer lo que la congruencia entrega.** De la congruencia:
+
+$$
+\begin{aligned}
+CD &= AM & &(\text{lados correspondientes}) \\
+\angle NCD &= \angle NAM & &(\text{ángulos correspondientes})
+\end{aligned}
+$$
+
+La igualdad de ángulos $\angle NCD = \angle NAM$ son ángulos alternos internos entre
+las rectas $CD$ y $AB$ respecto a la transversal $AC$ — así que $CD \parallel AB$.
+Además, como $AM = MB$ (dato) y $CD = AM$, se cumple $CD = MB$.
+
+**Paso 3 — reconocer el paralelogramo.** $CD \parallel MB$ y $CD = MB$: un par de lados
+opuestos paralelos y de igual longitud hacen de $MBCD$ un **paralelogramo**. En un
+paralelogramo los lados opuestos son iguales y paralelos, así que también
+$MD \parallel BC$ y $MD = BC$.
+
+**Conclusión.** Como $N$ es punto medio de $MD$: $MN = \dfrac{1}{2} MD = \dfrac{1}{2} BC$.
+Y como $MD \parallel BC$, también $MN \parallel BC$ (son el mismo segmento en cuanto a
+dirección). Por lo tanto:
+
+$$
+MN \parallel BC \qquad \text{y} \qquad MN = \dfrac{BC}{2}. \qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<TeoremaBaseMedia />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** En el triángulo $ABC$, $M$ y $N$ son puntos medios de $AB$ y $AC$
+respectivamente. Si $BC = 18$ cm, halla $MN$.
+
+**Solución.** Por el teorema de la base media, $MN = \dfrac{BC}{2} = \dfrac{18}{2} = 9$
+cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** $M$ y $N$ son puntos medios de $AB$ y $AC$ en el triángulo $ABC$. Si
+$MN = 6{,}5$ cm, halla $BC$.
+
+**Solución.** Como $MN = \dfrac{BC}{2}$: $\; BC = 2 \cdot MN = 2(6{,}5) = 13$ cm.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Los puntos medios de los tres lados de un triángulo $ABC$ (de
+perímetro $40$ cm) forman el llamado **triángulo medial**. Halla el perímetro del
+triángulo medial.
+
+**Solución.** Cada lado del triángulo medial es una base media del triángulo original,
+así que mide la mitad del lado correspondiente:
+
+$$
+\text{perímetro medial} = \frac{AB}{2} + \frac{BC}{2} + \frac{CA}{2}
+= \frac{AB + BC + CA}{2} = \frac{40}{2} = 20 \text{ cm.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** En el triángulo $ABC$, $M$ y $N$ son puntos medios de $AB$ y $AC$. Se
+sabe que $MN = (2x + 3)$ cm y $BC = (5x - 4)$ cm. Halla $BC$.
+
+**Solución.** Por el teorema de la base media:
+
+$$
+MN = \frac{BC}{2} \;\Longrightarrow\; 2x + 3 = \frac{5x - 4}{2}
+\;\Longrightarrow\; 4x + 6 = 5x - 4 \;\Longrightarrow\; x = 10.
+$$
+
+Entonces $BC = 5(10) - 4 = 46$ cm.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+$M$ y $N$ son puntos medios de $AB$ y $AC$ en el triángulo $ABC$, con $BC = 24$ cm.
+Halla $MN$.
+
+<Solucion>
+
+$MN = \dfrac{24}{2} = 12$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+En el triángulo $ABC$, $D$ es punto medio de $AB$ y $E$ es punto medio de $BC$. Si
+$DE = 5{,}5$ cm, halla $AC$.
+
+<Solucion>
+
+$DE$ es base media respecto al lado $AC$ (une los puntos medios de $AB$ y $BC$), así
+que $AC = 2 \cdot DE = 11$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Un triángulo tiene lados $12$ cm, $16$ cm y $20$ cm. Halla el perímetro de su triángulo
+medial (formado por los tres puntos medios).
+
+<Solucion>
+
+Cada lado del triángulo medial mide la mitad del lado correspondiente:
+$6 + 8 + 10 = 24$ cm. (Equivalente a la mitad del perímetro original: $48/2 = 24$ cm.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+En el triángulo $ABC$, $M$, $N$ y $P$ son los puntos medios de $AB$, $BC$ y $CA$
+respectivamente. Explica por qué el triángulo $MNP$ es semejante al triángulo $ABC$.
+
+<Solucion>
+
+Por el teorema de la base media aplicado tres veces: $MN \parallel AC$ (con
+$MN = AC/2$), $NP \parallel AB$ (con $NP = AB/2$), $PM \parallel BC$ (con
+$PM = BC/2$). Los tres lados de $MNP$ son paralelos a los de $ABC$ y proporcionales en
+razón $1:2$ — por criterio LLL de semejanza (proporcionalidad de los tres lados),
+$\triangle MNP \sim \triangle ABC$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+En el triángulo $ABC$, $M$ y $N$ son puntos medios de $AB$ y $AC$, con
+$MN = (3x - 2)$ cm. El lado $BC$ mide $(4x + 10)$ cm. Halla el valor de $MN$.
+
+<Solucion>
+
+$$
+3x - 2 = \frac{4x + 10}{2} \;\Longrightarrow\; 6x - 4 = 4x + 10
+\;\Longrightarrow\; 2x = 14 \;\Longrightarrow\; x = 7.
+$$
+
+$MN = 3(7) - 2 = 19$ cm.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra, usando el teorema de la base media dos veces, que en cualquier
+cuadrilátero (convexo o no) los puntos medios de sus cuatro lados forman un
+paralelogramo (**teorema de Varignon**). *Sugerencia: traza una diagonal del
+cuadrilátero para dividirlo en dos triángulos.*
+
+<Solucion>
+
+Sea $ABCD$ un cuadrilátero con $M$, $N$, $P$, $Q$ puntos medios de $AB$, $BC$, $CD$,
+$DA$. Traza la diagonal $AC$. En el triángulo $ABC$: $M$ y $N$ son puntos medios de
+$AB$ y $BC$, así que por el teorema de la base media $MN \parallel AC$ y
+$MN = AC/2$. En el triángulo $ACD$: $Q$ y $P$ son puntos medios de $AD$ y $CD$, así
+que $QP \parallel AC$ y $QP = AC/2$. Entonces $MN \parallel QP$ (ambos paralelos a
+$AC$) y $MN = QP$ (ambos iguales a $AC/2$): un par de lados opuestos del cuadrilátero
+$MNPQ$ es paralelo e igual, así que $MNPQ$ es un paralelogramo.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La base media de un triángulo une:",
+      opciones: ["Un vértice con el punto medio del lado opuesto", "Los puntos medios de dos lados", "Los puntos medios de los tres lados", "Un vértice con otro vértice"],
+      correcta: 1,
+      explicacion: "La base media conecta los puntos medios de dos lados del triángulo.",
+    },
+    {
+      enunciado: "Si MN es base media respecto al lado BC, ¿qué relación cumplen?",
+      opciones: ["MN = BC y MN ∥ BC", "MN = BC/2 y MN ∥ BC", "MN = 2·BC y MN ⊥ BC", "No hay relación fija"],
+      correcta: 1,
+      explicacion: "MN es paralela a BC y mide la mitad de su longitud.",
+    },
+    {
+      enunciado: "En la demostración, ¿qué figura clave se construye para probar el teorema?",
+      opciones: ["Un triángulo equilátero auxiliar", "Un paralelogramo auxiliar (MBCD)", "Una circunferencia circunscrita", "Una bisectriz"],
+      correcta: 1,
+      explicacion: "Se prolonga MN hasta D y se demuestra que MBCD es un paralelogramo, de donde sale toda la conclusión.",
+    },
+    {
+      enunciado: "Un triángulo tiene perímetro 30 cm. ¿Cuál es el perímetro de su triángulo medial?",
+      opciones: ["30 cm", "15 cm", "60 cm", "10 cm"],
+      correcta: 1,
+      explicacion: "Cada lado del triángulo medial mide la mitad del correspondiente, así que el perímetro también se reduce a la mitad.",
+    },
+    {
+      enunciado: "¿Cuántas bases medias distintas tiene un triángulo?",
+      opciones: ["1", "2", "3", "6"],
+      correcta: 2,
+      explicacion: "Una por cada par de lados: tres pares posibles, tres bases medias.",
+    },
+    {
+      enunciado: "El teorema de Varignon (puntos medios de un cuadrilátero cualquiera) se demuestra aplicando el teorema de la base media:",
+      opciones: ["Una vez", "Dos veces, sobre los dos triángulos que forma una diagonal", "Tres veces", "No se relaciona con la base media"],
+      correcta: 1,
+      explicacion: "Trazando una diagonal se forman dos triángulos, y en cada uno se aplica el teorema de la base media una vez.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar puntos que no son medios.** El teorema exige que ambos puntos sean
+  exactamente los puntos medios de sus lados — no aplica a puntos arbitrarios sobre
+  los lados.
+- **Olvidar el factor $\tfrac{1}{2}$.** Un error común es escribir $MN = BC$ en vez de
+  $MN = BC/2$ — la base media es paralela al tercer lado, pero **no** igual a él.
+  Escribe la fracción con `\dfrac` para que se vea clara y completa, nunca a mitad de
+  tamaño.
+- **Confundir cuál es "el tercer lado".** Si $M$ y $N$ son los puntos medios de $AB$ y
+  $AC$, la base media $MN$ es paralela a $BC$ — el lado que **no** interviene en la
+  construcción de $M$ ni de $N$.
+- **Aplicar el teorema en un solo sentido.** El teorema da dos conclusiones a la vez
+  (paralelismo **y** longitud) — en un problema, ambas son datos disponibles: no
+  descartes el paralelismo si solo te preguntan por longitudes, o viceversa.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/geometria/triangulos/congruencia-de-triangulos", label: "Congruencia de triángulos" },
+    { href: "/matematica/geometria/triangulos/teoremas-fundamentales", label: "Teoremas fundamentales del triángulo" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/geometria/triangulos/teorema-de-la-mediana-a-la-hipotenusa", label: "Teorema de la mediana relativa a la hipotenusa" },
+    { href: "/matematica/geometria/proporcionalidad", label: "Proporcionalidad" },
+    { href: "/matematica/geometria/poligonos", label: "Polígonos" },
+    { href: "/matematica/geometria/areas-de-regiones-poligonales", label: "Áreas de regiones poligonales" },
+  ]}
+/>
