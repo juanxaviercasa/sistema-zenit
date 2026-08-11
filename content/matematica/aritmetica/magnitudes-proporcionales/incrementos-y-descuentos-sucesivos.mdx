@@ -1,0 +1,293 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { IncrementosYDescuentos } from "@/components/interactive/aritmetica";
+
+# Incrementos y descuentos sucesivos
+
+<Objetivo>
+
+Calcular el efecto acumulado de dos o más aumentos y descuentos porcentuales
+sucesivos, y demostrar la fórmula que da el porcentaje único equivalente.
+
+</Objetivo>
+
+## Marco teórico
+
+Un aumento único de $p\%$ sobre una cantidad $N$ la transforma en
+$N\left(1 + \dfrac{p}{100}\right)$. Un descuento único de $p\%$ la transforma en
+$N\left(1 - \dfrac{p}{100}\right)$. Usando el mismo signo para ambos casos
+($p > 0$ para aumento, $p < 0$ para descuento), ambos se escriben como
+$N\left(1 + \dfrac{p}{100}\right)$.
+
+Cuando se aplican **dos cambios sucesivos** $p_1\%$ y $p_2\%$ (cada uno sobre el
+resultado del anterior, no sobre el valor original), el resultado final es:
+
+$$
+N_{\text{final}} = N \left(1 + \frac{p_1}{100}\right)\left(1 + \frac{p_2}{100}\right).
+$$
+
+**Enunciado (porcentaje único equivalente).** Los dos cambios sucesivos $p_1\%$ y
+$p_2\%$ equivalen a un único cambio porcentual $P\%$, dado por:
+
+$$
+P = p_1 + p_2 + \frac{p_1 p_2}{100}.
+$$
+
+**Demostración.**
+
+**Paso 1 — expandir el producto de factores.**
+
+$$
+\left(1 + \frac{p_1}{100}\right)\left(1 + \frac{p_2}{100}\right)
+= 1 + \frac{p_1}{100} + \frac{p_2}{100} + \frac{p_1 p_2}{10000}.
+$$
+
+**Paso 2 — igualar con un único cambio $P\%$.** Por definición, un cambio único
+equivalente cumple $N_{\text{final}} = N\left(1 + \dfrac{P}{100}\right)$, así que:
+
+$$
+1 + \frac{P}{100} = 1 + \frac{p_1}{100} + \frac{p_2}{100} + \frac{p_1 p_2}{10000}.
+$$
+
+**Conclusión.** Cancelando el $1$ y multiplicando todo por $100$:
+
+$$
+P = p_1 + p_2 + \frac{p_1 p_2}{100}. \qquad \blacksquare
+$$
+
+El término $\dfrac{p_1 p_2}{100}$ es exactamente lo que impide "sumar los porcentajes
+directamente" — y explica por qué un $+20\%$ seguido de un $-10\%$ NO da $+10\%$.
+
+## Visualización interactiva
+
+<IncrementosYDescuentos />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Un precio de $S/. 100$ aumenta $20\%$ y luego se le aplica un
+descuento de $10\%$. Halla el precio final.
+
+**Solución.** $100 \times 1{,}20 \times 0{,}90 = 108$. El precio final es $S/. 108$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla el porcentaje único equivalente a un aumento de $30\%$ seguido de
+un descuento de $20\%$.
+
+**Solución.** Con $p_1 = 30$, $p_2 = -20$:
+
+$$
+P = 30 + (-20) + \frac{30 \times (-20)}{100} = 10 - 6 = 4.
+$$
+
+Equivale a un aumento único del $4\%$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Un precio de $S/. 80$ aumenta $25\%$ y luego baja $20\%$. ¿Aumentó,
+disminuyó o quedó igual respecto al precio original?
+
+**Solución.** $80 \times 1{,}25 = 100$; luego $100 \times 0{,}80 = 80$. ¡Quedó
+exactamente igual! Esto ocurre porque $1{,}25 \times 0{,}80 = 1$ exactamente en este
+caso particular — no es una regla general, es una coincidencia numérica de estos
+valores específicos. Verifica con la fórmula: $P = 25 - 20 + \dfrac{25(-20)}{100} =
+5 - 5 = 0$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un precio sube $40\%$ y luego se le aplica un descuento $p_2\%$, de
+modo que el precio final queda $12\%$ por encima del original. Halla $p_2$.
+
+**Solución.** Se busca $p_2$ tal que $P = 12$, con $p_1 = 40$:
+
+$$
+12 = 40 + p_2 + \frac{40 p_2}{100} \;\Longrightarrow\; 12 - 40 = p_2\left(1 +
+\frac{40}{100}\right) \;\Longrightarrow\; -28 = 1{,}4\, p_2 \;\Longrightarrow\;
+p_2 = -20.
+$$
+
+El descuento fue del $20\%$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Un precio de $S/. 200$ aumenta $15\%$ y luego aumenta otro $10\%$. Halla el precio
+final.
+
+<Solucion>
+
+$200 \times 1{,}15 \times 1{,}10 = 253$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla el porcentaje único equivalente a dos descuentos sucesivos de $10\%$ cada uno.
+
+<Solucion>
+
+$P = -10 + (-10) + \dfrac{(-10)(-10)}{100} = -20 + 1 = -19$. Un descuento único del
+$19\%$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Un artículo de $S/. 150$ recibe un descuento de $30\%$ y luego un aumento de $30\%$.
+¿El precio final es igual al original? Justifica con el cálculo.
+
+<Solucion>
+
+$150 \times 0{,}70 \times 1{,}30 = 136{,}50 \neq 150$. No es igual — quedó por debajo
+del original, porque el aumento del $30\%$ se aplica sobre un valor ya reducido, no
+sobre el original.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el porcentaje único equivalente a un aumento de $50\%$ seguido de un descuento
+de $50\%$.
+
+<Solucion>
+
+$P = 50 - 50 + \dfrac{50(-50)}{100} = 0 - 25 = -25$. Un descuento único del $25\%$ (no
+queda igual).
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un precio recibe dos descuentos sucesivos iguales de $p\%$ cada uno, y el efecto total
+equivale a un descuento único del $36\%$. Halla $p$.
+
+<Solucion>
+
+$-36 = -p - p + \dfrac{(-p)(-p)}{100} = -2p + \dfrac{p^2}{100}$. Multiplicando por
+$100$: $-3600 = -200p + p^2 \Rightarrow p^2 - 200p + 3600 = 0$. Resolviendo:
+
+$$
+p = \frac{200 \pm \sqrt{40000 - 14400}}{2} = \frac{200 \pm 160}{2} \;\Longrightarrow\;
+p = 20 \text{ o } p = 180.
+$$
+
+Como $p$ debe ser un descuento razonable (menor a $100\%$), $p = 20\%$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para tres cambios sucesivos $p_1, p_2, p_3$, el porcentaje único
+equivalente $P$ cumple $1 + \dfrac{P}{100} = \left(1+\dfrac{p_1}{100}\right)
+\left(1+\dfrac{p_2}{100}\right)\left(1+\dfrac{p_3}{100}\right)$, generalizando la
+fórmula de dos cambios.
+
+<Solucion>
+
+Por definición, aplicar los tres cambios sucesivamente sobre $N$ da:
+
+$$
+N_{\text{final}} = N\left(1+\frac{p_1}{100}\right)\left(1+\frac{p_2}{100}\right)
+\left(1+\frac{p_3}{100}\right).
+$$
+
+Un único cambio equivalente $P\%$ debe producir el mismo resultado:
+$N_{\text{final}} = N\left(1+\dfrac{P}{100}\right)$. Igualando ambas expresiones para
+$N_{\text{final}}$ y dividiendo entre $N$ (con $N \neq 0$):
+
+$$
+1 + \frac{P}{100} = \left(1+\frac{p_1}{100}\right)\left(1+\frac{p_2}{100}\right)
+\left(1+\frac{p_3}{100}\right). \qquad \blacksquare
+$$
+
+El patrón se extiende de la misma forma a cualquier número de cambios sucesivos.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Un precio de 100 aumenta 10% y luego aumenta otro 10%. El precio final es:",
+      opciones: ["120", "121", "110", "100"],
+      correcta: 1,
+      explicacion: "100 × 1,1 × 1,1 = 121 (no 120, por el efecto compuesto).",
+    },
+    {
+      enunciado: "El porcentaje único equivalente a p1% y p2% sucesivos es:",
+      opciones: ["p1 + p2", "p1 · p2", "p1 + p2 + p1p2/100", "p1 - p2"],
+      correcta: 2,
+      explicacion: "P = p1 + p2 + p1p2/100 — nunca simplemente la suma.",
+    },
+    {
+      enunciado: "Un aumento de 20% seguido de un descuento de 20% da como resultado:",
+      opciones: ["El mismo precio original", "Un descuento neto del 4%", "Un aumento neto del 4%", "Un descuento neto del 40%"],
+      correcta: 1,
+      explicacion: "P = 20 - 20 + 20(-20)/100 = 0 - 4 = -4%. Queda por debajo del original.",
+    },
+    {
+      enunciado: "Dos descuentos sucesivos de 25% cada uno equivalen a un descuento único de:",
+      opciones: ["50%", "43,75%", "56,25%", "25%"],
+      correcta: 1,
+      explicacion: "P = -25-25+625/100 = -50+6,25 = -43,75%.",
+    },
+    {
+      enunciado: "¿Por qué los porcentajes sucesivos no se suman directamente?",
+      opciones: ["Porque siempre hay un error de redondeo", "Porque cada cambio se aplica sobre el resultado anterior, no sobre el valor original", "En realidad sí se suman directamente", "Porque los porcentajes son negativos"],
+      correcta: 1,
+      explicacion: "El segundo cambio actúa sobre una base ya modificada por el primero.",
+    },
+    {
+      enunciado: "Un precio baja 50% y luego sube 100%. ¿Queda igual al original?",
+      opciones: ["Sí, siempre", "Sí, en este caso específico (0,5 × 2 = 1)", "No, queda más alto", "No, queda más bajo"],
+      correcta: 1,
+      explicacion: "0,5 × 2,0 = 1: en este caso numérico particular, coincide con el original.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Sumar los porcentajes directamente.** Un $+20\%$ y un $-10\%$ sucesivos NO son un
+  $+10\%$ neto — falta siempre el término de corrección $p_1p_2/100$.
+- **Aplicar el segundo cambio sobre el valor original** en vez de sobre el resultado
+  del primer cambio — cada cambio sucesivo se calcula sobre la cantidad ya modificada.
+- **Asumir que "subir $x\%$ y luego bajar $x\%$" siempre regresa al valor original.**
+  En general NO es así — solo ocurre en casos numéricos particulares (como el
+  Ejemplo 3), nunca como regla general para cualquier $x$.
+- **Olvidar el signo negativo de un descuento** al sustituir en la fórmula
+  $P = p_1 + p_2 + p_1p_2/100$ — un descuento de $10\%$ se sustituye como $p = -10$,
+  no como $p = 10$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/tanto-por-ciento-y-tanto-por-uno", label: "Tanto por ciento y tanto por uno" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto", label: "Interés simple y compuesto" },
+    { href: "/matematica/aritmetica/mezcla-y-aleacion", label: "Mezcla y aleación" },
+  ]}
+/>

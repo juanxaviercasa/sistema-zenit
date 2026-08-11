@@ -1,0 +1,279 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { RepartoProporcional } from "@/components/interactive/aritmetica";
+
+# Reparto proporcional simple y compuesto
+
+<Objetivo>
+
+Repartir una cantidad total en partes proporcionales (directa o inversamente) a
+índices dados, y extender el método al reparto compuesto — como en el reparto de
+utilidades entre socios con distinto capital y distinto tiempo de inversión.
+
+</Objetivo>
+
+## Marco teórico
+
+**Reparto proporcional simple directo.** Repartir una cantidad $N$ en partes
+$p_1, p_2, \dots, p_k$ proporcionales a los índices $n_1, n_2, \dots, n_k$ significa
+que $\dfrac{p_1}{n_1} = \dfrac{p_2}{n_2} = \cdots = \dfrac{p_k}{n_k}$, con
+$p_1 + p_2 + \cdots + p_k = N$.
+
+**Demostración (fórmula del reparto).**
+
+**Paso 1 — nombrar la razón común.** Sea $\dfrac{p_1}{n_1} = \dfrac{p_2}{n_2} =
+\cdots = \dfrac{p_k}{n_k} = c$.
+
+**Paso 2 — aplicar la propiedad de las series de razones iguales** (vista en
+*Razones y proporciones*): la razón entre la suma de antecedentes y la suma de
+consecuentes también vale $c$:
+
+$$
+c = \frac{p_1 + p_2 + \cdots + p_k}{n_1 + n_2 + \cdots + n_k} = \frac{N}{n_1+\cdots+n_k}.
+$$
+
+**Conclusión.** Cada parte es:
+
+$$
+p_i = c \cdot n_i = \frac{N}{n_1 + n_2 + \cdots + n_k} \cdot n_i. \qquad \blacksquare
+$$
+
+**Reparto proporcional simple inverso.** Repartir $N$ en partes inversamente
+proporcionales a $n_1, \dots, n_k$ equivale a repartirlo *directamente* proporcional a
+los recíprocos $\dfrac{1}{n_1}, \dots, \dfrac{1}{n_k}$ — se aplica la misma fórmula,
+usando $\dfrac{1}{n_i}$ en el rol de índice.
+
+**Reparto proporcional compuesto.** Cuando cada parte depende de **varios** índices a
+la vez (por ejemplo, capital *y* tiempo invertido), se construye un **índice
+combinado** $w_i$ multiplicando los índices directos y dividiendo entre los inversos,
+y luego se reparte proporcionalmente a los $w_i$ con la misma fórmula. El caso más
+común — el **reparto de utilidades** entre socios — usa $w_i = \text{capital}_i \times
+\text{tiempo}_i$, porque la utilidad que le corresponde a cada socio depende
+directamente de cuánto invirtió y de cuánto tiempo lo mantuvo invertido.
+
+## Visualización interactiva
+
+<RepartoProporcional />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Reparte $S/. 640$ en partes directamente proporcionales a $3$, $5$ y
+$8$.
+
+**Solución.** $c = \dfrac{640}{3+5+8} = \dfrac{640}{16} = 40$. Partes:
+$3(40)=120$, $5(40)=200$, $8(40)=320$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Reparte $S/. 780$ en partes inversamente proporcionales a $2$, $3$ y
+$4$.
+
+**Solución.** Se usan los recíprocos como índices: $\dfrac{1}{2}, \dfrac{1}{3},
+\dfrac{1}{4}$, cuya suma es $\dfrac{6+4+3}{12} = \dfrac{13}{12}$.
+
+$$
+c = \frac{780}{13/12} = 780 \times \frac{12}{13} = 720.
+$$
+
+Partes: $720 \times \dfrac{1}{2} = 360$; $\;720 \times \dfrac{1}{3} = 240$; $\;720
+\times \dfrac{1}{4} = 180$. (Verificación: $360+240+180=780$ ✓.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Tres socios invierten $S/. 4000$, $S/. 6000$ y $S/. 5000$ durante $8$,
+$6$ y $9$ meses respectivamente. Reparte una utilidad de $S/. 9400$ proporcionalmente
+al capital y al tiempo invertido.
+
+**Solución.** Índices compuestos: $w_1 = 4000(8) = 32000$; $w_2 = 6000(6) = 36000$;
+$w_3 = 5000(9) = 45000$. Suma: $113000$.
+
+$$
+c = \frac{9400}{113000} = 0{,}0832\ldots
+$$
+
+Partes: $p_1 \approx 2663{,}7$; $p_2 \approx 2996{,}5$; $p_3 \approx 3745{,}1$
+(aproximando a la centésima).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Dos socios forman una empresa. El primero aporta $S/. 8000$ durante
+todo el año ($12$ meses); el segundo aporta $S/. 6000$, pero se retira $4$ meses antes
+de terminar el año. Si la utilidad total fue de $S/. 3000$ mayor para el primero que
+para el segundo, halla la utilidad total repartida.
+
+**Solución.** El segundo invirtió durante $12 - 4 = 8$ meses. Índices:
+$w_1 = 8000(12) = 96000$; $w_2 = 6000(8) = 48000$. La razón común es
+$c = \dfrac{p_1}{96000} = \dfrac{p_2}{48000}$, y por la propiedad de las series de
+razones iguales: $\dfrac{p_1 - p_2}{96000 - 48000} = c \Rightarrow \dfrac{3000}{48000}
+= c = 0{,}0625$.
+
+Utilidad total: $N = c(w_1+w_2) = 0{,}0625 \times 144000 = 9000$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Reparte $S/. 500$ en partes directamente proporcionales a $2$ y $3$.
+
+<Solucion>
+
+$c = 500/5 = 100$. Partes: $200$ y $300$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Reparte $360$ en partes inversamente proporcionales a $4$ y $5$.
+
+<Solucion>
+
+Recíprocos: $1/4, 1/5$, suma $= 9/20$. $c = 360/(9/20) = 800$. Partes: $800/4=200$;
+$800/5=160$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Reparte $S/. 940$ en partes proporcionales a $3$, $4$ y $5$, pero de forma inversa.
+
+<Solucion>
+
+Recíprocos: $1/3, 1/4, 1/5$, suma $= 20/60+15/60+12/60 = 47/60$. $c = 940 /(47/60) =
+1200$. Partes: $1200/3=400$; $1200/4=300$; $1200/5=240$. (Suma: $940$ ✓.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Dos socios invierten $S/. 5000$ y $S/. 7000$ durante $10$ y $6$ meses
+respectivamente. Reparte una utilidad de $S/. 4300$ proporcionalmente al capital y al
+tiempo.
+
+<Solucion>
+
+$w_1 = 5000(10)=50000$; $w_2=7000(6)=42000$; suma $=92000$. $c = 4300/92000 \approx
+0{,}0467$. $p_1 \approx 2336{,}96$; $p_2 \approx 1963{,}04$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Tres socios A, B y C aportan capitales proporcionales a $2$, $3$ y $5$, durante
+tiempos proporcionales a $6$, $4$ y $3$. Si a C le correspondieron $S/. 1500$ de una
+utilidad total, halla cuánto le correspondió a A.
+
+<Solucion>
+
+Índices compuestos (proporcionales, sin valores absolutos): $w_A = 2(6)=12$;
+$w_B=3(4)=12$; $w_C=5(3)=15$. La razón común es $c = p_C/w_C = 1500/15 = 100$.
+Entonces $p_A = c \cdot w_A = 100(12) = 1200$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, en un reparto proporcional simple directo entre solo dos partes con
+índices $n_1$ y $n_2$, la diferencia de las partes cumple
+$\dfrac{p_1 - p_2}{n_1 - n_2} = \dfrac{N}{n_1+n_2}$ (con $n_1 \neq n_2$), y úsala para
+repartir $N = 800$ en partes proporcionales a $3$ y $5$ conociendo solo que
+$p_2 - p_1 = 200$.
+
+<Solucion>
+
+Por la propiedad de las series de razones iguales aplicada con coeficientes
+$m_1=1, m_2=-1$: si $\dfrac{p_1}{n_1}=\dfrac{p_2}{n_2}=c$, entonces
+$\dfrac{p_1-p_2}{n_1-n_2}=c$ también, y ya sabemos que $c = \dfrac{p_1+p_2}{n_1+n_2} =
+\dfrac{N}{n_1+n_2}$ — ambas expresiones de $c$ deben coincidir, lo que da la igualdad
+pedida.
+
+Con los datos: $n_1=3,n_2=5$, $N=800$, $p_2-p_1=200$. Por la fórmula estándar:
+$c = 800/8 = 100$, así que $p_1 = 3(100)=300$ y $p_2=5(100)=500$ (verificación:
+$p_2-p_1=200$ ✓).
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Al repartir 900 en partes DP a 2, 3 y 4, la razón común c es:",
+      opciones: ["100", "90", "225", "50"],
+      correcta: 0,
+      explicacion: "c = 900/(2+3+4) = 900/9 = 100.",
+    },
+    {
+      enunciado: "Para un reparto inversamente proporcional a n1 y n2, se usa como índice:",
+      opciones: ["n1 y n2 directamente", "n1² y n2²", "1/n1 y 1/n2", "n1+n2 para ambos"],
+      correcta: 2,
+      explicacion: "El reparto inverso se resuelve como reparto directo a los recíprocos.",
+    },
+    {
+      enunciado: "El índice compuesto típico del reparto de utilidades entre socios es:",
+      opciones: ["Solo el capital", "Solo el tiempo", "Capital × tiempo", "Capital + tiempo"],
+      correcta: 2,
+      explicacion: "La utilidad depende del producto capital × tiempo invertido.",
+    },
+    {
+      enunciado: "Al repartir 500 DP a 1 y 4, la parte mayor es:",
+      opciones: ["400", "100", "250", "450"],
+      correcta: 0,
+      explicacion: "c = 500/5 = 100; partes: 100 y 400.",
+    },
+    {
+      enunciado: "En el reparto proporcional simple directo, ¿de qué teorema previo se deriva la fórmula?",
+      opciones: ["Teorema de Pitágoras", "Propiedad de las series de razones geométricas iguales", "Desigualdad de las medias", "Regla de tres inversa únicamente"],
+      correcta: 1,
+      explicacion: "La fórmula pi = c·ni sale directamente de esa propiedad, vista en Razones y proporciones.",
+    },
+    {
+      enunciado: "Dos socios invierten el mismo capital, pero uno durante el doble de tiempo que el otro. En un reparto compuesto, el que invirtió más tiempo recibe:",
+      opciones: ["La misma parte", "El doble de la parte del otro", "La mitad", "No se puede determinar"],
+      correcta: 1,
+      explicacion: "Con capitales iguales, la parte es proporcional solo al tiempo: el doble de tiempo da el doble de utilidad.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar los índices directamente en un reparto inverso** — hay que invertirlos
+  primero (usar $1/n_i$) antes de aplicar la fórmula del reparto directo.
+- **Sumar los índices en vez de multiplicarlos** en un reparto compuesto — el índice
+  combinado $w_i$ es un **producto** (capital × tiempo), no una suma.
+- **Olvidar que la suma de las partes debe dar el total $N$** — siempre verifica que
+  $p_1 + p_2 + \cdots = N$ al terminar.
+- **Mezclar unidades de tiempo** (meses con años) sin convertir — antes de multiplicar
+  capital por tiempo, asegúrate de que todos los tiempos estén en la misma unidad.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/razones-y-proporciones/series-de-razones-geometricas-equivalentes", label: "Series de razones geométricas equivalentes" },
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/magnitudes-directamente-e-inversamente-proporcionales", label: "Magnitudes directamente e inversamente proporcionales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto", label: "Interés simple y compuesto" },
+    { href: "/matematica/aritmetica/mezcla-y-aleacion", label: "Mezcla y aleación" },
+  ]}
+/>

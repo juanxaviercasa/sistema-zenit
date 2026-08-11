@@ -2,3 +2,8 @@ export { ComparadorDeRazones } from "./comparador-de-razones";
 export { VerificadorDeProporciones } from "./verificador-de-proporciones";
 export { ComparadorDeMedias } from "./comparador-de-medias";
 export { CadenaDeRazonesIguales } from "./cadena-de-razones-iguales";
+export { MagnitudDirectaEInversa } from "./magnitud-directa-e-inversa";
+export { ReglaDeTres } from "./regla-de-tres";
+export { TantoPorCiento } from "./tanto-por-ciento";
+export { IncrementosYDescuentos } from "./incrementos-y-descuentos";
+export { RepartoProporcional } from "./reparto-proporcional";

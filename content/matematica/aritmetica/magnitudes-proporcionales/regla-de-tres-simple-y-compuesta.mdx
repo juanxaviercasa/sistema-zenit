@@ -1,0 +1,277 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ReglaDeTres } from "@/components/interactive/aritmetica";
+
+# Regla de tres simple y compuesta
+
+<Objetivo>
+
+Resolver problemas de proporcionalidad con una incógnita usando la regla de tres
+simple (directa e inversa) y extenderla a la regla de tres compuesta, cuando
+intervienen varias magnitudes a la vez.
+
+</Objetivo>
+
+## Marco teórico
+
+La **regla de tres** es el procedimiento para hallar un cuarto valor desconocido a
+partir de tres valores conocidos de dos magnitudes relacionadas.
+
+**Regla de tres simple directa.** Si $A$ y $B$ son DP, y se conocen $a_1 \to b_1$ y
+$a_2 \to x$ (incógnita):
+
+$$
+\frac{a_1}{b_1} = \frac{a_2}{x} \;\Longrightarrow\; x = \frac{b_1 \cdot a_2}{a_1}.
+$$
+
+**Regla de tres simple inversa.** Si $A$ y $B$ son IP, y se conocen $a_1 \to b_1$ y
+$a_2 \to x$:
+
+$$
+a_1 \cdot b_1 = a_2 \cdot x \;\Longrightarrow\; x = \frac{a_1 \cdot b_1}{a_2}.
+$$
+
+**Regla de tres compuesta.** Cuando el valor buscado depende de **varias** magnitudes
+a la vez ($B$, $C$, $D$, ...), se combina una regla de tres simple por cada magnitud
+adicional, siguiendo la misma lógica DP/IP del subtema anterior: cada magnitud DP con
+la incógnita multiplica en la misma dirección que $b_1$; cada magnitud IP multiplica
+invertida.
+
+**Ejemplo de armado.** Si $x$ depende de $B$ (DP) y de $C$ (IP), con datos
+$b_1, c_1 \to x_1$ conocidos y $b_2, c_2 \to x_2$ por hallar:
+
+$$
+x_2 = x_1 \cdot \frac{b_2}{b_1} \cdot \frac{c_1}{c_2}.
+$$
+
+Nota cómo el factor de $B$ (DP) se escribe "en el mismo sentido" ($b_2$ arriba,
+$b_1$ abajo) y el de $C$ (IP) se escribe invertido ($c_1$ arriba, $c_2$ abajo).
+
+## Visualización interactiva
+
+<ReglaDeTres />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Si $5$ cuadernos cuestan $S/. 20$, ¿cuánto cuestan $8$ cuadernos?
+
+**Solución.** Precio y cantidad son DP:
+
+$$
+\frac{5}{20} = \frac{8}{x} \;\Longrightarrow\; x = \frac{20 \times 8}{5} = 32.
+$$
+
+Cuestan $S/. 32$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** $6$ grifos llenan un tanque en $4$ horas. ¿Cuánto tardarían $8$ grifos
+(con el mismo caudal cada uno)?
+
+**Solución.** Número de grifos y tiempo son IP (más grifos, menos tiempo):
+
+$$
+6 \times 4 = 8 \times x \;\Longrightarrow\; x = \frac{24}{8} = 3 \text{ horas.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** $12$ obreros trabajando $8$ horas diarias terminan una obra en $10$
+días. ¿Cuántos días tardarán $16$ obreros trabajando $6$ horas diarias?
+
+**Solución.** Tres magnitudes: obreros ($O$), horas diarias ($H$) y días ($D$). Más
+obreros → menos días (IP); más horas diarias → menos días (IP). Ambas son IP respecto
+a $D$:
+
+$$
+D_2 = D_1 \cdot \frac{O_1}{O_2} \cdot \frac{H_1}{H_2}
+= 10 \times \frac{12}{16} \times \frac{8}{6} = 10.
+$$
+
+Tardarán $10$ días.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** $9$ obreros construyen $60$ m de muro en $5$ días trabajando $8$ horas
+diarias. ¿Cuántos obreros se necesitan para construir $100$ m de muro en $4$ días
+trabajando $10$ horas diarias?
+
+**Solución.** La longitud del muro ($L$) es DP a obreros, días y horas; es más directo
+plantear todo respecto al número de obreros $O$: $O$ es DP con $L$ (a más muro, más
+obreros) e IP con días y horas diarias (a más días u horas disponibles, menos obreros
+se necesitan).
+
+$$
+O_2 = O_1 \cdot \frac{L_2}{L_1} \cdot \frac{D_1}{D_2} \cdot \frac{H_1}{H_2}
+= 9 \times \frac{100}{60} \times \frac{5}{4} \times \frac{8}{10} = 15.
+$$
+
+Se necesitan $15$ obreros.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Si $3$ kg de arroz cuestan $S/. 15$, ¿cuánto cuestan $7$ kg?
+
+<Solucion>
+
+$x = \dfrac{15 \times 7}{3} = 35$. $S/. 35$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+$4$ máquinas producen cierto pedido en $9$ horas. ¿Cuánto tardarían $6$ máquinas
+(mismo rendimiento cada una)?
+
+<Solucion>
+
+$x = \dfrac{4 \times 9}{6} = 6$ horas.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+$8$ obreros trabajando $6$ horas diarias hacen una obra en $15$ días. ¿En cuántos días
+la harán $10$ obreros trabajando $8$ horas diarias?
+
+<Solucion>
+
+$D_2 = 15 \times \dfrac{8}{10} \times \dfrac{6}{8} = 9$ días.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Un auto recorre $240$ km en $3$ horas. A la misma velocidad, ¿cuánto recorrerá en $5$
+horas?
+
+<Solucion>
+
+$x = \dfrac{240 \times 5}{3} = 400$ km.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+$15$ obreros hacen $60$ m³ de excavación en $6$ días de $8$ horas. ¿Cuántos obreros se
+necesitan para hacer $90$ m³ en $9$ días de $6$ horas?
+
+<Solucion>
+
+El número de obreros $O$ es DP con el volumen (más excavación, más obreros) e IP con
+los días y las horas diarias disponibles (más tiempo, menos obreros):
+
+$$
+O_2 = 15 \times \frac{90}{60} \times \frac{6}{9} \times \frac{8}{6} = 20.
+$$
+
+Se necesitan $20$ obreros.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que la fórmula de la regla de tres simple inversa
+$x = \dfrac{a_1 b_1}{a_2}$ es consistente con la definición $A \cdot B = k$: verifica
+que $a_1 \cdot b_1 = a_2 \cdot x$ se cumple sustituyendo la fórmula de $x$.
+
+<Solucion>
+
+Sustituyendo $x = \dfrac{a_1b_1}{a_2}$ en $a_2 \cdot x$:
+
+$$
+a_2 \cdot x = a_2 \cdot \frac{a_1 b_1}{a_2} = a_1 b_1.
+$$
+
+Efectivamente $a_2 \cdot x = a_1 \cdot b_1$ — el producto se mantiene constante, tal
+como exige la definición de magnitudes inversamente proporcionales. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "En una regla de tres simple directa, si a1=4, b1=12, a2=6, el valor de x es:",
+      opciones: ["18", "8", "24", "2"],
+      correcta: 0,
+      explicacion: "x = (12·6)/4 = 18.",
+    },
+    {
+      enunciado: "En una regla de tres simple inversa, si a1=5, b1=8, a2=10, el valor de x es:",
+      opciones: ["16", "4", "40", "2"],
+      correcta: 1,
+      explicacion: "x = (5·8)/10 = 4.",
+    },
+    {
+      enunciado: "En una regla de tres compuesta, un factor inversamente proporcional a la incógnita se escribe:",
+      opciones: ["Igual que un factor directo", "Invertido respecto al factor directo", "Se ignora", "Elevado al cuadrado"],
+      correcta: 1,
+      explicacion: "Los factores IP se escriben invertidos (el valor inicial arriba, el final abajo).",
+    },
+    {
+      enunciado: "6 pintores pintan una casa en 8 días. ¿Cuánto tardarían 4 pintores?",
+      opciones: ["12 días", "5,3 días", "10 días", "6 días"],
+      correcta: 0,
+      explicacion: "x = (6·8)/4 = 12 días (relación inversa).",
+    },
+    {
+      enunciado: "¿Cuántas magnitudes como mínimo intervienen en una regla de tres compuesta?",
+      opciones: ["Dos", "Tres o más", "Solo una", "No hay mínimo"],
+      correcta: 1,
+      explicacion: "La compuesta involucra la incógnita más al menos dos magnitudes relacionadas (tres en total).",
+    },
+    {
+      enunciado: "Si 10 obreros hacen una obra en 6 días, ¿en cuántos días la harían 15 obreros?",
+      opciones: ["9", "4", "3", "12"],
+      correcta: 1,
+      explicacion: "x = (10·6)/15 = 4 días.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Aplicar la fórmula directa cuando la relación es inversa** (o viceversa) — siempre
+  confirma primero si al aumentar una magnitud la otra aumenta o disminuye.
+- **Olvidar una magnitud** al plantear una regla de tres compuesta — cuenta cuántas
+  magnitudes distintas menciona el problema antes de armar la ecuación.
+- **Invertir mal un factor IP** — el error más común es escribir $c_2/c_1$ en vez de
+  $c_1/c_2$ para una magnitud inversamente proporcional.
+- **No verificar que el resultado tenga sentido** — si el número de obreros o días sale
+  negativo o absurdamente grande, revisa qué magnitudes se clasificaron mal.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/magnitudes-directamente-e-inversamente-proporcionales", label: "Magnitudes directamente e inversamente proporcionales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/reparto-proporcional-simple-y-compuesto", label: "Reparto proporcional simple y compuesto" },
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto", label: "Interés simple y compuesto" },
+    { href: "/matematica/aritmetica/mezcla-y-aleacion", label: "Mezcla y aleación" },
+  ]}
+/>

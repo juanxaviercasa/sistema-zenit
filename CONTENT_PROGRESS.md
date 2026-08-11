@@ -9,14 +9,19 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 
 ## Matemática — 51 temas
 
-### A. Aritmética (1/12)
+### A. Aritmética (2/12)
 
 - ✅ 1. Razones y proporciones
   - ✅ Razones aritmética, geométrica y armónica
   - ✅ Proporciones aritmética, geométrica y armónica
   - ✅ Medias aritmética, geométrica y armónica
   - ✅ Series de razones geométricas equivalentes
-- ⬜ 2. Magnitudes proporcionales
+- ✅ 2. Magnitudes proporcionales
+  - ✅ Magnitudes directamente e inversamente proporcionales
+  - ✅ Regla de tres simple y compuesta
+  - ✅ Tanto por ciento y tanto por uno
+  - ✅ Incrementos y descuentos sucesivos
+  - ✅ Reparto proporcional simple y compuesto
 - ⬜ 3. Interés simple y compuesto
 - ⬜ 4. Mezcla y aleación
 - ⬜ 5. Estadística
@@ -83,7 +88,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 2/51 temas completos.**
+**Total Matemática: 3/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -112,10 +117,13 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       ErroresFrecuentes, Conexiones) y `components/interactive/*`
       (JSXGraphBoard, FiguraInteractiva, FiguraDemostracion, jsxgraph-utils).
 - [ ] Fase 2 — Aritmética completa (12 temas), en curso:
-      **Razones y proporciones** completo (4 subtemas: razones, proporciones, medias —
-      con demostración de AM ≥ GM ≥ HM —, y series de razones equivalentes). Widgets
-      nuevos con sliders/SVG en vez de JSXGraph (`components/interactive/aritmetica/*`),
-      ya que estos subtemas son numéricos, no construcciones euclidianas.
+      **Razones y proporciones** completo (4 subtemas) y **Magnitudes proporcionales**
+      completo (5 subtemas: DP/IP con interpretación gráfica —primer widget con ejes
+      cartesianos, activados explícitamente porque aquí sí aplica—, regla de tres,
+      tanto por ciento, incrementos/descuentos sucesivos, reparto proporcional).
+      Widgets con sliders/SVG en vez de JSXGraph síntetico
+      (`components/interactive/aritmetica/*`), salvo el de DP/IP que sí usa un
+      `functiongraph` de JSXGraph con `axis` activado.
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)

@@ -43,6 +43,20 @@ const subtemasRazonesYProporciones: Subtema[] = [
   ),
 ];
 
+const subtemasMagnitudesProporcionales: Subtema[] = [
+  subtema(
+    "magnitudes-directamente-e-inversamente-proporcionales",
+    "Magnitudes directamente e inversamente proporcionales"
+  ),
+  subtema("regla-de-tres-simple-y-compuesta", "Regla de tres simple y compuesta"),
+  subtema("tanto-por-ciento-y-tanto-por-uno", "Tanto por ciento y tanto por uno"),
+  subtema("incrementos-y-descuentos-sucesivos", "Incrementos y descuentos sucesivos"),
+  subtema(
+    "reparto-proporcional-simple-y-compuesto",
+    "Reparto proporcional simple y compuesto"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -59,7 +73,13 @@ const aritmetica: Area = {
       undefined,
       subtemasRazonesYProporciones
     ),
-    tema(2, "magnitudes-proporcionales", "Magnitudes proporcionales"),
+    tema(
+      2,
+      "magnitudes-proporcionales",
+      "Magnitudes proporcionales",
+      undefined,
+      subtemasMagnitudesProporcionales
+    ),
     tema(3, "interes-simple-y-compuesto", "Interés simple y compuesto"),
     tema(4, "mezcla-y-aleacion", "Mezcla y aleación"),
     tema(5, "estadistica", "Estadística"),
