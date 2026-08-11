@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import { katexMacros } from "./lib/katex-macros";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
@@ -12,7 +13,7 @@ const withMDX = createMDX({
     // remark-gfm habilita tablas con sintaxis de pipes (|---|---|); sin él,
     // el markdown de tabla se renderiza como texto plano con los pipes literales.
     remarkPlugins: ["remark-gfm", "remark-math"],
-    rehypePlugins: ["rehype-katex"],
+    rehypePlugins: [["rehype-katex", { macros: katexMacros }]],
   },
 });
 

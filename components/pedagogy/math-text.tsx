@@ -1,4 +1,5 @@
 import katex from "katex";
+import { katexMacros } from "@/lib/katex-macros";
 
 /**
  * Los props de <Quiz> (y cualquier otro texto que llegue como string JS
@@ -17,6 +18,7 @@ export function MathText({ text }: { text: string }) {
           const html = katex.renderToString(parte.slice(1, -1), {
             throwOnError: false,
             output: "html",
+            macros: katexMacros,
           });
           return <span key={i} dangerouslySetInnerHTML={{ __html: html }} />;
         }
