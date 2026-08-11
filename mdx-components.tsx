@@ -16,21 +16,23 @@ const components: MDXComponents = {
     <h3 className="mt-8 mb-3 font-display text-xl font-semibold">{children}</h3>
   ),
   p: ({ children }) => (
-    <p className="my-4 leading-relaxed text-foreground/85">{children}</p>
+    <p className="my-4 font-display text-[1.0625rem] leading-relaxed text-foreground/85">
+      {children}
+    </p>
   ),
   ul: ({ children }) => (
-    <ul className="my-4 ml-6 list-disc space-y-1.5 text-foreground/85">
+    <ul className="my-4 ml-6 list-disc space-y-1.5 font-display text-[1.0625rem] text-foreground/85">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="my-4 ml-6 list-decimal space-y-1.5 text-foreground/85">
+    <ol className="my-4 ml-6 list-decimal space-y-1.5 font-display text-[1.0625rem] text-foreground/85">
       {children}
     </ol>
   ),
   li: ({ children }) => <li className="pl-1">{children}</li>,
   blockquote: ({ children }) => (
-    <blockquote className="my-6 border-l-2 border-gold-500 pl-4 italic text-foreground/70">
+    <blockquote className="my-6 border-l-2 border-gold-500 pl-4 font-display italic text-foreground/70">
       {children}
     </blockquote>
   ),

@@ -28,7 +28,7 @@ export function Quiz({
 
   return (
     <div
-      className="my-8 rounded-2xl border border-navy-900/15 p-6 text-navy-foreground sm:p-8"
+      className="my-8 rounded-2xl border border-navy-900/15 p-6 font-display text-navy-foreground sm:p-8"
       style={{
         background:
           "radial-gradient(120% 100% at 0% 0%, var(--color-navy-800) 0%, var(--color-navy-950) 60%)",

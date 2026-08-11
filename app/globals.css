@@ -186,7 +186,7 @@
   --color-trigonometria: var(--trigonometria);
   --color-trigonometria-tint: var(--trigonometria-tint);
 
-  --font-display: var(--font-lexend);
+  --font-display: var(--font-stix-two-text);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }

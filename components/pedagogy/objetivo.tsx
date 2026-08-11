@@ -10,7 +10,9 @@ export function Objetivo({ children }: { children: React.ReactNode }) {
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">
           Objetivo de aprendizaje
         </p>
-        <div className="mt-1.5 text-foreground/90 [&>p]:my-0">{children}</div>
+        <div className="mt-1.5 font-display text-[1.0625rem] text-foreground/90 [&>p]:my-0">
+          {children}
+        </div>
       </div>
     </div>
   );

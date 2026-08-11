@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Lexend, Inter, Geist_Mono } from "next/font/google";
+import { STIX_Two_Text, Inter, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import "./globals.css";
 
-const lexend = Lexend({
-  variable: "--font-lexend",
+const stixTwoText = STIX_Two_Text({
+  variable: "--font-stix-two-text",
   subsets: ["latin"],
 });
 
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${lexend.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${stixTwoText.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
