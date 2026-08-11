@@ -18,7 +18,7 @@ interface JSXGraphBoardProps {
  */
 export function JSXGraphBoard({
   boundingBox = [-5, 5, 5, -5],
-  axis = true,
+  axis = false,
   className,
   onMount,
 }: JSXGraphBoardProps) {
