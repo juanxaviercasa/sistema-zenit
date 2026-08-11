@@ -62,7 +62,7 @@ export default async function SubtemaPage(
   const base = `/matematica/${area.slug}/${tema.slug}`;
 
   return (
-    <Container className="max-w-3xl py-16">
+    <Container className="max-w-4xl py-16">
       <div className="flex items-center justify-between">
         <p
           className="flex items-center gap-2 font-display text-sm uppercase tracking-[0.3em]"
