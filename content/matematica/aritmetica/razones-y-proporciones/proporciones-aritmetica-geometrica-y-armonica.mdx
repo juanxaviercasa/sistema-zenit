@@ -1,0 +1,309 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { VerificadorDeProporciones } from "@/components/interactive/aritmetica";
+
+# Proporciones aritmética, geométrica y armónica
+
+<Objetivo>
+
+Reconocer una proporción como la igualdad de dos razones, distinguir sus formas
+discreta y continua, demostrar y aplicar la propiedad fundamental de cada tipo para
+hallar términos desconocidos.
+
+</Objetivo>
+
+## Marco teórico
+
+Una **proporción** es la igualdad entre dos razones del mismo tipo. Según el tipo de
+razón que se iguale, se distinguen proporciones aritméticas y geométricas; y según si
+los cuatro valores son distintos o se repite uno del medio, se distinguen las formas
+**discreta** y **continua**.
+
+### Proporción aritmética
+
+**Discreta:** cuatro cantidades $a, b, c, d$ (todas distintas) forman una proporción
+aritmética si
+
+$$
+a - b = c - d.
+$$
+
+$a$ y $d$ se llaman **extremos**; $b$ y $c$ se llaman **medios**.
+
+**Propiedad fundamental.** En toda proporción aritmética, la suma de los extremos es
+igual a la suma de los medios.
+
+**Demostración.** Parte de $a - b = c - d$.
+
+**Paso 1 — despejar.** Suma $b + d$ a ambos lados:
+
+$$
+a - b + (b + d) = c - d + (b + d) \;\Longrightarrow\; a + d = c + b.
+$$
+
+**Conclusión.**
+
+$$
+a + d = b + c. \qquad \blacksquare
+$$
+
+**Continua:** cuando el segundo y tercer término coinciden ($b = c$), la proporción
+$a - b = b - c$ dice que $b$ es la **media diferencial** (o media aritmética) entre $a$
+y $c$. Por la propiedad fundamental, $a + c = 2b$, así que:
+
+$$
+b = \frac{a + c}{2}.
+$$
+
+### Proporción geométrica
+
+**Discreta:** cuatro cantidades $a, b, c, d$ (todas distintas, $b,d \neq 0$) forman una
+proporción geométrica si
+
+$$
+\frac{a}{b} = \frac{c}{d}.
+$$
+
+De nuevo, $a$ y $d$ son los **extremos**; $b$ y $c$ son los **medios**.
+
+**Propiedad fundamental.** En toda proporción geométrica, el producto de los extremos
+es igual al producto de los medios.
+
+**Demostración.** Parte de $\dfrac{a}{b} = \dfrac{c}{d}$.
+
+**Paso 1 — multiplicar en cruz.** Multiplica ambos lados por $bd$:
+
+$$
+\frac{a}{b} \cdot bd = \frac{c}{d} \cdot bd \;\Longrightarrow\; ad = cb.
+$$
+
+**Conclusión.**
+
+$$
+a \cdot d = b \cdot c. \qquad \blacksquare
+$$
+
+**Continua:** cuando $b = c$, la proporción $\dfrac{a}{b} = \dfrac{b}{c}$ dice que $b$
+es la **media proporcional** (o media geométrica) entre $a$ y $c$. Por la propiedad
+fundamental, $b^2 = ac$, así que:
+
+$$
+b = \sqrt{ac} \qquad (a, c > 0).
+$$
+
+### Proporción armónica
+
+Cuatro cantidades están en proporción armónica cuando sus razones armónicas
+correspondientes son iguales. El caso más usado en la práctica es la forma continua:
+$b$ es **media armónica** entre $a$ y $c$ cuando $\dfrac{1}{b} - \dfrac{1}{a} =
+\dfrac{1}{c} - \dfrac{1}{b}$ — es decir, cuando $\dfrac{1}{a}, \dfrac{1}{b},
+\dfrac{1}{c}$ están en proporción aritmética continua. Retomarás esta media con detalle
+en el siguiente subtema.
+
+## Visualización interactiva
+
+<VerificadorDeProporciones />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla $x$ si $8, 12, x, 18$ forman una proporción geométrica discreta.
+
+**Solución.** $\dfrac{8}{12} = \dfrac{x}{18}$. Por la propiedad fundamental:
+$8 \cdot 18 = 12x \Rightarrow 144 = 12x \Rightarrow x = 12$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla la media proporcional (geométrica) entre $4$ y $25$.
+
+**Solución.** $b = \sqrt{ac} = \sqrt{4 \cdot 25} = \sqrt{100} = 10$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En la proporción aritmética continua $a - 15 = 15 - c$, si $a = 22$,
+halla $c$.
+
+**Solución.** Por la propiedad de la continua: $a + c = 2b = 2(15) = 30$. Como
+$a = 22$: $c = 30 - 22 = 8$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Los cuatro términos de una proporción geométrica discreta suman $78$.
+Los dos primeros términos son $a = 9$ y $b = 6$, y la proporción es $\dfrac{a}{b} =
+\dfrac{c}{d}$. Halla $c$ y $d$.
+
+**Solución.** $\dfrac{9}{6} = \dfrac{3}{2}$, así que $c = \dfrac{3}{2}d$. Además,
+$a + b + c + d = 78$:
+
+$$
+9 + 6 + \frac{3}{2}d + d = 78 \;\Longrightarrow\; \frac{5}{2}d = 63
+\;\Longrightarrow\; d = 25{,}2.
+$$
+
+Entonces $c = \dfrac{3}{2}(25{,}2) = 37{,}8$.
+
+**Verificación:** $9 + 6 + 37{,}8 + 25{,}2 = 78$ ✓, y $\dfrac{9}{6} = 1{,}5 =
+\dfrac{37{,}8}{25{,}2}$ ✓.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla $x$ si $5, 8, 15, x$ forman una proporción geométrica discreta.
+
+<Solucion>
+
+$5x = 8 \cdot 15 = 120 \Rightarrow x = 24$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla la media aritmética (diferencial) entre $18$ y $32$.
+
+<Solucion>
+
+$b = \dfrac{18 + 32}{2} = 25$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+En la proporción aritmética $a - 7 = 11 - d$, si $a = 20$, halla $d$.
+
+<Solucion>
+
+Por la propiedad fundamental: $a + d = 7 + 11 = 18 \Rightarrow d = 18 - 20 = -2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla la media proporcional entre $9$ y $16$.
+
+<Solucion>
+
+$b = \sqrt{9 \cdot 16} = \sqrt{144} = 12$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+En una proporción geométrica continua $\dfrac{a}{b} = \dfrac{b}{c}$, se sabe que
+$a = 8$ y la media proporcional es $b = 12$. Halla $c$ y verifica que
+$a + c \geq 2b$ (¿por qué debería cumplirse esta desigualdad?).
+
+<Solucion>
+
+$b^2 = ac \Rightarrow 144 = 8c \Rightarrow c = 18$. Entonces $a + c = 26$ y
+$2b = 24$: en efecto $26 \geq 24$. Esto se cumple porque $b$ es la media geométrica de
+$a$ y $c$, y la media aritmética de dos números siempre es mayor o igual que su media
+geométrica (lo verás formalmente en el siguiente subtema).
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $a, b, c, d$ forman una proporción geométrica discreta
+($\frac{a}{b} = \frac{c}{d}$), entonces también se cumple
+$\dfrac{a+b}{b} = \dfrac{c+d}{d}$ (propiedad conocida como "proporción por adición").
+
+<Solucion>
+
+Parte de $\dfrac{a}{b} = \dfrac{c}{d}$. Suma $1$ a ambos lados de la igualdad:
+
+$$
+\frac{a}{b} + 1 = \frac{c}{d} + 1 \;\Longrightarrow\; \frac{a + b}{b} = \frac{c + d}{d}.
+\qquad \blacksquare
+$$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "En la proporción geométrica a/b = c/d, ¿cuáles son los extremos?",
+      opciones: ["a y d", "b y c", "a y b", "c y d"],
+      correcta: 0,
+      explicacion: "El primer y el último término (a y d) son los extremos; b y c son los medios.",
+    },
+    {
+      enunciado: "La propiedad fundamental de la proporción geométrica establece que:",
+      opciones: ["a + d = b + c", "a · d = b · c", "a - d = b - c", "a/d = b/c"],
+      correcta: 1,
+      explicacion: "El producto de los extremos es igual al producto de los medios: a·d = b·c.",
+    },
+    {
+      enunciado: "En una proporción geométrica continua a/b = b/c, el valor de b es:",
+      opciones: ["(a+c)/2", "√(ac)", "a·c", "a - c"],
+      correcta: 1,
+      explicacion: "b es la media proporcional (geométrica) entre a y c: b = √(ac).",
+    },
+    {
+      enunciado: "Si 6, 9, 10, x forman una proporción geométrica discreta, x es:",
+      opciones: ["15", "12", "13,5", "20"],
+      correcta: 0,
+      explicacion: "6x = 9·10 = 90, así que x = 15.",
+    },
+    {
+      enunciado: "En una proporción aritmética continua a - b = b - c, se cumple:",
+      opciones: ["a·c = b²", "a + c = 2b", "a - c = 2b", "a/c = b"],
+      correcta: 1,
+      explicacion: "b es la media aritmética (diferencial) entre a y c: a + c = 2b.",
+    },
+    {
+      enunciado: "¿Qué distingue a una proporción 'continua' de una 'discreta'?",
+      opciones: ["La continua tiene más de 4 términos", "En la continua, el segundo y tercer término son iguales", "No hay diferencia real", "La discreta siempre es geométrica"],
+      correcta: 1,
+      explicacion: "En la forma continua se repite el término del medio (b = c), definiendo una media entre a y el cuarto término.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir extremos con medios.** En $a:b :: c:d$, los extremos son el primero y el
+  último ($a$, $d$); los medios son el segundo y el tercero ($b$, $c$) — invertirlos
+  hace que la propiedad fundamental se aplique mal.
+- **Usar la propiedad de una proporción geométrica en una aritmética (o viceversa).**
+  "Producto de extremos = producto de medios" es exclusiva de la geométrica; "suma de
+  extremos = suma de medios" es exclusiva de la aritmética.
+- **Olvidar que la media proporcional exige cantidades positivas.** $b = \sqrt{ac}$
+  solo tiene sentido real si $a$ y $c$ tienen el mismo signo (usualmente ambas
+  positivas en este contexto).
+- **Pensar que toda proporción continua es geométrica.** También existe la aritmética
+  continua ($a - b = b - c$) y la armónica continua — cada una define un tipo distinto
+  de "media" entre $a$ y $c$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/razones-y-proporciones/razones-aritmetica-geometrica-y-armonica", label: "Razones aritmética, geométrica y armónica" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/razones-y-proporciones/medias-aritmetica-geometrica-y-armonica", label: "Medias aritmética, geométrica y armónica" },
+    { href: "/matematica/aritmetica/razones-y-proporciones/series-de-razones-geometricas-equivalentes", label: "Series de razones geométricas equivalentes" },
+    { href: "/matematica/aritmetica/magnitudes-proporcionales", label: "Magnitudes proporcionales" },
+  ]}
+/>

@@ -1,0 +1,305 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ComparadorDeMedias } from "@/components/interactive/aritmetica";
+
+# Medias aritmética, geométrica y armónica
+
+<Objetivo>
+
+Calcular la media aritmética, geométrica y armónica entre dos cantidades positivas,
+demostrar la desigualdad que las ordena siempre de la misma forma, y reconocer en qué
+tipo de problema corresponde usar cada una.
+
+</Objetivo>
+
+## Marco teórico
+
+Dadas dos cantidades positivas $a$ y $b$, se definen tres medias:
+
+$$
+\begin{aligned}
+\text{Media aritmética:} &\quad AM = \frac{a+b}{2} \\
+\text{Media geométrica:} &\quad GM = \sqrt{ab} \\
+\text{Media armónica:} &\quad HM = \frac{2ab}{a+b}
+\end{aligned}
+$$
+
+$AM$ es el punto medio entre $a$ y $b$ (ya la viste como *media diferencial*). $GM$ es
+la *media proporcional* del subtema anterior. $HM$ es el recíproco del promedio de los
+recíprocos: $HM = \dfrac{2}{\frac{1}{a} + \frac{1}{b}}$.
+
+**Enunciado (desigualdad de las medias).** Para $a, b > 0$:
+
+$$
+HM \le GM \le AM,
+$$
+
+con igualdad en ambas partes si y solo si $a = b$.
+
+**Demostración.**
+
+**Paso 1 — probar $AM \ge GM$.** Para cualquier $a, b > 0$, el cuadrado
+$(\sqrt{a} - \sqrt{b})^2$ nunca es negativo:
+
+$$
+(\sqrt{a} - \sqrt{b})^2 \ge 0 \;\Longrightarrow\; a - 2\sqrt{ab} + b \ge 0
+\;\Longrightarrow\; a + b \ge 2\sqrt{ab}.
+$$
+
+Dividiendo entre $2$:
+
+$$
+\frac{a+b}{2} \ge \sqrt{ab}, \qquad \text{es decir,} \qquad AM \ge GM.
+$$
+
+La igualdad ocurre exactamente cuando $(\sqrt a - \sqrt b)^2 = 0$, es decir $a = b$.
+
+**Paso 2 — relacionar las tres medias.** Multiplica $AM$ por $HM$ directamente:
+
+$$
+AM \cdot HM = \frac{a+b}{2} \cdot \frac{2ab}{a+b} = ab = GM^2.
+$$
+
+Así que $GM^2 = AM \cdot HM$ — la media geométrica es, a su vez, la media proporcional
+*entre* $AM$ y $HM$.
+
+**Paso 3 — deducir $GM \ge HM$.** De $GM^2 = AM \cdot HM$ se despeja
+$HM = \dfrac{GM^2}{AM}$. Como $AM \ge GM > 0$ (Paso 1), dividir $GM^2$ entre un número
+mayor o igual que $GM$ da un resultado menor o igual que $GM$:
+
+$$
+HM = \frac{GM^2}{AM} \le \frac{GM^2}{GM} = GM.
+$$
+
+**Conclusión.**
+
+$$
+HM \le GM \le AM. \qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<ComparadorDeMedias />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Calcula las tres medias entre $a = 8$ y $b = 18$.
+
+**Solución.**
+
+$$
+AM = \frac{8+18}{2} = 13, \qquad GM = \sqrt{8 \cdot 18} = \sqrt{144} = 12,
+\qquad HM = \frac{2(8)(18)}{26} = \frac{288}{26} \approx 11{,}08.
+$$
+
+Se verifica $HM \le GM \le AM$: $11{,}08 \le 12 \le 13$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Dos números positivos tienen media aritmética $10$ y media geométrica
+$6$. Halla ambos números.
+
+**Solución.** $a + b = 2(10) = 20$ y $ab = 6^2 = 36$. Los números son raíces de
+$t^2 - 20t + 36 = 0$:
+
+$$
+t = \frac{20 \pm \sqrt{400 - 144}}{2} = \frac{20 \pm 16}{2} \;\Longrightarrow\; t = 18
+\text{ o } t = 2.
+$$
+
+Los números son $2$ y $18$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** La media aritmética de dos números es $15$ y su media armónica es
+$9{,}6$. Halla su media geométrica.
+
+**Solución.** Por la relación $GM^2 = AM \cdot HM$:
+
+$$
+GM^2 = 15 \times 9{,}6 = 144 \;\Longrightarrow\; GM = 12.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un vehículo recorre la mitad de una distancia a $40$ km/h y la otra
+mitad a $60$ km/h. Halla la velocidad promedio de todo el recorrido.
+
+**Solución.** Cuando se promedian **velocidades para la misma distancia recorrida**
+(no el mismo tiempo), el promedio correcto es la media armónica — no la aritmética,
+porque el tiempo empleado en cada tramo es distinto. Con $a = 40$, $b = 60$:
+
+$$
+HM = \frac{2(40)(60)}{40+60} = \frac{4800}{100} = 48 \text{ km/h}.
+$$
+
+(La media aritmética daría $50$ km/h, un resultado que **sobreestima** la velocidad
+real, porque el vehículo pasa más tiempo circulando a la velocidad menor.)
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Calcula las tres medias entre $a = 4$ y $b = 9$.
+
+<Solucion>
+
+$AM = 6{,}5$; $\; GM = \sqrt{36} = 6$; $\; HM = \dfrac{2(4)(9)}{13} = \dfrac{72}{13}
+\approx 5{,}54$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Si dos números tienen media geométrica $10$ y uno de ellos es $20$, halla el otro.
+
+<Solucion>
+
+$GM^2 = ab \Rightarrow 100 = 20b \Rightarrow b = 5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+La media armónica de dos números es $16$ y su media aritmética es $25$. Halla su media
+geométrica.
+
+<Solucion>
+
+$GM^2 = AM \cdot HM = 25 \times 16 = 400 \Rightarrow GM = 20$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Dos números positivos suman $26$ y su media geométrica es $12$. Halla los números.
+
+<Solucion>
+
+$a+b=26$, $ab = 144$. Raíces de $t^2 - 26t + 144 = 0$:
+$t = \dfrac{26 \pm \sqrt{676-576}}{2} = \dfrac{26 \pm 10}{2}$, así que $t = 18$ o
+$t = 8$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $a = b$, las tres medias ($AM$, $GM$, $HM$) coinciden, y que si
+$a \neq b$, la desigualdad $HM \le GM \le AM$ es siempre **estricta** (ninguna
+igualdad).
+
+<Solucion>
+
+Si $a = b$: $AM = \dfrac{a+a}{2}=a$, $GM=\sqrt{a\cdot a}=a$, $HM=\dfrac{2a\cdot
+a}{2a}=a$ — las tres coinciden en $a$. Si $a \neq b$, entonces
+$(\sqrt a - \sqrt b)^2 > 0$ estrictamente (es un cuadrado de un número distinto de
+cero), así que en el Paso 1 de la demostración la desigualdad $AM \ge GM$ es estricta:
+$AM > GM$. Y como $HM = GM^2/AM$ con $AM > GM$, también $HM < GM$ estrictamente. Por lo
+tanto $HM < GM < AM$ sin igualdad en ningún punto cuando $a \neq b$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Un ciclista recorre una distancia $d$ a $20$ km/h de ida y regresa por la misma
+distancia $d$ a $v$ km/h, de modo que la velocidad promedio de todo el recorrido es
+$24$ km/h. Halla $v$.
+
+<Solucion>
+
+Al recorrer la misma distancia en ambos tramos, la velocidad promedio es la media
+armónica: $HM = \dfrac{2(20)v}{20+v} = 24$.
+
+$$
+40v = 24(20+v) \;\Longrightarrow\; 40v = 480 + 24v \;\Longrightarrow\; 16v = 480
+\;\Longrightarrow\; v = 30 \text{ km/h.}
+$$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Para a=6, b=24, la media aritmética AM es:",
+      opciones: ["15", "12", "10", "30"],
+      correcta: 0,
+      explicacion: "AM = (6+24)/2 = 15.",
+    },
+    {
+      enunciado: "Para a=6, b=24, la media geométrica GM es:",
+      opciones: ["15", "12", "144", "10"],
+      correcta: 1,
+      explicacion: "GM = √(6·24) = √144 = 12.",
+    },
+    {
+      enunciado: "El orden correcto entre las tres medias, para a ≠ b positivos, es:",
+      opciones: ["AM ≤ GM ≤ HM", "HM ≤ GM ≤ AM", "GM ≤ HM ≤ AM", "No tienen un orden fijo"],
+      correcta: 1,
+      explicacion: "Siempre HM ≤ GM ≤ AM, con igualdad únicamente si a = b.",
+    },
+    {
+      enunciado: "La relación entre las tres medias se expresa como:",
+      opciones: ["GM² = AM · HM", "AM² = GM · HM", "HM² = AM · GM", "AM + GM = HM"],
+      correcta: 0,
+      explicacion: "GM es la media proporcional entre AM y HM: GM² = AM·HM.",
+    },
+    {
+      enunciado: "Para promediar velocidades que recorren la misma distancia (no el mismo tiempo), se debe usar:",
+      opciones: ["La media aritmética", "La media geométrica", "La media armónica", "Cualquiera da el mismo resultado"],
+      correcta: 2,
+      explicacion: "Cuando la distancia es fija y el tiempo varía, la media armónica da el promedio correcto.",
+    },
+    {
+      enunciado: "¿Cuándo se cumple AM = GM = HM?",
+      opciones: ["Nunca", "Solo cuando a = b", "Siempre que a, b > 0", "Solo cuando a·b = 1"],
+      correcta: 1,
+      explicacion: "Las tres medias coinciden únicamente cuando las dos cantidades son iguales.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar la media aritmética por defecto** para "promediar" cualquier cosa — cuando se
+  promedian velocidades sobre la misma distancia, o razones/tasas, la media correcta
+  suele ser la armónica o la geométrica, no la aritmética.
+- **Aplicar las fórmulas con cantidades negativas.** $GM = \sqrt{ab}$ solo tiene
+  sentido real (y la desigualdad $HM \le GM \le AM$ solo es válida) para $a, b > 0$.
+- **Olvidar la condición de igualdad.** $HM \le GM \le AM$ se vuelve $HM = GM = AM$
+  únicamente cuando $a = b$ — no asumas la igualdad como caso general.
+- **Confundir $GM^2 = AM \cdot HM$ con $GM = AM \cdot HM$** — falta elevar al cuadrado
+  del lado de $GM$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/razones-y-proporciones/proporciones-aritmetica-geometrica-y-armonica", label: "Proporciones aritmética, geométrica y armónica" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/razones-y-proporciones/series-de-razones-geometricas-equivalentes", label: "Series de razones geométricas equivalentes" },
+    { href: "/matematica/aritmetica/estadistica", label: "Estadística" },
+    { href: "/matematica/aritmetica/magnitudes-proporcionales", label: "Magnitudes proporcionales" },
+  ]}
+/>

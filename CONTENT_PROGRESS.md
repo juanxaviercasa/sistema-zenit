@@ -1,17 +1,21 @@
 # CONTENT_PROGRESS.md — Sistema Zenit
 
 > Memoria persistente entre sesiones. Se actualiza al terminar cada subtema/tema.
-> Estado del proyecto: **Fase 1 en curso (tema piloto)**. "Triángulos" (Geometría) está
-> completo con sus 7 subtemas — es el patrón validado a replicar en el resto de temas.
+> Estado del proyecto: **Fase 2 en curso (Aritmética)**. El patrón validado en el tema
+> piloto "Triángulos" (Geometría, 7/7 subtemas) se está replicando tema por tema.
 > Ver `PROJECT_BRIEF.md` §7 para el roadmap por fases.
 
 Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (todos los subtemas)
 
 ## Matemática — 51 temas
 
-### A. Aritmética (0/12)
+### A. Aritmética (1/12)
 
-- ⬜ 1. Razones y proporciones
+- ✅ 1. Razones y proporciones
+  - ✅ Razones aritmética, geométrica y armónica
+  - ✅ Proporciones aritmética, geométrica y armónica
+  - ✅ Medias aritmética, geométrica y armónica
+  - ✅ Series de razones geométricas equivalentes
 - ⬜ 2. Magnitudes proporcionales
 - ⬜ 3. Interés simple y compuesto
 - ⬜ 4. Mezcla y aleación
@@ -79,7 +83,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 1/51 temas completos.**
+**Total Matemática: 2/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -107,7 +111,11 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       `components/pedagogy/*` (Objetivo, EjemploResuelto, Problema/Solucion, Quiz,
       ErroresFrecuentes, Conexiones) y `components/interactive/*`
       (JSXGraphBoard, FiguraInteractiva, FiguraDemostracion, jsxgraph-utils).
-- [ ] Fase 2 — Aritmética completa (12 temas)
+- [ ] Fase 2 — Aritmética completa (12 temas), en curso:
+      **Razones y proporciones** completo (4 subtemas: razones, proporciones, medias —
+      con demostración de AM ≥ GM ≥ HM —, y series de razones equivalentes). Widgets
+      nuevos con sliders/SVG en vez de JSXGraph (`components/interactive/aritmetica/*`),
+      ya que estos subtemas son numéricos, no construcciones euclidianas.
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)

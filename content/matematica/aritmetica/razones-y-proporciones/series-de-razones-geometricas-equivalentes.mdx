@@ -1,0 +1,277 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { CadenaDeRazonesIguales } from "@/components/interactive/aritmetica";
+
+# Series de razones geométricas equivalentes
+
+<Objetivo>
+
+Reconocer una serie de razones geométricas iguales, demostrar la propiedad que permite
+combinar sus antecedentes y consecuentes sin alterar el valor común, y aplicarla en
+problemas de reparto proporcional.
+
+</Objetivo>
+
+## Marco teórico
+
+Cuando varias razones geométricas comparten el mismo valor:
+
+$$
+\frac{a_1}{b_1} = \frac{a_2}{b_2} = \cdots = \frac{a_n}{b_n} = k,
+$$
+
+se dice que $a_1, a_2, \dots, a_n$ y $b_1, b_2, \dots, b_n$ forman una **serie de
+razones geométricas equivalentes**, de razón común $k$.
+
+**Enunciado (propiedad de las series de razones equivalentes).** Si
+$\dfrac{a_1}{b_1} = \dfrac{a_2}{b_2} = \cdots = \dfrac{a_n}{b_n} = k$, entonces para
+cualesquiera constantes $m_1, m_2, \dots, m_n$ (no todas nulas, y con
+$m_1b_1+\cdots+m_nb_n \neq 0$):
+
+$$
+\frac{m_1a_1 + m_2a_2 + \cdots + m_na_n}{m_1b_1 + m_2b_2 + \cdots + m_nb_n} = k.
+$$
+
+En particular, tomando todos los $m_i = 1$: la razón entre la **suma de los
+antecedentes** y la **suma de los consecuentes** es también $k$.
+
+**Demostración.**
+
+**Paso 1 — expresar cada antecedente en función de $k$.** Como
+$\dfrac{a_i}{b_i} = k$ para cada $i$, se despeja $a_i = k \, b_i$.
+
+**Paso 2 — sustituir en la combinación pedida.** Multiplica cada $a_i = k b_i$ por su
+coeficiente $m_i$ y suma:
+
+$$
+\begin{aligned}
+m_1a_1 + m_2a_2 + \cdots + m_na_n
+&= m_1(kb_1) + m_2(kb_2) + \cdots + m_n(kb_n) \\
+&= k(m_1b_1 + m_2b_2 + \cdots + m_nb_n).
+\end{aligned}
+$$
+
+**Conclusión.** Dividiendo ambos lados entre $m_1b_1 + \cdots + m_nb_n$ (que se supuso
+distinto de cero):
+
+$$
+\frac{m_1a_1 + \cdots + m_na_n}{m_1b_1 + \cdots + m_nb_n} = k. \qquad \blacksquare
+$$
+
+Esta propiedad es la base del **reparto proporcional**: repartir una cantidad total en
+partes que guardan una relación dada.
+
+## Visualización interactiva
+
+<CadenaDeRazonesIguales />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Si $\dfrac{a_1}{5} = \dfrac{a_2}{8} = \dfrac{a_3}{11} = 3$, halla
+$a_1 + a_2 + a_3$.
+
+**Solución.** Por la propiedad, $\dfrac{a_1+a_2+a_3}{5+8+11} = 3$, así que
+$a_1+a_2+a_3 = 3(24) = 72$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Reparte $S/. 480$ en partes proporcionales a $2$, $3$ y $5$.
+
+**Solución.** Sea $\dfrac{p_1}{2} = \dfrac{p_2}{3} = \dfrac{p_3}{5} = k$. Por la
+propiedad: $\dfrac{p_1+p_2+p_3}{2+3+5} = k \Rightarrow \dfrac{480}{10} = k = 48$.
+Entonces $p_1 = 96$, $p_2 = 144$, $p_3 = 240$.
+
+**Verificación:** $96+144+240 = 480$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Si $\dfrac{a}{4} = \dfrac{b}{7} = \dfrac{c}{9} = k$, halla el valor de
+$k$ sabiendo que $2a + 3b - c = 38$.
+
+**Solución.** Usa la propiedad con coeficientes $m_1=2$, $m_2=3$, $m_3=-1$:
+
+$$
+\frac{2a + 3b - c}{2(4) + 3(7) - 9} = k \;\Longrightarrow\; \frac{38}{8+21-9} = k
+\;\Longrightarrow\; \frac{38}{20} = k = 1{,}9.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Las edades de tres hermanos están en la relación $3 : 5 : 7$. Dentro de
+$6$ años, la suma de sus edades será $78$. Halla la edad actual del hermano mayor.
+
+**Solución.** Sea $\dfrac{a}{3} = \dfrac{b}{5} = \dfrac{c}{7} = k$, así que
+$a = 3k, b = 5k, c = 7k$ son las edades actuales. Dentro de $6$ años, cada uno suma
+$6$, y son tres hermanos, así que la suma total aumenta en $18$:
+
+$$
+(3k+6) + (5k+6) + (7k+6) = 78 \;\Longrightarrow\; 15k + 18 = 78 \;\Longrightarrow\;
+15k = 60 \;\Longrightarrow\; k = 4.
+$$
+
+La edad actual del mayor es $c = 7k = 7(4) = 28$ años.
+
+**Verificación:** edades actuales $12, 20, 28$ (suman $60$); dentro de $6$ años:
+$18, 26, 34$, que suman $78$ ✓.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Si $\dfrac{a}{6} = \dfrac{b}{10} = \dfrac{c}{14} = 5$, halla $a + b + c$.
+
+<Solucion>
+
+$a+b+c = 5(6+10+14) = 5(30) = 150$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Reparte $S/. 720$ en partes proporcionales a $3$, $4$ y $5$.
+
+<Solucion>
+
+$k = \dfrac{720}{12} = 60$. Partes: $180$, $240$, $300$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Si $\dfrac{x}{3} = \dfrac{y}{4} = \dfrac{z}{5}$ y $x + y + z = 48$, halla $z - x$.
+
+<Solucion>
+
+$k = \dfrac{48}{12} = 4$. $x = 12$, $z = 20$, así que $z - x = 8$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Si $\dfrac{a}{5} = \dfrac{b}{9} = k$ y $3a - b = 12$, halla $k$.
+
+<Solucion>
+
+$\dfrac{3a-b}{3(5)-9} = k \Rightarrow \dfrac{12}{6} = k = 2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un capital se reparte entre tres socios en partes proporcionales a $2$, $5$ y $8$. Si
+el segundo socio recibió $S/. 900$ más que el primero, halla el capital total
+repartido.
+
+<Solucion>
+
+$\dfrac{p_1}{2} = \dfrac{p_2}{5} = \dfrac{p_3}{8} = k$. La diferencia
+$p_2 - p_1 = k(5-2) = 3k = 900 \Rightarrow k = 300$. El capital total es
+$k(2+5+8) = 300(15) = 4500$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $\dfrac{a}{b} = \dfrac{c}{d} = k$, entonces
+$\dfrac{a - c}{b - d} = k$ también se cumple (siempre que $b \neq d$), como caso
+particular de la propiedad general con $m_1 = 1$, $m_2 = -1$.
+
+<Solucion>
+
+Con $m_1 = 1$ y $m_2 = -1$ en la propiedad general:
+
+$$
+\frac{m_1a + m_2c}{m_1b + m_2d} = \frac{a - c}{b - d} = k,
+$$
+
+que es exactamente la conclusión de la demostración general del marco teórico,
+aplicada a este caso particular de dos razones y estos coeficientes.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Si a/3 = b/4 = c/5 = 6, entonces a + b + c es:",
+      opciones: ["60", "72", "48", "18"],
+      correcta: 1,
+      explicacion: "a+b+c = 6(3+4+5) = 6(12) = 72.",
+    },
+    {
+      enunciado: "La propiedad de las series de razones equivalentes permite combinar antecedentes y consecuentes usando:",
+      opciones: ["Solo la suma simple", "Cualquier combinación lineal con los mismos coeficientes en ambos lados", "Solo restas", "Solo productos"],
+      correcta: 1,
+      explicacion: "Se puede usar cualquier combinación lineal (m1a1+m2a2+...) siempre que se usen los MISMOS coeficientes para los consecuentes correspondientes.",
+    },
+    {
+      enunciado: "Al repartir S/. 500 en partes proporcionales a 2 y 3, la parte mayor es:",
+      opciones: ["200", "250", "300", "150"],
+      correcta: 2,
+      explicacion: "k = 500/5 = 100; las partes son 200 y 300.",
+    },
+    {
+      enunciado: "Si a/4 = b/6 = k y 2a - b = 10, entonces k es:",
+      opciones: ["2,5", "5", "10", "1"],
+      correcta: 1,
+      explicacion: "k = (2a-b)/(2·4 - 6) = 10/2 = 5.",
+    },
+    {
+      enunciado: "¿Qué condición debe cumplir el denominador de la combinación lineal para aplicar la propiedad?",
+      opciones: ["Ser positivo", "Ser distinto de cero", "Ser mayor que el numerador", "Ninguna condición"],
+      correcta: 1,
+      explicacion: "La combinación de consecuentes no puede ser cero, porque se divide entre ella.",
+    },
+    {
+      enunciado: "El reparto proporcional es una aplicación directa de:",
+      opciones: ["La razón armónica", "La propiedad de las series de razones geométricas equivalentes", "El teorema de Pitágoras", "La media aritmética únicamente"],
+      correcta: 1,
+      explicacion: "Repartir un total en partes proporcionales a valores dados usa exactamente esta propiedad.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar distintos coeficientes en antecedentes y consecuentes.** La propiedad exige
+  que el coeficiente $m_i$ multiplique *al mismo tiempo* a $a_i$ y a $b_i$ — no se
+  puede combinar $2a_1 + a_2$ en el numerador con $a_1 + 3b_2$ en el denominador.
+- **Dividir entre una combinación de consecuentes que da cero** — la propiedad no se
+  puede aplicar en ese caso (división entre cero).
+- **Olvidar verificar que la solución tenga sentido en el contexto** del problema
+  (edades, dinero, cantidades físicas no pueden ser negativas ni, según el contexto,
+  fraccionarias).
+- **Aplicar la propiedad a razones que no comparten el mismo valor $k$** — primero
+  hay que confirmar que todas las razones dadas son efectivamente iguales.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/razones-y-proporciones/proporciones-aritmetica-geometrica-y-armonica", label: "Proporciones aritmética, geométrica y armónica" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/magnitudes-proporcionales", label: "Magnitudes proporcionales" },
+    { href: "/matematica/aritmetica/mezcla-y-aleacion", label: "Mezcla y aleación" },
+  ]}
+/>

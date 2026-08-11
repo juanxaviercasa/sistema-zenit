@@ -1,0 +1,279 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ComparadorDeRazones } from "@/components/interactive/aritmetica";
+
+# Razones aritmética, geométrica y armónica
+
+<Objetivo>
+
+Comparar dos cantidades mediante una diferencia o un cociente, distinguir la razón
+aritmética de la geométrica y de la armónica, y usarlas para resolver problemas donde
+solo se conoce el "valor de la razón" entre dos magnitudes.
+
+</Objetivo>
+
+## Marco teórico
+
+**Razón** es la comparación entre dos cantidades de una misma magnitud. Esa comparación
+se hace de dos maneras posibles — por sustracción o por división — y de ahí nacen los
+dos tipos clásicos de razón. Dadas dos cantidades $a$ y $b$ (con $a$ llamado
+**antecedente** y $b$ llamado **consecuente**):
+
+**Razón aritmética.** Compara por diferencia:
+
+$$
+R_A = a - b.
+$$
+
+$R_A$ mide *cuánto más* tiene $a$ que $b$. Por ejemplo, si $a = 15$ y $b = 9$, entonces
+$R_A = 6$: $a$ excede a $b$ en $6$ unidades.
+
+**Razón geométrica.** Compara por cociente:
+
+$$
+R_G = \frac{a}{b}, \qquad b \neq 0.
+$$
+
+$R_G$ mide *cuántas veces* contiene $a$ a $b$. Con los mismos $a = 15$, $b = 9$:
+$R_G = \dfrac{15}{9} = \dfrac{5}{3}$ — $a$ es $\dfrac{5}{3}$ de $b$.
+
+**Razón armónica.** Se obtiene aplicando la razón aritmética a los **recíprocos** de
+$a$ y $b$:
+
+$$
+R_H = \frac{1}{b} - \frac{1}{a}.
+$$
+
+Escrita sobre un común denominador, $R_H = \dfrac{a - b}{ab}$ — literalmente la razón
+aritmética $R_A$ "repartida" entre el producto $ab$. Esta razón es la que conecta con
+la **media armónica**, que verás en un subtema posterior.
+
+**Una razón no es una proporción.** Una razón es un solo valor que compara dos
+cantidades. Una **proporción** es la afirmación de que *dos razones son iguales* — eso
+es el siguiente subtema.
+
+## Visualización interactiva
+
+<ComparadorDeRazones />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Calcula la razón aritmética y la razón geométrica entre $a = 20$ y
+$b = 12$.
+
+**Solución.**
+
+$$
+R_A = 20 - 12 = 8, \qquad R_G = \frac{20}{12} = \frac{5}{3}.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** La razón geométrica de dos números es $\dfrac{4}{3}$ y el menor de ellos
+es $18$. Halla el mayor.
+
+**Solución.** Si $b = 18$ es el consecuente (el menor) y $\dfrac{a}{b} = \dfrac{4}{3}$:
+
+$$
+a = \frac{4}{3} \cdot 18 = 24.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Dos números están en razón aritmética $R_A = 12$ y su razón geométrica
+es $R_G = 3$. Halla ambos números.
+
+**Solución.** Se plantea el sistema:
+
+$$
+\begin{aligned}
+a - b &= 12 \\
+\frac{a}{b} &= 3 \;\Longrightarrow\; a = 3b
+\end{aligned}
+$$
+
+Sustituyendo en la primera ecuación: $3b - b = 12 \Rightarrow 2b = 12 \Rightarrow b = 6$.
+Entonces $a = 3(6) = 18$.
+
+**Verificación:** $18 - 6 = 12$ ✓ y $18/6 = 3$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Las edades de dos hermanos están en razón geométrica $\dfrac{5}{3}$.
+Dentro de $6$ años, la razón geométrica de sus edades será $\dfrac{3}{2}$. Halla la
+edad actual del hermano mayor.
+
+**Solución.** Sea $a = 5x$ la edad del mayor y $b = 3x$ la del menor (misma constante
+de proporcionalidad $x$, porque están en razón $5:3$ ahora). Dentro de $6$ años:
+
+$$
+\frac{5x + 6}{3x + 6} = \frac{3}{2}.
+$$
+
+Resolviendo por productos cruzados:
+
+$$
+2(5x + 6) = 3(3x + 6) \;\Longrightarrow\; 10x + 12 = 9x + 18 \;\Longrightarrow\; x = 6.
+$$
+
+La edad actual del mayor es $a = 5(6) = 30$ años.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla la razón aritmética y geométrica entre $a = 36$ y $b = 24$.
+
+<Solucion>
+
+$R_A = 36 - 24 = 12$; $\; R_G = \dfrac{36}{24} = \dfrac{3}{2}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+La razón aritmética de dos números es $9$ y el menor es $15$. Halla el mayor.
+
+<Solucion>
+
+$a - 15 = 9 \Rightarrow a = 24$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Dos números están en razón geométrica $\dfrac{7}{4}$ y su razón aritmética es $18$.
+Halla el mayor de los números.
+
+<Solucion>
+
+$a = \dfrac{7}{4}b$ y $a - b = 18$, así que $\dfrac{7}{4}b - b = 18 \Rightarrow
+\dfrac{3}{4}b = 18 \Rightarrow b = 24$. Entonces $a = \dfrac{7}{4}(24) = 42$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Calcula la razón armónica entre $a = 12$ y $b = 4$.
+
+<Solucion>
+
+$R_H = \dfrac{1}{4} - \dfrac{1}{12} = \dfrac{3}{12} - \dfrac{1}{12} = \dfrac{2}{12} =
+\dfrac{1}{6}$. (Verificación por la fórmula equivalente:
+$\dfrac{a-b}{ab} = \dfrac{8}{48} = \dfrac{1}{6}$ ✓.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+La suma de dos números es $56$ y su razón geométrica es $\dfrac{3}{4}$. Halla su razón
+aritmética.
+
+<Solucion>
+
+Sea $a = 3x$, $b = 4x$ (en razón $3:4$). $a + b = 7x = 56 \Rightarrow x = 8$. Entonces
+$a = 24$, $b = 32$, y $R_A = a - b = 24 - 32 = -8$ (el antecedente elegido resultó ser
+el menor; en valor absoluto, la diferencia es $8$).
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para dos números positivos $a$ y $b$, la razón armónica $R_H$ y la razón
+aritmética $R_A$ de los mismos $a,b$ están relacionadas por
+$R_H = \dfrac{R_A}{ab}$, y úsala para hallar $R_H$ si se sabe que $R_A = 15$ y
+$ab = 90$.
+
+<Solucion>
+
+Por definición, $R_H = \dfrac{1}{b} - \dfrac{1}{a} = \dfrac{a - b}{ab}$. Como
+$a - b = R_A$ por definición de razón aritmética, se sigue directamente que
+$R_H = \dfrac{R_A}{ab}$. Con los datos: $R_H = \dfrac{15}{90} = \dfrac{1}{6}$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La razón aritmética entre a = 25 y b = 18 es:",
+      opciones: ["7", "18/25", "43", "25/18"],
+      correcta: 0,
+      explicacion: "R_A = a - b = 25 - 18 = 7.",
+    },
+    {
+      enunciado: "La razón geométrica entre a = 30 y b = 20 es:",
+      opciones: ["10", "3/2", "2/3", "50"],
+      correcta: 1,
+      explicacion: "R_G = a/b = 30/20 = 3/2.",
+    },
+    {
+      enunciado: "¿Qué mide la razón geométrica que la razón aritmética no mide?",
+      opciones: ["La suma de las cantidades", "Cuántas veces una cantidad contiene a la otra (un cociente)", "La diferencia entre las cantidades", "Nada distinto"],
+      correcta: 1,
+      explicacion: "La razón geométrica es un cociente: mide cuántas veces cabe b en a.",
+    },
+    {
+      enunciado: "La razón armónica R_H de a y b se define como:",
+      opciones: ["a - b", "a/b", "1/b - 1/a", "a + b"],
+      correcta: 2,
+      explicacion: "Es la razón aritmética aplicada a los recíprocos: R_H = 1/b - 1/a.",
+    },
+    {
+      enunciado: "Una razón y una proporción son lo mismo.",
+      opciones: ["Verdadero", "Falso: la razón es un solo valor; la proporción es la igualdad de dos razones", "Verdadero, solo si son geométricas", "Falso: son conceptos sin relación"],
+      correcta: 1,
+      explicacion: "Una razón compara dos cantidades; una proporción afirma que dos razones son iguales.",
+    },
+    {
+      enunciado: "Si la razón geométrica de dos números es 5/2 y el menor es 8, el mayor es:",
+      opciones: ["20", "16", "10", "40"],
+      correcta: 0,
+      explicacion: "a = (5/2)(8) = 20.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Invertir antecedente y consecuente.** $R_A(a,b) = a - b$ no es lo mismo que
+  $R_A(b,a) = b - a$ — el orden importa y cambia el signo. Lo mismo pasa con $R_G$: es
+  el recíproco si se invierte el orden.
+- **Olvidar la condición $b \neq 0$** al escribir una razón geométrica — el consecuente
+  nunca puede ser cero.
+- **Confundir razón con proporción** desde el vocabulario: decir "están en la misma
+  razón" cuando en realidad se quiere decir "forman una proporción" (dos razones
+  iguales) — son ideas relacionadas pero distintas.
+- **Usar $\tfrac{1}{2}$ en vez de $\dfrac{1}{2}$** en las fórmulas: en una fórmula
+  independiente (no dentro de una oración corrida), usa siempre la fracción a tamaño
+  completo para que no se vea recortada.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  seUsaEn={[
+    { href: "/matematica/aritmetica/razones-y-proporciones/proporciones-aritmetica-geometrica-y-armonica", label: "Proporciones aritmética, geométrica y armónica" },
+    { href: "/matematica/aritmetica/razones-y-proporciones/medias-aritmetica-geometrica-y-armonica", label: "Medias aritmética, geométrica y armónica" },
+    { href: "/matematica/aritmetica/magnitudes-proporcionales", label: "Magnitudes proporcionales" },
+  ]}
+/>

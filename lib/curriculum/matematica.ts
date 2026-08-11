@@ -27,6 +27,22 @@ const subtemasTriangulos: Subtema[] = [
   ),
 ];
 
+const subtemasRazonesYProporciones: Subtema[] = [
+  subtema(
+    "razones-aritmetica-geometrica-y-armonica",
+    "Razones aritmética, geométrica y armónica"
+  ),
+  subtema(
+    "proporciones-aritmetica-geometrica-y-armonica",
+    "Proporciones aritmética, geométrica y armónica"
+  ),
+  subtema("medias-aritmetica-geometrica-y-armonica", "Medias aritmética, geométrica y armónica"),
+  subtema(
+    "series-de-razones-geometricas-equivalentes",
+    "Series de razones geométricas equivalentes"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -36,7 +52,13 @@ const aritmetica: Area = {
   descripcion:
     "Razones, proporciones, magnitudes, teoría de números y las bases del razonamiento cuantitativo.",
   temas: [
-    tema(1, "razones-y-proporciones", "Razones y proporciones"),
+    tema(
+      1,
+      "razones-y-proporciones",
+      "Razones y proporciones",
+      undefined,
+      subtemasRazonesYProporciones
+    ),
     tema(2, "magnitudes-proporcionales", "Magnitudes proporcionales"),
     tema(3, "interes-simple-y-compuesto", "Interés simple y compuesto"),
     tema(4, "mezcla-y-aleacion", "Mezcla y aleación"),
