@@ -7,3 +7,9 @@ export { CorrespondenciaLogicaConjuntos } from "./correspondencia-logica-conjunt
 export { ExploradorDeOrdenEnR } from "./explorador-de-orden-en-r";
 export { RectaNumericaDeInecuacion } from "./recta-numerica-de-inecuacion";
 export { ValorAbsolutoInteractivo } from "./valor-absoluto-interactivo";
+export { ResolvedorCuadratica } from "./resolvedor-cuadratica";
+export { ResolvedorBicuadrada } from "./resolvedor-bicuadrada";
+export { ResolvedorConRadicales } from "./resolvedor-con-radicales";
+export { InecuacionCuadratica } from "./inecuacion-cuadratica";
+export { RegionInecuacionDosVariables } from "./region-inecuacion-dos-variables";
+export { SignoDePolinomio } from "./signo-de-polinomio";

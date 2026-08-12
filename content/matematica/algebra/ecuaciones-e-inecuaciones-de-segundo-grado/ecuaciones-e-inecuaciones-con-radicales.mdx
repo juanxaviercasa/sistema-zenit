@@ -1,0 +1,236 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ResolvedorConRadicales } from "@/components/interactive/algebra";
+
+# Ecuaciones e inecuaciones con radicales
+
+<Objetivo>
+
+Resolver ecuaciones e inecuaciones con radicales, demostrando exactamente qué
+condiciones garantizan que elevar al cuadrado no introduzca (ni descarte) ninguna
+solución.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado (ecuación con radical).** $\sqrt{f(x)}=g(x) \iff g(x)\geq0 \wedge
+f(x)=g(x)^2$.
+
+**Demostración.** ($\Rightarrow$) Si $\sqrt{f(x)}=g(x)$, el lado izquierdo es
+$\geq0$ (toda raíz cuadrada real lo es), así que $g(x)\geq0$. Elevando al cuadrado
+ambos lados de la igualdad: $f(x)=g(x)^2$.
+
+($\Leftarrow$) Si $f(x)=g(x)^2$ y $g(x)\geq0$: $\sqrt{f(x)}=\sqrt{g(x)^2}=|g(x)|=g(x)$
+(la última igualdad porque $g(x)\geq0$). $\blacksquare$
+
+Esto explica por qué, al resolver elevando al cuadrado, hay que **verificar** cada
+candidata en la condición $g(x)\geq0$ — sin esa verificación, se pueden colar
+**raíces extrañas** (candidatas que satisfacen $f(x)=g(x)^2$ pero no la ecuación
+original, porque en ellas $g(x)<0$).
+
+**Enunciado (inecuación con radical, caso $<$).** $\sqrt{f(x)}<g(x) \iff f(x)\geq0
+\wedge g(x)>0 \wedge f(x)<g(x)^2$.
+
+**Demostración.** El radical $\sqrt{f(x)}$ exige $f(x)\geq0$ (dominio). Como
+$\sqrt{f(x)}\geq0$, para que sea **estrictamente menor** que $g(x)$ hace falta
+$g(x)>0$. Con $f(x)\geq0$ y $g(x)>0$, ambos lados de $\sqrt{f(x)}<g(x)$ son no
+negativos, así que elevar al cuadrado preserva el sentido de la desigualdad (por
+las propiedades de orden ya vistas): $f(x)<g(x)^2$. $\blacksquare$
+
+## Visualización interactiva
+
+<ResolvedorConRadicales />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Resuelve $\sqrt{x+1}=3$.
+
+**Solución.** $g(x)=3\geq0$ ✓. Elevando al cuadrado: $x+1=9\Rightarrow x=8$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Resuelve $\sqrt{2x-3}=x-3$.
+
+**Solución.** Elevando al cuadrado: $2x-3=(x-3)^2=x^2-6x+9\Rightarrow
+x^2-8x+12=0\Rightarrow(x-2)(x-6)=0$: $x=2$ o $x=6$. Verificando $g(x)=x-3\geq0$
+(es decir $x\geq3$): $x=2$ **no** cumple (raíz extraña); $x=6$ sí cumple. Solución:
+$x=6$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Resuelve $\sqrt{x-2}<3$.
+
+**Solución.** Dominio: $x-2\geq0\Rightarrow x\geq2$. $g(x)=3>0$ ✓ siempre. Elevando
+al cuadrado: $x-2<9\Rightarrow x<11$. Combinando: $2\leq x<11$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Explica, con un ejemplo numérico, por qué la condición $g(x)\geq0$
+es necesaria en el teorema de la ecuación con radical.
+
+**Solución.** Considera $\sqrt{x}=-2$. Elevando al cuadrado (sin verificar):
+$x=4$. Pero $\sqrt4=2\neq-2$: $x=4$ **no** es solución de la ecuación original —
+es una raíz extraña, producto de haber ignorado que $g(x)=-2<0$ nunca puede ser
+igual a $\sqrt x\geq0$. Esto confirma que la condición $g(x)\geq0$ del teorema no es
+opcional.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Resuelve $\sqrt{3x+4}=4$.
+
+<Solucion>
+
+$3x+4=16\Rightarrow x=4$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Resuelve $\sqrt{x+7}=x+1$.
+
+<Solucion>
+
+$x+7=(x+1)^2=x^2+2x+1\Rightarrow x^2+x-6=0\Rightarrow(x+3)(x-2)=0$: $x=-3$ o
+$x=2$. Como $g(x)=x+1\geq0$ requiere $x\geq-1$: $x=-3$ es extraña; $x=2$ es la
+solución.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Resuelve $\sqrt{2x+1}\leq5$.
+
+<Solucion>
+
+Dominio: $x\geq-\tfrac12$. Elevando: $2x+1\leq25\Rightarrow x\leq12$. Combinando:
+$-\tfrac12\leq x\leq12$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Resuelve $\sqrt{x-1}>2$.
+
+<Solucion>
+
+Dominio: $x\geq1$. Como $g(x)=2>0$: elevando, $x-1>4\Rightarrow x>5$ (que ya
+implica $x\geq1$).
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra el teorema de la inecuación con radical, caso $<$ (repítelo sin mirar el
+marco teórico).
+
+<Solucion>
+
+$\sqrt{f(x)}$ exige $f(x)\geq0$. Como $\sqrt{f(x)}\geq0$, para que sea $<g(x)$ se
+necesita $g(x)>0$. Con ambos lados no negativos, elevar al cuadrado conserva el
+sentido de la desigualdad (por las propiedades de orden): $f(x)<g(x)^2$. Las tres
+condiciones juntas son necesarias y suficientes. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $g(x)<0$, la inecuación $\sqrt{f(x)}>g(x)$ se cumple
+automáticamente en todo el dominio de la raíz ($f(x)\geq0$).
+
+<Solucion>
+
+Si $f(x)\geq0$, $\sqrt{f(x)}\geq0$. Como $g(x)<0\leq\sqrt{f(x)}$, se cumple
+$\sqrt{f(x)}>g(x)$ sin necesidad de ninguna condición adicional: cualquier número
+no negativo es mayor que cualquier número negativo. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "√(f(x)) = g(x) es equivalente a:",
+      opciones: ["f(x) = g(x)² solamente", "g(x)≥0 y f(x)=g(x)²", "f(x)≥0 solamente", "g(x)=f(x)"],
+      correcta: 1,
+      explicacion: "Se necesitan ambas condiciones; solo f(x)=g(x)² puede introducir raíces extrañas.",
+    },
+    {
+      enunciado: "Una raíz extraña aparece cuando:",
+      opciones: ["f(x)=g(x)² se cumple pero g(x)<0", "El discriminante es negativo", "x=0", "Nunca aparecen raíces extrañas"],
+      correcta: 0,
+      explicacion: "Si g(x)<0, no puede ser igual a una raíz cuadrada (que es ≥0), aunque el cuadrado coincida.",
+    },
+    {
+      enunciado: "√(f(x)) < g(x) requiere, entre otras cosas:",
+      opciones: ["g(x) < 0", "g(x) > 0", "f(x) < 0", "Nada especial sobre g(x)"],
+      correcta: 1,
+      explicacion: "El lado izquierdo es ≥0, así que para ser estrictamente menor se necesita g(x)>0.",
+    },
+    {
+      enunciado: "Si g(x)<0, la inecuación √(f(x))>g(x):",
+      opciones: ["Nunca se cumple", "Se cumple automáticamente en todo el dominio de la raíz", "Requiere resolver una ecuación", "No tiene sentido"],
+      correcta: 1,
+      explicacion: "Cualquier raíz cuadrada real (≥0) es mayor que cualquier número negativo.",
+    },
+    {
+      enunciado: "Al resolver una ecuación con radical, el último paso obligatorio es:",
+      opciones: ["Verificar cada candidata en la ecuación original", "Sumar 1 a cada solución", "Ignorar las soluciones negativas", "Nada, basta con resolver la ecuación elevada al cuadrado"],
+      correcta: 0,
+      explicacion: "Es la única forma de descartar raíces extrañas.",
+    },
+    {
+      enunciado: "√(x-1) > 2 tiene como solución:",
+      opciones: ["x ≥ 1", "x > 5", "x < 5", "Ningún valor"],
+      correcta: 1,
+      explicacion: "Dominio x≥1, y elevando al cuadrado (g(x)=2>0): x-1>4 ⟹ x>5.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Elevar al cuadrado sin verificar después** — siempre hay que comprobar cada
+  candidata en la ecuación original, porque elevar al cuadrado no es una operación
+  reversible sin condiciones.
+- **Olvidar el dominio $f(x)\geq0$** al resolver una inecuación con radical — el
+  radical solo está definido cuando el radicando es no negativo.
+- **Confundir las condiciones del caso $<$ con las del caso $>$** — cada uno
+  requiere un análisis distinto sobre el signo de $g(x)$.
+- **Pensar que elevar al cuadrado siempre preserva la igualdad en ambas
+  direcciones** — preserva "ida" siempre, pero la "vuelta" ($f(x)=g(x)^2 \Rightarrow
+  \sqrt{f(x)}=g(x)$) solo es válida cuando $g(x)\geq0$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/ecuaciones-bicuadradas-y-reciprocas", label: "Ecuaciones bicuadradas y recíprocas" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/numeros-reales-y-sus-propiedades", label: "Números reales y sus propiedades" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/inecuaciones-cuadraticas", label: "Inecuaciones cuadráticas" },
+  ]}
+/>

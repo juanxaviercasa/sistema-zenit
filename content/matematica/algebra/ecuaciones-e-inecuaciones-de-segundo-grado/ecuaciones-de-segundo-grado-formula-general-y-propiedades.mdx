@@ -1,0 +1,256 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ResolvedorCuadratica } from "@/components/interactive/algebra";
+
+# Ecuaciones de segundo grado: fórmula general y propiedades
+
+<Objetivo>
+
+Deducir la fórmula general de la ecuación de segundo grado completando el cuadrado,
+demostrar las relaciones entre sus raíces y sus coeficientes, e interpretar
+geométricamente el discriminante.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado.** La ecuación $ax^2+bx+c=0$ ($a\neq0$) tiene por soluciones:
+
+$$
+x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}.
+$$
+
+**Demostración (completando el cuadrado).** Dividiendo entre $a$:
+
+$$
+x^2+\frac ba x+\frac ca=0 \;\Longrightarrow\; x^2+\frac ba x = -\frac ca.
+$$
+
+Sumando $\left(\dfrac{b}{2a}\right)^2$ a ambos lados para completar el cuadrado en el
+lado izquierdo:
+
+$$
+x^2+\frac ba x+\left(\frac{b}{2a}\right)^2 = \left(\frac{b}{2a}\right)^2-\frac ca
+\;\Longrightarrow\; \left(x+\frac{b}{2a}\right)^2 = \frac{b^2-4ac}{4a^2}.
+$$
+
+Tomando raíz cuadrada de ambos lados:
+
+$$
+x+\frac{b}{2a} = \pm\frac{\sqrt{b^2-4ac}}{2a} \;\Longrightarrow\; x =
+\frac{-b\pm\sqrt{b^2-4ac}}{2a}. \qquad\blacksquare
+$$
+
+**Discriminante.** $\Delta=b^2-4ac$. Si $\Delta>0$, dos raíces reales distintas; si
+$\Delta=0$, una raíz real doble; si $\Delta<0$, dos raíces complejas conjugadas (se
+estudian en el tema de funciones polinomiales). Geométricamente, la gráfica de
+$y=ax^2+bx+c$ es una parábola, y sus raíces son los puntos donde corta al eje $x$:
+dos cortes, uno (tangente), o ninguno, según el signo de $\Delta$.
+
+**Enunciado (relaciones de Cardano-Vieta).** Si $x_1,x_2$ son las raíces de
+$ax^2+bx+c=0$:
+
+$$
+x_1+x_2=-\frac ba, \qquad x_1x_2=\frac ca.
+$$
+
+**Demostración.** Por la fórmula general, $x_1=\dfrac{-b+\sqrt\Delta}{2a}$,
+$x_2=\dfrac{-b-\sqrt\Delta}{2a}$.
+
+$$
+x_1+x_2 = \frac{-b+\sqrt\Delta-b-\sqrt\Delta}{2a} = \frac{-2b}{2a} = -\frac ba.
+$$
+
+$$
+\begin{aligned}
+x_1x_2 &= \frac{(-b+\sqrt\Delta)(-b-\sqrt\Delta)}{4a^2} = \frac{b^2-\Delta}{4a^2} \\
+&= \frac{b^2-(b^2-4ac)}{4a^2} = \frac{4ac}{4a^2} = \frac ca. \qquad\blacksquare
+\end{aligned}
+$$
+
+## Visualización interactiva
+
+<ResolvedorCuadratica />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Resuelve $x^2-5x+6=0$.
+
+**Solución.** $\Delta=25-24=1$. $x=\dfrac{5\pm1}{2}$: $x_1=3$, $x_2=2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Verifica las relaciones de Cardano-Vieta para $2x^2-3x-2=0$ (raíces
+$x_1=2$, $x_2=-\tfrac12$).
+
+**Solución.** Suma: $2+(-\tfrac12)=\tfrac32$, y $-b/a=3/2$ ✓. Producto:
+$2\times(-\tfrac12)=-1$, y $c/a=-2/2=-1$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿Cuántas veces corta al eje $x$ la parábola $y=x^2+2x+5$?
+
+**Solución.** $\Delta=4-20=-16<0$: la parábola no corta al eje $x$ (ninguna raíz
+real).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Sin resolver la ecuación, halla $x_1^2+x_2^2$ para $x^2-6x+7=0$.
+
+**Solución.** $x_1+x_2=6$, $x_1x_2=7$. Como
+$x_1^2+x_2^2=(x_1+x_2)^2-2x_1x_2=36-14=22$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Resuelve $x^2-7x+12=0$.
+
+<Solucion>
+
+$\Delta=49-48=1$. $x_1=4$, $x_2=3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla la suma y el producto de las raíces de $3x^2+5x-2=0$ sin resolverla.
+
+<Solucion>
+
+Suma $=-5/3$. Producto $=-2/3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿Para qué valor de $k$ la ecuación $x^2-4x+k=0$ tiene una raíz real doble?
+
+<Solucion>
+
+$\Delta=16-4k=0 \Rightarrow k=4$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Si las raíces de $x^2+bx+c=0$ son $5$ y $-3$, halla $b$ y $c$.
+
+<Solucion>
+
+$-b=5+(-3)=2 \Rightarrow b=-2$. $c=5\times(-3)=-15$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $a,c$ tienen signos opuestos, la ecuación $ax^2+bx+c=0$ siempre
+tiene dos raíces reales de signos opuestos.
+
+<Solucion>
+
+Si $a$ y $c$ tienen signos opuestos, $ac<0$, así que $\Delta=b^2-4ac=b^2+4|ac|>0$
+siempre (suma de un cuadrado no negativo con un positivo): hay dos raíces reales
+distintas. Además, $x_1x_2=c/a<0$ (cociente de signos opuestos), así que las raíces
+tienen signos opuestos (su producto es negativo). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Deduce, a partir de las relaciones de Cardano-Vieta, una fórmula para $|x_1-x_2|$ en
+términos de $a,b,c$ (asumiendo raíces reales).
+
+<Solucion>
+
+$(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=\left(\dfrac{-b}a\right)^2-4\dfrac ca =
+\dfrac{b^2-4ac}{a^2}=\dfrac{\Delta}{a^2}$. Por lo tanto
+$|x_1-x_2|=\dfrac{\sqrt\Delta}{|a|}$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La fórmula general de ax²+bx+c=0 se deduce:",
+      opciones: ["Completando el cuadrado", "Por tanteo", "Solo gráficamente", "No tiene demostración"],
+      correcta: 0,
+      explicacion: "Se suma (b/2a)² a ambos lados para formar un trinomio cuadrado perfecto.",
+    },
+    {
+      enunciado: "Si Δ<0, la ecuación tiene:",
+      opciones: ["Dos raíces reales distintas", "Una raíz real doble", "Dos raíces complejas conjugadas", "Infinitas raíces"],
+      correcta: 2,
+      explicacion: "El discriminante negativo hace que la raíz cuadrada no sea real.",
+    },
+    {
+      enunciado: "La suma de las raíces x₁+x₂ es igual a:",
+      opciones: ["c/a", "-b/a", "b/a", "-c/a"],
+      correcta: 1,
+      explicacion: "Es la primera relación de Cardano-Vieta.",
+    },
+    {
+      enunciado: "El producto de las raíces x₁·x₂ es igual a:",
+      opciones: ["-b/a", "c/a", "-c/a", "b/a"],
+      correcta: 1,
+      explicacion: "Es la segunda relación de Cardano-Vieta.",
+    },
+    {
+      enunciado: "Geométricamente, las raíces reales de ax²+bx+c=0 son:",
+      opciones: ["El vértice de la parábola", "Los cortes de la parábola con el eje x", "La pendiente de la parábola", "El eje de simetría"],
+      correcta: 1,
+      explicacion: "Son los valores de x donde y=0, es decir, donde la parábola cruza el eje x.",
+    },
+    {
+      enunciado: "Si a y c tienen signos opuestos, las raíces:",
+      opciones: ["Son siempre complejas", "Son reales y de signos opuestos", "Son iguales", "No se puede determinar"],
+      correcta: 1,
+      explicacion: "ac<0 garantiza Δ>0 (reales) y x₁x₂=c/a<0 (signos opuestos).",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar el signo $\pm$ en la fórmula general** — hay dos raíces (salvo
+  $\Delta=0$), no una sola.
+- **Confundir la suma ($-b/a$) con el producto ($c/a$)** de las relaciones de
+  Cardano-Vieta — memorizar el signo negativo solo en la suma.
+- **Aplicar la fórmula general sin dividir correctamente entre $2a$** — el
+  denominador es $2a$, no $a$ ni $2$.
+- **Pensar que $\Delta<0$ significa "no hay solución"** — sí hay solución, pero en
+  los números complejos, no en los reales.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion/raiz-cuadrada-y-raiz-cubica-propiedades-de-los-residuos", label: "Raíz cuadrada y raíz cúbica: propiedades de los residuos" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/ecuaciones-e-inecuaciones-de-primer-grado", label: "Ecuaciones e inecuaciones de primer grado con una variable" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/ecuaciones-bicuadradas-y-reciprocas", label: "Ecuaciones bicuadradas y recíprocas" },
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/inecuaciones-cuadraticas", label: "Inecuaciones cuadráticas" },
+  ]}
+/>

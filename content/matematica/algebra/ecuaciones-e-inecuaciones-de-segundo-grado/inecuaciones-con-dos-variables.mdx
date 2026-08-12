@@ -1,0 +1,231 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { RegionInecuacionDosVariables } from "@/components/interactive/algebra";
+
+# Inecuaciones con dos variables
+
+<Objetivo>
+
+Interpretar geométricamente una inecuación lineal con dos variables como un
+semiplano, y demostrar por qué el método del punto de prueba determina
+correctamente cuál semiplano es la solución.
+
+</Objetivo>
+
+## Marco teórico
+
+La recta $ax+by=c$ divide el plano en dos **semiplanos**. Sea $f(x,y)=ax+by-c$; la
+recta es exactamente el conjunto $\{f=0\}$.
+
+**Enunciado.** Todos los puntos de un mismo semiplano dan el mismo signo a
+$f(x,y)$: uno de los semiplanos cumple $f>0$ en su totalidad, y el otro $f<0$ en su
+totalidad.
+
+**Demostración.** Sean $P,Q$ dos puntos del mismo semiplano (es decir, el segmento
+$PQ$ no cruza la recta $ax+by=c$, porque un semiplano es una región convexa). $f$ es
+una función continua (es un polinomio de grado $1$ en $x,y$). Si $f(P)$ y $f(Q)$
+tuvieran signos opuestos, por continuidad $f$ tendría que valer $0$ en algún punto
+del segmento $PQ$ (el mismo argumento de continuidad usado para inecuaciones
+cuadráticas) — pero eso significaría que ese punto está sobre la recta,
+contradiciendo que el segmento no la cruza. Por lo tanto $f(P)$ y $f(Q)$ tienen el
+mismo signo. $\blacksquare$
+
+**Método del punto de prueba.** Como consecuencia, basta evaluar $f$ en **un solo
+punto** que no esté sobre la recta (frecuentemente el origen, si $c\neq0$) para
+saber el signo de $f$ en **todo** ese semiplano — no hace falta revisar cada punto.
+
+## Visualización interactiva
+
+<RegionInecuacionDosVariables />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Determina el semiplano solución de $x+y<4$.
+
+**Solución.** Punto de prueba $(0,0)$: $0+0=0<4$ ✓. El semiplano que contiene al
+origen es la solución (frontera discontinua, porque la desigualdad es estricta).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Determina el semiplano solución de $2x-y\geq3$.
+
+**Solución.** Punto de prueba $(0,0)$: $2(0)-0=0\geq3$ es **falso**. El semiplano
+que **no** contiene al origen es la solución (frontera continua, porque no es
+estricta).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿El punto $(3,1)$ pertenece a la solución de $x-2y<0$?
+
+**Solución.** $3-2(1)=1$, y $1<0$ es falso. El punto $(3,1)$ **no** pertenece a la
+solución.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Explica por qué no se puede usar el origen como punto de prueba
+para $3x+2y>0$.
+
+**Solución.** El origen $(0,0)$ da $3(0)+2(0)=0$, que está exactamente **sobre** la
+recta $3x+2y=0$ (porque $c=0$ en este caso) — no sirve como punto de prueba, ya
+que no pertenece a ningún semiplano. Hay que elegir otro punto, como $(1,0)$:
+$3(1)+2(0)=3>0$ ✓, así que el semiplano que contiene a $(1,0)$ es la solución.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Determina el semiplano solución de $x-y\leq2$.
+
+<Solucion>
+
+$(0,0)$: $0-0=0\leq2$ ✓. El semiplano del origen (frontera continua).
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Determina el semiplano solución de $3x+y>6$.
+
+<Solucion>
+
+$(0,0)$: $0>6$ falso. El semiplano opuesto al origen (frontera discontinua).
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿El punto $(2,5)$ pertenece a la solución de $2x+y\leq10$?
+
+<Solucion>
+
+$2(2)+5=9\leq10$ ✓. Sí pertenece.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla un punto de prueba válido para $4x-y=0$ (distinto del origen) y determina el
+semiplano solución de $4x-y\geq0$.
+
+<Solucion>
+
+$(1,0)$: $4(1)-0=4\geq0$ ✓. El semiplano que contiene a $(1,0)$ es la solución.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que el segmento entre dos puntos de un mismo semiplano nunca cruza la
+recta frontera (justificando por qué el semiplano es convexo).
+
+<Solucion>
+
+Sean $P=(x_1,y_1)$, $Q=(x_2,y_2)$ con $f(P)>0$ y $f(Q)>0$ (mismo semiplano). Un
+punto del segmento es $R=P+t(Q-P)$ para $t\in[0,1]$. Como $f$ es lineal,
+$f(R)=(1-t)f(P)+tf(Q)$, una combinación con pesos no negativos ($1-t\geq0$,
+$t\geq0$) de dos números positivos — así que $f(R)>0$ también. Como $f(R)\neq0$
+para todo $t\in[0,1]$, el segmento nunca toca la recta $\{f=0\}$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $f(P)>0$ y $f(Q)<0$, el segmento $PQ$ **sí** cruza la recta
+$\{f=0\}$.
+
+<Solucion>
+
+Con la misma parametrización $f(R)=(1-t)f(P)+tf(Q)$: en $t=0$, $f(R)=f(P)>0$; en
+$t=1$, $f(R)=f(Q)<0$. Como $f(R)$ es una función continua (lineal) de $t$ que pasa
+de positiva a negativa, por el mismo argumento de continuidad debe anularse en
+algún $t\in(0,1)$ — ese punto del segmento está sobre la recta. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La recta ax+by=c divide el plano en:",
+      opciones: ["Tres regiones", "Dos semiplanos", "Un solo semiplano", "Infinitas regiones"],
+      correcta: 1,
+      explicacion: "Es la definición geométrica de una recta como frontera.",
+    },
+    {
+      enunciado: "El método del punto de prueba funciona porque:",
+      opciones: ["Todos los puntos de un semiplano dan el mismo signo a f(x,y)=ax+by-c", "Es una aproximación, no exacto", "Solo funciona con el origen", "Solo funciona para rectas verticales"],
+      correcta: 0,
+      explicacion: "Es el teorema demostrado en este subtema, consecuencia de la continuidad de f.",
+    },
+    {
+      enunciado: "¿Cuándo NO se puede usar el origen como punto de prueba?",
+      opciones: ["Cuando a=0", "Cuando c=0 (la recta pasa por el origen)", "Cuando b=0", "Siempre se puede usar"],
+      correcta: 1,
+      explicacion: "Si c=0, el origen está sobre la recta, no en ningún semiplano.",
+    },
+    {
+      enunciado: "Una frontera discontinua (punteada) en la gráfica indica:",
+      opciones: ["Una desigualdad no estricta (≤ o ≥)", "Una desigualdad estricta (< o >): la recta no pertenece a la solución", "Un error en el gráfico", "Que no hay solución"],
+      correcta: 1,
+      explicacion: "Las desigualdades estrictas excluyen la recta misma de la solución.",
+    },
+    {
+      enunciado: "Que un semiplano sea convexo significa que:",
+      opciones: ["Tiene forma curva", "El segmento entre dos puntos cualesquiera del semiplano permanece dentro de él", "Solo contiene un punto", "No tiene frontera"],
+      correcta: 1,
+      explicacion: "Es la propiedad usada para demostrar que f no cambia de signo dentro del semiplano.",
+    },
+    {
+      enunciado: "Si f(P)>0 y f(Q)<0, el segmento PQ:",
+      opciones: ["Nunca cruza la recta f=0", "Siempre cruza la recta f=0", "Es paralelo a la recta", "No se puede determinar"],
+      correcta: 1,
+      explicacion: "Por continuidad, f debe pasar por 0 en algún punto del segmento.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar el origen como punto de prueba cuando la recta pasa por él** ($c=0$) — hay
+  que elegir otro punto que no esté sobre la recta.
+- **Olvidar si la frontera se incluye o no** — desigualdades estrictas ($<,>$) usan
+  línea discontinua (no incluida); no estrictas ($\leq,\geq$) usan línea continua
+  (incluida).
+- **Pensar que hay que revisar muchos puntos** para determinar el semiplano — el
+  teorema garantiza que **un solo** punto de prueba basta para todo el semiplano.
+- **Confundir de qué lado queda la solución** — siempre verificar sustituyendo el
+  punto de prueba en la desigualdad original, no solo mirar el signo de los
+  coeficientes.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/inecuaciones-cuadraticas", label: "Inecuaciones cuadráticas" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/ecuaciones-e-inecuaciones-de-primer-grado", label: "Ecuaciones e inecuaciones de primer grado con una variable" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/sistemas-de-ecuaciones-e-inecuaciones", label: "Sistemas de ecuaciones e inecuaciones" },
+    { href: "/matematica/algebra/optimizacion-lineal", label: "Optimización lineal" },
+  ]}
+/>

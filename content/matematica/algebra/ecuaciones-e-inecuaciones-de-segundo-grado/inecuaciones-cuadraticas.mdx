@@ -1,0 +1,240 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { InecuacionCuadratica } from "@/components/interactive/algebra";
+
+# Inecuaciones cuadráticas
+
+<Objetivo>
+
+Demostrar por qué el signo de $ax^2+bx+c$ queda determinado por el signo de $a$ y la
+posición respecto a sus raíces (método de los puntos críticos), y resolver
+inecuaciones cuadráticas con ese método.
+
+</Objetivo>
+
+## Marco teórico
+
+**Caso $\Delta>0$ (dos raíces reales $x_1<x_2$).** Factorizando:
+$ax^2+bx+c=a(x-x_1)(x-x_2)$.
+
+**Enunciado.** Para $x<x_1$ o $x>x_2$, $a(x-x_1)(x-x_2)$ tiene el **mismo** signo
+que $a$. Para $x_1<x<x_2$, tiene el signo **opuesto** a $a$.
+
+**Demostración.**
+
+- Si $x>x_2$: $x-x_1>0$ y $x-x_2>0$ (ambos factores positivos, porque $x$ supera a
+  las dos raíces). Su producto es positivo, así que $a(x-x_1)(x-x_2)$ tiene el
+  signo de $a$.
+- Si $x<x_1$: $x-x_1<0$ y $x-x_2<0$ (ambos factores negativos). El producto de dos
+  negativos es positivo, así que de nuevo el signo es el de $a$.
+- Si $x_1<x<x_2$: $x-x_1>0$ pero $x-x_2<0$. El producto es negativo, así que
+  $a(x-x_1)(x-x_2)$ tiene el signo **opuesto** al de $a$. $\blacksquare$
+
+**Caso $\Delta<0$ (sin raíces reales).** Completando el cuadrado (como en el
+subtema de la fórmula general):
+
+$$
+ax^2+bx+c = a\left[\left(x+\frac{b}{2a}\right)^2 + \frac{4ac-b^2}{4a^2}\right].
+$$
+
+**Enunciado.** Si $\Delta<0$, el signo de $ax^2+bx+c$ es el mismo que el de $a$,
+para **todo** $x\in\mathbb R$.
+
+**Demostración.** Como $\Delta=b^2-4ac<0$, se tiene $4ac-b^2>0$, así que el término
+$\dfrac{4ac-b^2}{4a^2}>0$. Como además $\left(x+\dfrac{b}{2a}\right)^2\geq0$ siempre,
+la suma entre corchetes es **siempre positiva** (positivo más no negativo). Por lo
+tanto, $ax^2+bx+c$ tiene el mismo signo que $a$, para cualquier $x$. $\blacksquare$
+
+## Visualización interactiva
+
+<InecuacionCuadratica />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Resuelve $x^2-x-6<0$.
+
+**Solución.** $x^2-x-6=(x-3)(x+2)$: raíces $-2,3$. Como $a=1>0$, la expresión es
+negativa **entre** las raíces: $-2<x<3$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Resuelve $x^2-4x+4\geq0$.
+
+**Solución.** $\Delta=16-16=0$: $x^2-4x+4=(x-2)^2\geq0$ siempre (un cuadrado nunca
+es negativo). Solución: todo $x\in\mathbb R$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Resuelve $x^2+x+1>0$.
+
+**Solución.** $\Delta=1-4=-3<0$ y $a=1>0$: por el teorema, la expresión es siempre
+positiva. Solución: todo $x\in\mathbb R$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Resuelve $2x^2-3x-5\leq0$.
+
+**Solución.** $\Delta=9+40=49$. Raíces: $x=\dfrac{3\pm7}{4}$: $x_1=-1$, $x_2=\tfrac52$.
+Como $a=2>0$, la expresión es $\leq0$ entre las raíces (incluyéndolas):
+$-1\leq x\leq\tfrac52$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Resuelve $x^2-5x+4<0$.
+
+<Solucion>
+
+Raíces $1,4$. $a=1>0$: negativa entre las raíces. $1<x<4$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Resuelve $x^2+2x+1\geq0$.
+
+<Solucion>
+
+$(x+1)^2\geq0$ siempre. Todo $x\in\mathbb R$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Resuelve $-x^2+2x+3>0$.
+
+<Solucion>
+
+$a=-1<0$. Raíces: $x^2-2x-3=0\Rightarrow(x-3)(x+1)=0$: $-1,3$. Como $a<0$, es
+positiva **entre** las raíces: $-1<x<3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Resuelve $3x^2-2x+5\leq0$.
+
+<Solucion>
+
+$\Delta=4-60=-56<0$, $a=3>0$: la expresión siempre es positiva, nunca $\leq0$. Sin
+solución (∅).
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra el caso $\Delta=0$: $a(x-x_1)^2$ tiene siempre el signo de $a$ (o es $0$
+en $x=x_1$).
+
+<Solucion>
+
+$(x-x_1)^2\geq0$ para todo $x$ (es un cuadrado), con igualdad solo en $x=x_1$. Si
+$a>0$: $a(x-x_1)^2\geq0$, positivo salvo en $x=x_1$ donde es $0$. Si $a<0$:
+$a(x-x_1)^2\leq0$, negativo salvo en $x=x_1$. En ambos casos, el signo (cuando no es
+cero) coincide con el de $a$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $ax^2+bx+c$ nunca cambia de signo en un intervalo que no contenga
+ninguna raíz.
+
+<Solucion>
+
+Si $ax^2+bx+c$ cambiara de signo entre dos puntos $p<q$ de un intervalo sin raíces,
+por ser una función continua tendría que pasar por $0$ en algún punto entre $p$ y
+$q$ (propiedad de las funciones continuas) — pero eso sería una raíz, contradiciendo
+que el intervalo no contiene ninguna. Por lo tanto, el signo se mantiene constante
+en todo intervalo entre raíces consecutivas (o en todo $\mathbb R$, si no hay
+raíces). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Si Δ>0 y a>0, ax²+bx+c es negativa:",
+      opciones: ["Fuera de las raíces", "Entre las raíces", "Siempre", "Nunca"],
+      correcta: 1,
+      explicacion: "Entre las raíces el signo es opuesto al de a.",
+    },
+    {
+      enunciado: "Si Δ<0, el signo de ax²+bx+c:",
+      opciones: ["Cambia según x", "Es siempre el mismo que el de a", "Es siempre negativo", "No está definido"],
+      correcta: 1,
+      explicacion: "Al no haber raíces reales, el signo nunca cambia y coincide con el de a.",
+    },
+    {
+      enunciado: "x²-x-6<0 tiene como solución:",
+      opciones: ["x<-2 o x>3", "-2<x<3", "x=-2 o x=3", "Todo R"],
+      correcta: 1,
+      explicacion: "Con a=1>0, es negativa entre las raíces -2 y 3.",
+    },
+    {
+      enunciado: "Si Δ=0, la expresión a(x-x₁)²:",
+      opciones: ["Cambia de signo en x₁", "Nunca es cero", "Mantiene el signo de a (o es 0 en x₁)", "Siempre es positiva"],
+      correcta: 2,
+      explicacion: "El cuadrado nunca es negativo, así que el signo depende solo de a.",
+    },
+    {
+      enunciado: "3x²-2x+5≤0 no tiene solución porque:",
+      opciones: ["a=0", "Δ<0 y a>0, así que la expresión siempre es positiva", "Las raíces son iguales", "x no puede ser negativo"],
+      correcta: 1,
+      explicacion: "Sin raíces reales y a positivo, nunca es ≤0.",
+    },
+    {
+      enunciado: "El signo de ax²+bx+c no puede cambiar dentro de un intervalo sin raíces porque:",
+      opciones: ["Es una función discontinua", "Por continuidad, tendría que pasar por 0 (una raíz) para cambiar de signo", "Los polinomios nunca cambian de signo", "Depende del valor de b"],
+      correcta: 1,
+      explicacion: "Es el argumento de continuidad que justifica el método de los puntos críticos.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar invertir el criterio cuando $a<0$** — "entre las raíces" da signo
+  opuesto a $a$, así que si $a<0$, entre las raíces la expresión es **positiva**,
+  no negativa.
+- **Aplicar el método de los puntos críticos sin factorizar correctamente** — hay
+  que hallar las raíces exactas primero (fórmula general o factorización directa).
+- **Pensar que $\Delta<0$ significa "sin solución" para toda inecuación** —
+  depende de la relación: si se pide el signo que coincide con $a$, la solución es
+  todo $\mathbb R$; si se pide el signo opuesto, no hay solución.
+- **No incluir los extremos en inecuaciones no estrictas** ($\leq,\geq$) — las
+  raíces mismas sí pertenecen a la solución cuando la relación no es estricta.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/ecuaciones-de-segundo-grado-formula-general-y-propiedades", label: "Ecuaciones de segundo grado: fórmula general y propiedades" },
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/ecuaciones-e-inecuaciones-con-radicales", label: "Ecuaciones e inecuaciones con radicales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/inecuaciones-de-grado-superior", label: "Inecuaciones de grado superior e interpretación geométrica" },
+  ]}
+/>

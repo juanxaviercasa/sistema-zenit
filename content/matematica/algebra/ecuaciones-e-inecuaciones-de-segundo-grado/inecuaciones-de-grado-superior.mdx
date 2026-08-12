@@ -1,0 +1,247 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { SignoDePolinomio } from "@/components/interactive/algebra";
+
+# Inecuaciones de grado superior e interpretación geométrica
+
+<Objetivo>
+
+Generalizar el método de los puntos críticos a polinomios factorizados de cualquier
+grado, demostrando la regla de alternancia de signos y su excepción en raíces de
+multiplicidad par.
+
+</Objetivo>
+
+## Marco teórico
+
+Sea $P(x)=a(x-r_1)(x-r_2)\cdots(x-r_n)$, con raíces simples
+$r_1<r_2<\cdots<r_n$.
+
+**Enunciado.** En el intervalo más a la derecha, $(r_n,+\infty)$, $P(x)$ tiene el
+mismo signo que $a$. Cruzando cada raíz (de derecha a izquierda), el signo se
+**alterna**.
+
+**Demostración.** Para $x>r_n$, cada factor $(x-r_i)$ es positivo (porque $x$
+supera a **todas** las raíces), así que el producto de los $n$ factores es
+positivo: $P(x)$ tiene el signo de $a$. Al pasar del intervalo $(r_k,r_{k+1})$ al
+intervalo $(r_{k-1},r_k)$ (cruzando la raíz $r_k$), únicamente el factor $(x-r_k)$
+cambia de signo — los demás factores $(x-r_i)$ con $i\neq k$ no cambian, porque $x$
+no cruza esas raíces. Como exactamente un factor cambia de signo, el producto
+completo cambia de signo. $\blacksquare$
+
+**Enunciado (multiplicidad).** Si $(x-r)^m$ es un factor de $P(x)$: cuando $m$ es
+**par**, ese factor nunca cambia de signo (es $\geq0$ siempre) y el signo de $P(x)$
+**no se alterna** al cruzar $r$. Cuando $m$ es **impar**, el factor $(x-r)^m$ tiene
+el mismo signo que $(x-r)$, así que el signo de $P(x)$ **sí se alterna** al cruzar
+$r$, igual que con una raíz simple.
+
+**Demostración.** Si $m$ es par, $(x-r)^m=\left[(x-r)^{m/2}\right]^2\geq0$ para
+todo $x$ real (es un cuadrado), con igualdad solo en $x=r$: nunca es negativo, así
+que no cambia de signo. Si $m$ es impar, $(x-r)^m$ tiene el mismo signo que
+$(x-r)$ (una potencia impar preserva el signo de la base: positivo elevado a
+impar es positivo, negativo elevado a impar es negativo), así que cambia de signo
+exactamente donde $(x-r)$ lo hace, es decir en $x=r$. $\blacksquare$
+Geométricamente: en una raíz de multiplicidad par, la gráfica "rebota" en el eje
+$x$ sin cruzarlo; en una de multiplicidad impar, lo atraviesa.
+
+## Visualización interactiva
+
+<SignoDePolinomio />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Resuelve $(x-1)(x-2)(x-3)>0$.
+
+**Solución.** Raíces $1,2,3$, $a=1>0$. Signo en $(3,\infty)$: $+$. Alternando:
+$(2,3)$: $-$; $(1,2)$: $+$; $(-\infty,1)$: $-$. Solución ($P>0$):
+$(1,2)\cup(3,\infty)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Resuelve $(x+1)(x-2)(x-4)<0$.
+
+**Solución.** Raíces $-1,2,4$, $a=1>0$. Signo en $(4,\infty)$: $+$. Alternando:
+$(2,4)$: $-$; $(-1,2)$: $+$; $(-\infty,-1)$: $-$. Solución ($P<0$):
+$(-\infty,-1)\cup(2,4)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Resuelve $(x-2)^2(x-5)\geq0$.
+
+**Solución.** $(x-2)^2\geq0$ siempre (nunca cambia de signo; es $0$ solo en
+$x=2$). El signo del producto coincide con el de $(x-5)$, excepto que en $x=2$ el
+producto vale $0$ (que sí cumple $\geq0$) sin importar el signo de $(x-5)$ ahí.
+Solución: $\{2\}\cup[5,\infty)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que $(x-r)^3$ tiene el mismo signo que $(x-r)$, para
+cualquier $x\neq r$.
+
+**Solución.** Si $x-r>0$: $(x-r)^3$ es el producto de tres positivos, positivo. Si
+$x-r<0$: $(x-r)^3=(x-r)(x-r)(x-r)$ es el producto de tres negativos, que es
+negativo (negativo×negativo=positivo, y positivo×negativo=negativo). En ambos
+casos, $(x-r)^3$ tiene el mismo signo que $(x-r)$. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Resuelve $(x+3)(x-1)(x-4)<0$.
+
+<Solucion>
+
+Raíces $-3,1,4$; signo en $(4,\infty)$: $+$. Alternando: $(1,4)$: $-$; $(-3,1)$:
+$+$; $(-\infty,-3)$: $-$. Solución: $(-\infty,-3)\cup(1,4)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Resuelve $(x-1)(x+2)(x+5)>0$.
+
+<Solucion>
+
+Raíces $-5,-2,1$; signo en $(1,\infty)$: $+$. Alternando: $(-2,1)$: $-$;
+$(-5,-2)$: $+$; $(-\infty,-5)$: $-$. Solución: $(-5,-2)\cup(1,\infty)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Resuelve $(x-3)^2(x+1)>0$.
+
+<Solucion>
+
+$(x-3)^2>0$ para $x\neq3$ (y es $0$ en $x=3$, lo que no cumple $>0$ estricto). El
+signo coincide con $(x+1)$, salvo en $x=3$ (excluido). Solución:
+$(-1,3)\cup(3,\infty)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Resuelve $x^3-4x\geq0$.
+
+<Solucion>
+
+Factorizando: $x(x-2)(x+2)\geq0$. Raíces $-2,0,2$; signo en $(2,\infty)$: $+$.
+Alternando: $(0,2)$: $-$; $(-2,0)$: $+$; $(-\infty,-2)$: $-$. Solución (con
+extremos incluidos): $[-2,0]\cup[2,\infty)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $(x-r)^m$ nunca cambia de signo cuando $m$ es par.
+
+<Solucion>
+
+Si $m$ es par, $m=2k$ para algún entero $k$, así que
+$(x-r)^m=\left[(x-r)^k\right]^2$, un cuadrado. Todo cuadrado es $\geq0$, así que
+$(x-r)^m\geq0$ para todo $x$: nunca es negativo, nunca cambia de signo (solo se
+anula en $x=r$). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Generaliza la demostración de alternancia de signos: demuestra que si $P(x)$ tiene
+$n$ raíces simples, el signo cambia exactamente $n$ veces al recorrer toda la recta
+real de derecha a izquierda.
+
+<Solucion>
+
+Por el teorema principal, cada vez que $x$ cruza una raíz $r_k$, exactamente el
+factor $(x-r_k)$ cambia de signo (los otros $n-1$ factores no cambian, porque $x$
+no cruza ninguna otra raíz en ese cruce). Como hay $n$ raíces simples y cada cruce
+de raíz produce exactamente un cambio de signo del producto total, el signo de
+$P(x)$ cambia exactamente $n$ veces al recorrer toda la recta. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "En el intervalo más a la derecha de todas las raíces, el signo de P(x) coincide con:",
+      opciones: ["El signo de a (coeficiente líder)", "Siempre positivo", "Siempre negativo", "Depende del número de raíces"],
+      correcta: 0,
+      explicacion: "Todos los factores son positivos ahí, así que el signo total es el de a.",
+    },
+    {
+      enunciado: "Al cruzar una raíz simple, el signo de P(x):",
+      opciones: ["Nunca cambia", "Siempre se alterna", "Cambia solo a veces", "Depende de a"],
+      correcta: 1,
+      explicacion: "Exactamente un factor cambia de signo, así que el producto se alterna.",
+    },
+    {
+      enunciado: "Si una raíz tiene multiplicidad par, al cruzarla el signo de P(x):",
+      opciones: ["Se alterna igual que una raíz simple", "No se alterna (el factor (x-r)^m es un cuadrado, ≥0 siempre)", "Se vuelve indefinido", "Depende del valor de r"],
+      correcta: 1,
+      explicacion: "(x-r)^m con m par es siempre ≥0, así que nunca cambia de signo.",
+    },
+    {
+      enunciado: "Geométricamente, en una raíz de multiplicidad par la gráfica:",
+      opciones: ["Cruza el eje x", "Rebota en el eje x sin cruzarlo", "Se vuelve vertical", "Desaparece"],
+      correcta: 1,
+      explicacion: "Como el signo no cambia, la curva toca el eje y regresa del mismo lado.",
+    },
+    {
+      enunciado: "(x-2)²(x-5)≥0 tiene como solución:",
+      opciones: ["x≥5 solamente", "{2} ∪ [5,∞)", "Todo R", "x≤2"],
+      correcta: 1,
+      explicacion: "El signo sigue a (x-5), pero x=2 también cumple porque el producto es exactamente 0 ahí.",
+    },
+    {
+      enunciado: "(x-r)³ tiene el mismo signo que:",
+      opciones: ["(x-r)²", "r", "(x-r)", "Siempre es positivo"],
+      correcta: 2,
+      explicacion: "Una potencia impar preserva el signo de la base.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Alternar el signo en una raíz de multiplicidad par** — no se alterna; el
+  factor correspondiente nunca cambia de signo.
+- **Olvidar factorizar completamente** antes de aplicar el método — todas las
+  raíces deben estar identificadas para construir el cuadro de signos correcto.
+- **Incluir mal los extremos** — en inecuaciones no estrictas, las raíces de
+  multiplicidad impar se incluyen normalmente, pero en las de multiplicidad par
+  conviene verificar el caso por separado (como en $(x-2)^2(x-5)\geq0$).
+- **Confundir cuántas veces se alterna el signo** — se alterna exactamente en cada
+  raíz de multiplicidad impar, ni más ni menos.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/inecuaciones-con-dos-variables", label: "Inecuaciones con dos variables" },
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion/cuadrado-y-cubo-perfecto", label: "Cuadrado y cubo perfecto" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones", label: "Funciones" },
+  ]}
+/>

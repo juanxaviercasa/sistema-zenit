@@ -72,7 +72,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Raíz cuadrada y raíz cúbica: propiedades de los residuos
   - ✅ Cálculo de raíces con aproximación
 
-### B. Álgebra (1/9)
+### B. Álgebra (2/9)
 
 - ✅ 1. Lógica, conjuntos, números reales, ecuaciones e inecuaciones
   - ✅ Proposiciones y operaciones lógicas
@@ -84,7 +84,13 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Números reales y sus propiedades
   - ✅ Ecuaciones e inecuaciones de primer grado con una variable
   - ✅ Valor absoluto: ecuaciones e inecuaciones e interpretación gráfica
-- ⬜ 2. Ecuaciones e inecuaciones de segundo grado
+- ✅ 2. Ecuaciones e inecuaciones de segundo grado
+  - ✅ Ecuaciones de segundo grado: fórmula general y propiedades
+  - ✅ Ecuaciones bicuadradas y recíprocas
+  - ✅ Ecuaciones e inecuaciones con radicales
+  - ✅ Inecuaciones cuadráticas
+  - ✅ Inecuaciones con dos variables
+  - ✅ Inecuaciones de grado superior e interpretación geométrica
 - ⬜ 3. Funciones
 - ⬜ 4. Funciones polinomiales (incluye números complejos)
 - ⬜ 5. Función exponencial y logarítmica
@@ -136,7 +142,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 14/51 temas completos.**
+**Total Matemática: 15/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -201,7 +207,21 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       condicional; las leyes de De Morgan para conjuntos se derivan de las lógicas;
       $A=B\leftrightarrow p\leftrightarrow q$ combina dos teoremas previos sin
       demostración nueva; y la solución de $|x-a|>r$ se deduce de la de $|x-a|\leq r$
-      vía De Morgan y tricotomía.
+      vía De Morgan y tricotomía. **Ecuaciones e inecuaciones de segundo grado**
+      completo, con 6 subtemas: deduce la fórmula general completando el cuadrado y
+      las relaciones de Cardano-Vieta; resuelve bicuadradas (sustitución $y=x^2$) y
+      recíprocas (sustitución $z=x+1/x$, vía la identidad $x^2+1/x^2=z^2-2$);
+      demuestra las condiciones exactas para elevar al cuadrado sin introducir
+      raíces extrañas en ecuaciones e inecuaciones con radicales; generaliza el
+      método de los puntos críticos primero a cuadráticas (completando el cuadrado
+      para el caso $\Delta<0$) y luego a polinomios de cualquier grado, demostrando
+      la excepción de las raíces de multiplicidad par; e interpreta una inecuación
+      lineal con dos variables como un semiplano, demostrando por qué basta un
+      punto de prueba (usando el mismo argumento de continuidad que en las
+      cuadráticas). 6 widgets nuevos: resolvedor de cuadráticas con gráfica de la
+      parábola, resolvedor de bicuadradas, resolvedor con radicales (detecta raíces
+      extrañas), inecuación cuadrática, región de una inecuación con dos variables
+      (máscaras SVG), y signo de un polinomio factorizado.
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)
 - [ ] Fase 6 — Funcionalidades avanzadas (simulacro cronometrado, cuentas/progreso,

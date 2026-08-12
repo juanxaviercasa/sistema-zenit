@@ -1,0 +1,243 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ResolvedorBicuadrada } from "@/components/interactive/algebra";
+
+# Ecuaciones bicuadradas y recíprocas
+
+<Objetivo>
+
+Resolver ecuaciones bicuadradas mediante la sustitución $y=x^2$, y ecuaciones
+recíprocas mediante la sustitución $z=x+1/x$, reduciendo ambas a una ecuación de
+segundo grado ya conocida.
+
+</Objetivo>
+
+## Marco teórico
+
+**Ecuación bicuadrada.** Tiene la forma $ax^4+bx^2+c=0$ ($a\neq0$). Sustituyendo
+$y=x^2$ se obtiene $ay^2+by+c=0$, resoluble por la fórmula general.
+
+**Enunciado.** Cada solución real $y\geq0$ de $ay^2+by+c=0$ aporta dos raíces reales
+$x=\pm\sqrt y$ a la bicuadrada; cada solución $y<0$ no aporta ninguna raíz real
+(aporta un par de raíces complejas conjugadas, $x=\pm i\sqrt{-y}$).
+
+**Demostración.** $x^2=y$ tiene solución real si y solo si $y\geq0$ (ningún real al
+cuadrado es negativo, visto en Aritmética); en ese caso, las soluciones son
+exactamente $x=\pm\sqrt y$. Si $y<0$, no hay $x$ real con $x^2=y$. $\blacksquare$
+
+**Ecuación recíproca.** Es una ecuación polinomial cuyos coeficientes son simétricos
+respecto al centro; para grado $4$: $ax^4+bx^3+cx^2+bx+a=0$. Como el término
+independiente es $a\neq0$, $x=0$ no puede ser raíz, así que se puede dividir toda
+la ecuación entre $x^2$:
+
+$$
+a\left(x^2+\frac1{x^2}\right) + b\left(x+\frac1x\right) + c = 0.
+$$
+
+**Enunciado (identidad clave).** Para $x\neq0$:
+$x^2+\dfrac1{x^2}=\left(x+\dfrac1x\right)^2-2$.
+
+**Demostración.**
+$\left(x+\dfrac1x\right)^2=x^2+2\cdot x\cdot\dfrac1x+\dfrac1{x^2}=x^2+2+\dfrac1{x^2}$.
+Despejando: $x^2+\dfrac1{x^2}=\left(x+\dfrac1x\right)^2-2$. $\blacksquare$
+
+Sustituyendo $z=x+\dfrac1x$, la ecuación se convierte en $a(z^2-2)+bz+c=0$: una
+ecuación de segundo grado en $z$. Una vez hallado $z$, cada valor se resuelve con
+$x+\dfrac1x=z\iff x^2-zx+1=0$ (otra ecuación de segundo grado, ahora en $x$).
+
+## Visualización interactiva
+
+<ResolvedorBicuadrada />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Resuelve $x^4-13x^2+36=0$.
+
+**Solución.** Con $y=x^2$: $y^2-13y+36=0$. $\Delta=169-144=25$.
+$y=\dfrac{13\pm5}{2}$: $y_1=9$, $y_2=4$. Ambas positivas: $x=\pm3,\pm2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Resuelve $x^4+5x^2+4=0$ en los reales.
+
+**Solución.** Con $y=x^2$: $y^2+5y+4=0$. $(y+1)(y+4)=0$: $y_1=-1$, $y_2=-4$. Ambas
+negativas: no hay raíces reales (las cuatro raíces son complejas).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Reduce a una ecuación en $z$ la ecuación recíproca
+$x^4-5x^3+6x^2-5x+1=0$, y resuelve la rama que da raíces reales.
+
+**Solución.** Dividiendo entre $x^2$: $(x^2+\tfrac1{x^2})-5(x+\tfrac1x)+6=0$. Con
+$z=x+\tfrac1x$: $(z^2-2)-5z+6=0 \Rightarrow z^2-5z+4=0 \Rightarrow (z-1)(z-4)=0$:
+$z=1$ o $z=4$. Para $z=4$: $x+\tfrac1x=4\Rightarrow x^2-4x+1=0\Rightarrow
+x=\dfrac{4\pm\sqrt{12}}{2}=2\pm\sqrt3$ (reales). (La rama $z=1$ da
+$x^2-x+1=0$, con $\Delta=-3<0$: raíces complejas.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra la identidad $x^2+\dfrac1{x^2}=\left(x+\dfrac1x\right)^2-2$
+sin mirar el marco teórico.
+
+**Solución.** Expandiendo el binomio:
+$\left(x+\dfrac1x\right)^2=x^2+2(x)\left(\dfrac1x\right)+\dfrac1{x^2}=x^2+2+\dfrac1{x^2}$.
+Restando $2$ de ambos lados: $\left(x+\dfrac1x\right)^2-2=x^2+\dfrac1{x^2}$.
+$\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Resuelve $x^4-10x^2+9=0$.
+
+<Solucion>
+
+$y^2-10y+9=0$: $(y-9)(y-1)=0$, $y=9$ o $y=1$. Ambas positivas: $x=\pm3,\pm1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Resuelve $x^4-2x^2-3=0$ en los reales.
+
+<Solucion>
+
+$y^2-2y-3=0$: $(y-3)(y+1)=0$, $y=3$ o $y=-1$. Solo $y=3$ es válida: $x=\pm\sqrt3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Reduce a una ecuación en $z$ la ecuación recíproca $2x^4-x^3-6x^2-x+2=0$ (no
+resuelvas para $x$).
+
+<Solucion>
+
+Dividiendo entre $x^2$: $2(x^2+\tfrac1{x^2})-(x+\tfrac1x)-6=0$. Con $z=x+\tfrac1x$:
+$2(z^2-2)-z-6=0 \Rightarrow 2z^2-z-10=0$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Resuelve $4x^4-17x^2+4=0$.
+
+<Solucion>
+
+$4y^2-17y+4=0$. $\Delta=289-64=225$. $y=\dfrac{17\pm15}{8}$: $y_1=4$, $y_2=0{,}25$.
+Ambas positivas: $x=\pm2$, $x=\pm0{,}5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $y<0$ es solución de $ay^2+by+c=0$ (con $y=x^2$), esa rama no
+aporta ninguna raíz real a la bicuadrada.
+
+<Solucion>
+
+Si $y<0$, no existe ningún $x$ real con $x^2=y$, porque $x^2\geq0$ para todo real
+$x$ (demostrado en Aritmética/Álgebra). Por lo tanto, esa raíz $y$ de la ecuación
+cuadrática no corresponde a ninguna raíz real de la bicuadrada original.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Completa la resolución de $x^4-5x^3+6x^2-5x+1=0$ (Ejemplo 3), hallando también las
+raíces de la rama $z=1$.
+
+<Solucion>
+
+Para $z=1$: $x+\dfrac1x=1\Rightarrow x^2-x+1=0$. $\Delta=1-4=-3<0$: raíces
+complejas, $x=\dfrac{1\pm i\sqrt3}{2}$. Junto con las raíces reales
+$x=2\pm\sqrt3$ del Ejemplo 3, la ecuación de grado $4$ tiene sus $4$ raíces:
+$2+\sqrt3$, $2-\sqrt3$, $\dfrac{1+i\sqrt3}{2}$, $\dfrac{1-i\sqrt3}{2}$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "En una ecuación bicuadrada ax⁴+bx²+c=0, la sustitución usada es:",
+      opciones: ["y = x", "y = x²", "y = 1/x", "y = x³"],
+      correcta: 1,
+      explicacion: "Reduce la bicuadrada a una ecuación cuadrática en y.",
+    },
+    {
+      enunciado: "Una solución y<0 de la ecuación reducida:",
+      opciones: ["Aporta dos raíces reales", "No aporta ninguna raíz real", "Aporta una raíz real", "Hace que no haya solución"],
+      correcta: 1,
+      explicacion: "x²=y no tiene solución real si y<0.",
+    },
+    {
+      enunciado: "En una ecuación recíproca de grado 4, x=0:",
+      opciones: ["Siempre es raíz", "Nunca puede ser raíz (el término independiente no es 0)", "Es raíz solo si b=0", "Depende de a"],
+      correcta: 1,
+      explicacion: "Como a≠0 es el término independiente, x=0 no satisface la ecuación.",
+    },
+    {
+      enunciado: "La sustitución usada para ecuaciones recíprocas de grado 4 es:",
+      opciones: ["z = x²", "z = x + 1/x", "z = x - 1/x", "z = 1/x"],
+      correcta: 1,
+      explicacion: "Permite expresar x²+1/x² en términos de z, reduciendo el grado.",
+    },
+    {
+      enunciado: "x² + 1/x² es igual a:",
+      opciones: ["(x+1/x)² + 2", "(x+1/x)² - 2", "(x+1/x)²", "x² - 1/x²"],
+      correcta: 1,
+      explicacion: "Se deduce expandiendo (x+1/x)² y despejando.",
+    },
+    {
+      enunciado: "Después de hallar z, para volver a x se resuelve:",
+      opciones: ["x² - zx + 1 = 0", "x² + z = 0", "x = z²", "x² = z"],
+      correcta: 0,
+      explicacion: "Proviene de despejar x + 1/x = z, multiplicando por x.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar que $x=0$ no puede ser raíz de una ecuación recíproca** — el término
+  independiente $a\neq0$ lo garantiza, y permite dividir entre $x^2$ sin problema.
+- **Pensar que toda raíz $y$ de la ecuación reducida da raíces reales de $x$** —
+  solo las raíces $y\geq0$ dan raíces reales; las negativas dan raíces complejas.
+- **Olvidar el $-2$ al escribir $x^2+1/x^2$ en términos de $z$** — la identidad
+  correcta es $z^2-2$, no $z^2$.
+- **Confundir bicuadrada con recíproca** — la bicuadrada solo tiene potencias
+  pares ($x^4,x^2,x^0$); la recíproca tiene coeficientes simétricos pero puede
+  incluir potencias impares ($x^3,x^1$).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/ecuaciones-de-segundo-grado-formula-general-y-propiedades", label: "Ecuaciones de segundo grado: fórmula general y propiedades" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/ecuaciones-e-inecuaciones-con-radicales", label: "Ecuaciones e inecuaciones con radicales" },
+  ]}
+/>

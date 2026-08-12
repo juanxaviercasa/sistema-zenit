@@ -222,6 +222,24 @@ const subtemasLogicaConjuntosNumerosReales: Subtema[] = [
   ),
 ];
 
+const subtemasEcuacionesSegundoGrado: Subtema[] = [
+  subtema(
+    "ecuaciones-de-segundo-grado-formula-general-y-propiedades",
+    "Ecuaciones de segundo grado: fórmula general y propiedades"
+  ),
+  subtema("ecuaciones-bicuadradas-y-reciprocas", "Ecuaciones bicuadradas y recíprocas"),
+  subtema(
+    "ecuaciones-e-inecuaciones-con-radicales",
+    "Ecuaciones e inecuaciones con radicales"
+  ),
+  subtema("inecuaciones-cuadraticas", "Inecuaciones cuadráticas"),
+  subtema("inecuaciones-con-dos-variables", "Inecuaciones con dos variables"),
+  subtema(
+    "inecuaciones-de-grado-superior",
+    "Inecuaciones de grado superior e interpretación geométrica"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -298,7 +316,9 @@ const algebra: Area = {
     tema(
       2,
       "ecuaciones-e-inecuaciones-de-segundo-grado",
-      "Ecuaciones e inecuaciones de segundo grado"
+      "Ecuaciones e inecuaciones de segundo grado",
+      undefined,
+      subtemasEcuacionesSegundoGrado
     ),
     tema(3, "funciones", "Funciones"),
     tema(4, "funciones-polinomiales", "Funciones polinomiales", "incluye números complejos"),
