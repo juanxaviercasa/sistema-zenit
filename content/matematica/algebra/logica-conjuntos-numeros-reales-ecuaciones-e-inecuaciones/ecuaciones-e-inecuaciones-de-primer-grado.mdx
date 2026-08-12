@@ -1,0 +1,230 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { RectaNumericaDeInecuacion } from "@/components/interactive/algebra";
+
+# Ecuaciones e inecuaciones de primer grado con una variable
+
+<Objetivo>
+
+Resolver ecuaciones e inecuaciones de primer grado con una variable, demostrando su
+solución a partir de las propiedades de la igualdad y de los axiomas de orden del
+subtema anterior.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado (ecuación de primer grado).** La ecuación $ax+b=0$, con $a\neq0$, tiene
+**exactamente una** solución: $x=-\dfrac ba$.
+
+**Demostración.** Sumando $-b$ a ambos lados: $ax=-b$. Como $a\neq0$, se puede
+multiplicar ambos lados por $\dfrac1a$: $x=-\dfrac ba$. Esto prueba que **si** hay
+solución, es esa. Para la **unicidad**: si $x_1$ y $x_2$ son ambas soluciones,
+$ax_1+b=0=ax_2+b$, así que $ax_1=ax_2$, y como $a\neq0$ se puede cancelar:
+$x_1=x_2$. Por lo tanto la solución es única. $\blacksquare$
+
+**Enunciado (inecuación de primer grado).** Para la inecuación $ax+b<0$ con
+$a\neq0$:
+
+$$
+\text{si } a>0:\quad ax+b<0 \iff x<-\frac ba, \qquad\qquad \text{si } a<0:\quad
+ax+b<0 \iff x>-\frac ba.
+$$
+
+(Las versiones con $\leq,>,\geq$ son análogas.)
+
+**Demostración.** Sumando $-b$ a ambos lados (por O3): $ax<-b$.
+
+Si $a>0$: multiplicando ambos lados por $\dfrac1a>0$ (por O4, que conserva el
+sentido): $x<-\dfrac ba$.
+
+Si $a<0$: multiplicando ambos lados por $\dfrac1a<0$ (por el teorema del subtema
+anterior, que **invierte** el sentido): $x>-\dfrac ba$. $\blacksquare$
+
+Este resultado es exactamente la razón por la que, al despejar $x$ en una
+inecuación, hay que invertir la desigualdad si el coeficiente de $x$ es negativo —
+no es una regla arbitraria, sino consecuencia directa de los axiomas de orden.
+
+## Visualización interactiva
+
+<RectaNumericaDeInecuacion />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Resuelve $3x-6=0$.
+
+**Solución.** $3x=6 \Rightarrow x=2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Resuelve $2x-4<0$.
+
+**Solución.** $2x<4$. Como el coeficiente ($2$) es positivo, no se invierte:
+$x<2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Resuelve $-3x+6<0$.
+
+**Solución.** $-3x<-6$. Como el coeficiente ($-3$) es negativo, se **invierte** al
+dividir: $x>2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que $ax+b=0$ (con $a\neq0$) no puede tener dos soluciones
+distintas.
+
+**Solución.** Supón que $x_1\neq x_2$ son ambas soluciones. Entonces
+$ax_1+b=0$ y $ax_2+b=0$, así que $ax_1=ax_2$, es decir $a(x_1-x_2)=0$. Como
+$a\neq0$, debe ser $x_1-x_2=0$, es decir $x_1=x_2$ — contradice la suposición
+$x_1\neq x_2$. Por lo tanto la solución es única. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Resuelve $5x+10=0$.
+
+<Solucion>
+
+$x=-2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Resuelve $4x-8\geq0$.
+
+<Solucion>
+
+$4x\geq8 \Rightarrow x\geq2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Resuelve $-2x+10>0$.
+
+<Solucion>
+
+$-2x>-10$. Coeficiente negativo: se invierte al dividir entre $-2$: $x<5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Resuelve $3(x-2)\leq2x+1$.
+
+<Solucion>
+
+$3x-6\leq2x+1 \Rightarrow x\leq7$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra el caso $a>0$ del teorema de la inecuación de primer grado.
+
+<Solucion>
+
+Partiendo de $ax+b<0$: sumando $-b$ (O3), $ax<-b$. Como $a>0$, multiplicando por
+$\dfrac1a>0$ (O4, conserva el sentido): $x<-\dfrac ba$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra el caso $a<0$ del teorema de la inecuación de primer grado.
+
+<Solucion>
+
+Partiendo de $ax+b<0$: sumando $-b$ (O3), $ax<-b$. Como $a<0$, $\dfrac1a<0$
+también, así que multiplicar por $\dfrac1a$ invierte el sentido (teorema del
+subtema de números reales): $x>-\dfrac ba$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La solución de ax+b=0 (a≠0) es:",
+      opciones: ["x = b/a", "x = -b/a", "x = -a/b", "x = a/b"],
+      correcta: 1,
+      explicacion: "Se despeja sumando -b y luego multiplicando por 1/a.",
+    },
+    {
+      enunciado: "La ecuación ax+b=0 (a≠0) tiene:",
+      opciones: ["Ninguna solución", "Exactamente una solución", "Infinitas soluciones", "Dos soluciones"],
+      correcta: 1,
+      explicacion: "Se demuestra tanto la existencia como la unicidad de la solución.",
+    },
+    {
+      enunciado: "Al resolver ax+b<0 con a>0, la solución es:",
+      opciones: ["x > -b/a", "x < -b/a", "x = -b/a", "x < b/a"],
+      correcta: 1,
+      explicacion: "Con a positivo, dividir conserva el sentido de la desigualdad.",
+    },
+    {
+      enunciado: "Al resolver ax+b<0 con a<0, la solución es:",
+      opciones: ["x < -b/a", "x = -b/a", "x > -b/a", "No tiene solución"],
+      correcta: 2,
+      explicacion: "Con a negativo, dividir invierte el sentido de la desigualdad.",
+    },
+    {
+      enunciado: "La regla de invertir la desigualdad al dividir entre un negativo:",
+      opciones: ["Es una convención arbitraria", "Se deduce de los axiomas de orden (subtema anterior)", "Solo aplica a ecuaciones, no a inecuaciones", "No tiene demostración"],
+      correcta: 1,
+      explicacion: "Es consecuencia directa del teorema demostrado sobre multiplicar por negativos.",
+    },
+    {
+      enunciado: "Al resolver 3(x-2)≤2x+1, el primer paso correcto es:",
+      opciones: ["Distribuir: 3x-6≤2x+1", "Dividir entre 3 directamente", "Sumar 2 a ambos lados sin distribuir", "Ignorar el paréntesis"],
+      correcta: 0,
+      explicacion: "Hay que distribuir el paréntesis antes de agrupar términos semejantes.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar invertir la desigualdad al multiplicar o dividir entre un negativo** —
+  es el error más común; está demostrado formalmente, no es arbitrario.
+- **Errores de signo al despejar** — mover un término al otro lado cambia su signo
+  (es sumar su opuesto a ambos lados, no "borrarlo").
+- **Pensar que toda ecuación de primer grado tiene solución entera** — la solución
+  $x=-b/a$ puede ser cualquier número racional, no necesariamente entero.
+- **Confundir "resolver" con "verificar"** — resolver significa despejar $x$
+  sistemáticamente; verificar un valor concreto no es lo mismo que encontrar la
+  solución general.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/numeros-reales-y-sus-propiedades", label: "Números reales y sus propiedades" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/valor-absoluto-ecuaciones-e-inecuaciones", label: "Valor absoluto: ecuaciones e inecuaciones e interpretación gráfica" },
+  ]}
+/>

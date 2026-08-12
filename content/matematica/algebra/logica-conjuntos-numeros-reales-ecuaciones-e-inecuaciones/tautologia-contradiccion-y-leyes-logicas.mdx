@@ -1,0 +1,266 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { EvaluadorDeFormulas } from "@/components/interactive/algebra";
+
+# Tautología, contradicción y leyes lógicas
+
+<Objetivo>
+
+Clasificar una fórmula lógica como tautología, contradicción o contingencia según su
+tabla de verdad, y demostrar las leyes de De Morgan y otras leyes lógicas
+fundamentales.
+
+</Objetivo>
+
+## Marco teórico
+
+Toda fórmula lógica cae en exactamente una de tres categorías, según su tabla de
+verdad:
+
+- **Tautología**: verdadera en **todas** las filas de su tabla de verdad.
+- **Contradicción**: falsa en **todas** las filas.
+- **Contingencia**: verdadera en algunas filas y falsa en otras.
+
+**Enunciado (leyes de De Morgan).**
+
+$$
+\neg(p\wedge q) \equiv \neg p\vee\neg q, \qquad \neg(p\vee q) \equiv \neg p\wedge\neg q.
+$$
+
+**Demostración (primera ley).** Se construyen las tablas de $\neg(p\wedge q)$ y
+$\neg p\vee\neg q$:
+
+| $p$ | $q$ | $p\wedge q$ | $\neg(p\wedge q)$ | $\neg p$ | $\neg q$ | $\neg p\vee\neg q$ |
+|---|---|---|---|---|---|---|
+| V | V | V | F | F | F | F |
+| V | F | F | V | F | V | V |
+| F | V | F | V | V | F | V |
+| F | F | F | V | V | V | V |
+
+Las columnas $\neg(p\wedge q)$ y $\neg p\vee\neg q$ coinciden en las cuatro filas:
+son equivalentes. $\blacksquare$ (La segunda ley se demuestra de forma idéntica,
+intercambiando $\wedge$ por $\vee$.)
+
+**Otras leyes lógicas** (todas verificables con el mismo método de comparar tablas
+de verdad fila por fila):
+
+- **Idempotencia**: $p\wedge p\equiv p$, $\quad p\vee p\equiv p$.
+- **Conmutatividad**: $p\wedge q\equiv q\wedge p$, $\quad p\vee q\equiv q\vee p$.
+- **Asociatividad**: $(p\wedge q)\wedge r\equiv p\wedge(q\wedge r)$ (análogo con
+  $\vee$).
+- **Distributividad**: $p\wedge(q\vee r)\equiv(p\wedge q)\vee(p\wedge r)$ (análogo
+  intercambiando $\wedge$ y $\vee$).
+- **Doble negación**: $\neg(\neg p)\equiv p$.
+- **Tercero excluido**: $p\vee\neg p$ es siempre una **tautología** (toda
+  proposición es verdadera o falsa, no hay una tercera opción).
+- **No contradicción**: $p\wedge\neg p$ es siempre una **contradicción** (una
+  proposición y su negación no pueden ser ambas verdaderas).
+
+## Visualización interactiva
+
+<EvaluadorDeFormulas />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Clasifica $p\vee\neg p$.
+
+**Solución.** $p=$V: $\neg p=$F, $p\vee\neg p=$V. $p=$F: $\neg p=$V,
+$p\vee\neg p=$V. Verdadera en ambas filas: es una **tautología**.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Clasifica $p\wedge\neg p$.
+
+**Solución.** $p=$V: $\neg p=$F, $p\wedge\neg p=$F. $p=$F: $\neg p=$V,
+$p\wedge\neg p=$F. Falsa en ambas filas: es una **contradicción**.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Clasifica $p\rightarrow q$.
+
+**Solución.** Su tabla (subtema anterior) es V,F,V,V: no es constante (tiene una
+fila F y tres V): es una **contingencia**.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra la ley de De Morgan $\neg(p\vee q)\equiv\neg p\wedge\neg q$.
+
+**Solución.**
+
+| $p$ | $q$ | $p\vee q$ | $\neg(p\vee q)$ | $\neg p\wedge\neg q$ |
+|---|---|---|---|---|
+| V | V | V | F | F |
+| V | F | V | F | F |
+| F | V | V | F | F |
+| F | F | F | V | V |
+
+Las columnas $\neg(p\vee q)$ y $\neg p\wedge\neg q$ coinciden en las cuatro filas:
+son equivalentes. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Clasifica $(p\vee q)\vee\neg(p\vee q)$.
+
+<Solucion>
+
+Es de la forma $r\vee\neg r$ (con $r=p\vee q$), que siempre es verdadera: es una
+**tautología**, sin importar cuán compleja sea $r$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Clasifica $p\wedge(\neg p\wedge q)$.
+
+<Solucion>
+
+Contiene el factor $p\wedge\neg p$, que siempre es falso; y falso $\wedge$
+cualquier cosa es falso. Es una **contradicción** en las cuatro filas.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Demuestra la ley de idempotencia $p\wedge p\equiv p$.
+
+<Solucion>
+
+$p=$V: $p\wedge p=$V$\wedge$V$=$V$=p$. $p=$F: $p\wedge p=$F$\wedge$F$=$F$=p$. Coincide
+en ambos casos. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Clasifica $(p\rightarrow q)\vee(q\rightarrow p)$.
+
+<Solucion>
+
+VV: V∨V=V. VF: F∨V=V. FV: V∨F=V. FF: V∨V=V. Verdadera en las cuatro filas: es una
+**tautología** ("de dos proposiciones, al menos una implica a la otra").
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra la ley de no contradicción: $p\wedge\neg p$ es siempre falsa.
+
+<Solucion>
+
+$p=$V: $\neg p=$F, $p\wedge\neg p=$V$\wedge$F$=$F. $p=$F: $\neg p=$V,
+$p\wedge\neg p=$F$\wedge$V$=$F. Falsa en ambos casos: es una contradicción.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $\big((p\rightarrow q)\wedge p\big)\rightarrow q$ es una tautología
+(esta es la ley del **Modus Ponens**: de "$p\rightarrow q$" y "$p$" se concluye
+"$q$").
+
+<Solucion>
+
+| $p$ | $q$ | $p\rightarrow q$ | $(p\rightarrow q)\wedge p$ | $\big((p\rightarrow q)\wedge p\big)\rightarrow q$ |
+|---|---|---|---|---|
+| V | V | V | V | V |
+| V | F | F | F | V |
+| F | V | V | F | V |
+| F | F | V | F | V |
+
+Verdadera en las cuatro filas: es una tautología. $\blacksquare$ (Esto confirma que
+Modus Ponens es una regla de inferencia válida: si $p\rightarrow q$ y $p$ son
+ambas verdaderas, $q$ tiene que ser verdadera.)
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Una tautología es una fórmula que es:",
+      opciones: ["Verdadera en todas las filas de su tabla", "Falsa en todas las filas", "A veces verdadera, a veces falsa", "Verdadera solo cuando p y q son verdaderas"],
+      correcta: 0,
+      explicacion: "Es la definición exacta de tautología.",
+    },
+    {
+      enunciado: "¬(p∧q) es lógicamente equivalente a:",
+      opciones: ["¬p∧¬q", "¬p∨¬q", "p∨q", "p∧q"],
+      correcta: 1,
+      explicacion: "Es la primera ley de De Morgan: la negación de la conjunción es la disyunción de las negaciones.",
+    },
+    {
+      enunciado: "p∧¬p siempre es:",
+      opciones: ["Una tautología", "Una contradicción", "Una contingencia", "Depende de p"],
+      correcta: 1,
+      explicacion: "Es la ley de no contradicción: siempre falsa, para cualquier valor de p.",
+    },
+    {
+      enunciado: "p∨¬p siempre es:",
+      opciones: ["Una contradicción", "Una contingencia", "Una tautología", "Indefinida"],
+      correcta: 2,
+      explicacion: "Es la ley del tercero excluido: siempre verdadera.",
+    },
+    {
+      enunciado: "Una contingencia es una fórmula que:",
+      opciones: ["Es siempre verdadera", "Es siempre falsa", "Es verdadera en algunas filas y falsa en otras", "No tiene tabla de verdad"],
+      correcta: 2,
+      explicacion: "Depende de los valores de las proposiciones que la componen.",
+    },
+    {
+      enunciado: "((p→q)∧p)→q es una tautología. Esta ley se llama:",
+      opciones: ["Modus Tollens", "Modus Ponens", "Ley de De Morgan", "Contrapositiva"],
+      correcta: 1,
+      explicacion: "Es Modus Ponens: de p→q y p se concluye q, y esa implicación completa es siempre verdadera.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir "tautología" con "verdadera en la práctica"** — una tautología es
+  verdadera **por su forma lógica**, sin importar los hechos ni el significado de
+  $p$ y $q$.
+- **Aplicar mal De Morgan olvidando cambiar el conectivo** — al negar
+  $p\wedge q$ se obtiene $\neg p\vee\neg q$ (el $\wedge$ se convierte en $\vee$), no
+  $\neg p\wedge\neg q$.
+- **Pensar que una contingencia es un error** — simplemente es una fórmula cuyo
+  valor de verdad depende de los valores de sus proposiciones; no hay nada
+  incorrecto en eso.
+- **Clasificar mirando solo algunas filas** — hay que verificar **todas** las filas
+  de la tabla antes de concluir tautología o contradicción; basta una fila distinta
+  para que sea una contingencia.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/proposiciones-y-operaciones-logicas", label: "Proposiciones y operaciones lógicas" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/cuantificadores", label: "Cuantificadores" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/correspondencia-entre-proposiciones-y-conjuntos", label: "Correspondencia entre proposiciones y conjuntos" },
+  ]}
+/>

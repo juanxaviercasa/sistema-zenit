@@ -1,0 +1,255 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { CorrespondenciaLogicaConjuntos } from "@/components/interactive/algebra";
+
+# Correspondencia entre proposiciones y conjuntos
+
+<Objetivo>
+
+Sistematizar la correspondencia exacta entre cada operación entre conjuntos y su
+conectivo lógico análogo, y demostrar la última pieza que faltaba: la diferencia
+simétrica corresponde a la disyunción exclusiva.
+
+</Objetivo>
+
+## Marco teórico
+
+Los subtemas anteriores demostraron, uno por uno, que cada operación entre conjuntos
+es exactamente la traducción de un conectivo lógico aplicado a las proposiciones
+"$x\in A$" (que llamamos $p$) y "$x\in B$" (que llamamos $q$):
+
+| Conjuntos | Lógica | Demostrado en |
+|---|---|---|
+| $A\subseteq B$ | $p\rightarrow q$ | Determinación de conjuntos (definición) |
+| $A=B$ | $p\leftrightarrow q$ | Se deduce abajo, combinando resultados previos |
+| $A'$ | $\neg p$ | Operaciones entre conjuntos (definición) |
+| $A\cap B$ | $p\wedge q$ | Operaciones entre conjuntos (definición) |
+| $A\cup B$ | $p\vee q$ | Operaciones entre conjuntos (definición) |
+| $A-B$ | $p\wedge\neg q$ | Operaciones entre conjuntos (definición) |
+| $A\Delta B$ | $p\oplus q$ | Se demuestra en este subtema |
+
+**Enunciado (igualdad de conjuntos y bicondicional).** $A=B$ corresponde exactamente
+a $p\leftrightarrow q$.
+
+**Demostración.** Por el subtema de determinación de conjuntos, $A=B\iff
+(A\subseteq B)\wedge(B\subseteq A)$. Traduciendo cada inclusión a su fórmula lógica
+(tabla de arriba): esto es $(p\rightarrow q)\wedge(q\rightarrow p)$. Y por el primer
+subtema de este tema, ya se demostró que $(p\rightarrow q)\wedge(q\rightarrow
+p)\equiv p\leftrightarrow q$. Encadenando ambos resultados: $A=B\iff
+p\leftrightarrow q$. $\blacksquare$ Esta demostración no repite ningún argumento
+nuevo — simplemente **combina** dos teoremas ya demostrados en subtemas anteriores.
+
+**Diferencia simétrica.** Se define $A\Delta B=(A-B)\cup(B-A)$ (los elementos que
+están en exactamente uno de los dos conjuntos, no en ambos).
+
+**Enunciado.** $x\in A\Delta B \iff p\oplus q$.
+
+**Demostración.**
+
+$$
+x\in A\Delta B \iff x\in(A-B)\vee x\in(B-A) \iff (p\wedge\neg q)\vee(q\wedge\neg p).
+$$
+
+Falta verificar que $(p\wedge\neg q)\vee(q\wedge\neg p)$ es lógicamente equivalente
+a $p\oplus q$. Se comparan las tablas de verdad:
+
+| $p$ | $q$ | $p\oplus q$ | $(p\wedge\neg q)\vee(q\wedge\neg p)$ |
+|---|---|---|---|
+| V | V | F | F |
+| V | F | V | V |
+| F | V | V | V |
+| F | F | F | F |
+
+Coinciden en las cuatro filas: son equivalentes. Por lo tanto
+$x\in A\Delta B\iff p\oplus q$. $\blacksquare$
+
+## Visualización interactiva
+
+<CorrespondenciaLogicaConjuntos />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Traduce "$x\in A\cap B$" a su fórmula lógica.
+
+**Solución.** $p\wedge q$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Traduce "$x\in A'$" a su fórmula lógica.
+
+**Solución.** $\neg p$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Con $A=\{1,2,3\}$ y $B=\{2,3,4\}$, halla $A\Delta B$.
+
+**Solución.** $A-B=\{1\}$, $B-A=\{4\}$. $A\Delta B=\{1\}\cup\{4\}=\{1,4\}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica la correspondencia $A\Delta B\leftrightarrow p\oplus q$ con
+$A=\{1,2,3\}$, $B=\{2,3,4\}$ y $x=1$.
+
+**Solución.** $p:1\in A$ (V), $q:1\in B$ (F). $p\oplus q=$V (exactamente una es
+verdadera). Y en efecto, $1\in A\Delta B=\{1,4\}$ (del ejemplo 3): también V.
+Coinciden, como garantiza el teorema. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Traduce "$x\in A\cup B$" a su fórmula lógica.
+
+<Solucion>
+
+$p\vee q$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Traduce "$x\in A-B$" a su fórmula lógica.
+
+<Solucion>
+
+$p\wedge\neg q$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Con $A=\{a,b,c,d\}$ y $B=\{c,d,e\}$, halla $A\Delta B$.
+
+<Solucion>
+
+$A-B=\{a,b\}$, $B-A=\{e\}$. $A\Delta B=\{a,b,e\}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Explica, usando la correspondencia, por qué la igualdad de conjuntos corresponde al
+bicondicional y no al condicional.
+
+<Solucion>
+
+El condicional $p\rightarrow q$ corresponde a $A\subseteq B$, una relación de "una
+sola dirección" (todo elemento de $A$ está en $B$, pero podría haber elementos de
+$B$ que no están en $A$). La igualdad exige la doble contención, que corresponde
+exactamente al bicondicional $p\leftrightarrow q$ (ambas direcciones a la vez).
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $A\Delta B=(A\cup B)-(A\cap B)$, usando que
+$p\oplus q\equiv(p\vee q)\wedge\neg(p\wedge q)$ (demostrado en un subtema anterior).
+
+<Solucion>
+
+$x\in A\Delta B\iff p\oplus q\iff(p\vee q)\wedge\neg(p\wedge q)\iff x\in(A\cup
+B)\wedge x\notin(A\cap B)\iff x\in(A\cup B)-(A\cap B)$. Como la equivalencia vale
+para todo $x$, $A\Delta B=(A\cup B)-(A\cap B)$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $A\Delta A=\emptyset$ para cualquier conjunto $A$.
+
+<Solucion>
+
+Por la correspondencia, $x\in A\Delta A\iff p\oplus p$, donde $p$ es "$x\in A$" (la
+misma proposición en ambos lados, porque es $A$ con $A$). Pero $p\oplus p$ es
+siempre falsa (nunca es cierto que "exactamente una" de dos copias idénticas de $p$
+sea verdadera): si $p=$V, hay dos verdaderas, no una; si $p=$F, hay cero. Como
+$x\in A\Delta A$ es falsa para todo $x$, $A\Delta A=\emptyset$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "A ⊆ B corresponde lógicamente a:",
+      opciones: ["p∧q", "p→q", "p∨q", "p⊕q"],
+      correcta: 1,
+      explicacion: "Todo elemento de A implica pertenecer a B.",
+    },
+    {
+      enunciado: "A = B corresponde lógicamente a:",
+      opciones: ["p↔q", "p→q", "¬p", "p∧¬q"],
+      correcta: 0,
+      explicacion: "Se deduce de A⊆B y B⊆A juntos, que corresponden a (p→q)∧(q→p)≡p↔q.",
+    },
+    {
+      enunciado: "AΔB (diferencia simétrica) corresponde lógicamente a:",
+      opciones: ["p∧q", "p∨q", "p⊕q", "¬p"],
+      correcta: 2,
+      explicacion: "Elementos en exactamente uno de los dos conjuntos: disyunción exclusiva.",
+    },
+    {
+      enunciado: "AΔB se define como:",
+      opciones: ["(A−B)∪(B−A)", "A∩B", "(A−B)∩(B−A)", "A∪B"],
+      correcta: 0,
+      explicacion: "Es la unión de lo que está solo en A con lo que está solo en B.",
+    },
+    {
+      enunciado: "AΔA es igual a:",
+      opciones: ["A", "∅", "U", "A'"],
+      correcta: 1,
+      explicacion: "p⊕p siempre es falsa, así que ningún elemento pertenece a AΔA.",
+    },
+    {
+      enunciado: "La demostración de A=B ↔ p↔q se obtiene:",
+      opciones: ["Construyendo una tabla de verdad nueva desde cero", "Combinando dos teoremas ya demostrados en subtemas anteriores", "Por definición directa, sin demostración", "No se puede demostrar"],
+      correcta: 1,
+      explicacion: "Se encadena A=B⟺A⊆B∧B⊆A con (p→q)∧(q→p)≡p↔q, ambos ya probados.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Pensar que la correspondencia es solo coincidencia de notación** — cada fila de
+  la tabla es un teorema demostrado, no una convención arbitraria.
+- **Confundir a qué conectivo corresponde cada operación** — memorizar la tabla
+  ayuda, pero mejor aún es poder re-derivarla desde las definiciones por
+  comprensión.
+- **Pensar que $A-B$ corresponde a $p\rightarrow q$** — corresponde a
+  $p\wedge\neg q$; el condicional corresponde a la inclusión $\subseteq$, no a la
+  diferencia.
+- **Creer que $A\Delta B=A\cup B$** — falta excluir la intersección; la fórmula
+  correcta es $A\Delta B=(A\cup B)-(A\cap B)$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/operaciones-entre-conjuntos-y-conjunto-potencia", label: "Operaciones entre conjuntos y conjunto potencia" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/proposiciones-y-operaciones-logicas", label: "Proposiciones y operaciones lógicas" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/numeros-reales-y-sus-propiedades", label: "Números reales y sus propiedades" },
+  ]}
+/>

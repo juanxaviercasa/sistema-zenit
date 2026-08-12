@@ -72,9 +72,18 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Raíz cuadrada y raíz cúbica: propiedades de los residuos
   - ✅ Cálculo de raíces con aproximación
 
-### B. Álgebra (0/9)
+### B. Álgebra (1/9)
 
-- ⬜ 1. Lógica, conjuntos, números reales, ecuaciones e inecuaciones
+- ✅ 1. Lógica, conjuntos, números reales, ecuaciones e inecuaciones
+  - ✅ Proposiciones y operaciones lógicas
+  - ✅ Tautología, contradicción y leyes lógicas
+  - ✅ Cuantificadores
+  - ✅ Conjuntos: determinación, representación y conjuntos especiales
+  - ✅ Operaciones entre conjuntos y conjunto potencia
+  - ✅ Correspondencia entre proposiciones y conjuntos
+  - ✅ Números reales y sus propiedades
+  - ✅ Ecuaciones e inecuaciones de primer grado con una variable
+  - ✅ Valor absoluto: ecuaciones e inecuaciones e interpretación gráfica
 - ⬜ 2. Ecuaciones e inecuaciones de segundo grado
 - ⬜ 3. Funciones
 - ⬜ 4. Funciones polinomiales (incluye números complejos)
@@ -127,7 +136,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 13/51 temas completos.**
+**Total Matemática: 14/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -176,7 +185,23 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       acota el residuo de la raíz entera (cuadrada y cúbica), y demuestra la
       convergencia cuadrática del método de Newton para aproximar raíces —cerrando
       así Aritmética con las 48 subtemas del área.
-- [ ] Fase 3 — Álgebra completa (9 temas)
+- [ ] Fase 3 — Álgebra completa (9 temas), en curso: **Lógica, conjuntos, números
+      reales, ecuaciones e inecuaciones** completo, con 9 subtemas — el tema más
+      extenso del temario oficial, dividido siguiendo el mismo criterio de Fase 1
+      (no sobrecargar una sola página): lógica proposicional (proposiciones y
+      operaciones, tautología/contradicción/leyes de De Morgan, cuantificadores),
+      teoría de conjuntos (determinación y conjuntos especiales, operaciones y
+      conjunto potencia, correspondencia con la lógica) y números reales (orden,
+      ecuaciones/inecuaciones de primer grado, valor absoluto). Nueva carpeta
+      `components/interactive/algebra/*` (tabla de verdad evaluable, cuantificadores
+      sobre un dominio, diagrama de Venn con máscaras SVG, conjunto potencia,
+      correspondencia lógica-conjuntos, orden en R, recta numérica de inecuaciones,
+      valor absoluto). El tema encadena sistemáticamente sus propios resultados: la
+      demostración de $\emptyset\subseteq A$ reusa la "verdad vacía" del
+      condicional; las leyes de De Morgan para conjuntos se derivan de las lógicas;
+      $A=B\leftrightarrow p\leftrightarrow q$ combina dos teoremas previos sin
+      demostración nueva; y la solución de $|x-a|>r$ se deduce de la de $|x-a|\leq r$
+      vía De Morgan y tricotomía.
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)
 - [ ] Fase 6 — Funcionalidades avanzadas (simulacro cronometrado, cuentas/progreso,

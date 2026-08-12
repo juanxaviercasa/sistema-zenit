@@ -1,0 +1,236 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ExploradorDeOrdenEnR } from "@/components/interactive/algebra";
+
+# Números reales y sus propiedades
+
+<Objetivo>
+
+Ubicar el conjunto de los números reales como la unión de los racionales y los
+irracionales, y demostrar —a partir de los axiomas de orden— por qué multiplicar una
+desigualdad por un número negativo invierte su sentido.
+
+</Objetivo>
+
+## Marco teórico
+
+El conjunto de los **números reales** es $\mathbb R=\mathbb Q\cup\mathbb I$, donde
+$\mathbb I$ es el conjunto de los irracionales. Todo real es racional o irracional,
+nunca ambos (visto en Aritmética): $\mathbb Q\cap\mathbb I=\emptyset$.
+
+$\mathbb R$ está ordenado por cuatro propiedades básicas (axiomas de orden), a
+partir de las cuales se deduce todo lo demás:
+
+- **(O1) Tricotomía**: para $a,b\in\mathbb R$, se cumple exactamente una de:
+  $a<b$, $a=b$, $a>b$.
+- **(O2) Transitividad**: $a<b$ y $b<c$ implica $a<c$.
+- **(O3) Compatibilidad con la suma**: $a<b$ implica $a+c<b+c$, para todo
+  $c\in\mathbb R$.
+- **(O4) Compatibilidad con el producto por positivos**: $a<b$ y $c>0$ implica
+  $ac<bc$.
+
+**Enunciado.** Si $a<b$ y $c<0$, entonces $ac>bc$ (multiplicar por un número
+negativo **invierte** el sentido de la desigualdad).
+
+**Demostración.** Como $c<0$, sumando $-c$ a ambos lados (por O3):
+$c+(-c)<0+(-c)$, es decir $0<-c$. Como $a<b$ y $-c>0$, por O4:
+$a(-c)<b(-c)$, es decir $-ac<-bc$. Sumando $ac+bc$ a ambos lados (por O3):
+$-ac+ac+bc<-bc+ac+bc$, es decir $bc<ac$, que es lo mismo que $ac>bc$.
+$\blacksquare$ Esta propiedad, derivada de los axiomas básicos, es la que sostiene
+la regla "se invierte la desigualdad al multiplicar por un negativo" que se usa
+constantemente al resolver inecuaciones.
+
+## Visualización interactiva
+
+<ExploradorDeOrdenEnR />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Clasifica $-3$ y $\sqrt2$ como racionales o irracionales.
+
+**Solución.** $-3=-3/1$ es racional (cociente de enteros). $\sqrt2$ es irracional
+(demostrado en Aritmética). Ambos son números reales.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Aplica la tricotomía para comparar $5$ y $7$.
+
+**Solución.** Se cumple $5<7$ (y por tricotomía, ni $5=7$ ni $5>7$ pueden ser
+ciertas a la vez).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Si $x<10$, ¿qué se puede concluir sobre $x-4$?
+
+**Solución.** Por O3 (sumando $-4$ a ambos lados): $x-4<10-4=6$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica numéricamente el teorema de esta lección con $a=2$, $b=5$,
+$c=-3$.
+
+**Solución.** $a<b$: $2<5$ ✓. $ac=2(-3)=-6$; $bc=5(-3)=-15$. Se cumple
+$ac>bc$: $-6>-15$ ✓ (la desigualdad se invirtió al multiplicar por $c=-3<0$, tal
+como predice el teorema).
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Clasifica $\sqrt7$ y $\dfrac{22}{7}$ como racionales o irracionales.
+
+<Solucion>
+
+$\sqrt7$ es irracional ($7$ no es cuadrado perfecto). $\dfrac{22}{7}$ es racional
+(cociente de enteros), aunque se use como aproximación de $\pi$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Si $a=3$ y $b=7$, ¿cuál de las tres relaciones de la tricotomía se cumple?
+
+<Solucion>
+
+$a<b$: $3<7$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Si $x<5$, ¿qué se puede concluir sobre $2x$?
+
+<Solucion>
+
+Por O4 con $c=2>0$: $2x<10$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Si $x<5$, ¿qué se puede concluir sobre $-2x$?
+
+<Solucion>
+
+Por el teorema de esta lección (multiplicar por $-2<0$ invierte el sentido):
+$-2x>-10$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $0<a<b$, entonces $a^2<b^2$.
+
+<Solucion>
+
+Por O4 con $a<b$ y $c=a>0$: $a\cdot a<a\cdot b$, es decir $a^2<ab$. Por O4 con
+$a<b$ y $c=b>0$: $a\cdot b<b\cdot b$, es decir $ab<b^2$. Por transitividad (O2):
+$a^2<ab<b^2$, así que $a^2<b^2$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $a^2\geq0$ para todo real $a$.
+
+<Solucion>
+
+Por tricotomía (O1), $a=0$, $a>0$ o $a<0$.
+
+Si $a=0$: $a^2=0\geq0$.
+
+Si $a>0$: por O4 con $0<a$ y $c=a>0$: $0\cdot a<a\cdot a$, es decir $0<a^2$.
+
+Si $a<0$: se parte de la desigualdad $a<0$ y se multiplican ambos lados por $c=a$,
+que también es negativo. Por el teorema de esta lección, multiplicar por un
+negativo invierte el sentido: $a\cdot a>0\cdot a$, es decir $a^2>0$.
+
+En los tres casos, $a^2\geq0$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "R (los números reales) es igual a:",
+      opciones: ["Solo los racionales", "Q ∪ I (racionales unión irracionales)", "Solo los enteros", "Q ∩ I"],
+      correcta: 1,
+      explicacion: "Todo real es racional o irracional, nunca ambos.",
+    },
+    {
+      enunciado: "La tricotomía afirma que para a,b∈R:",
+      opciones: ["Siempre a<b", "Exactamente una de a<b, a=b, a>b se cumple", "a<b y a=b pueden cumplirse juntas", "No hay relación de orden en R"],
+      correcta: 1,
+      explicacion: "Es el axioma O1: exactamente una de las tres relaciones.",
+    },
+    {
+      enunciado: "Si a<b y c>0, entonces:",
+      opciones: ["ac>bc", "ac<bc", "ac=bc", "No se puede saber"],
+      correcta: 1,
+      explicacion: "Es el axioma O4: multiplicar por un positivo conserva el sentido.",
+    },
+    {
+      enunciado: "Si a<b y c<0, entonces:",
+      opciones: ["ac<bc", "ac=bc", "ac>bc", "a+c<b+c"],
+      correcta: 2,
+      explicacion: "Multiplicar por un negativo invierte el sentido de la desigualdad — es el teorema demostrado en este subtema.",
+    },
+    {
+      enunciado: "a² ≥ 0 para todo real a se demuestra:",
+      opciones: ["Solo verificando algunos ejemplos numéricos", "Usando tricotomía y separando en los casos a=0, a>0, a<0", "Es un axioma, no se demuestra", "Solo es cierto para a entero"],
+      correcta: 1,
+      explicacion: "Se demuestra caso por caso usando O1 (tricotomía) y O4 (o su versión para negativos).",
+    },
+    {
+      enunciado: "Si 0<a<b, entonces a² y b² cumplen:",
+      opciones: ["a²>b²", "a²=b²", "a²<b²", "No se puede comparar"],
+      correcta: 2,
+      explicacion: "Se demuestra aplicando O4 dos veces y luego transitividad: a²<ab<b².",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar invertir la desigualdad al multiplicar por un negativo** — es el error
+  más frecuente al resolver inecuaciones; está demostrado formalmente en este
+  subtema, no es una regla arbitraria.
+- **Pensar que $a<b$ implica siempre $a^2<b^2$** — solo es cierto cuando ambos son
+  positivos (o al menos $a\geq0$); por ejemplo $-5<-3$ pero $(-5)^2=25>9=(-3)^2$.
+- **Confundir "número real" con "número racional"** — todo racional es real, pero
+  hay reales (los irracionales) que no son racionales.
+- **Creer que dos de las tres relaciones de tricotomía pueden cumplirse a la vez**
+  — por definición, exactamente una se cumple, nunca dos ni cero.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-racionales-e-irracionales/numeros-irracionales-representacion-y-aproximacion", label: "Números irracionales: representación decimal y aproximación por racionales" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/correspondencia-entre-proposiciones-y-conjuntos", label: "Correspondencia entre proposiciones y conjuntos" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/ecuaciones-e-inecuaciones-de-primer-grado", label: "Ecuaciones e inecuaciones de primer grado con una variable" },
+  ]}
+/>

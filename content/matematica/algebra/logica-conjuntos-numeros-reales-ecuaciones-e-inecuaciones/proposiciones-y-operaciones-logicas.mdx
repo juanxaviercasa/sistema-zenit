@@ -1,0 +1,270 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { EvaluadorDeFormulas } from "@/components/interactive/algebra";
+
+# Proposiciones y operaciones lógicas
+
+<Objetivo>
+
+Definir proposición lógica, distinguir sus operaciones fundamentales (negación,
+conjunción, disyunción, disyunción exclusiva, condicional, bicondicional) por su
+tabla de verdad, y demostrar la primera equivalencia lógica entre dos de ellas.
+
+</Objetivo>
+
+## Marco teórico
+
+Una **proposición** es un enunciado que tiene un único valor de verdad: es verdadero
+(V) o falso (F), pero nunca ambos ni ninguno. "Lima es la capital del Perú" es una
+proposición (verdadera); "¿Qué hora es?" no lo es (no tiene valor de verdad).
+
+A partir de proposiciones simples $p,q$ se construyen proposiciones compuestas
+mediante **conectivos lógicos**, cada uno definido exactamente por su tabla de
+verdad:
+
+| Conectivo | Notación | Se lee | Es verdadero cuando... |
+|---|---|---|---|
+| Negación | $\neg p$ | "no $p$" | $p$ es falsa |
+| Conjunción | $p\wedge q$ | "$p$ y $q$" | ambas son verdaderas |
+| Disyunción | $p\vee q$ | "$p$ o $q$" | al menos una es verdadera |
+| Disyunción exclusiva | $p\oplus q$ | "$p$ o $q$, pero no ambas" | exactamente una es verdadera |
+| Condicional | $p\rightarrow q$ | "si $p$ entonces $q$" | no ocurre que $p$ sea V y $q$ sea F |
+| Bicondicional | $p\leftrightarrow q$ | "$p$ si y solo si $q$" | ambas tienen el mismo valor |
+
+El **condicional** suele generar confusión: es falso **únicamente** cuando el
+antecedente es verdadero y el consecuente falso. En cualquier otro caso —incluido
+cuando el antecedente es falso— el condicional es verdadero por definición.
+
+**Enunciado (equivalencia del condicional).** $p\rightarrow q$ tiene exactamente el
+mismo valor de verdad que $\neg p\vee q$, para cualesquiera $p,q$.
+
+**Demostración.** Se comparan las tablas de verdad de ambas fórmulas en los cuatro
+casos posibles:
+
+| $p$ | $q$ | $p\rightarrow q$ | $\neg p\vee q$ |
+|---|---|---|---|
+| V | V | V | V |
+| V | F | F | F |
+| F | V | V | V |
+| F | F | V | V |
+
+Las columnas finales coinciden fila por fila, así que las dos fórmulas son
+**lógicamente equivalentes**: toman el mismo valor de verdad sin importar los
+valores de $p$ y $q$. $\blacksquare$
+
+## Visualización interactiva
+
+<EvaluadorDeFormulas />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** ¿Es "Cierra la puerta" una proposición?
+
+**Solución.** No: es una orden, no tiene un valor de verdad (no es verdadera ni
+falsa). No es una proposición.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Construye la tabla de verdad de $p\wedge q$.
+
+**Solución.**
+
+| $p$ | $q$ | $p\wedge q$ |
+|---|---|---|
+| V | V | V |
+| V | F | F |
+| F | V | F |
+| F | F | F |
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Compara las tablas de $p\vee q$ y $p\oplus q$. ¿En qué fila difieren?
+
+**Solución.**
+
+| $p$ | $q$ | $p\vee q$ | $p\oplus q$ |
+|---|---|---|---|
+| V | V | V | F |
+| V | F | V | V |
+| F | V | V | V |
+| F | F | F | F |
+
+Difieren únicamente en la fila $p=$V, $q=$V: la disyunción inclusiva es verdadera
+(al menos una lo es), pero la exclusiva es falsa (ambas lo son, no exactamente una).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Evalúa la proposición "si $2+2=5$, entonces Lima es la capital del
+Perú". ¿Es verdadera o falsa?
+
+**Solución.** El antecedente ("$2+2=5$") es falso. Por la definición del
+condicional, cuando el antecedente es falso, el condicional es **verdadero**
+automáticamente, sin importar el valor del consecuente. La proposición es
+verdadera. (Esto no significa que "2+2=5 implique algo real" — es simplemente cómo
+se define la tabla de verdad del condicional.)
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Construye la tabla de verdad de $p\vee q$.
+
+<Solucion>
+
+V,V→V; V,F→V; F,V→V; F,F→F.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Construye la tabla de verdad de $\neg p$.
+
+<Solucion>
+
+$p=$V → $\neg p=$F; $p=$F → $\neg p=$V.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Construye la tabla de verdad de $p\leftrightarrow q$.
+
+<Solucion>
+
+V,V→V; V,F→F; F,V→F; F,F→V.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Evalúa "si llueve, entonces me mojo" cuando "llueve" es falso y "me mojo" es falso.
+¿Es verdadera la proposición condicional completa?
+
+<Solucion>
+
+Antecedente falso, consecuente falso: F→F es verdadero por definición del
+condicional (solo es falso cuando antecedente V y consecuente F). La proposición
+completa es verdadera.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $p\oplus q$ es lógicamente equivalente a $(p\vee q)\wedge\neg(p\wedge q)$.
+
+<Solucion>
+
+| $p$ | $q$ | $p\oplus q$ | $p\vee q$ | $p\wedge q$ | $\neg(p\wedge q)$ | $(p\vee q)\wedge\neg(p\wedge q)$ |
+|---|---|---|---|---|---|---|
+| V | V | F | V | V | F | F |
+| V | F | V | V | F | V | V |
+| F | V | V | V | F | V | V |
+| F | F | F | F | F | V | F |
+
+Las columnas de $p\oplus q$ y $(p\vee q)\wedge\neg(p\wedge q)$ coinciden en las
+cuatro filas: son equivalentes. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $p\leftrightarrow q$ es lógicamente equivalente a
+$(p\rightarrow q)\wedge(q\rightarrow p)$.
+
+<Solucion>
+
+| $p$ | $q$ | $p\leftrightarrow q$ | $p\rightarrow q$ | $q\rightarrow p$ | $(p\rightarrow q)\wedge(q\rightarrow p)$ |
+|---|---|---|---|---|---|
+| V | V | V | V | V | V |
+| V | F | F | F | V | F |
+| F | V | F | V | F | F |
+| F | F | V | V | V | V |
+
+Las columnas coinciden en las cuatro filas: son equivalentes (el bicondicional es la
+doble implicación en ambos sentidos). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Una proposición se caracteriza por:",
+      opciones: ["Ser una pregunta", "Tener un único valor de verdad (V o F)", "Ser siempre verdadera", "Ser una orden"],
+      correcta: 1,
+      explicacion: "Es la definición: verdadera o falsa, nunca ambas ni ninguna.",
+    },
+    {
+      enunciado: "p∨q (disyunción) es verdadera cuando:",
+      opciones: ["Ambas son verdaderas", "Al menos una es verdadera", "Exactamente una es verdadera", "Ninguna es verdadera"],
+      correcta: 1,
+      explicacion: "Es la disyunción inclusiva: basta que una de las dos sea verdadera.",
+    },
+    {
+      enunciado: "p→q es falsa únicamente cuando:",
+      opciones: ["p es falsa", "q es falsa", "p es verdadera y q es falsa", "p y q son ambas falsas"],
+      correcta: 2,
+      explicacion: "Es la única fila falsa de la tabla del condicional.",
+    },
+    {
+      enunciado: "p⊕q (disyunción exclusiva) se diferencia de p∨q en que:",
+      opciones: ["Nunca es verdadera", "Es falsa cuando ambas son verdaderas", "Es igual siempre", "Solo depende de p"],
+      correcta: 1,
+      explicacion: "p⊕q exige que exactamente una sea verdadera; p∨q permite que ambas lo sean.",
+    },
+    {
+      enunciado: "p→q es lógicamente equivalente a:",
+      opciones: ["p∧q", "¬p∨q", "p∨q", "¬p∧¬q"],
+      correcta: 1,
+      explicacion: "Se demuestra comparando las tablas de verdad de ambas fórmulas.",
+    },
+    {
+      enunciado: "p↔q es verdadera cuando:",
+      opciones: ["p y q tienen el mismo valor de verdad", "p es verdadera", "q es falsa", "Siempre es verdadera"],
+      correcta: 0,
+      explicacion: "El bicondicional exige que ambas coincidan (ambas V o ambas F).",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir la disyunción inclusiva con la exclusiva** — $p\vee q$ permite que
+  ambas sean verdaderas; $p\oplus q$ lo prohíbe.
+- **Pensar que $p\rightarrow q$ es falsa cuando $p$ es falsa** — es exactamente al
+  revés: cuando el antecedente es falso, el condicional es verdadero automáticamente
+  ("verdad vacía").
+- **Creer que cualquier oración es una proposición** — preguntas, órdenes y
+  exclamaciones no tienen valor de verdad, así que no lo son.
+- **Confundir $\neg(p\wedge q)$ con $\neg p\wedge\neg q$** — no son equivalentes en
+  general; la relación correcta (leyes de De Morgan) se estudia en el siguiente
+  subtema.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  seUsaEn={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/tautologia-contradiccion-y-leyes-logicas", label: "Tautología, contradicción y leyes lógicas" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/correspondencia-entre-proposiciones-y-conjuntos", label: "Correspondencia entre proposiciones y conjuntos" },
+  ]}
+/>

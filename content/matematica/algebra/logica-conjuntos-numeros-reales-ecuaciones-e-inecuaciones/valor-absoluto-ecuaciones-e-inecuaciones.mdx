@@ -1,0 +1,237 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ValorAbsolutoInteractivo } from "@/components/interactive/algebra";
+
+# Valor absoluto: ecuaciones e inecuaciones e interpretación gráfica
+
+<Objetivo>
+
+Definir el valor absoluto como distancia al origen, y demostrar cómo resolver
+ecuaciones e inecuaciones con valor absoluto reutilizando tricotomía, los axiomas de
+orden y las leyes de De Morgan de subtemas anteriores.
+
+</Objetivo>
+
+## Marco teórico
+
+$$
+|x| = \begin{cases} x & \text{si } x\geq0 \\ -x & \text{si } x<0 \end{cases}
+$$
+
+Geométricamente, $|x|$ es la distancia de $x$ al origen, y $|x-a|$ es la distancia
+entre $x$ y $a$ en la recta numérica.
+
+**Lema.** Para $r>0$: $|y|<r \iff -r<y<r$.
+
+**Demostración.** ($\Rightarrow$) Si $y\geq0$: $|y|=y<r$, y como $r>0$ se tiene
+$y\geq0>-r$; entonces $-r<y<r$. Si $y<0$: $|y|=-y<r$, así que $y>-r$ (O3); y como
+$y<0<r$, entonces $-r<y<r$.
+
+($\Leftarrow$) Si $-r<y<r$: si $y\geq0$, $|y|=y<r$ directamente. Si $y<0$, de
+$-r<y$ se obtiene $-y<r$ (multiplicando por $-1$, invierte el sentido), es decir
+$|y|=-y<r$. En ambos casos, $|y|<r$. $\blacksquare$
+
+**Enunciado.** $|x-a|<r$ ($r>0$) $\iff a-r<x<a+r$.
+
+**Demostración.** Aplicando el lema con $y=x-a$: $|x-a|<r\iff-r<x-a<r$. Sumando $a$
+a toda la desigualdad (O3): $a-r<x<a+r$. $\blacksquare$
+
+**Enunciado.** $|x-a|>r$ ($r>0$) $\iff x<a-r \vee x>a+r$.
+
+**Demostración.** Por tricotomía aplicada a $|x-a|$ frente a $r$, exactamente una de
+$|x-a|<r$, $|x-a|=r$, $|x-a|>r$ se cumple; equivalentemente, $|x-a|>r$ es la
+negación de $|x-a|\leq r$, que —por el mismo argumento del teorema anterior, con
+$\leq$ en vez de $<$— equivale a $a-r\leq x\leq a+r$. Negando esa conjunción:
+
+$$
+\begin{aligned}
+\neg(a-r\leq x\leq a+r) &\iff \neg(x\geq a-r \wedge x\leq a+r) \\
+&\iff x<a-r \vee x>a+r \qquad(\text{De Morgan}). \qquad\blacksquare
+\end{aligned}
+$$
+
+## Visualización interactiva
+
+<ValorAbsolutoInteractivo />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Calcula $|5|$ y $|-7|$.
+
+**Solución.** $|5|=5$ (ya es $\geq0$). $|-7|=-(-7)=7$ (era negativo, se toma el
+opuesto).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Resuelve $|x-3|=4$.
+
+**Solución.** $x-3=4$ o $x-3=-4$: $x=7$ o $x=-1$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Resuelve $|x-2|<5$.
+
+**Solución.** Por el teorema, con $a=2$, $r=5$: $2-5<x<2+5$, es decir $-3<x<7$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra la dirección ($\Rightarrow$) del lema $|y|<r\iff-r<y<r$
+con un ejemplo concreto: $y=-3$, $r=5$.
+
+**Solución.** $y=-3<0$, así que $|y|=-y=3$. Como $3<5$, se cumple $|y|<r$. Por la
+demostración del lema (caso $y<0$): de $|y|=-y<r$ se sigue $y>-r=-5$; y como
+$y=-3<0<5=r$, se tiene $-5<-3<5$: efectivamente $-r<y<r$. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Calcula $|0|$ y $|-3{,}5|$.
+
+<Solucion>
+
+$|0|=0$. $|-3{,}5|=3{,}5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Resuelve $|x+1|=6$.
+
+<Solucion>
+
+$x+1=6$ o $x+1=-6$: $x=5$ o $x=-7$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Resuelve $|x+4|\leq3$.
+
+<Solucion>
+
+$-3\leq x+4\leq3 \Rightarrow -7\leq x\leq-1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Resuelve $|x-5|>2$.
+
+<Solucion>
+
+Por el teorema, con $a=5$, $r=2$: $x<3$ o $x>7$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra la versión no estricta: $|x-a|\leq r$ ($r\geq0$) $\iff a-r\leq x\leq a+r$.
+
+<Solucion>
+
+Es idéntico al teorema de $|x-a|<r$, reemplazando cada desigualdad estricta por su
+versión no estricta en cada paso del lema y de la demostración: si $y\geq0$,
+$|y|=y\leq r$ da $-r\leq0\leq y\leq r$; si $y<0$, $|y|=-y\leq r$ da $y\geq-r$, y como
+$y<0\leq r$, se tiene $-r\leq y\leq r$. El recíproco es análogo. Sumando $a$ a
+$-r\leq x-a\leq r$ se obtiene $a-r\leq x\leq a+r$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra, usando De Morgan y el resultado del problema 5, que
+$|x-a|>r\iff x<a-r\vee x>a+r$.
+
+<Solucion>
+
+$|x-a|>r$ es la negación de $|x-a|\leq r$ (por tricotomía). Por el problema 5,
+$|x-a|\leq r\iff a-r\leq x\leq a+r$, es decir $x\geq a-r\wedge x\leq a+r$. Negando
+con De Morgan: $\neg(x\geq a-r\wedge x\leq a+r)\iff x<a-r\vee x>a+r$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "|x| se define como:",
+      opciones: ["Siempre x", "x si x≥0, y −x si x<0", "Siempre negativo", "x² "],
+      correcta: 1,
+      explicacion: "Es la definición por partes del valor absoluto.",
+    },
+    {
+      enunciado: "|x−a| representa geométricamente:",
+      opciones: ["El producto de x y a", "La distancia entre x y a en la recta numérica", "El punto medio entre x y a", "La suma de x y a"],
+      correcta: 1,
+      explicacion: "Es la interpretación geométrica central del valor absoluto.",
+    },
+    {
+      enunciado: "|x−a| < r (r>0) tiene como solución:",
+      opciones: ["x < a−r o x > a+r", "a−r < x < a+r", "x = a−r o x = a+r", "x > a+r solamente"],
+      correcta: 1,
+      explicacion: "Es un intervalo: los puntos cercanos a a, a menos de r de distancia.",
+    },
+    {
+      enunciado: "|x−a| > r (r>0) tiene como solución:",
+      opciones: ["a−r < x < a+r", "x < a−r o x > a+r", "x = a", "Ningún valor"],
+      correcta: 1,
+      explicacion: "Es la unión de dos rayos: los puntos lejos de a.",
+    },
+    {
+      enunciado: "La demostración de |x−a|>r ⟺ x<a−r ∨ x>a+r usa:",
+      opciones: ["Solo la definición de valor absoluto", "Tricotomía y la ley de De Morgan aplicada a la negación de la conjunción", "El teorema de Pitágoras", "La criba de Eratóstenes"],
+      correcta: 1,
+      explicacion: "Se obtiene negando |x−a|≤r, y esa negación de una conjunción se resuelve con De Morgan.",
+    },
+    {
+      enunciado: "|x−3| = 4 tiene como soluciones:",
+      opciones: ["Solo x=7", "Solo x=−1", "x=7 y x=−1", "No tiene solución"],
+      correcta: 2,
+      explicacion: "x−3=4 da x=7; x−3=−4 da x=−1. Ambas son soluciones.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Dar solo una solución al resolver $|x-a|=r$** — hay dos casos ($x-a=r$ y
+  $x-a=-r$), salvo que $r=0$.
+- **Confundir la solución de "menor que" con la de "mayor que"** — $|x-a|<r$ da un
+  **intervalo** (cerca de $a$); $|x-a|>r$ da **dos rayos** (lejos de $a$).
+- **Pensar que $|x|$ siempre es positivo** — es siempre **no negativo**; puede ser
+  $0$ (cuando $x=0$).
+- **Olvidar el caso $x<0$ al despejar un valor absoluto** — la definición por partes
+  exige considerar ambos casos, no solo asumir $|x|=x$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/ecuaciones-e-inecuaciones-de-primer-grado", label: "Ecuaciones e inecuaciones de primer grado con una variable" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/tautologia-contradiccion-y-leyes-logicas", label: "Tautología, contradicción y leyes lógicas" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado", label: "Ecuaciones e inecuaciones de segundo grado" },
+  ]}
+/>

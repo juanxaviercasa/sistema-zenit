@@ -192,6 +192,36 @@ const subtemasPotenciacionYRadicacion: Subtema[] = [
   subtema("calculo-de-raices-con-aproximacion", "Cálculo de raíces con aproximación"),
 ];
 
+const subtemasLogicaConjuntosNumerosReales: Subtema[] = [
+  subtema("proposiciones-y-operaciones-logicas", "Proposiciones y operaciones lógicas"),
+  subtema(
+    "tautologia-contradiccion-y-leyes-logicas",
+    "Tautología, contradicción y leyes lógicas"
+  ),
+  subtema("cuantificadores", "Cuantificadores"),
+  subtema(
+    "conjuntos-determinacion-y-conjuntos-especiales",
+    "Conjuntos: determinación, representación y conjuntos especiales"
+  ),
+  subtema(
+    "operaciones-entre-conjuntos-y-conjunto-potencia",
+    "Operaciones entre conjuntos y conjunto potencia"
+  ),
+  subtema(
+    "correspondencia-entre-proposiciones-y-conjuntos",
+    "Correspondencia entre proposiciones y conjuntos"
+  ),
+  subtema("numeros-reales-y-sus-propiedades", "Números reales y sus propiedades"),
+  subtema(
+    "ecuaciones-e-inecuaciones-de-primer-grado",
+    "Ecuaciones e inecuaciones de primer grado con una variable"
+  ),
+  subtema(
+    "valor-absoluto-ecuaciones-e-inecuaciones",
+    "Valor absoluto: ecuaciones e inecuaciones e interpretación gráfica"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -261,7 +291,9 @@ const algebra: Area = {
     tema(
       1,
       "logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones",
-      "Lógica, conjuntos, números reales, ecuaciones e inecuaciones"
+      "Lógica, conjuntos, números reales, ecuaciones e inecuaciones",
+      undefined,
+      subtemasLogicaConjuntosNumerosReales
     ),
     tema(
       2,

@@ -1,0 +1,260 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { DiagramaDeVenn, ConjuntoPotencia } from "@/components/interactive/algebra";
+
+# Operaciones entre conjuntos y conjunto potencia
+
+<Objetivo>
+
+Definir las operaciones entre conjuntos (unión, intersección, diferencia,
+complemento) mediante los conectivos lógicos, demostrar las leyes de De Morgan para
+conjuntos, y deducir la fórmula del cardinal del conjunto potencia.
+
+</Objetivo>
+
+## Marco teórico
+
+Cada operación entre conjuntos se define usando comprensión y el conectivo lógico
+correspondiente:
+
+$$
+A\cup B=\{x: x\in A\vee x\in B\}, \qquad A\cap B=\{x: x\in A\wedge x\in B\},
+$$
+
+$$
+A-B=\{x: x\in A\wedge x\notin B\}, \qquad A'=\{x\in U: x\notin A\}=U-A.
+$$
+
+**Enunciado (leyes de De Morgan para conjuntos).**
+
+$$
+(A\cup B)' = A'\cap B', \qquad (A\cap B)' = A'\cup B'.
+$$
+
+**Demostración (primera ley).** Un elemento $x$ pertenece a $(A\cup B)'$
+exactamente cuando **no** pertenece a $A\cup B$:
+
+$$
+x\in(A\cup B)' \iff x\notin(A\cup B) \iff \neg(x\in A\vee x\in B).
+$$
+
+Por la ley de De Morgan **lógica** (demostrada en un subtema anterior),
+$\neg(x\in A\vee x\in B)\equiv(x\notin A)\wedge(x\notin B)$, es decir
+$x\in A'\wedge x\in B'$, que es exactamente $x\in A'\cap B'$. Como $x\in(A\cup B)'$
+si y solo si $x\in A'\cap B'$, ambos conjuntos tienen los mismos elementos:
+$(A\cup B)'=A'\cap B'$. $\blacksquare$ (La segunda ley se demuestra igual, usando la
+otra ley de De Morgan lógica.)
+
+**Conjunto potencia.** $P(A)$ es el conjunto de **todos** los subconjuntos de $A$
+(incluyendo $\emptyset$ y $A$ mismo).
+
+**Enunciado.** $|P(A)|=2^{|A|}$.
+
+**Demostración.** Sea $|A|=n$. Para construir un subconjunto de $A$, se decide, para
+**cada** uno de los $n$ elementos, si está o no está incluido: $2$ posibilidades por
+elemento, decisiones independientes entre sí. Por el principio de multiplicación
+(visto en Aritmética), el número total de subconjuntos distintos es
+$\underbrace{2\times2\times\cdots\times2}_{n}=2^n$. $\blacksquare$
+
+## Visualización interactiva
+
+<DiagramaDeVenn />
+
+<ConjuntoPotencia />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Con $A=\{1,2,3\}$ y $B=\{2,3,4\}$, halla $A\cup B$ y $A\cap B$.
+
+**Solución.** $A\cup B=\{1,2,3,4\}$ (todos los elementos de ambos, sin repetir).
+$A\cap B=\{2,3\}$ (los que están en ambos).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Con los mismos $A,B$, halla $A-B$ y $B-A$.
+
+**Solución.** $A-B=\{1\}$ (elementos de $A$ que no están en $B$).
+$B-A=\{4\}$ (elementos de $B$ que no están en $A$). Nótese que $A-B\neq B-A$: la
+diferencia **no es conmutativa**.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Con $U=\{1,\ldots,10\}$ y $A=\{2,4,6,8,10\}$, halla $A'$.
+
+**Solución.** $A'=U-A=\{1,3,5,7,9\}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra la ley de De Morgan $(A\cap B)'=A'\cup B'$.
+
+**Solución.**
+
+$$
+\begin{aligned}
+x\in(A\cap B)' &\iff \neg(x\in A\wedge x\in B) \\
+&\iff (x\notin A)\vee(x\notin B) \\
+&\iff x\in A'\vee x\in B' \\
+&\iff x\in A'\cup B'.
+\end{aligned}
+$$
+
+(El segundo paso usa la ley de De Morgan lógica $\neg(p\wedge q)\equiv\neg p\vee\neg q$.)
+Como ambos conjuntos tienen los mismos elementos, $(A\cap B)'=A'\cup B'$.
+$\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Con $A=\{a,b,c\}$ y $B=\{b,c,d\}$, halla $A\cup B$.
+
+<Solucion>
+
+$A\cup B=\{a,b,c,d\}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Con los mismos $A,B$, halla $A\cap B$.
+
+<Solucion>
+
+$A\cap B=\{b,c\}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Con $U=\{1,\ldots,8\}$ y $A=\{1,3,5,7\}$, halla $A'$.
+
+<Solucion>
+
+$A'=\{2,4,6,8\}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla $|P(A)|$ para un conjunto $A$ con $4$ elementos.
+
+<Solucion>
+
+$|P(A)|=2^4=16$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra la segunda ley de De Morgan para conjuntos: $(A\cap B)'=A'\cup B'$, usando
+la definición por comprensión (sin repetir el ejemplo 4, hazlo con tus propias
+palabras).
+
+<Solucion>
+
+$x\in(A\cap B)'$ significa $x\notin(A\cap B)$, es decir, no ocurre que $x$ esté en
+$A$ y en $B$ a la vez. Por De Morgan lógica, eso equivale a "$x$ no está en $A$, o
+$x$ no está en $B$" — es decir, $x\in A'$ o $x\in B'$, que es $x\in A'\cup B'$. Como
+la equivalencia vale para todo $x$, los conjuntos son iguales. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $|P(A)|=2^{|A|}$ usando el principio de multiplicación.
+
+<Solucion>
+
+Con $|A|=n$, formar un subconjunto equivale a tomar $n$ decisiones independientes
+(una por elemento): "incluir" o "no incluir". Cada decisión tiene $2$ opciones, y
+hay $n$ decisiones, así que por el principio de multiplicación el total de
+subconjuntos distintos es $2^n$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "A ∪ B se define usando el conectivo:",
+      opciones: ["∧ (conjunción)", "∨ (disyunción)", "→ (condicional)", "⊕ (disyunción exclusiva)"],
+      correcta: 1,
+      explicacion: "x∈A∪B ⟺ x∈A ∨ x∈B.",
+    },
+    {
+      enunciado: "A − B se define como:",
+      opciones: ["{x : x∈A ∧ x∉B}", "{x : x∈A ∨ x∈B}", "{x : x∉A ∧ x∉B}", "{x : x∈B}"],
+      correcta: 0,
+      explicacion: "Elementos que están en A pero no en B.",
+    },
+    {
+      enunciado: "(A∪B)' es igual a:",
+      opciones: ["A'∪B'", "A'∩B'", "A∩B", "A∪B"],
+      correcta: 1,
+      explicacion: "Primera ley de De Morgan para conjuntos: el complemento de la unión es la intersección de los complementos.",
+    },
+    {
+      enunciado: "¿A − B es igual a B − A en general?",
+      opciones: ["Sí, siempre", "No, la diferencia no es conmutativa", "Solo si A=B", "Solo si son disjuntos"],
+      correcta: 1,
+      explicacion: "Salvo casos especiales, A−B y B−A son conjuntos distintos.",
+    },
+    {
+      enunciado: "|P(A)| = 2^|A| se demuestra usando:",
+      opciones: ["El algoritmo de Euclides", "El principio de multiplicación (2 opciones por elemento)", "La criba de Eratóstenes", "El teorema de Pitágoras"],
+      correcta: 1,
+      explicacion: "Cada elemento puede estar o no estar en un subconjunto: 2 opciones independientes por elemento.",
+    },
+    {
+      enunciado: "P(A) siempre incluye:",
+      opciones: ["Solo los subconjuntos propios", "El conjunto vacío y el propio A", "Solo conjuntos unitarios", "Ningún subconjunto de tamaño par"],
+      correcta: 1,
+      explicacion: "∅ y A mismo son siempre subconjuntos de A, así que ambos pertenecen a P(A).",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir unión con intersección** — unión usa "o" (∨, más elementos);
+  intersección usa "y" (∧, elementos compartidos).
+- **Pensar que $A-B=B-A$** — la diferencia de conjuntos no es conmutativa, igual que
+  la resta de números.
+- **Aplicar mal De Morgan para conjuntos** — al complementar una unión se obtiene la
+  intersección de los complementos (y viceversa); no se puede "repartir" el
+  complemento sin cambiar la operación.
+- **Olvidar contar $\emptyset$ y $A$ mismo** al listar $P(A)$ — ambos son siempre
+  elementos del conjunto potencia.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/conjuntos-determinacion-y-conjuntos-especiales", label: "Conjuntos: determinación, representación y conjuntos especiales" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/tautologia-contradiccion-y-leyes-logicas", label: "Tautología, contradicción y leyes lógicas" },
+    { href: "/matematica/aritmetica/probabilidad/principios-de-conteo-multiplicacion-adicion-y-factorial", label: "Principios de conteo" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/correspondencia-entre-proposiciones-y-conjuntos", label: "Correspondencia entre proposiciones y conjuntos" },
+  ]}
+/>

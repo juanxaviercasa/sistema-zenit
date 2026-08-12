@@ -1,0 +1,259 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { DeterminacionDeConjuntos } from "@/components/interactive/algebra";
+
+# Conjuntos: determinación, representación y conjuntos especiales
+
+<Objetivo>
+
+Determinar conjuntos por extensión y por comprensión, definir formalmente la
+pertenencia y la inclusión mediante cuantificadores, y demostrar propiedades de la
+inclusión y de los conjuntos especiales (vacío, unitario, universal).
+
+</Objetivo>
+
+## Marco teórico
+
+Un **conjunto** es una colección bien definida de objetos, llamados sus
+**elementos**. Se representa gráficamente con un **diagrama de Venn**: una región
+cerrada que contiene puntos o etiquetas por cada elemento.
+
+**Determinación por extensión**: se listan todos los elementos entre llaves, por
+ejemplo $A=\{2,4,6,8,10\}$.
+
+**Determinación por comprensión**: se da una propiedad que caracteriza exactamente a
+los elementos, por ejemplo $A=\{x\in\mathbb N : x \text{ es par},\ 2\leq x\leq10\}$
+— nótese que esto es exactamente un predicado $P(x)$ sobre un dominio, como los del
+subtema de cuantificadores: $x\in A \iff P(x)$.
+
+**Pertenencia** ($\in$): $x\in A$ significa que $x$ es uno de los elementos de $A$.
+**Inclusión** ($\subseteq$): formalmente,
+
+$$
+A\subseteq B \iff \forall x,\ (x\in A \rightarrow x\in B).
+$$
+
+Es decir, $A$ está incluido en $B$ exactamente cuando **todo** elemento de $A$ es
+también elemento de $B$ — la definición usa directamente el cuantificador universal
+y el condicional de los subtemas anteriores.
+
+**Enunciado (transitividad de la inclusión).** Si $A\subseteq B$ y $B\subseteq C$,
+entonces $A\subseteq C$.
+
+**Demostración.** Sea $x\in A$ arbitrario. Como $A\subseteq B$, se cumple $x\in B$.
+Como $B\subseteq C$, se cumple $x\in C$. Como $x$ era un elemento **arbitrario** de
+$A$, esto vale para todo elemento de $A$: $A\subseteq C$. $\blacksquare$
+
+**Igualdad de conjuntos.** $A=B$ si y solo si $A\subseteq B$ y $B\subseteq A$ (deben
+tener exactamente los mismos elementos).
+
+**Conjuntos especiales:**
+
+- **Conjunto vacío** ($\emptyset$): el conjunto sin elementos.
+- **Conjunto unitario**: un conjunto con exactamente un elemento.
+- **Conjunto universal** ($U$): el conjunto que contiene a todos los elementos
+  considerados en un contexto dado (relativo a ese contexto, no absoluto).
+
+**Enunciado.** El conjunto vacío está incluido en **cualquier** conjunto:
+$\emptyset\subseteq A$, para todo $A$.
+
+**Demostración.** Por definición, $\emptyset\subseteq A$ significa
+$\forall x,\ (x\in\emptyset\rightarrow x\in A)$. Como $\emptyset$ no tiene ningún
+elemento, el antecedente $x\in\emptyset$ es **siempre falso**, sin importar qué $x$
+se elija. Por la definición del condicional (subtema 1: "verdad vacía"), un
+condicional con antecedente falso es automáticamente verdadero. Así que
+$x\in\emptyset\rightarrow x\in A$ es verdadera para todo $x$ — vacuamente, porque
+nunca hay que verificar nada — y por lo tanto $\emptyset\subseteq A$. $\blacksquare$
+
+## Visualización interactiva
+
+<DeterminacionDeConjuntos />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Determina por extensión $A=\{x\in\mathbb N : x \text{ es impar},\
+x<10\}$.
+
+**Solución.** $A=\{1,3,5,7,9\}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Determina por comprensión el conjunto $B=\{2,4,6,8\}$.
+
+**Solución.** $B=\{x\in\mathbb N : x \text{ es par},\ 2\leq x\leq8\}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Verifica que $\{3\}\subseteq\{1,2,3,4\}$.
+
+**Solución.** El único elemento de $\{3\}$ es $3$, y $3\in\{1,2,3,4\}$. Por lo
+tanto, todo elemento de $\{3\}$ pertenece a $\{1,2,3,4\}$: la inclusión se cumple.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica, con $A=\{1,2,3\}$, que $\emptyset\subseteq A$.
+
+**Solución.** Hay que verificar $\forall x,\ (x\in\emptyset\rightarrow x\in A)$.
+Como ningún $x$ satisface $x\in\emptyset$, la implicación tiene antecedente falso en
+**todos** los casos posibles — así que es verdadera en todos, vacuamente. La
+inclusión se cumple sin necesidad de revisar ningún elemento concreto de $A$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Determina por extensión $C=\{x\in\mathbb N : x^2<20\}$ (con $0\in\mathbb N$).
+
+<Solucion>
+
+$C=\{0,1,2,3,4\}$ (porque $4^2=16<20$ pero $5^2=25\not<20$).
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Determina por comprensión $D=\{5,10,15,20\}$.
+
+<Solucion>
+
+$D=\{x\in\mathbb N : x \text{ es múltiplo de }5,\ 5\leq x\leq20\}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Verifica si $\{1,2\}\subseteq\{1,2,3\}$.
+
+<Solucion>
+
+Ambos elementos de $\{1,2\}$ ($1$ y $2$) pertenecen a $\{1,2,3\}$: sí se cumple la
+inclusión.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Es $\{0\}=\emptyset$?
+
+<Solucion>
+
+No. $\{0\}$ tiene exactamente un elemento (el número $0$), mientras que $\emptyset$
+no tiene ningún elemento. Son conjuntos distintos, aunque "$0$" suene a "nada".
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que la relación de inclusión es **reflexiva**: $A\subseteq A$ para todo
+conjunto $A$.
+
+<Solucion>
+
+$A\subseteq A$ significa $\forall x,\ (x\in A\rightarrow x\in A)$. Esta implicación
+es siempre verdadera (el condicional $p\rightarrow p$ es una tautología, ya que
+nunca puede tener antecedente V y consecuente F si ambos son la misma proposición).
+Por lo tanto $A\subseteq A$ para cualquier $A$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $A=B$ si y solo si $A\subseteq B$ y $B\subseteq A$.
+
+<Solucion>
+
+($\Rightarrow$) Si $A=B$, entonces todo elemento de $A$ es elemento de $B$ (son el
+mismo conjunto) y viceversa: $A\subseteq B$ y $B\subseteq A$.
+
+($\Leftarrow$) Si $A\subseteq B$, todo elemento de $A$ está en $B$. Si además
+$B\subseteq A$, todo elemento de $B$ está en $A$. Entonces $A$ y $B$ tienen
+exactamente los mismos elementos (ninguno está en uno sin estar en el otro), así que
+$A=B$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Determinar un conjunto por comprensión significa:",
+      opciones: ["Listar todos sus elementos", "Dar una propiedad que caracteriza a sus elementos", "Dibujar un diagrama de Venn", "Contar cuántos elementos tiene"],
+      correcta: 1,
+      explicacion: "Por extensión se listan los elementos; por comprensión se da el predicado P(x) que los define.",
+    },
+    {
+      enunciado: "A ⊆ B se define formalmente como:",
+      opciones: ["∀x, (x∈A → x∈B)", "∃x, (x∈A ∧ x∈B)", "A = B", "∀x, x∈A"],
+      correcta: 0,
+      explicacion: "Todo elemento de A debe ser elemento de B.",
+    },
+    {
+      enunciado: "∅ ⊆ A para todo A es verdadera porque:",
+      opciones: ["A siempre contiene al 0", "El condicional x∈∅→x∈A tiene antecedente siempre falso, así que es verdadero vacuamente", "∅ tiene un elemento especial", "Es una convención sin justificación"],
+      correcta: 1,
+      explicacion: "Reutiliza la 'verdad vacía' del condicional: antecedente falso hace el condicional verdadero.",
+    },
+    {
+      enunciado: "{0} y ∅ son:",
+      opciones: ["El mismo conjunto", "Conjuntos distintos: {0} tiene un elemento, ∅ no tiene ninguno", "Ambos vacíos", "Ambos unitarios"],
+      correcta: 1,
+      explicacion: "Un error frecuente es confundirlos; {0} es unitario, ∅ no tiene elementos.",
+    },
+    {
+      enunciado: "La inclusión es reflexiva porque:",
+      opciones: ["A⊆A siempre, ya que x∈A→x∈A es una tautología", "Ningún conjunto se contiene a sí mismo", "Solo aplica a conjuntos finitos", "Requiere que A sea vacío"],
+      correcta: 0,
+      explicacion: "p→p es siempre verdadera, así que todo elemento de A trivialmente está en A.",
+    },
+    {
+      enunciado: "A = B si y solo si:",
+      opciones: ["A∩B = ∅", "A⊆B y B⊆A", "A tiene más elementos que B", "A∪B = A"],
+      correcta: 1,
+      explicacion: "Es el criterio de doble inclusión para la igualdad de conjuntos.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir $\in$ (pertenencia) con $\subseteq$ (inclusión)** — $\in$ relaciona un
+  elemento con un conjunto; $\subseteq$ relaciona dos conjuntos entre sí. $3\in A$ es
+  correcto, pero $3\subseteq A$ no tiene sentido salvo que se use $\{3\}\subseteq A$.
+- **Pensar que $\{0\}=\emptyset$** — son conjuntos distintos: uno tiene un elemento,
+  el otro ninguno.
+- **Olvidar que $\emptyset\subseteq A$ vale para todo $A$**, incluso
+  $\emptyset\subseteq\emptyset$.
+- **Creer que la pertenencia admite grados** — un elemento pertenece o no pertenece a
+  un conjunto; no existe "pertenecer parcialmente".
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/cuantificadores", label: "Cuantificadores" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/operaciones-entre-conjuntos-y-conjunto-potencia", label: "Operaciones entre conjuntos y conjunto potencia" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/correspondencia-entre-proposiciones-y-conjuntos", label: "Correspondencia entre proposiciones y conjuntos" },
+  ]}
+/>
