@@ -1,0 +1,267 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { AproximacionDeIrracionales } from "@/components/interactive/aritmetica";
+
+# Números irracionales: representación decimal y aproximación por racionales
+
+<Objetivo>
+
+Definir los números irracionales por su expresión decimal no periódica, demostrar que
+$\sqrt2$ es irracional usando el teorema fundamental de la aritmética, y acotar el
+error al aproximar un irracional por un racional.
+
+</Objetivo>
+
+## Marco teórico
+
+En el subtema anterior se demostró que **todo racional** tiene una expresión decimal
+exacta o periódica. Un **número irracional** es, precisamente, un número cuya
+expresión decimal es infinita y **nunca** se vuelve periódica — por el resultado
+anterior, un número así no puede ser racional.
+
+**Enunciado.** $\sqrt2$ es irracional.
+
+**Demostración.** Supongamos, por contradicción, que $\sqrt2$ es racional:
+$\sqrt2=p/q$ con $p,q$ enteros positivos y $\gcd(p,q)=1$ (fracción reducida).
+Elevando al cuadrado: $2=p^2/q^2$, es decir:
+
+$$
+p^2 = 2q^2.
+$$
+
+Por el teorema fundamental de la aritmética, cada entero tiene una descomposición
+canónica única; comparemos el **exponente del primo $2$** a ambos lados. Al elevar un
+entero al cuadrado, todos los exponentes de su descomposición se duplican — así que
+el exponente de $2$ en $p^2$ es **par**. En cambio, el exponente de $2$ en $2q^2$ es
+$1$ más el doble del exponente de $2$ en $q$ — así que es **impar**. Pero
+$p^2=2q^2$ significa que ambos lados son el mismo entero, y por la unicidad de la
+descomposición canónica deben tener el mismo exponente de $2$. Un número no puede ser
+par e impar a la vez: contradicción. Por lo tanto, no existe tal fracción $p/q$, y
+$\sqrt2$ es irracional. $\blacksquare$
+
+**Aproximación de un irracional por racionales.** Si $\alpha$ es irracional y
+$\alpha_n$ es su expresión decimal **truncada** a $n$ cifras (se cortan las cifras
+siguientes sin redondear), entonces:
+
+$$
+0 \leq \alpha - \alpha_n < 10^{-n}.
+$$
+
+**Demostración.** $\alpha_n$ conserva las primeras $n$ cifras decimales de $\alpha$
+exactas, así que $\alpha-\alpha_n$ es un número cuya parte entera es $0$ y cuyas
+primeras $n$ cifras decimales también son $0$ — es decir, $\alpha-\alpha_n$ es, como
+mucho, $0{,}\underbrace{00\cdots0}_{n}\overline{9}$, y por el resultado del subtema
+anterior ($0{,}\overline9=1$), ese valor límite es exactamente $10^{-n}$. Como
+$\alpha$ es irracional, su cola decimal nunca es todo nueves, así que la desigualdad
+es estricta: $\alpha-\alpha_n<10^{-n}$. Esto significa que truncar en la cifra $n$
+aproxima a $\alpha$ con un error menor que $10^{-n}$ — se puede acercar tanto como se
+quiera aumentando $n$, pero nunca alcanzarlo exactamente (porque $\alpha_n$ es
+racional y $\alpha$ no lo es). $\blacksquare$
+
+## Visualización interactiva
+
+<AproximacionDeIrracionales />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** ¿Por qué $0{,}101001000100001\ldots$ (un cero más entre cada $1$) es
+irracional?
+
+**Solución.** Su expresión decimal no tiene ningún bloque de cifras que se repita
+periódicamente: el número de ceros entre unos crece indefinidamente ($1,2,3,4,\ldots$),
+así que ningún período fijo puede describirlo. Por lo tanto no es racional: es
+irracional.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Trunca $\pi$ a $3$ cifras decimales y da la cota de error.
+
+**Solución.** $\pi=3{,}14159\ldots$, así que $\pi_3=3{,}141$. La cota de error es
+$10^{-3}=0{,}001$ (el error real es $\pi-3{,}141\approx0{,}00059$, menor que la
+cota).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Aproxima $\sqrt3$ con $2$ cifras decimales y verifica la cota de
+error.
+
+**Solución.** $\sqrt3=1{,}7320508\ldots$, así que la aproximación truncada es
+$1{,}73$. El error es $\sqrt3-1{,}73\approx0{,}0020508$, y la cota es
+$10^{-2}=0{,}01$. En efecto, $0{,}0020508<0{,}01$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que $\sqrt3$ es irracional.
+
+**Solución.** Igual que con $\sqrt2$: si $\sqrt3=p/q$ (reducida), entonces
+$p^2=3q^2$. El exponente de $3$ en $p^2$ es par (el doble del exponente de $3$ en
+$p$); el exponente de $3$ en $3q^2$ es impar ($1$ más el doble del exponente de $3$
+en $q$). Por la unicidad de la descomposición canónica, esto es una contradicción.
+$\sqrt3$ es irracional. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Determina si $0{,}454545\ldots$ es racional o irracional.
+
+<Solucion>
+
+Es periódica (período $45$), así que es racional: su generatriz es
+$45/99=5/11$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Aproxima $\sqrt2$ con $3$ cifras decimales y da la cota de error.
+
+<Solucion>
+
+$\sqrt2=1{,}41421\ldots \approx 1{,}414$. Cota de error: $10^{-3}=0{,}001$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Demuestra que $\sqrt5$ es irracional.
+
+<Solucion>
+
+Si $\sqrt5=p/q$ (reducida), $p^2=5q^2$. El exponente de $5$ en $p^2$ es par; en
+$5q^2$ es impar. Contradicción por la unicidad de la descomposición canónica.
+$\sqrt5$ es irracional. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla la aproximación racional de $\pi$ truncada con denominador $1000$, y su error.
+
+<Solucion>
+
+$\pi\approx3{,}14159\ldots$, truncado a $3$ cifras: $3141/1000=3{,}141$. Error
+$\approx0{,}00059<10^{-3}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $\sqrt{p}$ es irracional para **cualquier** primo $p$.
+
+<Solucion>
+
+Supongamos $\sqrt p=a/b$ (reducida). Entonces $a^2=pb^2$. El exponente de $p$ en
+$a^2$ es par (el doble del exponente de $p$ en $a$). El exponente de $p$ en $pb^2$
+es impar ($1$ más el doble del exponente de $p$ en $b$). Por la unicidad de la
+descomposición canónica, ambos exponentes deben coincidir — contradicción. Por lo
+tanto $\sqrt p$ es irracional para todo primo $p$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $N=p_1^{a_1}\cdots p_k^{a_k}$ no es un cuadrado perfecto (por el
+criterio del tema anterior, algún exponente $a_i$ es impar), entonces $\sqrt N$ es
+irracional.
+
+<Solucion>
+
+Sea $a_i$ un exponente impar de $N$. Supongamos $\sqrt N=p/q$ (reducida); entonces
+$p^2=Nq^2$. El exponente del primo $p_i$ en $p^2$ es par. El exponente de $p_i$ en
+$Nq^2$ es $a_i$ (impar) más el doble del exponente de $p_i$ en $q$ (par) — es decir,
+impar $+$ par $=$ impar. Por la unicidad de la descomposición canónica, ambos
+exponentes de $p_i$ deben coincidir, pero uno es par y el otro impar: contradicción.
+Por lo tanto $\sqrt N$ es irracional. $\blacksquare$ (Este resultado generaliza los
+dos anteriores: $\sqrt2$ y $\sqrt3$ son casos particulares con $N=2$ y $N=3$, ambos
+con exponente impar $1$.)
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Un número irracional se caracteriza por tener una expresión decimal:",
+      opciones: ["Exacta", "Periódica pura", "Infinita y no periódica", "Siempre negativa"],
+      correcta: 2,
+      explicacion: "Es la definición: si fuera exacta o periódica, sería racional.",
+    },
+    {
+      enunciado: "La demostración de que √2 es irracional usa:",
+      opciones: ["La criba de Eratóstenes", "La unicidad de la descomposición canónica (paridad de exponentes)", "El algoritmo de Euclides", "La función de Euler"],
+      correcta: 1,
+      explicacion: "Compara la paridad del exponente de 2 en p² y en 2q², que deben coincidir por unicidad.",
+    },
+    {
+      enunciado: "Si p² = 2q² con p,q enteros, el exponente de 2 en p² siempre es:",
+      opciones: ["Impar", "Par", "Cero", "Igual al exponente de 2 en q"],
+      correcta: 1,
+      explicacion: "Al elevar al cuadrado, todos los exponentes de la descomposición canónica se duplican.",
+    },
+    {
+      enunciado: "Al truncar un irracional α en la cifra n, el error α−αₙ cumple:",
+      opciones: ["Es exactamente 10⁻ⁿ", "Es menor que 10⁻ⁿ", "Es mayor que 10⁻ⁿ", "Es siempre 0"],
+      correcta: 1,
+      explicacion: "La cola decimal después de la cifra n nunca llega a ser todo nueves (eso daría exactamente 10⁻ⁿ).",
+    },
+    {
+      enunciado: "√N es irracional cuando N no es un cuadrado perfecto porque:",
+      opciones: ["N es negativo", "Algún exponente de su descomposición canónica es impar, lo que genera una contradicción de paridad", "N es primo siempre", "√N siempre es negativo"],
+      correcta: 1,
+      explicacion: "Es la generalización de la prueba de √2 y √3 a cualquier N no cuadrado perfecto.",
+    },
+    {
+      enunciado: "¿Se puede alcanzar exactamente un irracional truncando su expresión decimal?",
+      opciones: ["Sí, con suficientes cifras", "No, porque la aproximación truncada siempre es racional", "Sí, siempre con 10 cifras", "Solo para √2"],
+      correcta: 1,
+      explicacion: "Cualquier truncamiento tiene decimal exacta (racional); el irracional nunca se alcanza exactamente.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Pensar que una decimal "muy larga" es automáticamente irracional** — lo que
+  importa no es la longitud, sino si existe o no un período que se repita para
+  siempre.
+- **Olvidar suponer la fracción reducida ($\gcd(p,q)=1$)** al iniciar la demostración
+  por contradicción de la irracionalidad de una raíz — sin esa hipótesis, el
+  argumento de paridad de exponentes no lleva a contradicción.
+- **Confundir "aproximación" con "igualdad"** — $1{,}414$ es una aproximación
+  racional de $\sqrt2$, no es igual a $\sqrt2$.
+- **Creer que basta con un ejemplo (como $\sqrt2$) para todos los casos** — cada raíz
+  de un número que no es cuadrado perfecto requiere (o se deduce de) el mismo
+  argumento de paridad, generalizado en el problema 6.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-primos/numeros-primos-y-compuestos-teorema-fundamental-y-criba-de-eratostenes", label: "Números primos y compuestos: teorema fundamental y criba de Eratóstenes" },
+    { href: "/matematica/aritmetica/numeros-racionales-e-irracionales/expresiones-decimales-periodicas-y-generatriz", label: "Expresiones decimales periódicas y generatriz de una expresión decimal" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion", label: "Potenciación y radicación" },
+  ]}
+/>

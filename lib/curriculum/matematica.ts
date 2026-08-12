@@ -166,6 +166,22 @@ const subtemasNumerosPrimos: Subtema[] = [
   subtema("mcd-mcm-y-algoritmo-de-euclides", "MCD, MCM y el algoritmo de Euclides"),
 ];
 
+const subtemasNumerosRacionalesEIrracionales: Subtema[] = [
+  subtema(
+    "numeros-racionales-extension-densidad-y-operaciones",
+    "Números racionales: extensión de los enteros, densidad y operaciones"
+  ),
+  subtema("fracciones-ordinarias-y-decimales", "Fracciones ordinarias y decimales"),
+  subtema(
+    "expresiones-decimales-periodicas-y-generatriz",
+    "Expresiones decimales periódicas y generatriz de una expresión decimal"
+  ),
+  subtema(
+    "numeros-irracionales-representacion-y-aproximacion",
+    "Números irracionales: representación decimal y aproximación por racionales"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -209,7 +225,13 @@ const aritmetica: Area = {
     ),
     tema(9, "divisibilidad", "Divisibilidad", undefined, subtemasDivisibilidad),
     tema(10, "numeros-primos", "Números primos", undefined, subtemasNumerosPrimos),
-    tema(11, "numeros-racionales-e-irracionales", "Números racionales e irracionales"),
+    tema(
+      11,
+      "numeros-racionales-e-irracionales",
+      "Números racionales e irracionales",
+      undefined,
+      subtemasNumerosRacionalesEIrracionales
+    ),
     tema(12, "potenciacion-y-radicacion", "Potenciación y radicación"),
   ],
 };

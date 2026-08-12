@@ -1,0 +1,260 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { GeneratrizDecimal } from "@/components/interactive/aritmetica";
+
+# Expresiones decimales periódicas y generatriz de una expresión decimal
+
+<Objetivo>
+
+Clasificar las expresiones decimales periódicas en puras y mixtas, y deducir —por
+manipulación algebraica, no de memoria— la fórmula que convierte una decimal
+periódica de vuelta a su fracción generatriz.
+
+</Objetivo>
+
+## Marco teórico
+
+Una decimal **periódica pura** repite su período justo después del punto decimal:
+$0{,}\overline{27}=0{,}272727\ldots$ Una decimal **periódica mixta** tiene primero
+algunas cifras que no se repiten, y luego el período:
+$0{,}1\overline{6}=0{,}1666\ldots$
+
+**Generatriz de una periódica pura.** Sea $x=0{,}\overline{a_1a_2\cdots a_k}$, y sea
+$N$ el entero formado por las cifras del período ($N=\overline{a_1a_2\cdots a_k}$).
+
+**Demostración.** Multiplicando $x$ por $10^k$ se corre el punto decimal $k$ lugares:
+
+$$
+10^k x = a_1a_2\cdots a_k{,}\overline{a_1a_2\cdots a_k} = N + x
+$$
+
+(la parte decimal de $10^kx$ es exactamente el mismo período que el de $x$, porque el
+período tiene longitud $k$). Despejando:
+
+$$
+10^kx - x = N \;\Longrightarrow\; x(10^k-1)=N \;\Longrightarrow\; x=\frac{N}{10^k-1}.
+\qquad\blacksquare
+$$
+
+El denominador $10^k-1$ se escribe con $k$ nueves ($9$, $99$, $999,\ldots$).
+
+**Generatriz de una periódica mixta.** Sea $x=0{,}\underbrace{b_1\cdots
+b_m}_{\text{no periódica}}\overline{a_1\cdots a_k}$, con $N_b$ el entero de la parte
+no periódica y $N_a$ el entero del período.
+
+**Demostración.** Multiplicando por $10^m$ se corre el punto decimal hasta el final
+de la parte no periódica, dejando una periódica pura:
+
+$$
+10^mx = N_b + 0{,}\overline{a_1\cdots a_k} = N_b + \frac{N_a}{10^k-1}
+$$
+
+(usando la fórmula ya demostrada para la parte periódica pura restante). Multiplicando
+ambos lados por $(10^k-1)$:
+
+$$
+10^m(10^k-1)\,x = N_b(10^k-1)+N_a = \underbrace{N_b\cdot10^k+N_a}_{\text{todas las
+cifras juntas}} - N_b.
+$$
+
+El término $N_b\cdot10^k+N_a$ es exactamente el entero formado por **todas** las
+cifras (la parte no periódica seguida de un período). Así que:
+
+$$
+x = \frac{(\text{todas las cifras}) - (\text{parte no periódica})}{\underbrace{9\cdots9}_{k}\underbrace{0\cdots0}_{m}}.
+\qquad\blacksquare
+$$
+
+## Visualización interactiva
+
+<GeneratrizDecimal />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla la generatriz de $0{,}\overline{3}$.
+
+**Solución.** $k=1$, $N=3$: $x=\dfrac{3}{10-1}=\dfrac39=\dfrac13$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla la generatriz de $0{,}\overline{27}$.
+
+**Solución.** $k=2$, $N=27$: $x=\dfrac{27}{99}=\dfrac{3}{11}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla la generatriz de $0{,}1\overline{6}$.
+
+**Solución.** $m=1$ ($N_b=1$), $k=1$ ($N_a=6$). Todas las cifras: $16$. Numerador
+$=16-1=15$. Denominador $=9\times10=90$. $x=\dfrac{15}{90}=\dfrac16$. (Verificación:
+$1/6=0{,}1666\ldots$ ✓.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que $0{,}\overline{9}=1$.
+
+**Solución.** Sea $x=0{,}\overline9$. Por la fórmula (o repitiendo la demostración):
+$10x=9{,}\overline9=9+x$, así que $9x=9$, es decir $x=1$. Aunque parezca
+sorprendente, $0{,}\overline9$ y $1$ son el **mismo** número real, no dos números
+distintos "casi iguales". $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla la generatriz de $0{,}\overline5$.
+
+<Solucion>
+
+$x=\dfrac59$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla la generatriz de $0{,}\overline{18}$.
+
+<Solucion>
+
+$x=\dfrac{18}{99}=\dfrac{2}{11}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla la generatriz de $0{,}5\overline3$.
+
+<Solucion>
+
+Todas las cifras: $53$. Numerador $=53-5=48$. Denominador $=9\times10=90$.
+$x=\dfrac{48}{90}=\dfrac{8}{15}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla la generatriz de $0{,}4\overline2$.
+
+<Solucion>
+
+Todas las cifras: $42$. Numerador $=42-4=38$. Denominador $=9\times10=90$.
+$x=\dfrac{38}{90}=\dfrac{19}{45}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $0{,}4\overline9=0{,}5$.
+
+<Solucion>
+
+Todas las cifras: $49$. Numerador $=49-4=45$. Denominador $=90$.
+$x=\dfrac{45}{90}=\dfrac12=0{,}5$. (Este es el mismo fenómeno que
+$0{,}\overline9=1$: toda decimal exacta tiene también una representación periódica
+con período $9$.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que todo número racional tiene una expresión decimal exacta o periódica —
+nunca puede tener infinitas cifras decimales sin ningún patrón que se repita.
+
+<Solucion>
+
+En la división larga de $a$ entre $b$, cada resto obtenido es un entero entre $0$ y
+$b-1$: hay solo $b$ restos posibles. Si en algún paso el resto es $0$, la decimal
+termina (es exacta). Si nunca es $0$, entonces entre los primeros $b+1$ restos
+generados, por el principio del palomar, dos deben ser iguales. En cuanto un resto se
+repite, el bloque de cifras entre esas dos apariciones vuelve a repetirse
+indefinidamente, porque el resto determina completamente los pasos siguientes de la
+división. En ambos casos, la decimal es exacta o periódica. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Una decimal periódica pura es aquella donde:",
+      opciones: ["El período empieza justo después del punto decimal", "Hay cifras no periódicas antes del período", "La decimal termina", "Todas las cifras son iguales"],
+      correcta: 0,
+      explicacion: "Es la definición de periódica pura, en contraste con la mixta.",
+    },
+    {
+      enunciado: "Para 0,‾abc (período de 3 cifras), el denominador de la generatriz es:",
+      opciones: ["999", "1000", "99", "3"],
+      correcta: 0,
+      explicacion: "Se usan tantos nueves como cifras tenga el período: 10³-1=999.",
+    },
+    {
+      enunciado: "La técnica para deducir la fórmula de la generatriz consiste en:",
+      opciones: ["Multiplicar por 10^k y restar x para eliminar la parte periódica", "Sumar todas las cifras", "Dividir entre 2", "Usar la criba de Eratóstenes"],
+      correcta: 0,
+      explicacion: "10^k x - x = N, un entero, porque el período se cancela al restar.",
+    },
+    {
+      enunciado: "En la generatriz de una periódica mixta, el numerador es:",
+      opciones: ["Todas las cifras juntas más la parte no periódica", "Todas las cifras juntas menos la parte no periódica", "Solo el período", "Solo la parte no periódica"],
+      correcta: 1,
+      explicacion: "Numerador = (parte no periódica + un período, como entero) − (parte no periódica).",
+    },
+    {
+      enunciado: "0,‾9 es igual a:",
+      opciones: ["Un número menor que 1 pero muy cercano", "Exactamente 1", "0,9 solamente", "No está definido"],
+      correcta: 1,
+      explicacion: "10x-x=9 da x=1: son el mismo número real, no dos valores distintos.",
+    },
+    {
+      enunciado: "Todo número racional tiene una expresión decimal que es:",
+      opciones: ["Siempre exacta", "Siempre periódica pura", "Exacta o periódica (nunca infinita sin patrón)", "Siempre irracional"],
+      correcta: 2,
+      explicacion: "Por el principio del palomar aplicado a los restos de la división larga, con a lo sumo b restos posibles.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir el número de nueves del denominador con el total de cifras decimales**
+  — el número de nueves es igual a la longitud del **período**, sin contar la parte
+  no periódica.
+- **Olvidar restar la parte no periódica** al calcular el numerador en la fórmula
+  mixta — el numerador es (todas las cifras) **menos** (la parte no periódica), no
+  solo el período.
+- **Creer que $0{,}\overline9$ es "casi" $1$ pero no exactamente igual** — la
+  demostración algebraica muestra que son el mismo número real.
+- **Invertir el orden de nueves y ceros en el denominador** — los nueves (cantidad =
+  cifras del período) van primero, los ceros (cantidad = cifras no periódicas) van
+  después.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-racionales-e-irracionales/fracciones-ordinarias-y-decimales", label: "Fracciones ordinarias y decimales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-racionales-e-irracionales/numeros-irracionales-representacion-y-aproximacion", label: "Números irracionales: representación decimal y aproximación por racionales" },
+  ]}
+/>

@@ -35,3 +35,7 @@ export { VerificadorDePrimalidad } from "./verificador-de-primalidad";
 export { DescomposicionCanonica } from "./descomposicion-canonica";
 export { FuncionDeEuler } from "./funcion-de-euler";
 export { AlgoritmoDeEuclides } from "./algoritmo-de-euclides";
+export { DensidadDeRacionales } from "./densidad-de-racionales";
+export { ConversorFraccionADecimal } from "./conversor-fraccion-a-decimal";
+export { GeneratrizDecimal } from "./generatriz-decimal";
+export { AproximacionDeIrracionales } from "./aproximacion-de-irracionales";
