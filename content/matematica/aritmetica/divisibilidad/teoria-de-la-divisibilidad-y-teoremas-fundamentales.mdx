@@ -1,0 +1,265 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ExploradorDeTeoremasDeDivisibilidad } from "@/components/interactive/aritmetica";
+
+# Teoría de la divisibilidad y teoremas fundamentales
+
+<Objetivo>
+
+Definir formalmente la divisibilidad entre enteros y demostrar los teoremas
+fundamentales que permiten combinar relaciones de divisibilidad sin necesidad de
+efectuar las divisiones directamente.
+
+</Objetivo>
+
+## Marco teórico
+
+**Definición.** Un entero $a$ **divide** a un entero $b$ (se escribe $a \mid b$) si
+existe un entero $k$ tal que:
+
+$$
+b = a \cdot k.
+$$
+
+Se dice también que $b$ es **múltiplo** de $a$, o que $a$ es **divisor** de $b$.
+
+**Enunciado (Teorema 1 — suma y diferencia).** Si $a \mid b$ y $a \mid c$, entonces
+$a \mid (b+c)$ y $a \mid (b-c)$.
+
+**Demostración.**
+
+**Paso 1 — usar la definición.** Como $a \mid b$, existe $k_1 \in \mathbb{Z}$ tal que
+$b = ak_1$. Como $a \mid c$, existe $k_2 \in \mathbb{Z}$ tal que $c=ak_2$.
+
+**Paso 2 — sumar (y restar) ambas igualdades.**
+
+$$
+b+c = ak_1+ak_2 = a(k_1+k_2), \qquad b-c = ak_1-ak_2 = a(k_1-k_2).
+$$
+
+**Conclusión.** Como $k_1+k_2 \in \mathbb{Z}$ y $k_1-k_2 \in \mathbb{Z}$, ambas
+expresiones tienen la forma "$a$ por un entero" — por definición,
+$a \mid (b+c)$ y $a \mid (b-c)$. $\blacksquare$
+
+**Enunciado (Teorema 2 — transitividad).** Si $a \mid b$ y $b \mid c$, entonces
+$a \mid c$.
+
+**Demostración.**
+
+**Paso 1 — usar la definición dos veces.** Como $a \mid b$, existe $k_1$ tal que
+$b=ak_1$. Como $b \mid c$, existe $k_2$ tal que $c=bk_2$.
+
+**Paso 2 — sustituir.**
+
+$$
+c = bk_2 = (ak_1)k_2 = a(k_1k_2).
+$$
+
+**Conclusión.** Como $k_1k_2 \in \mathbb{Z}$, se cumple $a \mid c$. $\blacksquare$
+
+**Enunciado (Teorema 3 — múltiplo de un múltiplo).** Si $a \mid b$, entonces
+$a \mid (bc)$ para cualquier entero $c$.
+
+**Demostración.** Como $a\mid b$, $b=ak$ para algún entero $k$. Entonces
+$bc = (ak)c = a(kc)$, y como $kc \in \mathbb{Z}$, se concluye $a \mid (bc)$.
+$\blacksquare$
+
+**Corolario (combinación lineal).** Combinando los Teoremas 1 y 3: si $a \mid b$ y
+$a \mid c$, entonces $a \mid (mb+nc)$ para cualesquiera enteros $m,n$ — no solo para
+$m=n=1$ (suma) o $m=1,n=-1$ (diferencia).
+
+## Visualización interactiva
+
+<ExploradorDeTeoremasDeDivisibilidad />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Verifica que $7 \mid 21$ y $7 \mid 35$, y usa el Teorema 1 para
+concluir que $7$ divide a $21+35$ y a $35-21$.
+
+**Solución.** $21=7(3)$ y $35=7(5)$, así que $7\mid21$ y $7\mid35$. Por el Teorema 1:
+$7 \mid (21+35)=56$ y $7\mid(35-21)=14$. (Verificación: $56=7(8)$, $14=7(2)$.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Sabiendo que $9 \mid 45$, usa el Teorema 3 para afirmar que $9$ divide
+a $45 \times 17$, sin calcular el producto completo.
+
+**Solución.** Por el Teorema 3, si $9\mid45$, entonces $9\mid(45\times17)$
+automáticamente, sin importar el valor de $17$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Si $a \mid 84$ y $a \mid 63$, ¿qué puedes afirmar sobre $a$ respecto a
+$21$? *(Pista: $84-63=21$.)*
+
+**Solución.** Por el Teorema 1, $a \mid (84-63) = 21$. Entonces $a$ debe ser uno de
+los divisores de $21$: $1, 3, 7$ o $21$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que si $a \mid b$ y $a \mid (b+c)$, entonces $a \mid c$.
+
+**Solución.** Por el Teorema 1 aplicado a $b$ y $(b+c)$ (ambos múltiplos de $a$ por
+hipótesis): $a$ divide a su diferencia, $(b+c)-b = c$. Por lo tanto $a \mid c$.
+$\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Si $5\mid30$ y $5\mid45$, halla dos múltiplos de $5$ que resulten de aplicar el
+Teorema 1.
+
+<Solucion>
+
+$30+45=75=5(15)$ y $45-30=15=5(3)$ — ambos múltiplos de $5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Si $8\mid56$, ¿es cierto que $8\mid(56\times 123)$? Justifica sin multiplicar.
+
+<Solucion>
+
+Sí, por el Teorema 3: si $a\mid b$, entonces $a\mid(bc)$ para cualquier entero $c$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Si $a\mid100$ y $a\mid65$, ¿cuáles son los posibles valores de $a$?
+
+<Solucion>
+
+Por el Teorema 1, $a\mid(100-65)=35$. Los divisores de $35$ son $1,5,7,35$. De esos,
+hay que verificar cuáles dividen también a $65$: $1\mid65$ ✓, $5\mid65$ ✓,
+$7\nmid65$, $35\nmid65$. Los valores posibles son $a\in\{1,5\}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Demuestra que si $a\mid b$, entonces $a\mid(-b)$.
+
+<Solucion>
+
+Si $a\mid b$, $b=ak$ para algún entero $k$. Entonces $-b=a(-k)$, y como
+$-k\in\mathbb{Z}$, se cumple $a\mid(-b)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $a\mid b$ y $a\mid c$, entonces $a^2 \mid (bc)$ (no solo $a\mid bc$).
+
+<Solucion>
+
+Como $a\mid b$: $b=ak_1$. Como $a\mid c$: $c=ak_2$. Entonces
+$bc=(ak_1)(ak_2)=a^2(k_1k_2)$, y como $k_1k_2\in\mathbb{Z}$, se concluye
+$a^2\mid(bc)$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $a\mid b$ y $b\neq0$, entonces $|a|\leq|b|$ (un divisor no nulo de un
+número nunca puede ser mayor, en valor absoluto, que ese número).
+
+<Solucion>
+
+Como $a\mid b$, $b=ak$ para algún entero $k$. Como $b\neq0$, también $a\neq0$ y
+$k\neq0$, así que $|k|\geq1$ (el menor valor absoluto posible de un entero no nulo es
+$1$). Entonces $|b|=|a|\cdot|k| \geq |a|\cdot1=|a|$. Por lo tanto $|a|\leq|b|$.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "a | b significa que:",
+      opciones: ["a = b + k para algún entero k", "b = a·k para algún entero k", "a y b son iguales", "a es menor que b"],
+      correcta: 1,
+      explicacion: "Por definición, a divide a b si b es a multiplicado por algún entero k.",
+    },
+    {
+      enunciado: "Si a|b y a|c, entonces a divide a:",
+      opciones: ["Solo a b", "Solo a c", "b+c y b−c", "Ninguna combinación de b y c"],
+      correcta: 2,
+      explicacion: "Es el Teorema 1: a divide tanto a la suma como a la diferencia.",
+    },
+    {
+      enunciado: "Si a|b y b|c, entonces (transitividad):",
+      opciones: ["a|c", "c|a", "No hay relación entre a y c", "b=c siempre"],
+      correcta: 0,
+      explicacion: "Teorema 2: la divisibilidad es transitiva.",
+    },
+    {
+      enunciado: "Si a|b, entonces a también divide a:",
+      opciones: ["Solo b", "b·c, para cualquier entero c", "b/c siempre", "b elevado a una potencia negativa"],
+      correcta: 1,
+      explicacion: "Teorema 3: a divide a cualquier múltiplo de b.",
+    },
+    {
+      enunciado: "Si a|84 y a|63, ¿qué garantiza el Teorema 1 sobre a?",
+      opciones: ["a divide a 147 (84+63)", "a divide a 21 (84−63)", "a divide a 5292 (84×63) únicamente", "No se puede concluir nada"],
+      correcta: 1,
+      explicacion: "a divide tanto a la suma (147) como a la diferencia (21) — ambas son consecuencias válidas del Teorema 1.",
+    },
+    {
+      enunciado: "Si a|b con b≠0, la relación entre |a| y |b| es:",
+      opciones: ["|a| siempre es mayor que |b|", "|a| siempre es menor o igual que |b|", "No hay relación posible", "|a| siempre es igual a |b|"],
+      correcta: 1,
+      explicacion: "Un divisor no nulo nunca puede exceder, en valor absoluto, al número que divide.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir "$a$ divide a $b$" con "$a$ es menor que $b$".** Aunque para enteros
+  positivos un divisor propio siempre es menor, la relación de divisibilidad es sobre
+  la existencia de un cociente entero exacto, no sobre el tamaño.
+- **Aplicar el Teorema 1 en sentido inverso incorrectamente.** Que $a$ divida a
+  $b+c$ **no** garantiza que $a$ divida a $b$ y a $c$ por separado (por ejemplo,
+  $5\mid(2+3)$ pero $5\nmid2$ y $5\nmid3$).
+- **Olvidar verificar ambas condiciones** al usar el Teorema 1 — se necesita que $a$
+  divida a **ambos** $b$ y $c$, no solo a uno de ellos.
+- **No verificar la hipótesis $b\neq0$** al aplicar el resultado de que
+  $|a|\leq|b|$ — todo entero divide a $0$ (ya que $0=a\times0$), así que esa
+  desigualdad no aplica cuando $b=0$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-naturales-y-enteros/numeros-enteros-operaciones-propiedades-y-limitaciones", label: "Números enteros: operaciones, propiedades y limitaciones" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/divisibilidad/criterio-general-y-criterios-particulares-de-divisibilidad", label: "Criterio general y criterios particulares de divisibilidad" },
+    { href: "/matematica/aritmetica/numeros-primos", label: "Números primos" },
+  ]}
+/>

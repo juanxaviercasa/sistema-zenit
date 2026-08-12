@@ -1,0 +1,280 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { VerificadorDeCriterios } from "@/components/interactive/aritmetica";
+
+# Criterio general y criterios particulares de divisibilidad
+
+<Objetivo>
+
+Deducir, a partir de la representación polinómica de un número, por qué funcionan los
+criterios de divisibilidad del $9$ y del $11$ — el principio general detrás de todos
+los criterios particulares que ya conoces.
+
+</Objetivo>
+
+## Marco teórico
+
+Un número $N$ es divisible por $d$ si el resto de dividir $N$ entre $d$ es cero. Los
+**criterios de divisibilidad** son atajos que permiten determinar esto sin efectuar la
+división completa, examinando solo las cifras de $N$.
+
+**Notación de congruencias.** Se escribe $a \equiv b \pmod{d}$ ("$a$ es congruente con
+$b$ módulo $d$") cuando $a$ y $b$ dejan el mismo resto al dividirse entre $d$ —
+equivalentemente, cuando $d \mid (a-b)$.
+
+**Criterio general.** Como $N = a_n10^n+a_{n-1}10^{n-1}+\cdots+a_1(10)+a_0$
+(representación polinómica), el resto de $N$ al dividir entre $d$ depende únicamente
+de los restos de cada potencia de $10$ al dividir entre $d$ — estos restos se llaman
+**restos potenciales de $10$ respecto a $d$**, y se estudian a fondo en el siguiente
+subtema.
+
+**Enunciado (criterio del 9).** $N$ es divisible por $9$ si y solo si la suma de sus
+cifras es divisible por $9$.
+
+**Demostración.**
+
+**Paso 1 — hallar el resto potencial de $10$ respecto a $9$.** Como $10=9+1$, se tiene
+$10 \equiv 1 \pmod 9$. Elevando a cualquier potencia: $10^i \equiv 1^i = 1 \pmod 9$
+para todo $i \geq 0$.
+
+**Paso 2 — sustituir en la representación polinómica.**
+
+$$
+N = a_n10^n+\cdots+a_0 \equiv a_n(1)+\cdots+a_0(1) = a_n+a_{n-1}+\cdots+a_0
+\pmod 9.
+$$
+
+**Conclusión.** El resto de $N$ entre $9$ es el mismo que el resto de la suma de sus
+cifras entre $9$. En particular, $N$ es múltiplo de $9$ exactamente cuando la suma de
+sus cifras lo es. $\blacksquare$
+
+**Enunciado (criterio del 11).** $N$ es divisible por $11$ si y solo si la suma
+alternada de sus cifras (empezando por las unidades, alternando $+$ y $-$) es
+divisible por $11$.
+
+**Demostración.** Como $10=11-1$, se tiene $10 \equiv -1 \pmod{11}$. Elevando a la
+potencia $i$: $10^i \equiv (-1)^i \pmod{11}$ (es decir, $+1$ si $i$ es par, $-1$ si
+$i$ es impar). Sustituyendo en la representación polinómica:
+
+$$
+N \equiv a_0 - a_1 + a_2 - a_3 + \cdots \pmod{11},
+$$
+
+que es exactamente la suma alternada de las cifras, empezando por las unidades
+($a_0$, la cifra en la posición $0$, con signo $+$). $\blacksquare$
+
+**Criterios particulares (resumen).** Con el mismo tipo de razonamiento —adaptado a
+cada $d$— se obtienen los criterios ya conocidos:
+
+| Divisor | Criterio |
+|---|---|
+| $2$ | La última cifra es par |
+| $3$ | La suma de cifras es múltiplo de $3$ |
+| $4$ | Las últimas $2$ cifras forman un múltiplo de $4$ |
+| $5$ | La última cifra es $0$ o $5$ |
+| $8$ | Las últimas $3$ cifras forman un múltiplo de $8$ |
+| $9$ | La suma de cifras es múltiplo de $9$ |
+| $10$ | La última cifra es $0$ |
+| $11$ | La suma alternada de cifras es múltiplo de $11$ |
+
+## Visualización interactiva
+
+<VerificadorDeCriterios />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** ¿Es $4527$ divisible por $9$?
+
+**Solución.** Suma de cifras: $4+5+2+7=18$, que es múltiplo de $9$. Sí, $4527$ es
+divisible por $9$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Es $6413$ divisible por $11$?
+
+**Solución.** Suma alternada (de derecha a izquierda): $3-1+4-6 = 0$, que es múltiplo
+de $11$ (el $0$ es múltiplo de cualquier número). Sí, $6413$ es divisible por $11$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla el menor valor de la cifra $x$ para que $23x45$ sea divisible por
+$9$.
+
+**Solución.** Suma de cifras: $2+3+x+4+5=14+x$. Se necesita que $14+x$ sea múltiplo de
+$9$: el múltiplo de $9$ más cercano y alcanzable (con $0\leq x\leq9$) es $18$, así que
+$x=4$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Halla el valor de $x$ para que $4x6x2$ sea divisible por $11$.
+
+**Solución.** Cifras (de izquierda a derecha): $4,x,6,x,2$. Suma alternada desde las
+unidades: $2-x+6-x+4 = 12-2x$. Se necesita que $12-2x$ sea múltiplo de $11$
+(incluyendo posiblemente negativo o cero), con $0\leq x\leq9$: los valores posibles de
+$12-2x$ para $x=0,\ldots,9$ van de $12$ hasta $-6$; el único múltiplo de $11$ en ese
+rango es $0$. Entonces $12-2x=0 \Rightarrow x=6$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+¿Es $7326$ divisible por $9$?
+
+<Solucion>
+
+Suma de cifras: $7+3+2+6=18$, múltiplo de $9$. Sí.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Es $9548$ divisible por $11$?
+
+<Solucion>
+
+Suma alternada: $8-4+5-9=0$, múltiplo de $11$. Sí.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla el valor de $x$ para que $52x8$ sea divisible por $9$.
+
+<Solucion>
+
+Suma: $5+2+x+8=15+x$. El múltiplo de $9$ alcanzable es $18$: $x=3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el valor de $x$ para que $3x572$ sea divisible por $11$.
+
+<Solucion>
+
+Cifras: $3,x,5,7,2$. Suma alternada desde unidades: $2-7+5-x+3=3-x$. Para $0\leq
+x\leq9$, el único múltiplo de $11$ alcanzable es $0$: $x=3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Halla la suma de todos los valores de $x$ (dígitos del $0$ al $9$) para los cuales
+$81x4$ es divisible por $3$.
+
+<Solucion>
+
+Suma de cifras: $8+1+x+4=13+x$. Para que sea múltiplo de $3$, $13+x \in
+\{15,18,21\}$ (los múltiplos de $3$ alcanzables con $0\leq x\leq9$), dando $x\in
+\{2,5,8\}$. Suma: $2+5+8=15$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra, con el mismo método usado para el criterio del $9$, que un número es
+divisible por $3$ si y solo si la suma de sus cifras es divisible por $3$.
+
+<Solucion>
+
+Como $10=9+1=3(3)+1$, se tiene $10\equiv1\pmod3$ (el mismo argumento que para el
+$9$, ya que $9$ también es múltiplo de $3$). Entonces $10^i\equiv1\pmod3$ para todo
+$i$, y sustituyendo en la representación polinómica de $N$:
+
+$$
+N \equiv a_n+a_{n-1}+\cdots+a_0 \pmod 3.
+$$
+
+Por lo tanto, $N$ es múltiplo de $3$ exactamente cuando la suma de sus cifras lo es.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El criterio del 9 funciona porque:",
+      opciones: ["10 ≡ 0 (mod 9)", "10 ≡ 1 (mod 9)", "10 ≡ -1 (mod 9)", "9 es un número primo"],
+      correcta: 1,
+      explicacion: "10=9+1, así que 10≡1 (mod 9), y toda potencia de 10 también es ≡1 (mod 9).",
+    },
+    {
+      enunciado: "El criterio del 11 usa la suma alternada porque:",
+      opciones: ["10 ≡ 1 (mod 11)", "10 ≡ -1 (mod 11)", "11 es impar", "No hay una razón matemática"],
+      correcta: 1,
+      explicacion: "10=11-1, así que 10≡-1 (mod 11), y las potencias de 10 alternan entre +1 y -1 (mod 11).",
+    },
+    {
+      enunciado: "La suma de cifras de 3714 es:",
+      opciones: ["15", "12", "18", "3714"],
+      correcta: 0,
+      explicacion: "3+7+1+4=15.",
+    },
+    {
+      enunciado: "¿Es 3714 divisible por 9?",
+      opciones: ["Sí, porque 15 es múltiplo de 9", "No, porque 15 no es múltiplo de 9", "Sí, siempre lo es", "No se puede determinar sin dividir"],
+      correcta: 1,
+      explicacion: "15 no es múltiplo de 9 (9×1=9, 9×2=18), así que 3714 no es divisible por 9.",
+    },
+    {
+      enunciado: "La suma alternada (desde las unidades) de 2916 es:",
+      opciones: ["6-1+9-2 = 12", "2-9+1-6 = -12", "2+9+1+6 = 18", "6+1+9+2 = 18"],
+      correcta: 0,
+      explicacion: "Empezando por las unidades con signo +: 6-1+9-2=12.",
+    },
+    {
+      enunciado: "El criterio de divisibilidad por 4 se basa en:",
+      opciones: ["La suma de todas las cifras", "Las últimas 2 cifras del número", "La primera cifra únicamente", "La cantidad total de cifras"],
+      correcta: 1,
+      explicacion: "Como 100 es múltiplo de 4, solo las últimas 2 cifras determinan el resto módulo 4.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir la dirección de la suma alternada del criterio del 11.** Se empieza
+  desde las **unidades** (posición $0$) con signo $+$, alternando hacia la izquierda —
+  invertir el orden puede dar un resultado incorrecto si el número tiene una cantidad
+  impar de cifras.
+- **Aplicar el criterio del 9 esperando encontrar el resto exacto de la división**,
+  cuando en realidad solo indica si es o no divisible (sí calcula el resto módulo 9,
+  pero hay que sumar cifras repetidamente si se quiere reducir a un solo dígito).
+- **Olvidar que "múltiplo de 9" incluye al 0** — una suma de cifras igual a $0$
+  (posible en la suma alternada, que admite cancelaciones) sí cuenta como divisible.
+- **Mezclar los criterios** — por ejemplo, usar suma simple para el criterio del $11$
+  en vez de la suma alternada.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/divisibilidad/teoria-de-la-divisibilidad-y-teoremas-fundamentales", label: "Teoría de la divisibilidad y teoremas fundamentales" },
+    { href: "/matematica/aritmetica/numeracion/sistemas-de-numeracion-y-representacion-polinomial", label: "Sistemas de numeración y representación polinomial" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/divisibilidad/criterios-de-divisibilidad-en-otros-sistemas-de-numeracion", label: "Criterios de divisibilidad en otros sistemas de numeración" },
+    { href: "/matematica/aritmetica/divisibilidad/restos-potenciales-y-binomio-de-newton", label: "Restos potenciales y binomio de Newton" },
+  ]}
+/>

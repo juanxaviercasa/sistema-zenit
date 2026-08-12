@@ -1,0 +1,253 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TablaDeRestosPotenciales } from "@/components/interactive/aritmetica";
+
+# Restos potenciales y binomio de Newton
+
+<Objetivo>
+
+Calcular el resto de una potencia enorme al dividirla entre un módulo, usando la
+periodicidad de los restos potenciales y el binomio de Newton, sin necesidad de
+calcular la potencia completa.
+
+</Objetivo>
+
+## Marco teórico
+
+Los **restos potenciales** de un número $a$ respecto a un módulo $m$ son la secuencia
+de restos de $a^1, a^2, a^3, \dots$ al dividirse entre $m$. Como solo existen $m$
+restos posibles ($0, 1, \dots, m-1$), esta secuencia es siempre **periódica** —
+eventualmente los restos empiezan a repetirse. Encontrar ese período permite calcular
+el resto de $a^n$ para cualquier $n$, por grande que sea, sin elevar realmente la
+potencia.
+
+**Enunciado (reducción mediante el binomio de Newton).** Si $a = mk+r$ (es decir, $r$
+es el resto de $a$ al dividir entre $m$), entonces para cualquier entero $n\geq1$:
+
+$$
+a^n \equiv r^n \pmod m.
+$$
+
+**Demostración.**
+
+**Paso 1 — expandir $(mk+r)^n$ con el binomio de Newton.**
+
+$$
+a^n = (mk+r)^n = \sum_{i=0}^{n} \binom{n}{i}(mk)^i r^{n-i} = r^n + \sum_{i=1}^{n}
+\binom{n}{i}(mk)^ir^{n-i}.
+$$
+
+**Paso 2 — observar que todos los términos de la suma (salvo $r^n$) son múltiplos de
+$m$.** Cada término con $i\geq1$ contiene el factor $(mk)^i$, que a su vez contiene a
+$m$ como factor. Por lo tanto, toda la suma
+$\sum_{i=1}^{n}\binom{n}{i}(mk)^ir^{n-i}$ es múltiplo de $m$.
+
+**Conclusión.** $a^n = r^n + (\text{múltiplo de } m)$, así que $a^n$ y $r^n$ dejan el
+mismo resto al dividir entre $m$: $a^n \equiv r^n \pmod m$. $\blacksquare$
+
+Esta es la razón por la que, para hallar restos de potencias, conviene primero
+reemplazar la base por su resto más pequeño en valor absoluto (incluso uno negativo,
+como $-1$), y luego trabajar con esa base reducida.
+
+## Visualización interactiva
+
+<TablaDeRestosPotenciales />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla el resto de $2^{10}$ al dividir entre $7$.
+
+**Solución.** Restos potenciales de $2$ módulo $7$: $2,4,1,2,4,1,\ldots$ (período $3$:
+$2^1\equiv2$, $2^2\equiv4$, $2^3\equiv1$, y se repite). Como $10 = 3(3)+1$, el resto
+de $2^{10}$ coincide con el de $2^1$ dentro del ciclo: resto $2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla el resto de $7^{50}$ al dividir entre $9$.
+
+**Solución.** Como $7 \equiv -2 \pmod 9$, $7^{50} \equiv (-2)^{50} = 2^{50} \pmod 9$.
+Restos de $2$ módulo $9$: $2,4,8,7,5,1,2,4,\ldots$ (período $6$). Como
+$50=6(8)+2$, el resto coincide con el de $2^2=4$: resto $4$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla el resto de $5^{100}$ al dividir entre $8$.
+
+**Solución.** Restos de $5$ módulo $8$: $5^1\equiv5$, $5^2\equiv25\equiv1$, y se
+repite: período $2$. Como $100$ es par, el resto coincide con el de $5^2$: resto $1$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Halla el resto de $3^{200}$ al dividir entre $11$, usando el argumento
+del binomio de Newton explícitamente con $3^5=243=11(22)+1$.
+
+**Solución.** Como $3^5 \equiv 1 \pmod{11}$ (porque $243=11(22)+1$), se puede escribir
+$3^{200} = (3^5)^{40} = (11(22)+1)^{40}$. Por el resultado demostrado (con
+$a=3^5=243$, $m=11$, $r=1$, $n=40$): $3^{200} \equiv 1^{40} = 1 \pmod{11}$. El resto
+es $1$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla el resto de $3^8$ al dividir entre $5$.
+
+<Solucion>
+
+Restos de $3$ mod $5$: $3,4,2,1,3,\ldots$ (período $4$). $8=4(2)$: resto de
+$3^4=1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla el resto de $4^{15}$ al dividir entre $7$.
+
+<Solucion>
+
+Restos de $4$ mod $7$: $4,2,1,4,2,1,\ldots$ (período $3$). $15=3(5)$: resto de
+$4^3=1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla el resto de $6^{40}$ al dividir entre $7$, usando que $6\equiv-1\pmod7$.
+
+<Solucion>
+
+$6^{40}\equiv(-1)^{40}=1\pmod7$. Resto: $1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el resto de $9^{30}$ al dividir entre $4$.
+
+<Solucion>
+
+$9\equiv1\pmod4$, así que $9^{30}\equiv1^{30}=1\pmod4$. Resto: $1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Halla el resto de $2^{2026}$ al dividir entre $13$.
+
+<Solucion>
+
+Restos de $2$ mod $13$: $2,4,8,3,6,12,11,9,5,10,7,1$ (período $12$, ya que
+$2^{12}\equiv1$). $2026 = 12(168)+10$. El resto coincide con el de $2^{10}$: de la
+lista, el décimo término (empezando a contar $2^1$ como el primero) es $10$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, si $a\equiv1\pmod m$, entonces $a^n\equiv1\pmod m$ para cualquier
+entero $n\geq1$ — sin usar el binomio de Newton completo, solo la definición de
+congruencia y el Teorema 3 de *Teoría de la divisibilidad*.
+
+<Solucion>
+
+Como $a\equiv1\pmod m$, por definición $m\mid(a-1)$. Se demuestra por inducción que
+$m\mid(a^n-1)$ para todo $n\geq1$. **Base ($n=1$):** $m\mid(a-1)$, dado. **Paso
+inductivo:** supón que $m\mid(a^n-1)$; se quiere mostrar que $m\mid(a^{n+1}-1)$.
+Factorizando: $a^{n+1}-1 = a^{n+1}-a^n+a^n-1 = a^n(a-1)+(a^n-1)$. El primer término,
+$a^n(a-1)$, es múltiplo de $m$ (porque $m\mid(a-1)$, y por el Teorema 3 de
+divisibilidad, $m$ divide a cualquier múltiplo de $(a-1)$). El segundo término,
+$(a^n-1)$, es múltiplo de $m$ por la hipótesis inductiva. Por el Teorema 1 de
+divisibilidad, la suma de dos múltiplos de $m$ es múltiplo de $m$: $m\mid(a^{n+1}-1)$.
+Por inducción, $m\mid(a^n-1)$ para todo $n\geq1$, es decir, $a^n\equiv1\pmod m$.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Los restos potenciales de a módulo m son:",
+      opciones: ["Siempre crecientes", "Eventualmente periódicos", "Siempre iguales a 0", "Nunca se repiten"],
+      correcta: 1,
+      explicacion: "Como solo hay m restos posibles, la secuencia debe eventualmente repetirse.",
+    },
+    {
+      enunciado: "Si a = mk+r, el resultado principal de este subtema afirma que:",
+      opciones: ["a^n ≡ k^n (mod m)", "a^n ≡ r^n (mod m)", "a^n ≡ m^n (mod m)", "No hay relación entre a^n y r^n"],
+      correcta: 1,
+      explicacion: "a^n ≡ r^n (mod m), demostrado con el binomio de Newton.",
+    },
+    {
+      enunciado: "En la demostración con el binomio de Newton, ¿por qué se descartan los términos con i≥1?",
+      opciones: ["Porque son negativos", "Porque cada uno contiene el factor m, siendo múltiplos de m", "Porque son iguales a r^n", "No se descartan, se suman todos"],
+      correcta: 1,
+      explicacion: "Cada término con i≥1 tiene el factor (mk)^i, que incluye a m — por lo tanto son múltiplos de m y no afectan el resto.",
+    },
+    {
+      enunciado: "El resto de 2^10 al dividir entre 7 es:",
+      opciones: ["1", "2", "4", "0"],
+      correcta: 1,
+      explicacion: "Período de 2 mod 7 es 3 (2,4,1,...). 10=3(3)+1, coincide con 2^1=2.",
+    },
+    {
+      enunciado: "Si a ≡ -1 (mod m), entonces a^n (mod m) es:",
+      opciones: ["Siempre 1", "1 si n es par, -1 (o m-1) si n es impar", "Siempre -1", "Depende de m únicamente"],
+      correcta: 1,
+      explicacion: "(-1)^n alterna entre 1 y -1 según la paridad de n.",
+    },
+    {
+      enunciado: "¿Para qué sirve identificar el período de los restos potenciales?",
+      opciones: ["Para calcular la potencia completa más rápido con una calculadora", "Para reducir el exponente n usando el resto de n entre la longitud del período", "No tiene ninguna aplicación práctica", "Solo sirve para números primos"],
+      correcta: 1,
+      explicacion: "Permite reemplazar un exponente enorme por su resto módulo la longitud del período, con el mismo resultado final.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar reducir la base antes de buscar el patrón** — trabajar con el resto más
+  pequeño posible (incluso negativo, como $-1$ o $-2$) simplifica mucho los cálculos.
+- **Confundir el período de los restos con el módulo mismo** — el período puede ser
+  menor que $m$ (a veces mucho menor), y hay que identificarlo explícitamente
+  calculando potencias sucesivas.
+- **Usar el resto del exponente entre $m$ en vez de entre la longitud del período** —
+  son números distintos; se debe dividir el exponente entre la longitud del ciclo
+  detectado, no entre el módulo.
+- **Olvidar que el período puede no empezar en la primera potencia** — en algunos
+  casos hay una parte inicial no periódica antes de que el ciclo se repita (aunque
+  para restos potenciales de enteros coprimos con $m$ esto no ocurre).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/divisibilidad/criterio-general-y-criterios-particulares-de-divisibilidad", label: "Criterio general y criterios particulares de divisibilidad" },
+    { href: "/matematica/aritmetica/divisibilidad/teoria-de-la-divisibilidad-y-teoremas-fundamentales", label: "Teoría de la divisibilidad y teoremas fundamentales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-primos", label: "Números primos" },
+    { href: "/matematica/aritmetica/divisibilidad/ecuaciones-diofanticas-lineales", label: "Ecuaciones diofánticas lineales" },
+  ]}
+/>

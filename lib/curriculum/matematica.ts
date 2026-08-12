@@ -136,6 +136,23 @@ const subtemasNumerosNaturalesYEnteros: Subtema[] = [
   ),
 ];
 
+const subtemasDivisibilidad: Subtema[] = [
+  subtema(
+    "teoria-de-la-divisibilidad-y-teoremas-fundamentales",
+    "Teoría de la divisibilidad y teoremas fundamentales"
+  ),
+  subtema(
+    "criterio-general-y-criterios-particulares-de-divisibilidad",
+    "Criterio general y criterios particulares de divisibilidad"
+  ),
+  subtema(
+    "criterios-de-divisibilidad-en-otros-sistemas-de-numeracion",
+    "Criterios de divisibilidad en otros sistemas de numeración"
+  ),
+  subtema("restos-potenciales-y-binomio-de-newton", "Restos potenciales y binomio de Newton"),
+  subtema("ecuaciones-diofanticas-lineales", "Ecuaciones diofánticas lineales"),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -177,7 +194,7 @@ const aritmetica: Area = {
       undefined,
       subtemasNumerosNaturalesYEnteros
     ),
-    tema(9, "divisibilidad", "Divisibilidad"),
+    tema(9, "divisibilidad", "Divisibilidad", undefined, subtemasDivisibilidad),
     tema(10, "numeros-primos", "Números primos"),
     tema(11, "numeros-racionales-e-irracionales", "Números racionales e irracionales"),
     tema(12, "potenciacion-y-radicacion", "Potenciación y radicación"),

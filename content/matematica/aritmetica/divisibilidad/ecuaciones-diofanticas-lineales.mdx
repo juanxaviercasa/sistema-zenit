@@ -1,0 +1,268 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ExploradorDiofantico } from "@/components/interactive/aritmetica";
+
+# Ecuaciones diofánticas lineales
+
+<Objetivo>
+
+Determinar cuándo una ecuación lineal con dos incógnitas tiene solución entera, y
+hallar tanto una solución particular como la familia completa de soluciones.
+
+</Objetivo>
+
+## Marco teórico
+
+Una **ecuación diofántica lineal** es una ecuación de la forma:
+
+$$
+ax+by=c,
+$$
+
+con $a,b,c$ enteros dados, donde se buscan **soluciones enteras** $(x,y)$ — no
+soluciones reales cualesquiera.
+
+**Condición de existencia.** La ecuación $ax+by=c$ tiene solución entera si y solo si
+el **máximo común divisor** de $a$ y $b$ (denotado $d=\text{mcd}(a,b)$: el mayor
+entero que divide a ambos) también divide a $c$. (El máximo común divisor se trata a
+fondo, con el algoritmo de Euclides, en *Números primos*; aquí basta su idea
+intuitiva.)
+
+**Enunciado (forma general de las soluciones).** Si $(x_0,y_0)$ es una solución
+particular conocida de $ax+by=c$, y $d=\text{mcd}(a,b)$, entonces para cualquier
+entero $t$:
+
+$$
+x = x_0+\frac{b}{d}t, \qquad y = y_0-\frac{a}{d}t
+$$
+
+es también una solución de la ecuación.
+
+**Demostración (verificación directa).**
+
+**Paso 1 — sustituir la fórmula propuesta en la ecuación.**
+
+$$
+a\left(x_0+\frac{b}{d}t\right)+b\left(y_0-\frac{a}{d}t\right) = ax_0+\frac{ab}{d}t+
+by_0-\frac{ab}{d}t.
+$$
+
+**Paso 2 — cancelar los términos con $t$.** Los términos $\dfrac{ab}{d}t$ y
+$-\dfrac{ab}{d}t$ se cancelan exactamente, sin importar el valor de $t$:
+
+$$
+ax_0+\frac{ab}{d}t+by_0-\frac{ab}{d}t = ax_0+by_0.
+$$
+
+**Conclusión.** Como $(x_0,y_0)$ es una solución conocida, $ax_0+by_0=c$. Por lo
+tanto, la expresión completa siempre vale $c$, para cualquier entero $t$: la fórmula
+propuesta efectivamente da una solución de $ax+by=c$. $\blacksquare$ (Se puede
+demostrar además —usando propiedades más finas del máximo común divisor, que verás en
+*Números primos*— que esta fórmula genera **todas** las soluciones enteras posibles,
+no solo algunas.)
+
+## Visualización interactiva
+
+<ExploradorDiofantico />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** ¿Tiene solución entera la ecuación $4x+6y=10$?
+
+**Solución.** $\text{mcd}(4,6)=2$, y $2\mid10$. Sí tiene solución entera.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Tiene solución entera la ecuación $6x+9y=10$?
+
+**Solución.** $\text{mcd}(6,9)=3$, y $3\nmid10$ (porque $10/3$ no es entero). No tiene
+solución entera.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla una solución particular y la solución general de $3x+5y=11$.
+
+**Solución.** Por inspección, $x_0=2$, $y_0=1$ funciona: $3(2)+5(1)=11$ ✓. Como
+$\text{mcd}(3,5)=1$, la solución general es:
+
+$$
+x=2+5t, \qquad y=1-3t, \qquad t\in\mathbb{Z}.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un cajero automático solo tiene billetes de $S/. 20$ y $S/. 50$. ¿De
+cuántas formas puede entregar exactamente $S/. 310$, usando al menos un billete de
+cada tipo?
+
+**Solución.** Se busca $20x+50y=310$ con $x,y$ enteros positivos. Simplificando entre
+$10$: $2x+5y=31$. Por inspección, $x_0=3$, $y_0=5$ funciona: $2(3)+5(5)=6+25=31$ ✓.
+$\text{mcd}(2,5)=1$, así que la solución general es $x=3+5t$, $y=5-2t$. Para que
+ambos sean positivos: $x>0 \Rightarrow t>-3/5$, y $y>0 \Rightarrow t<5/2$. Los enteros
+$t$ que cumplen ambas son $t\in\{0,1,2\}$: da $(x,y)=(3,5)$, $(8,3)$, $(13,1)$. Hay
+$3$ formas.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+¿Tiene solución entera $8x+12y=20$?
+
+<Solucion>
+
+$\text{mcd}(8,12)=4$, y $4\mid20$. Sí.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Tiene solución entera $4x+10y=7$?
+
+<Solucion>
+
+$\text{mcd}(4,10)=2$, y $2\nmid7$. No.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla una solución particular de $5x+7y=1$.
+
+<Solucion>
+
+Por inspección: $x_0=3$, $y_0=-2$: $5(3)+7(-2)=15-14=1$ ✓.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Con la solución particular del problema anterior, escribe la solución general de
+$5x+7y=1$.
+
+<Solucion>
+
+$\text{mcd}(5,7)=1$: $x=3+7t$, $y=-2-5t$, $t\in\mathbb{Z}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Una tienda vende bolsas de $3$ y de $7$ manzanas. ¿De cuántas formas se pueden
+comprar exactamente $30$ manzanas usando al menos una bolsa de cada tipo?
+
+<Solucion>
+
+$3x+7y=30$, con $x,y>0$ enteros. Despejando: $x=\dfrac{30-7y}{3}$, que es entero solo
+si $30-7y$ es múltiplo de $3$. Como $30\equiv0\pmod3$ y $7\equiv1\pmod3$, se necesita
+$y\equiv0\pmod3$. Con $y>0$ y además $x>0 \Rightarrow y<30/7\approx4{,}29$, el único
+múltiplo positivo de $3$ menor que $4{,}29$ es $y=3$, dando $x=(30-21)/3=3$. Solución
+particular: $(x_0,y_0)=(3,3)$. Solución general (con $\text{mcd}(3,7)=1$): $x=3+7t$,
+$y=3-3t$. Para $x>0$: $t>-3/7$. Para $y>0$: $t<1$. El único entero que cumple ambas
+es $t=0$: $(x,y)=(3,3)$. Hay $1$ forma.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $\text{mcd}(a,b)=1$ (es decir, $a$ y $b$ son coprimos) y
+$(x_0,y_0)$ es una solución de $ax+by=c$, entonces la ecuación tiene infinitas
+soluciones enteras.
+
+<Solucion>
+
+Con $d=\text{mcd}(a,b)=1$, la fórmula general da $x=x_0+bt$, $y=y_0-at$ para
+$t\in\mathbb{Z}$ — ya demostrado que cada una de estas es efectivamente una solución.
+Como $b\neq0$ (si $b=0$ la ecuación no sería realmente de dos variables), valores
+distintos de $t$ dan valores distintos de $x=x_0+bt$ (porque $bt_1=bt_2 \Rightarrow
+t_1=t_2$ al ser $b\neq0$). Como hay infinitos enteros $t$ posibles, y cada uno genera
+un par $(x,y)$ distinto, la ecuación tiene infinitas soluciones enteras. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La ecuación ax+by=c tiene solución entera si y solo si:",
+      opciones: ["a y b son primos", "mcd(a,b) divide a c", "c es mayor que a y b", "a y b son iguales"],
+      correcta: 1,
+      explicacion: "Es la condición de existencia de soluciones de una ecuación diofántica lineal.",
+    },
+    {
+      enunciado: "¿Tiene solución entera 6x+9y=5?",
+      opciones: ["Sí, siempre", "No, porque mcd(6,9)=3 no divide a 5", "Sí, porque 5 es primo", "No se puede determinar"],
+      correcta: 1,
+      explicacion: "mcd(6,9)=3, y 3 no divide a 5.",
+    },
+    {
+      enunciado: "Si (x0,y0) es una solución particular de ax+by=c con d=mcd(a,b), la solución general es:",
+      opciones: ["x=x0+at, y=y0+bt", "x=x0+(b/d)t, y=y0−(a/d)t", "x=x0−t, y=y0+t", "x=x0, y=y0 siempre (solución única)"],
+      correcta: 1,
+      explicacion: "Es la fórmula demostrada en este subtema.",
+    },
+    {
+      enunciado: "Si mcd(a,b)=1, ¿cuántas soluciones enteras tiene ax+by=c (si tiene al menos una)?",
+      opciones: ["Exactamente una", "Como máximo dos", "Infinitas", "Ninguna"],
+      correcta: 2,
+      explicacion: "Con mcd(a,b)=1 y al menos una solución, hay infinitas, parametrizadas por t∈ℤ.",
+    },
+    {
+      enunciado: "Una solución particular de 3x+5y=11 es (2,1). ¿Cuál es el siguiente valor de x en la familia general (t=1)?",
+      opciones: ["2+5=7", "2+3=5", "2-5=-3", "2+1=3"],
+      correcta: 0,
+      explicacion: "x=x0+(b/d)t=2+(5/1)(1)=7.",
+    },
+    {
+      enunciado: "Al buscar soluciones positivas de una ecuación diofántica, se debe:",
+      opciones: ["Ignorar la restricción de positividad", "Restringir el parámetro t a los valores que hacen x>0 y y>0 simultáneamente", "Usar solo t=0", "Usar cualquier valor real de t"],
+      correcta: 1,
+      explicacion: "Las restricciones de positividad se traducen en desigualdades sobre t, que acotan los valores válidos.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar verificar la condición de existencia** ($\text{mcd}(a,b)\mid c$) antes de
+  buscar soluciones — si no se cumple, no existe ninguna solución entera, sin
+  importar cuánto se busque.
+- **Confundir la fórmula de la solución general** — el coeficiente de $t$ en $x$ es
+  $b/d$ (no $a/d$), y en $y$ es $-a/d$ (con signo negativo).
+- **Olvidar las restricciones adicionales del problema** (como que $x,y$ sean
+  positivos) al contar cuántas soluciones cumplen el contexto — la fórmula general da
+  todas las soluciones enteras, pero el problema puede pedir solo un subconjunto.
+- **Buscar una solución particular al azar sin sistematizar** — probar valores
+  pequeños de una variable y despejar la otra (verificando que dé un entero) suele
+  ser más rápido que adivinar directamente ambos valores.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/divisibilidad/teoria-de-la-divisibilidad-y-teoremas-fundamentales", label: "Teoría de la divisibilidad y teoremas fundamentales" },
+    { href: "/matematica/aritmetica/divisibilidad/restos-potenciales-y-binomio-de-newton", label: "Restos potenciales y binomio de Newton" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-primos", label: "Números primos" },
+  ]}
+/>

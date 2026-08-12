@@ -26,3 +26,8 @@ export { ExtremosDeNCifras } from "./extremos-de-n-cifras";
 export { ContadorDeCifras } from "./contador-de-cifras";
 export { ExploradorDeCerradura } from "./explorador-de-cerradura";
 export { ReglasDeSignos } from "./reglas-de-signos";
+export { ExploradorDeTeoremasDeDivisibilidad } from "./explorador-de-teoremas-de-divisibilidad";
+export { VerificadorDeCriterios } from "./verificador-de-criterios";
+export { CriteriosEnBaseB } from "./criterios-en-base-b";
+export { TablaDeRestosPotenciales } from "./tabla-de-restos-potenciales";
+export { ExploradorDiofantico } from "./explorador-diofantico";

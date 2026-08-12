@@ -1,0 +1,248 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { CriteriosEnBaseB } from "@/components/interactive/aritmetica";
+
+# Criterios de divisibilidad en otros sistemas de numeración
+
+<Objetivo>
+
+Generalizar los criterios del $9$ y del $11$ a cualquier base $b$, reconociendo que
+los criterios de base $10$ son solo el caso particular $b=10$ de un patrón mucho más
+amplio.
+
+</Objetivo>
+
+## Marco teórico
+
+Los criterios del $9$ y del $11$ en base $10$ no son una coincidencia — se derivan de
+que $10 \equiv 1 \pmod 9$ y $10 \equiv -1 \pmod{11}$, es decir, de que $9=10-1$ y
+$11=10+1$. El mismo argumento funciona en **cualquier base $b$**, reemplazando $10$
+por $b$.
+
+**Enunciado (criterio del $b-1$).** En un sistema de base $b$, un número es divisible
+por $b-1$ si y solo si la suma de sus cifras (en base $b$) es divisible por $b-1$.
+
+**Demostración.** Como $b \equiv 1 \pmod{b-1}$ (porque $b=(b-1)+1$), se tiene
+$b^i \equiv 1 \pmod{b-1}$ para todo $i\geq0$. Si
+$N = \overline{a_n\cdots a_0}_{(b)} = a_nb^n+\cdots+a_0$, sustituyendo:
+
+$$
+N \equiv a_n(1)+\cdots+a_0(1) = a_n+a_{n-1}+\cdots+a_0 \pmod{b-1}.
+$$
+
+Por lo tanto, $N$ es múltiplo de $b-1$ exactamente cuando la suma de sus cifras (en
+base $b$) lo es. $\blacksquare$ (Con $b=10$, esto es exactamente el criterio del $9$.)
+
+**Enunciado (criterio del $b+1$).** En un sistema de base $b$, un número es divisible
+por $b+1$ si y solo si la suma alternada de sus cifras (en base $b$, empezando por las
+unidades) es divisible por $b+1$.
+
+**Demostración.** Como $b \equiv -1 \pmod{b+1}$ (porque $b=(b+1)-1$), se tiene
+$b^i \equiv (-1)^i \pmod{b+1}$. Sustituyendo en la representación polinómica:
+
+$$
+N \equiv a_0-a_1+a_2-a_3+\cdots \pmod{b+1},
+$$
+
+la suma alternada de las cifras. $\blacksquare$ (Con $b=10$, esto es exactamente el
+criterio del $11$.)
+
+## Visualización interactiva
+
+<CriteriosEnBaseB />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** ¿Es $\overline{2453}_{(6)}$ divisible por $5$ ($=b-1$, con $b=6$)?
+
+**Solución.** Suma de cifras: $2+4+5+3=14$. Como $14$ no es múltiplo de $5$, el
+número no es divisible por $5$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Es $\overline{354}_{(6)}$ divisible por $7$ ($=b+1$, con $b=6$)?
+
+**Solución.** Suma alternada desde las unidades: $4-5+3=2$. Como $2$ no es múltiplo de
+$7$, el número no es divisible por $7$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿Es $\overline{4A6}_{(12)}$ divisible por $11$ ($=b-1$, con $b=12$;
+recuerda que $A=10$ en base $12$)?
+
+**Solución.** Suma de cifras: $4+10+6=20$. Como $20$ no es múltiplo de $11$, no es
+divisible por $11$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Halla el valor de la cifra $x$ (en base $8$) para que
+$\overline{5x27}_{(8)}$ sea divisible por $7$ ($=b-1$, con $b=8$).
+
+**Solución.** Suma de cifras: $5+x+2+7=14+x$. Se necesita $14+x$ múltiplo de $7$, con
+$0\leq x\leq7$ (cifra válida en base $8$): el múltiplo alcanzable es $14$, dando
+$x=0$, o $21$, dando $x=7$. Ambos son válidos como cifras en base $8$: $x=0$ o $x=7$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+¿Es $\overline{3142}_{(5)}$ divisible por $4$ ($=b-1$)?
+
+<Solucion>
+
+Suma: $3+1+4+2=10$, no es múltiplo de $4$. No.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Es $\overline{263}_{(7)}$ divisible por $8$ ($=b+1$)?
+
+<Solucion>
+
+Suma alternada: $3-6+2=-1$, no es múltiplo de $8$. No.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla $x$ para que $\overline{2x13}_{(9)}$ sea divisible por $8$ ($=b-1$).
+
+<Solucion>
+
+Suma: $2+x+1+3=6+x$. Múltiplo de $8$ alcanzable con $0\leq x\leq8$: $8$, dando $x=2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla $x$ para que $\overline{x341}_{(6)}$ sea divisible por $7$ ($=b+1$).
+
+<Solucion>
+
+Suma alternada desde unidades: $1-4+3-x=0-x$. Para $0\leq x\leq5$, el único múltiplo
+de $7$ alcanzable es $0$: $x=0$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+En base $16$ (hexadecimal), ¿cuál es el criterio de divisibilidad por $15$? Aplícalo
+para determinar si $\overline{3F2A}_{(16)}$ ($F=15$, $A=10$) es divisible por $15$.
+
+<Solucion>
+
+El criterio es el de $b-1=15$: la suma de cifras debe ser múltiplo de $15$. Suma:
+$3+15+2+10=30$, que sí es múltiplo de $15$. Por lo tanto, $\overline{3F2A}_{(16)}$
+es divisible por $15$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Determina si esta afirmación es verdadera o falsa: "para cualquier base $b\geq3$, un
+número de la forma $\overline{aa}_{(b)}$ (dos cifras iguales) siempre es divisible
+tanto por $b-1$ como por $b+1$". Justifica con una demostración (si es verdadera) o
+un contraejemplo (si es falsa).
+
+<Solucion>
+
+**Divisibilidad por $b+1$: verdadera.** Por representación polinómica,
+$\overline{aa}_{(b)} = ab+a = a(b+1)$ — es múltiplo de $b+1$ para cualquier $a$ y
+cualquier $b$.
+
+**Divisibilidad por $b-1$: falsa en general.** Contraejemplo: con $b=6$ y $a=1$,
+$\overline{11}_{(6)} = 1(6)+1=7$. Aquí $b-1=5$, y $7$ no es múltiplo de $5$. Como la
+propiedad falla en este caso concreto, la afirmación completa (que exige que se
+cumplan **ambas** divisibilidades siempre) es **falsa** — solo la divisibilidad por
+$b+1$ se cumple en general.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El criterio del 9 en base 10 es un caso particular del criterio de:",
+      opciones: ["b+1", "b−1", "b", "2b"],
+      correcta: 1,
+      explicacion: "9=10−1=b−1, con b=10.",
+    },
+    {
+      enunciado: "El criterio del 11 en base 10 es un caso particular del criterio de:",
+      opciones: ["b−1", "b+1", "b", "b/2"],
+      correcta: 1,
+      explicacion: "11=10+1=b+1, con b=10.",
+    },
+    {
+      enunciado: "En base 8, el criterio de la suma simple de cifras aplica para determinar divisibilidad por:",
+      opciones: ["9", "7", "8", "6"],
+      correcta: 1,
+      explicacion: "7=8−1=b−1: se aplica el criterio de suma de cifras.",
+    },
+    {
+      enunciado: "En base 6, el criterio de la suma alternada de cifras aplica para determinar divisibilidad por:",
+      opciones: ["5", "6", "7", "12"],
+      correcta: 2,
+      explicacion: "7=6+1=b+1: se aplica el criterio de suma alternada.",
+    },
+    {
+      enunciado: "¿Por qué el criterio del b−1 usa suma simple (no alternada)?",
+      opciones: ["Porque b ≡ 1 (mod b−1), así que todas las potencias de b son ≡1", "Porque b−1 siempre es par", "No hay una razón, es una convención", "Porque b−1 es primo"],
+      correcta: 0,
+      explicacion: "Todas las potencias de b son congruentes con 1 módulo (b−1), así que cada cifra se suma sin signo alternado.",
+    },
+    {
+      enunciado: "¿Cuál es la clave para generalizar los criterios de base 10 a cualquier base b?",
+      opciones: ["Los criterios de base 10 son únicos y no se pueden generalizar", "Reemplazar 10 por b en el mismo argumento de congruencias", "Multiplicar todo por 10/b", "Usar una fórmula completamente distinta para cada base"],
+      correcta: 1,
+      explicacion: "El mismo razonamiento de congruencias (b≡1 mod b−1, b≡−1 mod b+1) se aplica sustituyendo 10 por b.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Aplicar el criterio del 9 o del 11 directamente a un número escrito en otra base**
+  sin ajustarlo — esos criterios específicos solo valen en base $10$; en base $b$
+  corresponden a $b-1$ y $b+1$.
+- **Olvidar convertir las cifras mayores que $9$** (como $A,B,C,\ldots$ en bases
+  mayores a $10$) a su valor numérico antes de sumar.
+- **Asumir que cualquier propiedad de base $10$ se generaliza automáticamente** — como
+  muestra el Problema 6, hay que verificar cada afirmación con su propio argumento,
+  no dar por sentado que "seguramente funciona igual".
+- **Confundir la base $b$ con el número que se está analizando** — la base determina
+  qué criterios ($b-1$, $b+1$) aplican; el número analizado está escrito *en* esa
+  base.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/divisibilidad/criterio-general-y-criterios-particulares-de-divisibilidad", label: "Criterio general y criterios particulares de divisibilidad" },
+    { href: "/matematica/aritmetica/numeracion/cambios-de-base", label: "Cambios de base" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/divisibilidad/restos-potenciales-y-binomio-de-newton", label: "Restos potenciales y binomio de Newton" },
+  ]}
+/>
