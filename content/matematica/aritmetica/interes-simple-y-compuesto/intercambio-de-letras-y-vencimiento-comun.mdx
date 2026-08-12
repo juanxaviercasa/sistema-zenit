@@ -1,0 +1,308 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { VencimientoComun } from "@/components/interactive/aritmetica";
+
+# Intercambio de letras y vencimiento común
+
+<Objetivo>
+
+Calcular el vencimiento común de varias letras de cambio — la fecha única en la que
+podrían agruparse en una sola letra equivalente, sin perjudicar a ninguna de las
+partes — y demostrar que ese vencimiento no depende de la tasa de descuento usada.
+
+</Objetivo>
+
+## Marco teórico
+
+Cuando alguien es titular de varias letras, con distintos valores nominales
+$N_1, N_2, \dots, N_k$ y distintos vencimientos $t_1, t_2, \dots, t_k$ (medidos desde
+hoy), puede convenir **intercambiarlas** por una sola letra de valor nominal
+$N = N_1+N_2+\cdots+N_k$ con un único vencimiento $T$. Ese vencimiento único se llama
+**vencimiento común**, y debe elegirse de forma que ninguna de las partes salga
+perjudicada: el valor actual de la letra combinada debe ser igual a la suma de los
+valores actuales de las letras originales.
+
+**Enunciado.** Usando descuento comercial a una tasa $d$, el vencimiento común es:
+
+$$
+T = \frac{N_1t_1 + N_2t_2 + \cdots + N_kt_k}{N_1+N_2+\cdots+N_k},
+$$
+
+y este valor **no depende** de la tasa de descuento $d$ que se use.
+
+**Demostración.**
+
+**Paso 1 — igualar los valores actuales.** El valor actual comercial de la letra $i$
+es $N_i(1 - dt_i)$. La condición de equivalencia exige que la suma de los valores
+actuales individuales sea igual al valor actual de la letra combinada
+$N(1-dT)$, con $N = \sum N_i$:
+
+$$
+\sum_{i=1}^{k} N_i(1 - dt_i) = N(1-dT).
+$$
+
+**Paso 2 — expandir ambos lados.**
+
+$$
+\sum N_i - d\sum N_it_i = \sum N_i - dT\sum N_i.
+$$
+
+Como $\sum N_i$ aparece igual en ambos lados, se cancela:
+
+$$
+-d \sum N_it_i = -dT \sum N_i.
+$$
+
+**Conclusión.** Dividiendo entre $-d$ (con $d \neq 0$):
+
+$$
+\sum N_it_i = T \sum N_i \;\Longrightarrow\; T = \frac{\sum N_it_i}{\sum N_i}.
+\qquad \blacksquare
+$$
+
+El factor $d$ se cancela en el Paso 2 — por eso $T$ es **independiente de la tasa de
+descuento**: es simplemente el **promedio de los vencimientos, ponderado por el valor
+nominal** de cada letra.
+
+## Visualización interactiva
+
+<VencimientoComun />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Dos letras, de $S/. 3000$ con vencimiento en $40$ días y $S/. 5000$ con
+vencimiento en $80$ días, se quieren agrupar en una sola. Halla el vencimiento común.
+
+**Solución.**
+
+$$
+T = \frac{3000(40) + 5000(80)}{3000+5000} = \frac{120000 + 400000}{8000} =
+\frac{520000}{8000} = 65 \text{ días.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Tres letras iguales de $S/. 2000$ cada una vencen en $30$, $60$ y $90$
+días. Halla el vencimiento común.
+
+**Solución.** Como los tres nominales son iguales, el vencimiento común es
+simplemente el promedio aritmético de los plazos:
+
+$$
+T = \frac{2000(30)+2000(60)+2000(90)}{6000} = \frac{2000(30+60+90)}{6000} =
+\frac{30+60+90}{3} = 60 \text{ días.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Una letra de $S/. 4000$ vence en $t$ días, y otra de $S/. 6000$ vence
+en $100$ días. Si el vencimiento común de ambas es $70$ días, halla $t$.
+
+**Solución.**
+
+$$
+70 = \frac{4000t + 6000(100)}{10000} \;\Longrightarrow\; 700000 = 4000t + 600000
+\;\Longrightarrow\; t = \frac{100000}{4000} = 25 \text{ días.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Se desea sustituir tres letras — $S/. 1000$ a $20$ días, $S/. 2000$ a
+$50$ días y $S/. N$ a $80$ días — por una sola letra con vencimiento común en $60$
+días. Halla $N$.
+
+**Solución.**
+
+$$
+60 = \frac{1000(20) + 2000(50) + N(80)}{1000+2000+N} \;\Longrightarrow\;
+60(3000+N) = 20000 + 100000 + 80N.
+$$
+
+$$
+180000 + 60N = 120000 + 80N \;\Longrightarrow\; 60000 = 20N \;\Longrightarrow\;
+N = 3000.
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Dos letras, $S/. 2000$ a $30$ días y $S/. 4000$ a $60$ días, se agrupan en una sola.
+Halla el vencimiento común.
+
+<Solucion>
+
+$T = \dfrac{2000(30)+4000(60)}{6000} = \dfrac{60000+240000}{6000} = 50$ días.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Tres letras iguales de $S/. 1500$ vencen en $10$, $20$ y $60$ días. Halla el
+vencimiento común.
+
+<Solucion>
+
+$T = \dfrac{10+20+60}{3} = 30$ días (promedio simple, por tener nominales iguales).
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Una letra de $S/. 5000$ vence hoy mismo ($t=0$) y otra de $S/. 5000$ vence en $80$
+días. Halla el vencimiento común y explica por qué da ese resultado tan simple.
+
+<Solucion>
+
+$T = \dfrac{5000(0)+5000(80)}{10000} = \dfrac{400000}{10000} = 40$ días — exactamente
+el punto medio entre $0$ y $80$, porque ambos nominales son iguales (el promedio
+ponderado se reduce al promedio simple).
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Dos letras: $S/. N$ a $20$ días y $S/. 3000$ a $50$ días, tienen vencimiento común en
+$35$ días. Halla $N$.
+
+<Solucion>
+
+$35 = \dfrac{20N + 3000(50)}{N+3000} \Rightarrow 35N + 105000 = 20N + 150000
+\Rightarrow 15N = 45000 \Rightarrow N = 3000$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que el vencimiento común $T$ siempre está entre el menor y el mayor de los
+vencimientos individuales: $\min(t_i) \le T \le \max(t_i)$.
+
+<Solucion>
+
+$T$ es un promedio ponderado de los $t_i$ con pesos positivos $N_i$ (y los pesos suman
+$\sum N_i > 0$). Todo promedio ponderado con pesos positivos es una **combinación
+convexa** de los valores promediados, y toda combinación convexa de un conjunto de
+números está necesariamente entre el mínimo y el máximo de esos números. Formalmente:
+si $t_{\min} \le t_i \le t_{\max}$ para todo $i$, entonces
+$N_i t_{\min} \le N_i t_i \le N_i t_{\max}$ (multiplicando por $N_i>0$, que preserva
+las desigualdades), y sumando sobre todos los $i$:
+$t_{\min}\sum N_i \le \sum N_it_i \le t_{\max}\sum N_i$. Dividiendo entre
+$\sum N_i > 0$: $t_{\min} \le T \le t_{\max}$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Una persona tiene tres letras por cobrar: $S/. 2000$ a $30$ días, $S/. 3000$ a $60$
+días y $S/. 5000$ a $90$ días. Si decide cobrarlas todas hoy mismo (vencimiento común
+en $0$ días) mediante descuento racional a una tasa del $24\%$ anual, halla cuánto
+recibiría en total. *(Aquí sí importa la tasa — el "vencimiento común en 0" es
+simplemente descontar cada letra a su valor presente hoy.)*
+
+<Solucion>
+
+Tasa mensual efectiva aproximada por descuento racional simple: para cada letra,
+$V_a = \dfrac{N}{1+d \cdot t}$, con $d=0{,}24$ anual y $t$ en años
+($30/360, 60/360, 90/360$ como fracciones de año, convención comercial de $360$
+días):
+
+$$
+V_{a,1} = \frac{2000}{1+0{,}24(30/360)} = \frac{2000}{1{,}02} \approx 1960{,}78
+$$
+$$
+V_{a,2} = \frac{3000}{1+0{,}24(60/360)} = \frac{3000}{1{,}04} \approx 2884{,}62
+$$
+$$
+V_{a,3} = \frac{5000}{1+0{,}24(90/360)} = \frac{5000}{1{,}06} \approx 4716{,}98
+$$
+
+Total: $1960{,}78+2884{,}62+4716{,}98 \approx 9562{,}38$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El vencimiento común de varias letras es:",
+      opciones: ["El promedio simple de los vencimientos", "El promedio de los vencimientos ponderado por el valor nominal", "Siempre el vencimiento más lejano", "Siempre el vencimiento más cercano"],
+      correcta: 1,
+      explicacion: "T = Σ(Ni ti)/ΣNi — cada plazo pesa según el nominal de su letra.",
+    },
+    {
+      enunciado: "El vencimiento común, calculado con descuento comercial, depende de la tasa de descuento d:",
+      opciones: ["Sí, siempre", "No, d se cancela en la deducción", "Solo si d es muy alta", "Solo si hay más de 2 letras"],
+      correcta: 1,
+      explicacion: "d se cancela algebraicamente en la demostración — T es independiente de la tasa usada.",
+    },
+    {
+      enunciado: "Dos letras de igual valor nominal, a 20 y 60 días, tienen vencimiento común en:",
+      opciones: ["20 días", "60 días", "40 días", "80 días"],
+      correcta: 2,
+      explicacion: "Con nominales iguales, T es el promedio simple: (20+60)/2 = 40.",
+    },
+    {
+      enunciado: "El vencimiento común siempre está:",
+      opciones: ["Fuera del rango de los vencimientos individuales", "Entre el menor y el mayor de los vencimientos individuales", "Siempre en el vencimiento más próximo", "No tiene relación con los vencimientos individuales"],
+      correcta: 1,
+      explicacion: "Es un promedio ponderado, así que cae necesariamente entre el mínimo y el máximo.",
+    },
+    {
+      enunciado: "En la fórmula T = Σ(Ni ti)/ΣNi, una letra con nominal mucho mayor que las demás:",
+      opciones: ["No afecta el resultado", "'Atrae' el vencimiento común hacia su propio plazo", "Siempre hace que T sea el mínimo", "Anula la fórmula"],
+      correcta: 1,
+      explicacion: "Al pesar más en el promedio ponderado, su plazo individual influye más en el resultado final.",
+    },
+    {
+      enunciado: "El 'intercambio de letras' consiste en:",
+      opciones: ["Cambiar el nombre del deudor únicamente", "Sustituir varias letras por una o más letras equivalentes", "Anular las letras sin compensación", "Duplicar el valor nominal de una letra"],
+      correcta: 1,
+      explicacion: "Es el reemplazo de un conjunto de letras por otro conjunto (o una sola) de igual valor equivalente.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar el promedio simple de los plazos en vez del ponderado** cuando los valores
+  nominales son distintos — solo coincide con el promedio simple si todos los
+  nominales son iguales.
+- **Medir los plazos desde una fecha arbitraria** en vez de desde "hoy" (la fecha de
+  la negociación) — todos los $t_i$ deben estar referidos al mismo origen.
+- **Pensar que el vencimiento común depende de la tasa de descuento** — bajo descuento
+  comercial, la tasa se cancela algebraicamente; no afecta el resultado.
+- **Olvidar que $N$ en la fórmula combinada es la suma de los nominales**, no un
+  promedio de ellos — el valor nominal de la letra combinada siempre es
+  $\sum N_i$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto/descuento-comercial-y-racional", label: "Descuento comercial y racional" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/estadistica", label: "Estadística (media ponderada)" },
+    { href: "/matematica/aritmetica/mezcla-y-aleacion", label: "Mezcla y aleación" },
+  ]}
+/>

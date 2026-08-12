@@ -1,0 +1,288 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ComparadorInteresSimpleYCompuesto } from "@/components/interactive/aritmetica";
+
+# Interés compuesto y capitalización continua
+
+<Objetivo>
+
+Deducir la fórmula del monto a interés compuesto a partir de la reinversión periódica
+del interés, extenderla a capitalizaciones más frecuentes que la anual, y calcular el
+monto en el caso límite de capitalización continua.
+
+</Objetivo>
+
+## Marco teórico
+
+A diferencia del interés simple, en el **interés compuesto** el interés generado en
+cada período se suma al capital, y en el período siguiente genera interés sobre esa
+nueva base (capital + interés acumulado).
+
+**Enunciado.** Un capital $C$ colocado a una tasa periódica $i$ (tanto por uno) durante
+$n$ períodos, con capitalización compuesta, genera un monto:
+
+$$
+M = C(1+i)^n.
+$$
+
+**Demostración (por inducción en $n$).**
+
+**Paso 1 — primer período.** Al final del primer período, el interés es $Ci$, así que
+el monto es:
+
+$$
+M_1 = C + Ci = C(1+i).
+$$
+
+**Paso 2 — el monto de cada período es la base del siguiente.** Al final del segundo
+período, el interés se calcula sobre $M_1$ (no sobre $C$):
+
+$$
+M_2 = M_1 + M_1 i = M_1(1+i) = C(1+i)(1+i) = C(1+i)^2.
+$$
+
+En general, si $M_{k-1} = C(1+i)^{k-1}$, entonces
+$M_k = M_{k-1}(1+i) = C(1+i)^{k-1}(1+i) = C(1+i)^k$.
+
+**Conclusión.** Por inducción, para cualquier número de períodos $n$:
+
+$$
+M = C(1+i)^n. \qquad \blacksquare
+$$
+
+**Capitalización más frecuente que anual.** Si la tasa nominal anual es $j$ y se
+capitaliza $m$ veces al año, la tasa efectiva por período es $\dfrac{j}{m}$, y en $t$
+años hay $mt$ períodos:
+
+$$
+M = C\left(1 + \frac{j}{m}\right)^{mt}.
+$$
+
+**Capitalización continua.** Cuando $m \to \infty$ (capitalización instantánea), se usa
+el límite fundamental $\displaystyle\lim_{m \to \infty}\left(1+\frac{j}{m}\right)^{m} =
+e^{j}$ (donde $e$ es la constante de Euler), lo que da:
+
+$$
+M = C e^{jt}.
+$$
+
+## Visualización interactiva
+
+<ComparadorInteresSimpleYCompuesto />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla el monto de $S/. 2000$ al $10\%$ anual compuesto durante $3$ años.
+
+**Solución.** $M = 2000(1{,}10)^3 = 2000 \times 1{,}331 = 2662$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Compara el monto de $S/. 1000$ al $5\%$ anual durante $2$ años, con
+interés simple y con interés compuesto.
+
+**Solución.** Simple: $M_s = 1000(1+0{,}05\times 2) = 1100$. Compuesto:
+$M_c = 1000(1{,}05)^2 = 1000 \times 1{,}1025 = 1102{,}50$. El compuesto genera
+$S/. 2{,}50$ más, porque en el segundo año también gana interés sobre el interés del
+primero.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla el monto de $S/. 5000$ a una tasa nominal anual del $12\%$,
+capitalizada mensualmente, durante $2$ años.
+
+**Solución.** $j = 0{,}12$, $m = 12$, $t = 2$:
+
+$$
+M = 5000\left(1 + \frac{0{,}12}{12}\right)^{12 \times 2} = 5000(1{,}01)^{24}
+\approx 5000 \times 1{,}2697 \approx 6348{,}62.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Halla el monto de $S/. 3000$ a una tasa nominal anual del $8\%$ con
+capitalización continua durante $5$ años, y compáralo con la capitalización mensual
+para el mismo período.
+
+**Solución.** Continua: $M = 3000\, e^{0{,}08 \times 5} = 3000\,e^{0{,}4} \approx
+3000 \times 1{,}4918 \approx 4475{,}47$. Mensual:
+$M = 3000\left(1+\dfrac{0{,}08}{12}\right)^{60} \approx 3000 \times 1{,}4898 \approx
+4469{,}49$. La capitalización continua da el monto **máximo posible** para esa tasa
+nominal — la mensual queda apenas por debajo.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla el monto de $S/. 1500$ al $8\%$ anual compuesto durante $2$ años.
+
+<Solucion>
+
+$M = 1500(1{,}08)^2 = 1500 \times 1{,}1664 = 1749{,}60$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla el interés compuesto (no solo el monto) de $S/. 2000$ al $6\%$ anual durante $3$
+años.
+
+<Solucion>
+
+$M = 2000(1{,}06)^3 \approx 2382{,}03$. $I = M - C \approx 382{,}03$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla el monto de $S/. 4000$ a una tasa nominal anual del $9\%$ capitalizada
+trimestralmente, durante $1$ año.
+
+<Solucion>
+
+$M = 4000\left(1+\dfrac{0{,}09}{4}\right)^4 = 4000(1{,}0225)^4 \approx 4000 \times
+1{,}0930 \approx 4372{,}09$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Cuántos años (aproximadamente) tarda un capital en duplicarse al $12\%$ anual
+compuesto? *(Usa tanteo o logaritmos si ya los conoces; de lo contrario, aproxima
+probando valores enteros de $n$.)*
+
+<Solucion>
+
+Se busca $n$ tal que $(1{,}12)^n \approx 2$. Probando: $(1{,}12)^6 \approx 1{,}974$,
+$(1{,}12)^7 \approx 2{,}211$. El capital se duplica entre el año $6$ y el $7$
+(aproximadamente $6{,}1$ años, cercano a la regla práctica "$72 / \text{tasa}$" =
+$72/12 = 6$).
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Halla el monto de $S/. 6000$ a una tasa nominal anual del $10\%$ con capitalización
+continua durante $3$ años.
+
+<Solucion>
+
+$M = 6000\,e^{0{,}10\times 3} = 6000\,e^{0{,}3} \approx 6000 \times 1{,}3499 \approx
+8099{,}40$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para el mismo capital $C$, la misma tasa $i$ y el mismo tiempo entero
+$n \geq 2$, el monto compuesto siempre es mayor o igual que el monto simple:
+$C(1+i)^n \geq C(1+ni)$, con igualdad solo si $n=1$ o $i=0$.
+
+<Solucion>
+
+Basta comparar $(1+i)^n$ con $1+ni$. Por el **teorema del binomio**, expandiendo
+$(1+i)^n$ para $i > 0$:
+
+$$
+(1+i)^n = 1 + ni + \binom{n}{2}i^2 + \binom{n}{3}i^3 + \cdots + i^n.
+$$
+
+Todos los términos después de $1 + ni$ son estrictamente positivos cuando $n \geq 2$ e
+$i > 0$ (son sumas de potencias positivas de $i$ multiplicadas por coeficientes
+binomiales positivos). Por lo tanto:
+
+$$
+(1+i)^n = (1+ni) + \underbrace{\binom{n}{2}i^2 + \cdots + i^n}_{> 0 \text{ si } n\geq 2,\, i>0} \geq 1+ni.
+$$
+
+La igualdad ocurre exactamente cuando el término extra es cero: si $n=1$ (no hay
+términos adicionales) o si $i=0$ (todos los términos son cero). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La fórmula del monto a interés compuesto es:",
+      opciones: ["M = C(1 + ni)", "M = C(1+i)^n", "M = Cni", "M = C · e^n"],
+      correcta: 1,
+      explicacion: "M = C(1+i)^n, con i la tasa periódica y n el número de períodos.",
+    },
+    {
+      enunciado: "¿Cuál es la diferencia clave entre interés simple y compuesto?",
+      opciones: ["El compuesto usa una tasa distinta", "En el compuesto, el interés generado se reinvierte y genera más interés", "No hay ninguna diferencia real", "El simple solo aplica a préstamos"],
+      correcta: 1,
+      explicacion: "La reinversión periódica del interés es la característica definitoria del interés compuesto.",
+    },
+    {
+      enunciado: "Con tasa nominal anual j capitalizada m veces al año, la tasa efectiva por período es:",
+      opciones: ["j", "j·m", "j/m", "j^m"],
+      correcta: 2,
+      explicacion: "Cada período usa la fracción de la tasa nominal correspondiente: j/m.",
+    },
+    {
+      enunciado: "La fórmula del monto con capitalización continua es:",
+      opciones: ["M = C(1+j)^t", "M = C·e^(jt)", "M = Cjt", "M = C/e^(jt)"],
+      correcta: 1,
+      explicacion: "M = Ce^(jt), el límite de la capitalización compuesta cuando m → ∞.",
+    },
+    {
+      enunciado: "Para el mismo capital, tasa y tiempo entero (n≥2), el monto compuesto respecto al simple es:",
+      opciones: ["Siempre menor", "Siempre igual", "Siempre mayor o igual", "No se puede comparar"],
+      correcta: 2,
+      explicacion: "El compuesto siempre iguala o supera al simple, por los términos adicionales positivos del binomio.",
+    },
+    {
+      enunciado: "¿Cuál de las tres formas de capitalización (anual, mensual, continua) da el monto máximo para la misma tasa nominal?",
+      opciones: ["Anual", "Mensual", "Continua", "Todas dan el mismo monto"],
+      correcta: 2,
+      explicacion: "A mayor frecuencia de capitalización, mayor el monto; la continua es el límite superior.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar la tasa nominal anual directamente como tasa periódica** cuando hay varias
+  capitalizaciones al año — hay que dividirla entre $m$ primero.
+- **Olvidar multiplicar el número de años por $m$** para obtener el número total de
+  períodos de capitalización.
+- **Confundir tasa nominal con tasa efectiva.** La tasa nominal es la anual "de
+  etiqueta"; la efectiva anual real es mayor cuando hay capitalización múltiple —
+  $(1+j/m)^m - 1 > j$ para $m > 1$.
+- **Aplicar $M = C(1+i)^n$ con $n$ en años cuando la tasa es mensual** (o viceversa) —
+  $n$ debe contar exactamente el número de períodos que dura la tasa $i$ dada.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto/interes-simple-elementos-y-monto", label: "Interés simple: elementos y monto" },
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion", label: "Potenciación y radicación" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funcion-exponencial-y-logaritmica", label: "Función exponencial y logarítmica" },
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto/descuento-comercial-y-racional", label: "Descuento comercial y racional" },
+  ]}
+/>

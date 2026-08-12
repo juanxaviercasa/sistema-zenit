@@ -1,0 +1,283 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ComparadorDescuentos } from "@/components/interactive/aritmetica";
+
+# Descuento comercial y racional
+
+<Objetivo>
+
+Identificar los elementos de una letra de cambio, calcular el descuento comercial y el
+descuento racional al negociarla antes de su vencimiento, y demostrar la relación
+exacta entre ambos.
+
+</Objetivo>
+
+## Marco teórico
+
+Una **letra de cambio** es un documento de crédito: quien la posee tiene derecho a
+cobrar su **valor nominal** ($V_n$) en la **fecha de vencimiento**. Si el tenedor
+necesita el dinero antes de esa fecha, puede negociarla (por ejemplo, en un banco), que
+le paga un **valor actual** ($V_a$) menor que $V_n$ — la diferencia es el
+**descuento**. El **tiempo de descuento** ($t$) es el tiempo que falta para el
+vencimiento (no la duración total de la letra), y $d$ es la **tasa de descuento**.
+
+**Descuento comercial (o bancario).** Se calcula igual que un interés simple, pero
+tomando como base el valor **nominal**:
+
+$$
+D_c = V_n \cdot d \cdot t, \qquad V_{a,\,c} = V_n - D_c = V_n(1 - dt).
+$$
+
+**Descuento racional (o matemático).** Se calcula sobre el valor **actual**: es el
+descuento tal que, si el valor actual se invirtiera a la tasa $d$ durante el tiempo
+$t$, generaría exactamente el valor nominal.
+
+$$
+V_{a,\,r}(1 + dt) = V_n \;\Longrightarrow\; V_{a,\,r} = \frac{V_n}{1+dt}, \qquad
+D_r = V_n - V_{a,\,r}.
+$$
+
+**Enunciado (relación entre descuentos).** El descuento comercial y el racional se
+relacionan mediante:
+
+$$
+D_c = D_r (1 + dt).
+$$
+
+**Demostración.**
+
+**Paso 1 — expresar $D_r$ explícitamente.**
+
+$$
+D_r = V_n - \frac{V_n}{1+dt} = \frac{V_n(1+dt) - V_n}{1+dt} = \frac{V_n \cdot dt}{1+dt}.
+$$
+
+**Paso 2 — comparar con $D_c = V_n dt$.** Multiplicando la expresión de $D_r$ por
+$(1+dt)$:
+
+$$
+D_r(1+dt) = \frac{V_n \cdot dt}{1+dt} \cdot (1+dt) = V_n \cdot dt = D_c.
+$$
+
+**Conclusión.**
+
+$$
+D_c = D_r(1+dt) \qquad \Longleftrightarrow \qquad D_r = \frac{D_c}{1+dt}.
+\qquad \blacksquare
+$$
+
+Como $1 + dt \geq 1$, siempre se cumple $D_c \geq D_r$ — el descuento comercial nunca
+es menor que el racional, para los mismos datos.
+
+## Visualización interactiva
+
+<ComparadorDescuentos />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Una letra de $S/. 8000$ se descuenta comercialmente $2$ meses antes de
+su vencimiento, a una tasa de descuento del $18\%$ anual. Halla $D_c$ y $V_{a,c}$.
+
+**Solución.** $t = 2/12$ años. $D_c = 8000 \times 0{,}18 \times \dfrac{2}{12} = 240$.
+$V_{a,c} = 8000 - 240 = 7760$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Para la misma letra del Ejemplo 1 ($V_n=8000$, $d=18\%$,
+$t=2/12$ años), halla el descuento racional $D_r$.
+
+**Solución.** $D_r = \dfrac{D_c}{1+dt} = \dfrac{240}{1 + 0{,}18 \times 2/12} =
+\dfrac{240}{1{,}03} \approx 233{,}01$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** El descuento comercial de una letra es $S/. 450$ y su descuento
+racional es $S/. 420$. Halla el producto $dt$ (tasa por tiempo).
+
+**Solución.** $D_c = D_r(1+dt) \Rightarrow 450 = 420(1+dt) \Rightarrow 1+dt =
+\dfrac{450}{420} \approx 1{,}0714 \Rightarrow dt \approx 0{,}0714$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Una letra se descuenta comercialmente al $20\%$ anual, $3$ meses antes
+del vencimiento, y el valor actual comercial resulta $S/. 4750$. Halla el valor
+nominal y el descuento racional correspondiente.
+
+**Solución.** $t = 3/12 = 0{,}25$. $V_{a,c} = V_n(1-dt) \Rightarrow 4750 =
+V_n(1 - 0{,}20 \times 0{,}25) = V_n(0{,}95) \Rightarrow V_n = \dfrac{4750}{0{,}95} =
+5000$. Entonces $D_c = 5000 - 4750 = 250$, y
+$D_r = \dfrac{D_c}{1+dt} = \dfrac{250}{1{,}05} \approx 238{,}10$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Una letra de $S/. 6000$ se descuenta $4$ meses antes de su vencimiento al $15\%$
+anual. Halla $D_c$.
+
+<Solucion>
+
+$D_c = 6000 \times 0{,}15 \times \dfrac{4}{12} = 300$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Para la letra del Problema 1, halla $V_{a,c}$.
+
+<Solucion>
+
+$V_{a,c} = 6000 - 300 = 5700$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla $D_r$ para la letra de los Problemas 1 y 2 ($V_n=6000$, $d=15\%$, $t=4/12$).
+
+<Solucion>
+
+$D_r = \dfrac{D_c}{1+dt} = \dfrac{300}{1+0{,}05} = \dfrac{300}{1{,}05} \approx 285{,}71$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+El descuento comercial de una letra es $S/. 360$ y $dt = 0{,}08$. Halla el descuento
+racional.
+
+<Solucion>
+
+$D_r = \dfrac{360}{1{,}08} \approx 333{,}33$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Una letra tiene valor nominal $S/. 11000$ y se descuenta $6$ meses antes de su
+vencimiento. Si la diferencia entre el descuento comercial y el racional es
+$S/. 100$, halla la tasa de descuento anual $d$.
+
+<Solucion>
+
+De $D_c = D_r(1+dt)$ se obtiene $D_c - D_r = D_r \cdot dt$. Sustituyendo
+$D_r = \dfrac{V_n dt}{1+dt}$ y $D_c = V_n dt$:
+
+$$
+D_c - D_r = V_n \, dt - \frac{V_n dt}{1+dt} = \frac{V_n (dt)^2}{1+dt}.
+$$
+
+Con $V_n = 11000$ y $t = 0{,}5$, sea $x = dt = 0{,}5d$:
+
+$$
+\frac{11000x^2}{1+x} = 100 \;\Longrightarrow\; 110x^2 = 1+x \;\Longrightarrow\;
+110x^2 - x - 1 = 0.
+$$
+
+Por la fórmula general: $x = \dfrac{1 \pm \sqrt{1+440}}{220} = \dfrac{1 \pm 21}{220}$.
+La raíz positiva es $x = \dfrac{22}{220} = 0{,}1$. Como $x = 0{,}5d = 0{,}1$:
+$d = 0{,}2 = 20\%$ anual.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, si el tiempo de descuento $t$ es muy pequeño (cercano a cero), el
+descuento comercial y el racional son aproximadamente iguales: $D_c \approx D_r$
+cuando $dt \to 0$.
+
+<Solucion>
+
+De $D_r = \dfrac{D_c}{1+dt}$: cuando $dt \to 0$, el denominador $1+dt \to 1$, así que
+$D_r \to \dfrac{D_c}{1} = D_c$. Es decir, para tiempos de descuento cortos o tasas
+pequeñas, la diferencia entre ambos descuentos se vuelve despreciable —
+tiene sentido, porque con $t=0$ no hay descuento que calcular en absoluto
+($D_c = D_r = 0$), y la aproximación mejora cuanto más cerca esté $t$ de ese caso
+límite.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El descuento comercial se calcula sobre:",
+      opciones: ["El valor actual", "El valor nominal", "El promedio de ambos", "Ninguno de los dos"],
+      correcta: 1,
+      explicacion: "Dc = Vn·d·t: se calcula tomando como base el valor nominal (más grande).",
+    },
+    {
+      enunciado: "El descuento racional se calcula sobre:",
+      opciones: ["El valor nominal", "El valor actual", "La tasa de interés", "El tiempo de descuento"],
+      correcta: 1,
+      explicacion: "Dr se deriva de que el valor actual, capitalizado a interés simple, produzca el valor nominal.",
+    },
+    {
+      enunciado: "La relación entre ambos descuentos es:",
+      opciones: ["Dc = Dr", "Dc = Dr(1+dt)", "Dr = Dc(1+dt)", "Dc + Dr = Vn"],
+      correcta: 1,
+      explicacion: "Dc = Dr(1+dt), de donde Dc ≥ Dr siempre.",
+    },
+    {
+      enunciado: "Para una letra de Vn=5000, d=12% anual, t=6 meses, el descuento comercial es:",
+      opciones: ["300", "600", "150", "60"],
+      correcta: 0,
+      explicacion: "Dc = 5000 × 0,12 × 0,5 = 300.",
+    },
+    {
+      enunciado: "¿Cuál descuento es siempre mayor o igual, para los mismos datos?",
+      opciones: ["El racional", "El comercial", "Son siempre iguales", "Depende del signo de d"],
+      correcta: 1,
+      explicacion: "Dc ≥ Dr siempre, porque se calcula sobre una base (Vn) mayor o igual que la del racional (Va).",
+    },
+    {
+      enunciado: "El 'tiempo de descuento' t en estas fórmulas es:",
+      opciones: ["La duración total de la letra desde su emisión", "El tiempo que falta desde hoy hasta el vencimiento", "Siempre exactamente un año", "Un dato irrelevante"],
+      correcta: 1,
+      explicacion: "t es el tiempo que falta para el vencimiento, no la duración total desde que se emitió la letra.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Aplicar la fórmula del descuento comercial cuando el problema pide el racional**
+  (o viceversa) — siempre identifica primero cuál pide el enunciado.
+- **Confundir el "tiempo de descuento" con la duración total de la letra** — es
+  específicamente el tiempo restante hasta el vencimiento, contado desde el momento de
+  la negociación.
+- **Olvidar convertir el tiempo a años** cuando la tasa de descuento es anual y el
+  plazo está dado en meses o días.
+- **Pensar que $D_c$ y $D_r$ son intercambiables** — para el mismo $V_n$, $d$, $t$, son
+  numéricamente distintos (salvo en el caso límite $t \to 0$).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto/interes-simple-elementos-y-monto", label: "Interés simple: elementos y monto" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto/intercambio-de-letras-y-vencimiento-comun", label: "Intercambio de letras y vencimiento común" },
+  ]}
+/>

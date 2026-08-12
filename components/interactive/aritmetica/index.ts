@@ -7,3 +7,7 @@ export { ReglaDeTres } from "./regla-de-tres";
 export { TantoPorCiento } from "./tanto-por-ciento";
 export { IncrementosYDescuentos } from "./incrementos-y-descuentos";
 export { RepartoProporcional } from "./reparto-proporcional";
+export { CrecimientoInteresSimple } from "./crecimiento-interes-simple";
+export { ComparadorInteresSimpleYCompuesto } from "./comparador-interes-simple-y-compuesto";
+export { ComparadorDescuentos } from "./comparador-descuentos";
+export { VencimientoComun } from "./vencimiento-comun";

@@ -57,6 +57,19 @@ const subtemasMagnitudesProporcionales: Subtema[] = [
   ),
 ];
 
+const subtemasInteresSimpleYCompuesto: Subtema[] = [
+  subtema("interes-simple-elementos-y-monto", "Interés simple: elementos y monto"),
+  subtema(
+    "interes-compuesto-y-capitalizacion-continua",
+    "Interés compuesto y capitalización continua"
+  ),
+  subtema("descuento-comercial-y-racional", "Descuento comercial y racional"),
+  subtema(
+    "intercambio-de-letras-y-vencimiento-comun",
+    "Intercambio de letras y vencimiento común"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -80,7 +93,13 @@ const aritmetica: Area = {
       undefined,
       subtemasMagnitudesProporcionales
     ),
-    tema(3, "interes-simple-y-compuesto", "Interés simple y compuesto"),
+    tema(
+      3,
+      "interes-simple-y-compuesto",
+      "Interés simple y compuesto",
+      undefined,
+      subtemasInteresSimpleYCompuesto
+    ),
     tema(4, "mezcla-y-aleacion", "Mezcla y aleación"),
     tema(5, "estadistica", "Estadística"),
     tema(6, "probabilidad", "Probabilidad"),

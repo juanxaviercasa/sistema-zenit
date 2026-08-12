@@ -1,0 +1,261 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { CrecimientoInteresSimple } from "@/components/interactive/aritmetica";
+
+# Interés simple: elementos y monto
+
+<Objetivo>
+
+Identificar los elementos del interés simple (capital, tasa, tiempo), demostrar la
+fórmula del interés y el monto, y aplicarlas en problemas financieros básicos.
+
+</Objetivo>
+
+## Marco teórico
+
+**Elementos principales.**
+
+- **Capital ($C$):** la cantidad inicial que se invierte o se presta.
+- **Tasa de interés ($i$):** el porcentaje que se cobra o se gana por cada unidad de
+  tiempo (generalmente un año), expresado en tanto por uno.
+- **Tiempo ($t$):** la duración de la operación, expresada en la **misma unidad** que
+  la tasa.
+- **Interés ($I$):** la ganancia generada.
+- **Monto ($M$):** el capital más el interés acumulado, $M = C + I$.
+
+**Enunciado.** En el interés simple (sin reinversión de las ganancias), el interés
+generado es directamente proporcional al tiempo transcurrido.
+
+**Demostración.**
+
+**Paso 1 — interés de una unidad de tiempo.** Por definición de tasa, en **una** unidad
+de tiempo el capital $C$ genera un interés de $C \cdot i$.
+
+**Paso 2 — sin reinversión, el interés se acumula linealmente.** Como el interés simple
+no reinvierte lo ganado (el capital que genera interés se mantiene igual a $C$ en cada
+unidad de tiempo), en $t$ unidades de tiempo el interés total es $t$ veces el de una
+sola unidad:
+
+$$
+I = t \cdot (C \cdot i) = C \cdot i \cdot t.
+$$
+
+**Conclusión.**
+
+$$
+I = C \cdot i \cdot t, \qquad M = C + I = C(1 + it). \qquad \blacksquare
+$$
+
+Como $M(t) = C + (Ci)t$ es una función lineal de $t$ (con pendiente $Ci$ y ordenada en
+el origen $C$), el interés simple es exactamente un caso de **magnitudes directamente
+proporcionales**: el interés $I$ es DP con el tiempo $t$ (para $C$ e $i$ fijos).
+
+## Visualización interactiva
+
+<CrecimientoInteresSimple />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla el interés simple generado por $S/. 2000$ al $6\%$ anual durante
+$3$ años.
+
+**Solución.** $I = C \cdot i \cdot t = 2000 \times 0{,}06 \times 3 = 360$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla el monto de un capital de $S/. 1500$ al $8\%$ anual durante $2$
+años.
+
+**Solución.** $I = 1500 \times 0{,}08 \times 2 = 240$. $M = 1500 + 240 = 1740$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿A qué tasa anual debe invertirse $S/. 4000$ para que en $18$ meses
+genere $S/. 720$ de interés?
+
+**Solución.** Primero, $18$ meses $= 1{,}5$ años (misma unidad que la tasa anual).
+
+$$
+720 = 4000 \times i \times 1{,}5 \;\Longrightarrow\; i = \frac{720}{6000} = 0{,}12
+= 12\%.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un capital colocado al $10\%$ anual durante $t$ años genera un monto que
+es $1{,}4$ veces el capital original. Halla $t$.
+
+**Solución.** $M = 1{,}4C$, así que:
+
+$$
+C(1 + 0{,}10\,t) = 1{,}4C \;\Longrightarrow\; 1 + 0{,}10t = 1{,}4 \;\Longrightarrow\;
+0{,}10t = 0{,}4 \;\Longrightarrow\; t = 4 \text{ años.}
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla el interés simple de $S/. 3000$ al $5\%$ anual durante $4$ años.
+
+<Solucion>
+
+$I = 3000 \times 0{,}05 \times 4 = 600$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla el monto de $S/. 2500$ al $7\%$ anual durante $3$ años.
+
+<Solucion>
+
+$I = 2500 \times 0{,}07 \times 3 = 525$. $M = 2500 + 525 = 3025$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿En cuánto tiempo (en años) un capital de $S/. 5000$ al $9\%$ anual genera un interés
+de $S/. 1350$?
+
+<Solucion>
+
+$t = \dfrac{1350}{5000 \times 0{,}09} = \dfrac{1350}{450} = 3$ años.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Un capital genera $S/. 800$ de interés simple en $2$ años al $16\%$ anual. Halla el
+capital.
+
+<Solucion>
+
+$C = \dfrac{800}{0{,}16 \times 2} = \dfrac{800}{0{,}32} = 2500$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un capital se coloca a interés simple durante $2$ años a una tasa anual, y luego el
+monto resultante se vuelve a colocar (como nuevo capital) durante $3$ años más a la
+misma tasa. Si el capital original era $S/. 2000$ y la tasa es $10\%$ anual, halla el
+monto final tras los $5$ años combinados, y compara con el monto que se habría obtenido
+colocando los $S/. 2000$ a interés simple directamente por $5$ años.
+
+<Solucion>
+
+Primeros $2$ años: $M_1 = 2000(1 + 0{,}10 \times 2) = 2000(1{,}2) = 2400$. Siguientes
+$3$ años, con $M_1$ como nuevo capital: $M_2 = 2400(1+0{,}10\times 3) = 2400(1{,}3) =
+3120$. Comparación directa: $2000(1+0{,}10\times 5) = 2000(1{,}5) = 3000$. El
+"recolocar" el monto intermedio ($3120$) da más que el interés simple directo por 5
+años ($3000$) — porque al recolocar, el interés de los primeros 2 años empieza a
+generar su propio interés, acercándose a la lógica del interés compuesto.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para dos capitales distintos $C_1$ y $C_2$ colocados a la **misma**
+tasa $i$ durante el **mismo** tiempo $t$, la razón entre sus intereses es igual a la
+razón entre sus capitales: $\dfrac{I_1}{I_2} = \dfrac{C_1}{C_2}$.
+
+<Solucion>
+
+$I_1 = C_1 i t$ y $I_2 = C_2 i t$. Dividiendo:
+
+$$
+\frac{I_1}{I_2} = \frac{C_1 i t}{C_2 i t} = \frac{C_1}{C_2}. \qquad \blacksquare
+$$
+
+(Válido siempre que $i, t \neq 0$, ya que se cancelan del numerador y denominador.)
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La fórmula del interés simple es:",
+      opciones: ["I = C + i + t", "I = C · i · t", "I = C / (i · t)", "I = C · i / t"],
+      correcta: 1,
+      explicacion: "I = C·i·t, con i en tanto por uno y t en la misma unidad que i.",
+    },
+    {
+      enunciado: "El monto M se relaciona con el capital e interés mediante:",
+      opciones: ["M = C - I", "M = C · I", "M = C + I", "M = I - C"],
+      correcta: 2,
+      explicacion: "El monto es capital más interés acumulado.",
+    },
+    {
+      enunciado: "S/. 4000 al 5% anual durante 2 años generan un interés de:",
+      opciones: ["200", "400", "800", "40"],
+      correcta: 1,
+      explicacion: "I = 4000 × 0,05 × 2 = 400.",
+    },
+    {
+      enunciado: "Si la tasa es anual y el tiempo está dado en meses, antes de aplicar la fórmula debes:",
+      opciones: ["No hacer nada, se puede mezclar", "Convertir los meses a años (dividir entre 12)", "Convertir la tasa a mensual multiplicando por 12", "Ninguna de las anteriores"],
+      correcta: 1,
+      explicacion: "Tasa y tiempo deben estar en la misma unidad; lo más común es convertir el tiempo a años.",
+    },
+    {
+      enunciado: "En interés simple, la gráfica de M en función de t es:",
+      opciones: ["Una recta", "Una parábola", "Una curva exponencial", "Una hipérbola"],
+      correcta: 0,
+      explicacion: "M(t) = C + (Ci)t es una función lineal (afín) de t.",
+    },
+    {
+      enunciado: "¿Qué elemento del interés simple NO reinvierte sus ganancias?",
+      opciones: ["El capital", "La tasa", "El interés generado en cada período", "El monto final"],
+      correcta: 2,
+      explicacion: "Es justamente la característica distintiva del interés simple: el interés no se reinvierte para generar más interés.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Mezclar unidades de tiempo entre la tasa y $t$.** Si la tasa es anual, el tiempo
+  debe expresarse en años (o fracciones de año) — nunca directamente en meses o días
+  sin convertir.
+- **Usar el porcentaje sin convertir a tanto por uno.** $i = 8\%$ significa $i = 0{,}08$
+  en la fórmula, no $i = 8$.
+- **Confundir interés ($I$) con monto ($M$).** El interés es solo la ganancia; el monto
+  es el capital más esa ganancia.
+- **Aplicar la fórmula de interés simple a una situación de interés compuesto** (donde
+  el interés sí se reinvierte) — el subtema siguiente cubre esa distinción con detalle.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/magnitudes-directamente-e-inversamente-proporcionales", label: "Magnitudes directamente e inversamente proporcionales" },
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/tanto-por-ciento-y-tanto-por-uno", label: "Tanto por ciento y tanto por uno" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto/interes-compuesto-y-capitalizacion-continua", label: "Interés compuesto y capitalización continua" },
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto/descuento-comercial-y-racional", label: "Descuento comercial y racional" },
+  ]}
+/>
