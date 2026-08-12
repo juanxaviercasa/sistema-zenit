@@ -1,0 +1,215 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { FactorizadorDePolinomios } from "@/components/interactive/algebra";
+
+# Factorización de polinomios
+
+<Objetivo>
+
+Factorizar polinomios mediante factor común, agrupación, diferencia de cuadrados,
+trinomio cuadrado perfecto y aspa simple, demostrando el criterio del aspa simple
+a partir de la propiedad distributiva.
+
+</Objetivo>
+
+## Marco teórico
+
+**Factor común**: $ab+ac=a(b+c)$ (distributiva inversa). **Agrupación**: se
+agrupan términos con un factor común parcial.
+
+**Enunciado (aspa simple).** El trinomio $x^2+bx+c$ se factoriza como
+$(x+p)(x+q)$ si y solo si $p+q=b$ y $pq=c$.
+
+**Demostración.** Expandiendo: $(x+p)(x+q)=x^2+qx+px+pq=x^2+(p+q)x+pq$. Comparando
+coeficientes con $x^2+bx+c$ (por la identidad de polinomios): $p+q=b$ y $pq=c$.
+Recíprocamente, si se hallan $p,q$ con esas dos propiedades, $(x+p)(x+q)$ expande
+exactamente a $x^2+bx+c$. $\blacksquare$ (Nótese la analogía con las relaciones de
+Cardano-Vieta: $p,q$ son precisamente las raíces de $x^2+bx+c=0$ cambiadas de
+signo.)
+
+**Casos especiales** (de los productos notables, leídos "al revés"):
+$a^2-b^2=(a+b)(a-b)$; $a^2\pm2ab+b^2=(a\pm b)^2$ (trinomio cuadrado perfecto);
+$a^3-b^3=(a-b)(a^2+ab+b^2)$; $a^3+b^3=(a+b)(a^2-ab+b^2)$.
+
+## Visualización interactiva
+
+<FactorizadorDePolinomios />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Factoriza $6x^2-9x$.
+
+**Solución.** Factor común $3x$: $3x(2x-3)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Factoriza $x^2-9$.
+
+**Solución.** Diferencia de cuadrados: $(x-3)(x+3)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Factoriza $x^2+5x+6$ por aspa simple.
+
+**Solución.** Se buscan $p,q$ con $p+q=5$ y $pq=6$: $p=2,q=3$.
+$(x+2)(x+3)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Factoriza $ax+ay+bx+by$ por agrupación.
+
+**Solución.** Agrupando: $(ax+ay)+(bx+by)=a(x+y)+b(x+y)=(a+b)(x+y)$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Factoriza $10x^3-15x^2$.
+
+<Solucion>
+
+$5x^2(2x-3)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Factoriza $x^2-49$.
+
+<Solucion>
+
+$(x-7)(x+7)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Factoriza $x^2-8x+16$.
+
+<Solucion>
+
+Trinomio cuadrado perfecto: $(x-4)^2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Factoriza $x^2-2x-15$ por aspa simple.
+
+<Solucion>
+
+$p+q=-2$, $pq=-15$: $p=-5,q=3$. $(x-5)(x+3)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $x^2+bx+c$ es factorizable con enteros solo si $b^2-4c$ es un
+cuadrado perfecto.
+
+<Solucion>
+
+Por la fórmula general (con $a=1$), las raíces son
+$x=\dfrac{-b\pm\sqrt{b^2-4c}}{2}$. Para que $p=-x_1$ y $q=-x_2$ sean enteros,
+$\sqrt{b^2-4c}$ debe ser un entero (y además de la paridad correcta), lo cual
+exige que $b^2-4c$ sea un cuadrado perfecto (criterio ya visto en Aritmética).
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $x^4+4$ se puede factorizar como $(x^2-2x+2)(x^2+2x+2)$ (identidad
+de Sophie Germain), verificando la expansión.
+
+<Solucion>
+
+$(x^2-2x+2)(x^2+2x+2)=(x^2+2)^2-(2x)^2$ (diferencia de cuadrados, con
+$a=x^2+2$, $b=2x$) $=x^4+4x^2+4-4x^2=x^4+4$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "En el aspa simple para x²+bx+c=(x+p)(x+q), se cumple:",
+      opciones: ["p+q=c, pq=b", "p+q=b, pq=c", "p-q=b, pq=c", "p+q=b, p-q=c"],
+      correcta: 1,
+      explicacion: "Se deduce comparando coeficientes tras expandir (x+p)(x+q).",
+    },
+    {
+      enunciado: "a²-b² se factoriza como:",
+      opciones: ["(a-b)²", "(a+b)(a-b)", "(a+b)²", "a(a-b)"],
+      correcta: 1,
+      explicacion: "Es la diferencia de cuadrados leída al revés.",
+    },
+    {
+      enunciado: "x²-8x+16 se factoriza como:",
+      opciones: ["(x-4)(x+4)", "(x-4)²", "(x-8)(x+2)", "(x-2)(x-8)"],
+      correcta: 1,
+      explicacion: "Es un trinomio cuadrado perfecto: (x-4)².",
+    },
+    {
+      enunciado: "Para que x²+bx+c sea factorizable con enteros, se necesita que:",
+      opciones: ["b sea par", "b²-4c sea un cuadrado perfecto", "c sea primo", "b=c"],
+      correcta: 1,
+      explicacion: "El discriminante debe ser un cuadrado perfecto para que las raíces sean enteras.",
+    },
+    {
+      enunciado: "a³+b³ se factoriza como:",
+      opciones: ["(a+b)(a²-ab+b²)", "(a+b)(a²+ab+b²)", "(a+b)³", "(a-b)(a²+ab+b²)"],
+      correcta: 0,
+      explicacion: "Es la suma de cubos (nótese el signo intermedio negativo).",
+    },
+    {
+      enunciado: "La factorización por agrupación consiste en:",
+      opciones: ["Sumar todos los términos", "Agrupar términos con un factor común parcial", "Multiplicar por el conjugado", "Usar la fórmula general"],
+      correcta: 1,
+      explicacion: "Se agrupan y factoriza cada grupo, buscando un factor común entre los grupos.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir los signos en $a^3-b^3$ y $a^3+b^3$** — el signo intermedio del
+  trinomio siempre es opuesto al signo entre $a$ y $b$ del binomio.
+- **Buscar $p,q$ que sumen $c$ en vez de $b$** — en el aspa simple, $p+q=b$
+  (coeficiente lineal) y $pq=c$ (término independiente).
+- **Olvidar el factor común antes de aplicar otro método** — siempre conviene
+  extraer el factor común primero, para simplificar lo que sigue.
+- **Intentar factorizar $a^2+b^2$ con reales** — la suma de cuadrados no se
+  factoriza en factores lineales reales (sí en complejos, tema siguiente).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/productos-y-cocientes-notables", label: "Productos y cocientes notables" },
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/ecuaciones-de-segundo-grado-formula-general-y-propiedades", label: "Ecuaciones de segundo grado: fórmula general y propiedades" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/division-de-polinomios-horner-y-ruffini", label: "División de polinomios: método de Horner y regla de Ruffini" },
+  ]}
+/>

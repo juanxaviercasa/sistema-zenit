@@ -1,0 +1,232 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ComplejosRectangular } from "@/components/interactive/algebra";
+
+# Números complejos: forma rectangular y operaciones
+
+<Objetivo>
+
+Definir el número complejo en forma rectangular $a+bi$ como respuesta a la
+inexistencia de raíces cuadradas de negativos en $\mathbb{R}$, y operar con
+suma, resta, producto y cociente de complejos.
+
+</Objetivo>
+
+## Marco teórico
+
+**La unidad imaginaria** se define como $i=\sqrt{-1}$, es decir, $i^2=-1$. Un
+**número complejo** en forma rectangular es $z=a+bi$, con $a,b\in\mathbb{R}$:
+$a$ es la **parte real** ($\operatorname{Re}(z)$) y $b$ la **parte imaginaria**
+($\operatorname{Im}(z)$). El conjunto $\mathbb{C}=\{a+bi : a,b\in\mathbb{R}\}$
+extiende a $\mathbb{R}$ (los reales son los complejos con $b=0$).
+
+**Suma y resta**: se combinan partes reales e imaginarias por separado:
+$(a+bi)\pm(c+di)=(a\pm c)+(b\pm d)i$.
+
+**Producto**: se aplica la distributiva usando $i^2=-1$:
+
+$$
+(a+bi)(c+di) = ac+adi+bci+bdi^2 = (ac-bd)+(ad+bc)i.
+$$
+
+**Conjugado** de $z=a+bi$: $\bar z=a-bi$.
+
+**Enunciado.** $z\cdot\bar z=a^2+b^2$ (un número real no negativo).
+
+**Demostración.** $(a+bi)(a-bi)=a^2-abi+abi-b^2i^2=a^2-b^2(-1)=a^2+b^2$.
+$\blacksquare$ (Esto es la diferencia de cuadrados con $i^2=-1$, reinterpretada.)
+
+**Cociente**: se racionaliza multiplicando por el conjugado del denominador
+(la misma técnica de racionalización del subtema de raíces, adaptada a $i$):
+
+$$
+\frac{a+bi}{c+di} = \frac{(a+bi)(c-di)}{(c+di)(c-di)} = \frac{(ac+bd)+(bc-ad)i}{c^2+d^2}.
+$$
+
+## Visualización interactiva
+
+<ComplejosRectangular />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Suma $(3+2i)+(1-5i)$.
+
+**Solución.** $(3+1)+(2-5)i=4-3i$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Multiplica $(2+i)(3-i)$.
+
+**Solución.** $(2)(3)-(2)(1)i+(1)(3)i-(1)(1)i^2=6-2i+3i-i^2=6+i-(-1)=7+i$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Divide $\dfrac{1+i}{2-i}$.
+
+**Solución.** Multiplicando por el conjugado $\dfrac{2+i}{2+i}$:
+$\dfrac{(1+i)(2+i)}{(2-i)(2+i)}=\dfrac{2+i+2i+i^2}{4+1}=\dfrac{1+3i}{5}=
+\dfrac15+\dfrac35i$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Resuelve $x^2+9=0$ en $\mathbb{C}$.
+
+**Solución.** $x^2=-9=9i^2$, así que $x=\pm3i$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Resta $(5-3i)-(2+4i)$.
+
+<Solucion>
+
+$(5-2)+(-3-4)i=3-7i$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Multiplica $(1+2i)(1-2i)$.
+
+<Solucion>
+
+$1^2+2^2=5$ (por la propiedad $z\bar z=a^2+b^2$).
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Divide $\dfrac{3}{1+i}$.
+
+<Solucion>
+
+$\dfrac{3(1-i)}{(1+i)(1-i)}=\dfrac{3-3i}{2}=\dfrac32-\dfrac32i$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Resuelve $x^2-4x+13=0$ en $\mathbb{C}$.
+
+<Solucion>
+
+$x=\dfrac{4\pm\sqrt{16-52}}{2}=\dfrac{4\pm\sqrt{-36}}{2}=\dfrac{4\pm6i}{2}=2\pm3i$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $\overline{z_1+z_2}=\bar z_1+\bar z_2$ (el conjugado de la suma es
+la suma de los conjugados).
+
+<Solucion>
+
+Sea $z_1=a+bi$, $z_2=c+di$. $\overline{z_1+z_2}=\overline{(a+c)+(b+d)i}=
+(a+c)-(b+d)i$. Por otro lado, $\bar z_1+\bar z_2=(a-bi)+(c-di)=(a+c)-(b+d)i$.
+Coinciden. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $z$ es raíz de un polinomio $P(x)$ con coeficientes **reales**,
+entonces $\bar z$ también es raíz de $P(x)$.
+
+<Solucion>
+
+Sea $P(x)=a_nx^n+\cdots+a_0$ con $a_i\in\mathbb{R}$. Como $P(z)=0$, tomando
+conjugado en ambos lados: $\overline{P(z)}=\bar0=0$. Usando que el conjugado
+respeta suma y producto (Problema 5, y análogamente para el producto), y que
+$\bar a_i=a_i$ (los coeficientes son reales):
+$\overline{P(z)}=a_n\bar z^n+\cdots+a_0=P(\bar z)$. Por lo tanto $P(\bar z)=0$:
+$\bar z$ es raíz. $\blacksquare$ (Las raíces complejas no reales de un
+polinomio real vienen siempre en pares conjugados — se usará en el último
+subtema del tema.)
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La unidad imaginaria i se define por:",
+      opciones: ["i=1", "i²=-1", "i²=1", "i=0"],
+      correcta: 1,
+      explicacion: "Es la definición que extiende los reales a los complejos.",
+    },
+    {
+      enunciado: "z·z̄ (z por su conjugado) es siempre:",
+      opciones: ["Un número imaginario puro", "Un real no negativo (a²+b²)", "Cero", "Igual a z"],
+      correcta: 1,
+      explicacion: "Se demuestra como diferencia de cuadrados con i²=-1.",
+    },
+    {
+      enunciado: "Para dividir complejos, se multiplica numerador y denominador por:",
+      opciones: ["El mismo denominador", "El conjugado del denominador", "i", "El inverso del numerador"],
+      correcta: 1,
+      explicacion: "Es la técnica de racionalización adaptada a números complejos.",
+    },
+    {
+      enunciado: "(2+i)(3-i) es igual a:",
+      opciones: ["7+i", "6-i", "5+2i", "7-i"],
+      correcta: 0,
+      explicacion: "Se expande con la distributiva y i²=-1.",
+    },
+    {
+      enunciado: "Las raíces complejas no reales de un polinomio con coeficientes reales:",
+      opciones: ["Nunca existen", "Vienen en pares conjugados", "Son siempre imaginarias puras", "Son siempre iguales"],
+      correcta: 1,
+      explicacion: "Si z es raíz, z̄ también lo es (demostrado usando que el conjugado respeta suma y producto).",
+    },
+    {
+      enunciado: "El conjugado de a+bi es:",
+      opciones: ["-a-bi", "a-bi", "b+ai", "-a+bi"],
+      correcta: 1,
+      explicacion: "Se cambia el signo de la parte imaginaria únicamente.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar sustituir $i^2=-1$** al multiplicar — es el paso que distingue el
+  producto de complejos del producto de binomios ordinarios.
+- **Confundir el conjugado con el opuesto** — $\bar z=a-bi$ cambia solo el signo
+  de la parte imaginaria, no de toda la expresión ($-z=-a-bi$).
+- **Olvidar racionalizar (multiplicar por el conjugado) al dividir** — dejar un
+  $i$ en el denominador no es la forma rectangular estándar.
+- **Pensar que $\sqrt{-9}=-3i$ únicamente** — en general $\sqrt{-a}=\pm i\sqrt a$
+  tiene dos valores, como cualquier raíz cuadrada.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/teorema-del-resto-y-del-factor-raices-de-polinomios", label: "Función polinomial: teorema del resto, del factor, y raíces racionales" },
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/ecuaciones-de-segundo-grado-formula-general-y-propiedades", label: "Ecuaciones de segundo grado: fórmula general y propiedades" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/forma-polar-y-exponencial-de-un-complejo", label: "Forma polar y exponencial de un número complejo" },
+  ]}
+/>

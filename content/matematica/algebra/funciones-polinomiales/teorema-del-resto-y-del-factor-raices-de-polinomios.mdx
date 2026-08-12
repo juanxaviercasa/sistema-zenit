@@ -1,0 +1,249 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TeoremaDelRestoYFactor } from "@/components/interactive/algebra";
+
+# Función polinomial: teorema del resto, del factor, y raíces racionales
+
+<Objetivo>
+
+Demostrar el teorema del resto y el teorema del factor, y aplicar el teorema de
+las raíces racionales para acotar los candidatos a raíz de un polinomio con
+coeficientes enteros.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado (teorema del resto).** El residuo de dividir $P(x)$ entre $x-r$ es
+$P(r)$.
+
+**Demostración.** Por el algoritmo de la división, $P(x)=(x-r)Q(x)+R$, con $R$
+constante (subtema anterior). Evaluando ambos lados en $x=r$:
+$P(r)=(r-r)Q(r)+R=0\cdot Q(r)+R=R$. Por lo tanto $R=P(r)$. $\blacksquare$
+
+**Enunciado (teorema del factor).** $(x-r)$ es factor de $P(x)$ si y solo si
+$P(r)=0$ (es decir, $r$ es raíz de $P$).
+
+**Demostración.** $(x-r)$ es factor de $P(x)$ exactamente cuando el residuo de
+dividir $P(x)$ entre $x-r$ es $0$ (definición de "factor" vía el algoritmo de la
+división). Por el teorema del resto, ese residuo es $P(r)$. Entonces $(x-r)$ es
+factor si y solo si $P(r)=0$. $\blacksquare$
+
+**Enunciado (teorema de las raíces racionales).** Si $P(x)=a_nx^n+\cdots+a_0$
+tiene coeficientes enteros y $\frac pq$ (fracción irreducible) es raíz racional
+de $P$, entonces $p$ divide a $a_0$ y $q$ divide a $a_n$.
+
+**Demostración (esbozo).** Sustituyendo $x=\frac pq$ en $P(x)=0$ y multiplicando
+toda la ecuación por $q^n$:
+
+$$
+a_np^n+a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}+a_0q^n=0.
+$$
+
+Despejando el término $a_0q^n=-p(a_np^{n-1}+\cdots+a_1q^{n-1})$: el lado derecho
+es múltiplo de $p$, así que $p\mid a_0q^n$. Como $p$ y $q$ son coprimos (fracción
+irreducible), $p\mid a_0$ (propiedad de coprimalidad, ya vista en Aritmética).
+Simétricamente, despejando $a_np^n=-q(\cdots)$, se obtiene $q\mid a_n$.
+$\blacksquare$
+
+## Visualización interactiva
+
+<TeoremaDelRestoYFactor />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla el residuo de dividir $P(x)=x^3-2x^2+x-5$ entre $x-2$ sin
+hacer la división.
+
+**Solución.** Por el teorema del resto, el residuo es
+$P(2)=8-8+2-5=-3$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Es $(x-1)$ factor de $P(x)=x^3-x^2-x+1$?
+
+**Solución.** $P(1)=1-1-1+1=0$. Por el teorema del factor, sí es factor.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Lista los candidatos a raíz racional de
+$P(x)=2x^3-3x^2-11x+6$.
+
+**Solución.** Divisores de $a_0=6$: $\pm1,\pm2,\pm3,\pm6$. Divisores de $a_n=2$:
+$\pm1,\pm2$. Candidatos $\frac pq$: $\pm1,\pm2,\pm3,\pm6,\pm\frac12,\pm\frac32$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Con los candidatos del ejemplo anterior, halla una raíz de
+$P(x)=2x^3-3x^2-11x+6$ y factoriza completamente.
+
+**Solución.** Probando $x=3$: $P(3)=54-27-33+6=0$. Es raíz. Dividiendo
+(Ruffini) $2x^3-3x^2-11x+6$ entre $x-3$: coeficientes $2,-3,-11,6$;
+$b_0=2,b_1=-3+6=3,b_2=-11+9=-2$; residuo $6-6=0$. Cociente: $2x^2+3x-2$, que
+factoriza (aspa simple, o probando $x=\frac12$) como $(2x-1)(x+2)$. Entonces
+$P(x)=(x-3)(2x-1)(x+2)$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla el residuo de dividir $P(x)=x^3+2x^2-5$ entre $x+1$.
+
+<Solucion>
+
+$P(-1)=-1+2-5=-4$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Es $(x+2)$ factor de $P(x)=x^3+3x^2-4$?
+
+<Solucion>
+
+$P(-2)=-8+12-4=0$. Sí, es factor.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Lista los candidatos a raíz racional de $P(x)=3x^3-x^2-3x+1$.
+
+<Solucion>
+
+Divisores de $a_0=1$: $\pm1$. Divisores de $a_n=3$: $\pm1,\pm3$. Candidatos:
+$\pm1,\pm\frac13$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Para qué valor de $k$ es $(x-2)$ factor de $P(x)=x^3-kx+2$?
+
+<Solucion>
+
+Se necesita $P(2)=8-2k+2=0$, así que $10=2k$, $k=5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $P(x)$ tiene coeficientes enteros y $P(0)$ y $P(1)$ son ambos
+impares, entonces $P$ no tiene ninguna raíz entera.
+
+<Solucion>
+
+Sea $r$ entero. Si $r$ es par, $r\equiv0\pmod2$, y como los coeficientes son
+enteros, $P(r)\equiv P(0)\pmod2$ (cada término $a_ir^i$ con $i\geq1$ es par,
+pues $r$ es par); como $P(0)$ es impar, $P(r)$ es impar, así que $P(r)\neq0$. Si
+$r$ es impar, $r\equiv1\pmod2$, y análogamente $P(r)\equiv P(1)\pmod2$, que es
+impar, así que $P(r)\neq0$. En ambos casos $P(r)\neq0$: $P$ no tiene raíces
+enteras. $\blacksquare$ (Este es el mismo tipo de argumento de paridad usado en
+Aritmética para probar irracionalidad de raíces.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que un polinomio de grado $n$ tiene **a lo más** $n$ raíces distintas.
+
+<Solucion>
+
+Por inducción en $n$. Base $n=0$: un polinomio constante no nulo no tiene
+raíces ($\leq0$ raíces). Paso inductivo: supón que vale para grado $n-1$. Sea
+$P$ de grado $n$. Si $P$ no tiene raíces, listo ($0\leq n$). Si $r$ es raíz, por
+el teorema del factor $P(x)=(x-r)Q(x)$ con $Q$ de grado $n-1$. Cualquier otra
+raíz $s\neq r$ de $P$ cumple $0=P(s)=(s-r)Q(s)$; como $s\neq r$, $(s-r)\neq0$,
+así que $Q(s)=0$: toda raíz de $P$ distinta de $r$ es raíz de $Q$. Por hipótesis
+inductiva, $Q$ tiene a lo más $n-1$ raíces distintas, así que $P$ tiene a lo más
+$1+(n-1)=n$ raíces distintas. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El residuo de dividir P(x) entre x−r es:",
+      opciones: ["P(0)", "P(r)", "r", "P(x)/r"],
+      correcta: 1,
+      explicacion: "Es el teorema del resto, demostrado evaluando el algoritmo de la división en x=r.",
+    },
+    {
+      enunciado: "(x−r) es factor de P(x) si y solo si:",
+      opciones: ["P(0)=r", "P(r)=0", "r=0", "P(x) es constante"],
+      correcta: 1,
+      explicacion: "Es el teorema del factor, consecuencia directa del teorema del resto.",
+    },
+    {
+      enunciado: "Si P tiene coeficientes enteros y p/q (irreducible) es raíz, entonces:",
+      opciones: ["p divide a_n y q divide a_0", "p divide a_0 y q divide a_n", "p=q", "p y q son primos"],
+      correcta: 1,
+      explicacion: "Es el teorema de las raíces racionales.",
+    },
+    {
+      enunciado: "Un polinomio de grado n tiene, a lo más:",
+      opciones: ["n+1 raíces distintas", "n raíces distintas", "2n raíces distintas", "Infinitas raíces"],
+      correcta: 1,
+      explicacion: "Se demuestra por inducción usando el teorema del factor.",
+    },
+    {
+      enunciado: "El residuo de dividir x³-2x²+x-5 entre x-2 es:",
+      opciones: ["-3", "3", "-5", "5"],
+      correcta: 0,
+      explicacion: "P(2)=8-8+2-5=-3.",
+    },
+    {
+      enunciado: "Los candidatos a raíz racional de 2x³-3x²-11x+6 incluyen:",
+      opciones: ["Solo enteros", "1/2 y 3/2 además de enteros", "Solo fracciones", "Ningún candidato racional"],
+      correcta: 1,
+      explicacion: "El coeficiente líder 2 admite denominadores 1 y 2 en los candidatos.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir el teorema del resto con el del factor** — el del resto da el
+  residuo ($P(r)$); el del factor es el caso particular cuando ese residuo es
+  $0$.
+- **Olvidar el signo al evaluar** — dividir entre $x+2$ corresponde a evaluar en
+  $r=-2$, no en $r=2$.
+- **Pensar que todo candidato del teorema de raíces racionales es efectivamente
+  raíz** — el teorema solo acota la **lista de candidatos**; hay que probar cada
+  uno.
+- **Olvidar los divisores negativos** al listar candidatos $\frac pq$ — tanto
+  $p$ como $q$ pueden ser positivos o negativos.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/division-de-polinomios-horner-y-ruffini", label: "División de polinomios: método de Horner y regla de Ruffini" },
+    { href: "/matematica/algebra/funciones-polinomiales/mcd-y-mcm-de-polinomios", label: "MCD y MCM de polinomios" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/numeros-complejos-forma-rectangular-y-operaciones", label: "Números complejos: forma rectangular y operaciones" },
+    { href: "/matematica/algebra/funciones-polinomiales/teorema-fundamental-del-algebra-y-factorizacion-compleja", label: "Teorema fundamental del álgebra y factorización compleja de polinomios" },
+  ]}
+/>

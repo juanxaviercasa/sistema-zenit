@@ -1,0 +1,241 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { DivisionDePolinomios } from "@/components/interactive/algebra";
+
+# División de polinomios: método de Horner y regla de Ruffini
+
+<Objetivo>
+
+Dividir polinomios mediante el algoritmo de la división, y demostrar por qué la
+regla de Ruffini (caso particular del método de Horner) calcula correctamente el
+cociente y el residuo al dividir entre $x-r$.
+
+</Objetivo>
+
+## Marco teórico
+
+**Algoritmo de la división para polinomios.** Dados $P(x)$ (dividendo) y $D(x)$
+(divisor, no nulo), existen únicos $Q(x)$ (cociente) y $R(x)$ (residuo) tales que
+
+$$
+P(x) = D(x)\cdot Q(x) + R(x), \qquad \operatorname{grado}(R)<\operatorname{grado}(D).
+$$
+
+**Regla de Ruffini.** Cuando el divisor es $D(x)=x-r$ (grado $1$), el residuo es
+una constante, y el cociente se calcula con el algoritmo abreviado de Ruffini:
+se "baja" el primer coeficiente, y cada coeficiente siguiente se suma al
+**producto** del coeficiente anterior del cociente por $r$.
+
+**Enunciado.** La regla de Ruffini calcula correctamente $Q(x)$ y el residuo
+(constante) $R$ tales que $P(x)=(x-r)Q(x)+R$.
+
+**Demostración.** Sea $P(x)=a_nx^n+\cdots+a_1x+a_0$ y supongamos
+$Q(x)=b_{n-1}x^{n-1}+\cdots+b_0$, con $b_{n-1}=a_n$ y $b_{i-1}=a_i+r\,b_i$ para
+$i=n-1,\ldots,1$ (la regla de Ruffini), y $R=a_0+r\,b_0$. Verificamos que
+$(x-r)Q(x)+R=P(x)$ expandiendo:
+
+$$
+(x-r)Q(x) = \sum_{i=0}^{n-1} b_i x^{i+1} - \sum_{i=0}^{n-1} r\,b_i x^i.
+$$
+
+Reagrupando por potencias de $x$, el coeficiente de $x^n$ es $b_{n-1}=a_n$
+(coincide). El coeficiente de $x^i$ (para $0<i<n$) es $b_{i-1}-r\,b_i$; por la
+regla, $b_{i-1}=a_i+r\,b_i$, así que $b_{i-1}-r\,b_i=a_i$ (coincide). El término
+independiente de $(x-r)Q(x)+R$ es $-r\,b_0+R=-r\,b_0+(a_0+r\,b_0)=a_0$ (coincide).
+Como todos los coeficientes coinciden, $(x-r)Q(x)+R=P(x)$. $\blacksquare$
+
+## Visualización interactiva
+
+<DivisionDePolinomios />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Divide $x^3-6x^2+11x-6$ entre $x-1$ con Ruffini.
+
+**Solución.** Coeficientes $1,-6,11,-6$; $r=1$. $b_0=1$; $b_1=-6+1(1)=-5$;
+$b_2=11+1(-5)=6$; residuo $=-6+1(6)=0$. Cociente: $x^2-5x+6$, residuo $0$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Con el resultado del ejemplo anterior, factoriza completamente
+$x^3-6x^2+11x-6$.
+
+**Solución.** $x^2-5x+6=(x-2)(x-3)$ (aspa simple). Entonces
+$x^3-6x^2+11x-6=(x-1)(x-2)(x-3)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Divide $2x^3+3x^2-8x+3$ entre $x-1$ con Ruffini.
+
+**Solución.** Coeficientes $2,3,-8,3$; $r=1$. $b_0=2$; $b_1=3+1(2)=5$;
+$b_2=-8+1(5)=-3$; residuo $=3+1(-3)=0$. Cociente: $2x^2+5x-3$, residuo $0$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica el algoritmo de la división con el resultado del
+ejemplo 3: comprueba que $(x-1)(2x^2+5x-3)=2x^3+3x^2-8x+3$.
+
+**Solución.** $(x-1)(2x^2+5x-3)=2x^3+5x^2-3x-2x^2-5x+3=2x^3+3x^2-8x+3$ ✓.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Divide $x^3-2x^2-5x+6$ entre $x-1$ con Ruffini.
+
+<Solucion>
+
+$b_0=1$; $b_1=-2+1=-1$; $b_2=-5+(-1)=-6$; residuo $=6+(-6)=0$. Cociente:
+$x^2-x-6$, residuo $0$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Divide $x^3+2x^2-x-2$ entre $x+2$ (es decir, $r=-2$) con Ruffini.
+
+<Solucion>
+
+$b_0=1$; $b_1=2+(-2)(1)=0$; $b_2=-1+(-2)(0)=-1$; residuo $=-2+(-2)(-1)=0$.
+Cociente: $x^2-1$, residuo $0$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Divide $x^4-1$ entre $x-1$ con Ruffini.
+
+<Solucion>
+
+Coeficientes $1,0,0,0,-1$; $r=1$. $b_0=1,b_1=0+1=1,b_2=0+1=1,b_3=0+1=1$; residuo
+$=-1+1=0$. Cociente: $x^3+x^2+x+1$, residuo $0$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Divide $x^3-3x+2$ entre $x-2$ con Ruffini.
+
+<Solucion>
+
+Coeficientes $1,0,-3,2$; $r=2$. $b_0=1,b_1=0+2=2,b_2=-3+4=1$; residuo $=2+2=4$.
+Cociente: $x^2+2x+1$, residuo $4$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si el residuo de dividir $P(x)$ entre $x-r$ es $0$, entonces
+$P(x)=(x-r)Q(x)$ exactamente (sin residuo).
+
+<Solucion>
+
+Por el algoritmo de la división, $P(x)=(x-r)Q(x)+R$ con $R$ constante. Si $R=0$,
+sustituyendo: $P(x)=(x-r)Q(x)+0=(x-r)Q(x)$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que el cociente y el residuo del algoritmo de la división son únicos
+(no puede haber dos pares distintos $(Q_1,R_1)$ y $(Q_2,R_2)$ que cumplan la
+igualdad con el mismo grado de residuo).
+
+<Solucion>
+
+Supón $P(x)=D(x)Q_1(x)+R_1(x)=D(x)Q_2(x)+R_2(x)$, con
+$\operatorname{grado}(R_1),\operatorname{grado}(R_2)<\operatorname{grado}(D)$.
+Restando: $D(x)\big(Q_1(x)-Q_2(x)\big)=R_2(x)-R_1(x)$. Si $Q_1\neq Q_2$, el lado
+izquierdo tiene grado $\geq\operatorname{grado}(D)$ (por la fórmula del grado del
+producto), pero el lado derecho tiene grado $<\operatorname{grado}(D)$ (diferencia
+de dos polinomios de grado menor que $D$) — contradicción, salvo que ambos lados
+sean el polinomio nulo. Por lo tanto $Q_1=Q_2$ y, en consecuencia, $R_1=R_2$.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El algoritmo de la división garantiza que grado(R) es:",
+      opciones: ["Mayor que grado(D)", "Menor que grado(D)", "Igual a grado(P)", "Siempre 0"],
+      correcta: 1,
+      explicacion: "Es la condición que hace única la división.",
+    },
+    {
+      enunciado: "La regla de Ruffini se usa cuando el divisor es:",
+      opciones: ["Cualquier polinomio", "De la forma x−r (grado 1)", "Un número", "Siempre x²+1"],
+      correcta: 1,
+      explicacion: "Es el caso particular del método de Horner para divisores lineales.",
+    },
+    {
+      enunciado: "En Ruffini, cada coeficiente del cociente se calcula como:",
+      opciones: ["El coeficiente correspondiente de P sumado al producto del anterior por r", "El coeficiente de P dividido entre r", "Siempre 0", "El coeficiente anterior menos r"],
+      correcta: 0,
+      explicacion: "Es la regla bᵢ₋₁ = aᵢ + r·bᵢ.",
+    },
+    {
+      enunciado: "Si el residuo de dividir P(x) entre x−r es 0, entonces:",
+      opciones: ["P(x) no tiene factores", "P(x) = (x−r)Q(x) exactamente", "r no es raíz de P", "P(x) es constante"],
+      correcta: 1,
+      explicacion: "Un residuo 0 significa que la división es exacta.",
+    },
+    {
+      enunciado: "El cociente y residuo del algoritmo de la división son:",
+      opciones: ["Distintos cada vez", "Únicos", "Siempre iguales a P(x)", "Indefinidos"],
+      correcta: 1,
+      explicacion: "Se demuestra por contradicción usando la fórmula del grado del producto.",
+    },
+    {
+      enunciado: "Al dividir x⁴-1 entre x-1, el cociente es:",
+      opciones: ["x³+x²+x+1", "x³-x²+x-1", "x³+1", "x³-1"],
+      correcta: 0,
+      explicacion: "Se calcula con Ruffini, coeficientes 1,0,0,0,-1 y r=1.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar Ruffini con divisores de grado mayor que 1** — solo funciona
+  directamente para $x-r$; para otros divisores se necesita el método de Horner
+  general o la división larga.
+- **Olvidar completar con ceros los coeficientes faltantes** — si el polinomio no
+  es completo, hay que incluir un $0$ por cada exponente ausente antes de
+  aplicar Ruffini.
+- **Confundir el signo de $r$** — al dividir entre $x+2$, se usa $r=-2$, no
+  $r=2$.
+- **Olvidar que el último valor calculado es el residuo**, no parte del
+  cociente.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/factorizacion-de-polinomios", label: "Factorización de polinomios" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/teorema-del-resto-y-del-factor-raices-de-polinomios", label: "Función polinomial: teorema del resto, del factor, y raíces racionales" },
+  ]}
+/>

@@ -1,0 +1,240 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ClasificadorDePolinomios } from "@/components/interactive/algebra";
+
+# Polinomios: definición, grado y clases especiales
+
+<Objetivo>
+
+Definir polinomio, su grado absoluto y relativo, clasificar los polinomios
+especiales (homogéneos, completos, ordenados, idénticos, idénticamente nulos), y
+demostrar la propiedad de escalamiento de los polinomios homogéneos.
+
+</Objetivo>
+
+## Marco teórico
+
+Un **polinomio** en $x$ (y posiblemente otras variables) es una suma finita de
+**términos**, cada uno de la forma $a\cdot x^{e_1}y^{e_2}\cdots$, con coeficiente
+$a$ real y exponentes enteros no negativos.
+
+- **Grado absoluto** de un término: la suma de todos sus exponentes. Grado
+  absoluto del polinomio: el mayor grado absoluto entre sus términos.
+- **Grado relativo** a una variable: el mayor exponente de esa variable entre
+  todos los términos del polinomio.
+- **Homogéneo**: todos sus términos tienen el **mismo** grado absoluto.
+- **Completo** (respecto a una variable): contiene un término con **cada**
+  exponente de esa variable, desde el grado hasta $0$, sin saltos.
+- **Ordenado**: los exponentes de una variable aparecen en orden estrictamente
+  creciente o decreciente a lo largo de los términos.
+- **Idénticos**: dos polinomios con exactamente los mismos coeficientes en cada
+  término semejante.
+- **Idénticamente nulo**: todos sus coeficientes son $0$.
+
+**Enunciado.** Si $P(x,y)$ es homogéneo de grado $k$, entonces $P(cx,cy)=c^k
+P(x,y)$, para cualquier constante $c$.
+
+**Demostración.** Como $P$ es homogéneo de grado $k$, cada término tiene la forma
+$a_i x^{e_i}y^{f_i}$ con $e_i+f_i=k$. Sustituyendo $x\to cx$, $y\to cy$ en cada
+término:
+
+$$
+a_i(cx)^{e_i}(cy)^{f_i} = a_i c^{e_i}c^{f_i}x^{e_i}y^{f_i} = a_i
+c^{e_i+f_i}x^{e_i}y^{f_i} = c^k\left(a_ix^{e_i}y^{f_i}\right),
+$$
+
+usando la ley de exponentes $c^{e_i}c^{f_i}=c^{e_i+f_i}$ y que $e_i+f_i=k$ para
+**todo** término (por homogeneidad). Sumando todos los términos:
+$P(cx,cy)=c^k P(x,y)$. $\blacksquare$
+
+## Visualización interactiva
+
+<ClasificadorDePolinomios />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla el grado absoluto de $3x^2y^3-5xy+2$.
+
+**Solución.** Grados absolutos de los términos: $2+3=5$, $1+1=2$, $0$. El grado
+absoluto del polinomio es el mayor: $5$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Es $x^3-2x^2+5x-7$ completo y ordenado?
+
+**Solución.** Exponentes presentes: $3,2,1,0$ — todos los consecutivos desde $3$
+hasta $0$: es **completo**. Los exponentes aparecen en orden decreciente: es
+**ordenado**.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿Es $x^2y+xy^2$ homogéneo?
+
+**Solución.** Grados absolutos de los términos: $2+1=3$, $1+2=3$ — ambos iguales:
+sí es **homogéneo**, de grado $3$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica la propiedad de escalamiento $P(cx,cy)=c^kP(x,y)$ con
+$P(x,y)=x^2y+xy^2$ (homogéneo de grado $3$) y $c=2$, en el punto $(x,y)=(1,1)$.
+
+**Solución.** $P(1,1)=1+1=2$. $P(2,2)=(2)^2(2)+(2)(2)^2=8+8=16$. Por la fórmula,
+$c^kP(x,y)=2^3\times2=8\times2=16$. Coincide: $16=16$ ✓.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla el grado absoluto y el grado relativo en $x$ de $4x^3y-2xy^4+7$.
+
+<Solucion>
+
+Grados absolutos: $3+1=4$, $1+4=5$, $0$. Grado absoluto: $5$. Grado relativo en
+$x$: el mayor exponente de $x$ es $3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Es $x^4-3x+1$ completo?
+
+<Solucion>
+
+Exponentes presentes: $4,1,0$. Falta $3$ y $2$: **no** es completo.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿Es $5x^3y^2-2x^2y^3$ homogéneo?
+
+<Solucion>
+
+Grados: $3+2=5$, $2+3=5$ — iguales: sí, homogéneo de grado $5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Para qué valor de $k$ es $x^2y^k+3xy^4$ homogéneo?
+
+<Solucion>
+
+Se necesita $2+k=1+4=5$, así que $k=3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que el producto de dos polinomios homogéneos (de grados $k_1$ y $k_2$
+respectivamente) es homogéneo de grado $k_1+k_2$.
+
+<Solucion>
+
+Sea $P$ homogéneo de grado $k_1$ y $Q$ homogéneo de grado $k_2$. Cada término del
+producto $PQ$ es el producto de un término de $P$ (grado absoluto $k_1$) por un
+término de $Q$ (grado absoluto $k_2$); al multiplicar, los exponentes se suman, así
+que ese término del producto tiene grado absoluto $k_1+k_2$. Como **todos** los
+términos de $P$ tienen grado $k_1$ y **todos** los de $Q$ tienen grado $k_2$,
+**todos** los términos de $PQ$ tienen grado $k_1+k_2$: $PQ$ es homogéneo de grado
+$k_1+k_2$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $P(x,y)$ es homogéneo de grado $k$ impar, entonces
+$P(-x,-y)=-P(x,y)$.
+
+<Solucion>
+
+Por la propiedad de escalamiento con $c=-1$: $P(-x,-y)=P((-1)x,(-1)y)=(-1)^k
+P(x,y)$. Como $k$ es impar, $(-1)^k=-1$ (una potencia impar de $-1$ es $-1$,
+visto en Aritmética). Por lo tanto $P(-x,-y)=-P(x,y)$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El grado absoluto de un término es:",
+      opciones: ["El mayor exponente de cualquier variable", "La suma de todos sus exponentes", "El coeficiente", "El número de variables"],
+      correcta: 1,
+      explicacion: "Se suman los exponentes de todas las variables presentes en ese término.",
+    },
+    {
+      enunciado: "Un polinomio es homogéneo si:",
+      opciones: ["Tiene un solo término", "Todos sus términos tienen el mismo grado absoluto", "Está ordenado", "Es idénticamente nulo"],
+      correcta: 1,
+      explicacion: "Es la definición de homogéneo.",
+    },
+    {
+      enunciado: "x⁴-3x+1 no es completo porque:",
+      opciones: ["Tiene 3 términos", "Faltan los exponentes 2 y 3", "El coeficiente líder es 1", "No está ordenado"],
+      correcta: 1,
+      explicacion: "Completo exige todos los exponentes consecutivos desde el grado hasta 0.",
+    },
+    {
+      enunciado: "Si P es homogéneo de grado k, P(cx,cy) es igual a:",
+      opciones: ["c·P(x,y)", "c^k · P(x,y)", "P(x,y) + c", "k · P(x,y)"],
+      correcta: 1,
+      explicacion: "Es la propiedad de escalamiento demostrada en este subtema.",
+    },
+    {
+      enunciado: "El producto de dos polinomios homogéneos de grados 2 y 3 es homogéneo de grado:",
+      opciones: ["6", "5", "1", "2,5"],
+      correcta: 1,
+      explicacion: "Los grados se suman: 2+3=5.",
+    },
+    {
+      enunciado: "Dos polinomios son idénticos si:",
+      opciones: ["Tienen el mismo grado", "Tienen exactamente los mismos coeficientes en cada término semejante", "Se evalúan igual en x=0", "Ambos son completos"],
+      correcta: 1,
+      explicacion: "Es la definición de identidad de polinomios.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir grado absoluto con grado relativo** — el absoluto suma los
+  exponentes de un término; el relativo mira solo una variable a la vez.
+- **Pensar que "completo" significa "tiene muchos términos"** — completo exige
+  específicamente que no falte ningún exponente consecutivo.
+- **Olvidar que homogéneo se refiere al grado absoluto de cada término**, no al
+  número de términos ni a sus coeficientes.
+- **Confundir "idénticos" con "iguales para un valor de x"** — dos polinomios
+  distintos pueden coincidir en un punto sin ser idénticos.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/ecuaciones-e-inecuaciones-de-segundo-grado/inecuaciones-de-grado-superior", label: "Inecuaciones de grado superior e interpretación geométrica" },
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion/teoremas-fundamentales-de-la-potenciacion", label: "Teoremas fundamentales de la potenciación" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/operaciones-con-polinomios", label: "Operaciones con polinomios" },
+  ]}
+/>

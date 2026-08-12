@@ -1,0 +1,260 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { RaicesEnElPlanoComplejo } from "@/components/interactive/algebra";
+
+# Teorema fundamental del álgebra y factorización compleja de polinomios
+
+<Objetivo>
+
+Enunciar el teorema fundamental del álgebra, deducir de él que todo polinomio de
+grado $n$ se factoriza en exactamente $n$ factores lineales complejos, y aplicar
+el teorema de las raíces conjugadas para factorizar polinomios reales.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado (teorema fundamental del álgebra).** Todo polinomio $P(x)$ de grado
+$n\geq1$ con coeficientes complejos tiene **al menos una** raíz en
+$\mathbb{C}$.
+
+**Demostración.** La demostración rigurosa requiere herramientas de análisis
+complejo (más allá de este curso); se acepta como resultado fundamental —
+resuelve exactamente el problema que motivó la construcción de $\mathbb{C}$: a
+diferencia de $\mathbb{R}$ (donde $x^2+1$ no tiene raíz), en $\mathbb{C}$
+**todo** polinomio no constante tiene raíz.
+
+**Enunciado (factorización lineal completa).** Todo polinomio $P(x)$ de grado
+$n\geq1$ con coeficientes complejos se factoriza como
+$P(x)=a_n(x-r_1)(x-r_2)\cdots(x-r_n)$, con $r_1,\ldots,r_n\in\mathbb{C}$ (no
+necesariamente distintos).
+
+**Demostración.** Por inducción en $n$, usando el teorema fundamental y el
+teorema del factor (ya demostrado). **Base** $n=1$: $P(x)=a_1x+a_0=
+a_1\left(x-\left(-\frac{a_0}{a_1}\right)\right)$, ya es lineal. **Paso
+inductivo**: sea $P$ de grado $n>1$. Por el teorema fundamental, $P$ tiene una
+raíz $r_n\in\mathbb{C}$. Por el teorema del factor, $P(x)=(x-r_n)Q(x)$ con $Q$
+de grado $n-1$. Por hipótesis inductiva, $Q(x)=a_n(x-r_1)\cdots(x-r_{n-1})$
+(donde $a_n$ es el coeficiente líder de $Q$, que coincide con el de $P$, pues
+$(x-r_n)$ es mónico). Sustituyendo:
+$P(x)=a_n(x-r_1)\cdots(x-r_{n-1})(x-r_n)$. $\blacksquare$
+
+**Consecuencia**: un polinomio de grado $n$ tiene **exactamente** $n$ raíces en
+$\mathbb{C}$, contadas con multiplicidad (esto refina el resultado del subtema
+del teorema del resto, donde solo se probó "a lo más $n$").
+
+**Enunciado (raíces conjugadas).** Si $P(x)$ tiene coeficientes **reales** y
+$z=a+bi$ (con $b\neq0$) es raíz, entonces $\bar z=a-bi$ también es raíz, con la
+misma multiplicidad, y $(x-z)(x-\bar z)=x^2-2ax+(a^2+b^2)$ es un factor
+cuadrático real irreducible de $P(x)$.
+
+**Demostración.** Que $\bar z$ es raíz ya se demostró (subtema de forma
+rectangular). El producto:
+$(x-z)(x-\bar z)=x^2-(z+\bar z)x+z\bar z=x^2-2ax+(a^2+b^2)$ (usando
+$z+\bar z=2a$ y $z\bar z=a^2+b^2$, ambas ya establecidas), que tiene
+coeficientes reales y discriminante $4a^2-4(a^2+b^2)=-4b^2<0$ (pues $b\neq0$):
+no tiene raíces reales, así que es irreducible sobre $\mathbb{R}$. $\blacksquare$
+Esto implica que **todo polinomio real se factoriza en factores lineales reales
+y factores cuadráticos reales irreducibles** (agrupando cada par de raíces
+complejas conjugadas).
+
+## Visualización interactiva
+
+<RaicesEnElPlanoComplejo />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Factoriza $x^2+1$ en $\mathbb{C}$.
+
+**Solución.** Raíces $\pm i$. $x^2+1=(x-i)(x+i)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Cuántas raíces (con multiplicidad) tiene $x^4-1$?
+
+**Solución.** Grado $4$, así que exactamente $4$ raíces: $1,-1,i,-i$ (las 4
+raíces cuartas de la unidad, ya vistas).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** $P(x)=x^3-3x^2+4x-2$ tiene raíz $x=1$. Sabiendo que las otras dos
+raíces son complejas conjugadas, factoriza completamente sobre $\mathbb{R}$.
+
+**Solución.** Dividiendo (Ruffini) entre $(x-1)$: cociente $x^2-2x+2$. Este
+factor cuadrático es irreducible (discriminante $4-8=-4<0$), así que la
+factorización real es $P(x)=(x-1)(x^2-2x+2)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Con el ejemplo anterior, halla las raíces complejas de
+$x^2-2x+2$ y verifica que son conjugadas.
+
+**Solución.** Fórmula general: $x=\dfrac{2\pm\sqrt{4-8}}{2}=\dfrac{2\pm2i}{2}=
+1\pm i$. Son $1+i$ y $1-i$: conjugadas ✓.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Factoriza $x^2+9$ en $\mathbb{C}$.
+
+<Solucion>
+
+$(x-3i)(x+3i)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Cuántas raíces (con multiplicidad) tiene un polinomio de grado $7$?
+
+<Solucion>
+
+Exactamente $7$, por el teorema fundamental del álgebra.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+$P(x)=x^3-4x^2+6x-4$ tiene raíz $x=2$. Factoriza completamente sobre
+$\mathbb{R}$.
+
+<Solucion>
+
+Dividiendo entre $(x-2)$: cociente $x^2-2x+2$ (discriminante $4-8=-4<0$,
+irreducible). $P(x)=(x-2)(x^2-2x+2)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla un polinomio real de grado $3$ mínimo que tenga a $2$ y a $1+i$ como
+raíces.
+
+<Solucion>
+
+Como $1+i$ es raíz y el polinomio es real, $1-i$ también es raíz. Grado $3$
+exige exactamente esas $3$ raíces: $P(x)=(x-2)(x-(1+i))(x-(1-i))=
+(x-2)(x^2-2x+2)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que un polinomio real de grado **impar** tiene al menos una raíz
+real.
+
+<Solucion>
+
+Por la factorización completa sobre $\mathbb{R}$, $P(x)$ es producto de
+factores lineales reales y factores cuadráticos irreducibles (cada uno
+aportando $2$ al grado, por un par de raíces conjugadas). Si $P$ no tuviera
+ninguna raíz real, su grado sería una suma de únicamente términos pares (de los
+factores cuadráticos), es decir, par — contradicción con que el grado es
+impar. Por lo tanto debe haber al menos un factor lineal real, es decir, al
+menos una raíz real. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que el número de raíces complejas no reales de un polinomio real es
+siempre **par** (contadas con multiplicidad).
+
+<Solucion>
+
+Por el teorema de raíces conjugadas, las raíces no reales de un polinomio real
+aparecen en pares $\{z,\bar z\}$ (con $z\neq\bar z$ pues $z$ no es real), cada
+par con la misma multiplicidad. La cantidad total de raíces no reales es, por
+lo tanto, una suma de cantidades pares (cada par aporta $2\times$ su
+multiplicidad), así que el total es par. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El teorema fundamental del álgebra garantiza que todo polinomio no constante:",
+      opciones: ["Tiene todas sus raíces reales", "Tiene al menos una raíz en ℂ", "No tiene raíces", "Es irreducible"],
+      correcta: 1,
+      explicacion: "Es el enunciado central del teorema.",
+    },
+    {
+      enunciado: "Un polinomio de grado n tiene, contando multiplicidad, exactamente:",
+      opciones: ["n raíces complejas", "n-1 raíces", "1 raíz", "Depende del polinomio"],
+      correcta: 0,
+      explicacion: "Se demuestra por inducción combinando el teorema fundamental con el teorema del factor.",
+    },
+    {
+      enunciado: "Si un polinomio real tiene raíz compleja z=a+bi (b≠0), entonces también tiene como raíz:",
+      opciones: ["-z", "1/z", "El conjugado ā-bi", "z²"],
+      correcta: 2,
+      explicacion: "Es el teorema de las raíces conjugadas.",
+    },
+    {
+      enunciado: "Todo polinomio real se factoriza sobre ℝ en:",
+      opciones: ["Solo factores lineales", "Factores lineales y cuadráticos irreducibles", "Solo factores cuadráticos", "No se puede factorizar"],
+      correcta: 1,
+      explicacion: "Los pares de raíces complejas conjugadas producen factores cuadráticos irreducibles.",
+    },
+    {
+      enunciado: "Un polinomio real de grado impar tiene:",
+      opciones: ["Cero raíces reales", "Al menos una raíz real", "Todas sus raíces complejas", "Un número par de raíces reales"],
+      correcta: 1,
+      explicacion: "Las raíces no reales vienen en pares, por lo que un grado impar exige al menos una raíz real.",
+    },
+    {
+      enunciado: "El número de raíces complejas no reales de un polinomio real es:",
+      opciones: ["Siempre impar", "Siempre par", "Siempre 0", "Igual al grado"],
+      correcta: 1,
+      explicacion: "Vienen en pares conjugados {z, z̄}.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Pensar que el teorema de raíces conjugadas aplica a cualquier
+  polinomio** — solo aplica si los **coeficientes son reales**; con
+  coeficientes complejos, el conjugado de una raíz no tiene por qué ser raíz.
+- **Olvidar contar multiplicidades** — un polinomio de grado $n$ tiene $n$
+  raíces contando multiplicidad, aunque el número de raíces **distintas** sea
+  menor.
+- **Intentar factorizar un factor cuadrático real irreducible en factores
+  lineales reales** — por definición, un cuadrático irreducible (discriminante
+  negativo) no tiene factores lineales reales; sí los tiene en $\mathbb{C}$.
+- **Confundir "grado impar implica raíz real" con "todas las raíces son
+  reales"** — el teorema solo garantiza **al menos una**, no todas.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/formula-de-de-moivre-y-raices-enesimas", label: "Fórmula de De Moivre y raíces enésimas de un número complejo" },
+    { href: "/matematica/algebra/funciones-polinomiales/teorema-del-resto-y-del-factor-raices-de-polinomios", label: "Función polinomial: teorema del resto, del factor, y raíces racionales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funcion-exponencial-y-logaritmica", label: "Función exponencial y logarítmica" },
+  ]}
+/>

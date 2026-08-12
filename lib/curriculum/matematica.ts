@@ -262,6 +262,45 @@ const subtemasFunciones: Subtema[] = [
   ),
 ];
 
+const subtemasFuncionesPolinomiales: Subtema[] = [
+  subtema(
+    "polinomios-definicion-grado-y-clases-especiales",
+    "Polinomios: definición, grado y clases especiales"
+  ),
+  subtema("operaciones-con-polinomios", "Operaciones con polinomios"),
+  subtema("productos-y-cocientes-notables", "Productos y cocientes notables"),
+  subtema("factorizacion-de-polinomios", "Factorización de polinomios"),
+  subtema(
+    "division-de-polinomios-horner-y-ruffini",
+    "División de polinomios: método de Horner y regla de Ruffini"
+  ),
+  subtema(
+    "raiz-cuadrada-de-un-polinomio-y-racionalizacion",
+    "Raíz cuadrada de un polinomio y racionalización de denominadores"
+  ),
+  subtema("mcd-y-mcm-de-polinomios", "MCD y MCM de polinomios"),
+  subtema(
+    "teorema-del-resto-y-del-factor-raices-de-polinomios",
+    "Función polinomial: teorema del resto, del factor, y raíces racionales"
+  ),
+  subtema(
+    "numeros-complejos-forma-rectangular-y-operaciones",
+    "Números complejos: forma rectangular y operaciones"
+  ),
+  subtema(
+    "forma-polar-y-exponencial-de-un-complejo",
+    "Forma polar y exponencial de un número complejo"
+  ),
+  subtema(
+    "formula-de-de-moivre-y-raices-enesimas",
+    "Fórmula de De Moivre y raíces enésimas de un número complejo"
+  ),
+  subtema(
+    "teorema-fundamental-del-algebra-y-factorizacion-compleja",
+    "Teorema fundamental del álgebra y factorización compleja de polinomios"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -343,7 +382,13 @@ const algebra: Area = {
       subtemasEcuacionesSegundoGrado
     ),
     tema(3, "funciones", "Funciones", undefined, subtemasFunciones),
-    tema(4, "funciones-polinomiales", "Funciones polinomiales", "incluye números complejos"),
+    tema(
+      4,
+      "funciones-polinomiales",
+      "Funciones polinomiales",
+      "incluye números complejos",
+      subtemasFuncionesPolinomiales
+    ),
     tema(5, "funcion-exponencial-y-logaritmica", "Función exponencial y logarítmica"),
     tema(6, "matrices-y-determinantes", "Matrices y determinantes"),
     tema(7, "sistemas-de-ecuaciones-e-inecuaciones", "Sistemas de ecuaciones e inecuaciones"),

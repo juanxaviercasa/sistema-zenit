@@ -1,0 +1,224 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ProductosNotables } from "@/components/interactive/algebra";
+
+# Productos y cocientes notables
+
+<Objetivo>
+
+Demostrar las identidades algebraicas más usadas (binomio al cuadrado, diferencia
+de cuadrados, cubo de un binomio) y sus cocientes notables asociados.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado (binomio al cuadrado).** $(a+b)^2=a^2+2ab+b^2$.
+
+**Demostración.** $(a+b)^2=(a+b)(a+b)=a(a+b)+b(a+b)=a^2+ab+ab+b^2=a^2+2ab+b^2$.
+$\blacksquare$ (Análogamente, $(a-b)^2=a^2-2ab+b^2$, sustituyendo $b\to-b$.)
+
+**Enunciado (diferencia de cuadrados).** $(a+b)(a-b)=a^2-b^2$.
+
+**Demostración.** $(a+b)(a-b)=a(a-b)+b(a-b)=a^2-ab+ab-b^2=a^2-b^2$. $\blacksquare$
+
+**Enunciado (cubo de un binomio).** $(a+b)^3=a^3+3a^2b+3ab^2+b^3$.
+
+**Demostración.** $(a+b)^3=(a+b)^2(a+b)=(a^2+2ab+b^2)(a+b)$. Distribuyendo:
+
+$$
+a^3+a^2b+2a^2b+2ab^2+ab^2+b^3 = a^3+3a^2b+3ab^2+b^3. \qquad\blacksquare
+$$
+
+**Cocientes notables.** Invirtiendo la diferencia de cuadrados:
+$\dfrac{a^2-b^2}{a-b}=a+b$ (para $a\neq b$). Más generalmente, para cualquier
+entero $n\geq1$:
+
+$$
+\frac{a^n-b^n}{a-b} = a^{n-1}+a^{n-2}b+\cdots+ab^{n-2}+b^{n-1}.
+$$
+
+**Demostración.** Se verifica multiplicando el lado derecho por $(a-b)$: cada
+término $a^{n-1-k}b^k$ del lado derecho, al multiplicarlo por $a$, da
+$a^{n-k}b^k$, y al multiplicarlo por $-b$, da $-a^{n-1-k}b^{k+1}$. Sumando sobre
+todos los términos, los productos intermedios se cancelan en cadena (el
+$-a^{n-1-k}b^{k+1}$ de un término cancela el $a^{n-1-(k+1)}b^{k+1}\cdot a$ del
+siguiente), dejando solo $a^n-b^n$. $\blacksquare$
+
+## Visualización interactiva
+
+<ProductosNotables />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Expande $(x+5)^2$.
+
+**Solución.** $x^2+2(5)x+25=x^2+10x+25$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Expande $(2x-3)(2x+3)$.
+
+**Solución.** Es diferencia de cuadrados: $(2x)^2-3^2=4x^2-9$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Expande $(x-2)^3$.
+
+**Solución.** $x^3-3(x^2)(2)+3(x)(4)-8=x^3-6x^2+12x-8$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Usa el cociente notable para simplificar $\dfrac{x^3-8}{x-2}$.
+
+**Solución.** Con $a=x$, $b=2$, $n=3$:
+$\dfrac{x^3-2^3}{x-2}=x^2+2x+4$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Expande $(3x+1)^2$.
+
+<Solucion>
+
+$9x^2+6x+1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Expande $(x-7)(x+7)$.
+
+<Solucion>
+
+$x^2-49$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Expande $(2x+1)^3$.
+
+<Solucion>
+
+$8x^3+3(4x^2)(1)+3(2x)(1)+1=8x^3+12x^2+6x+1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Simplifica $\dfrac{x^4-16}{x-2}$ usando el cociente notable general.
+
+<Solucion>
+
+$x^3+2x^2+4x+8$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $(a+b)^2-(a-b)^2=4ab$.
+
+<Solucion>
+
+$(a+b)^2-(a-b)^2=(a^2+2ab+b^2)-(a^2-2ab+b^2)=4ab$. $\blacksquare$ (Esta identidad
+es la base de un método rápido para hallar productos: $ab=\dfrac{(a+b)^2-(a-b)^2}4$.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $a^3-b^3=(a-b)(a^2+ab+b^2)$ (caso $n=3$ del cociente notable
+general).
+
+<Solucion>
+
+$(a-b)(a^2+ab+b^2)=a^3+a^2b+ab^2-a^2b-ab^2-b^3=a^3-b^3$ (los términos
+intermedios $a^2b$, $-a^2b$, $ab^2$, $-ab^2$ se cancelan en pares). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "(a+b)² es igual a:",
+      opciones: ["a²+b²", "a²+2ab+b²", "a²-2ab+b²", "2a+2b"],
+      correcta: 1,
+      explicacion: "Es el binomio al cuadrado, demostrado expandiendo (a+b)(a+b).",
+    },
+    {
+      enunciado: "(a+b)(a-b) es igual a:",
+      opciones: ["a²-b²", "a²+b²", "2ab", "a²-2ab+b²"],
+      correcta: 0,
+      explicacion: "Es la diferencia de cuadrados.",
+    },
+    {
+      enunciado: "(a+b)³ es igual a:",
+      opciones: ["a³+b³", "a³+3a²b+3ab²+b³", "a³+ab+b³", "3a²b+3ab²"],
+      correcta: 1,
+      explicacion: "Es el cubo de un binomio, con cuatro términos.",
+    },
+    {
+      enunciado: "(a²-b²)/(a-b) es igual a:",
+      opciones: ["a+b", "a-b", "a²+b²", "1"],
+      correcta: 0,
+      explicacion: "Es el cociente notable más simple, caso n=2.",
+    },
+    {
+      enunciado: "a³-b³ se factoriza como:",
+      opciones: ["(a-b)(a²+ab+b²)", "(a-b)(a²-ab+b²)", "(a-b)³", "(a+b)(a²-ab+b²)"],
+      correcta: 0,
+      explicacion: "Es el cociente notable de diferencia de cubos.",
+    },
+    {
+      enunciado: "(a+b)²-(a-b)² es igual a:",
+      opciones: ["2ab", "4ab", "a²+b²", "0"],
+      correcta: 1,
+      explicacion: "Se demuestra expandiendo ambos cuadrados y restando.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar el término del medio** — $(a+b)^2\neq a^2+b^2$; falta el término
+  $2ab$.
+- **Confundir el signo en $(a-b)^2$** — el término del medio es $-2ab$, pero
+  $b^2$ sigue siendo positivo.
+- **Aplicar diferencia de cuadrados a una suma de cuadrados** — $a^2+b^2$ **no**
+  se factoriza con números reales de esta forma.
+- **Olvidar algún término al expandir el cubo de un binomio** — tiene **cuatro**
+  términos, no tres.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/operaciones-con-polinomios", label: "Operaciones con polinomios" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/factorizacion-de-polinomios", label: "Factorización de polinomios" },
+  ]}
+/>

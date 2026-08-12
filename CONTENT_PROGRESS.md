@@ -1,7 +1,7 @@
 # CONTENT_PROGRESS.md — Sistema Zenit
 
 > Memoria persistente entre sesiones. Se actualiza al terminar cada subtema/tema.
-> Estado del proyecto: **Fase 2 en curso (Aritmética)**. El patrón validado en el tema
+> Estado del proyecto: **Fase 3 en curso (Álgebra)**. El patrón validado en el tema
 > piloto "Triángulos" (Geometría, 7/7 subtemas) se está replicando tema por tema.
 > Ver `PROJECT_BRIEF.md` §7 para el roadmap por fases.
 
@@ -72,7 +72,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Raíz cuadrada y raíz cúbica: propiedades de los residuos
   - ✅ Cálculo de raíces con aproximación
 
-### B. Álgebra (3/9)
+### B. Álgebra (4/9)
 
 - ✅ 1. Lógica, conjuntos, números reales, ecuaciones e inecuaciones
   - ✅ Proposiciones y operaciones lógicas
@@ -99,7 +99,19 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Función biyectiva e inversa de una función
   - ✅ Variación directa e inversa de dos variables
   - ✅ Técnicas de graficación por transformaciones
-- ⬜ 4. Funciones polinomiales (incluye números complejos)
+- ✅ 4. Funciones polinomiales (incluye números complejos)
+  - ✅ Polinomios: definición, grado y clases especiales
+  - ✅ Operaciones con polinomios
+  - ✅ Productos y cocientes notables
+  - ✅ Factorización de polinomios
+  - ✅ División de polinomios: método de Horner y regla de Ruffini
+  - ✅ Raíz cuadrada de un polinomio y racionalización de denominadores
+  - ✅ MCD y MCM de polinomios
+  - ✅ Función polinomial: teorema del resto, del factor, y raíces racionales
+  - ✅ Números complejos: forma rectangular y operaciones
+  - ✅ Forma polar y exponencial de un número complejo
+  - ✅ Fórmula de De Moivre y raíces enésimas de un número complejo
+  - ✅ Teorema fundamental del álgebra y factorización compleja de polinomios
 - ⬜ 5. Función exponencial y logarítmica
 - ⬜ 6. Matrices y determinantes
 - ⬜ 7. Sistemas de ecuaciones e inecuaciones
@@ -149,7 +161,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 16/51 temas completos.**
+**Total Matemática: 17/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -244,7 +256,37 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       funciones discontinuas como el máximo entero) reusado en 5 de los 6 widgets
       nuevos: graficador de funciones elementales, clasificador de funciones,
       operaciones y composición, inversa de función, variación directa e inversa, y
-      transformaciones de gráficas.
+      transformaciones de gráficas. **Funciones polinomiales** completo, con 12
+      subtemas — el tema más extenso del temario oficial, combinando teoría de
+      polinomios y números complejos: demuestra la propiedad de escalamiento de
+      polinomios homogéneos $P(cx,cy)=c^kP(x,y)$; deduce el grado de la suma y el
+      producto de polinomios (y que los polinomios reales no tienen divisores de
+      cero); demuestra los productos notables por expansión directa y el cociente
+      notable general $(a^n-b^n)/(a-b)$ por cancelación telescópica; deduce el
+      criterio del aspa simple $p+q=b,pq=c$ señalando su analogía con
+      Cardano-Vieta, y factoriza la identidad de Sophie Germain; demuestra que la
+      regla de Ruffini calcula correctamente cociente y residuo, y que el
+      algoritmo de la división tiene solución única; extiende la racionalización
+      de denominadores (incluido el conjugado) y el reconocimiento de trinomios
+      cuadrados perfectos vía $b^2=4ac$; calcula MCD y MCM de polinomios
+      factorizados con el mismo criterio de exponentes mínimos/máximos que en
+      Aritmética; demuestra los teoremas del resto, del factor y de las raíces
+      racionales, y que un polinomio de grado $n$ tiene a lo más $n$ raíces
+      (por inducción); introduce $\mathbb{C}$ para resolver $i^2=-1$, demuestra
+      $z\bar z=a^2+b^2$ y que las raíces complejas de un polinomio real vienen en
+      pares conjugados; deduce la forma polar/exponencial y prueba la fórmula de
+      Euler por series; demuestra la fórmula de De Moivre por inducción y la
+      fórmula de las $n$ raíces enésimas; y cierra con el teorema fundamental del
+      álgebra, la factorización lineal completa sobre $\mathbb{C}$, y la
+      factorización en lineales y cuadráticos irreducibles sobre $\mathbb{R}$ (de
+      donde se deduce que todo polinomio real de grado impar tiene una raíz
+      real). Nuevo componente compartido `PlanoCartesiano` extendido con modo de
+      puntos discretos (para graficar números complejos) y 12 widgets nuevos en
+      `components/interactive/algebra/*`: clasificador de polinomios, operaciones
+      con polinomios, productos notables, factorizador, división de Ruffini, raíz
+      y racionalización, MCD/MCM de polinomios, teorema del resto y del factor, y
+      cuatro widgets de números complejos (rectangular, polar, De Moivre/raíces,
+      raíces en el plano complejo verificando el teorema fundamental).
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)
 - [ ] Fase 6 — Funcionalidades avanzadas (simulacro cronometrado, cuentas/progreso,

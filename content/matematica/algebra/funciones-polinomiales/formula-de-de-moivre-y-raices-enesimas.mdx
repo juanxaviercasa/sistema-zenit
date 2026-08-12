@@ -1,0 +1,254 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { DeMoivreYRaices } from "@/components/interactive/algebra";
+
+# Fórmula de De Moivre y raíces enésimas de un número complejo
+
+<Objetivo>
+
+Demostrar la fórmula de De Moivre para potencias de números complejos en forma
+polar, y usarla para hallar las $n$ raíces enésimas de un número complejo.
+
+</Objetivo>
+
+## Marco teórico
+
+**Enunciado (fórmula de De Moivre).** Para $z=r(\cos\theta+i\sin\theta)$ y
+cualquier entero $n\geq1$:
+
+$$
+z^n = r^n\big(\cos(n\theta)+i\sin(n\theta)\big).
+$$
+
+**Demostración.** Por inducción en $n$. **Base** ($n=1$): trivial, $z^1=z$.
+**Paso inductivo**: supón que vale para $n$, es decir,
+$z^n=r^n(\cos(n\theta)+i\sin(n\theta))$. Entonces:
+
+$$
+z^{n+1}=z^n\cdot z = r^n(\cos(n\theta)+i\sin(n\theta))\cdot r(\cos\theta+i\sin\theta).
+$$
+
+Multiplicando (como en el producto de complejos, subtema anterior a la forma
+polar) y agrupando partes real e imaginaria:
+
+$$
+= r^{n+1}\Big[\big(\cos(n\theta)\cos\theta-\sin(n\theta)\sin\theta\big) + i\big(\sin(n\theta)\cos\theta+\cos(n\theta)\sin\theta\big)\Big].
+$$
+
+Por las identidades de suma de ángulos de trigonometría,
+$\cos(n\theta)\cos\theta-\sin(n\theta)\sin\theta=\cos((n+1)\theta)$ y
+$\sin(n\theta)\cos\theta+\cos(n\theta)\sin\theta=\sin((n+1)\theta)$. Entonces
+$z^{n+1}=r^{n+1}(\cos((n+1)\theta)+i\sin((n+1)\theta))$, que es la fórmula con
+$n+1$. Por inducción, vale para todo $n\geq1$. $\blacksquare$
+
+**Enunciado (raíces enésimas).** Las $n$ raíces enésimas de
+$z=r(\cos\theta+i\sin\theta)$ son:
+
+$$
+w_k = \sqrt[n]r\left(\cos\frac{\theta+360°k}{n}+i\sin\frac{\theta+360°k}{n}\right), \qquad k=0,1,\ldots,n-1.
+$$
+
+**Demostración.** Se busca $w=\rho(\cos\varphi+i\sin\varphi)$ tal que $w^n=z$.
+Por De Moivre, $w^n=\rho^n(\cos(n\varphi)+i\sin(n\varphi))$. Igualando con
+$z=r(\cos\theta+i\sin\theta)$: $\rho^n=r$ (así que $\rho=\sqrt[n]r$, único real
+positivo), y $n\varphi=\theta+360°k$ para algún entero $k$ (los ángulos
+$n\varphi$ y $\theta$ representan el mismo punto del plano si difieren en un
+múltiplo de $360°$), de donde $\varphi=\frac{\theta+360°k}{n}$. Los valores
+$k=0,1,\ldots,n-1$ dan $n$ ángulos $\varphi$ distintos (módulo $360°$); para
+$k=n$ el ángulo coincide con el de $k=0$ (difieren en $360°$), así que no hay
+más raíces distintas. Por lo tanto hay exactamente $n$ raíces enésimas.
+$\blacksquare$ (Geométricamente, están igualmente espaciadas sobre un círculo de
+radio $\sqrt[n]r$.)
+
+## Visualización interactiva
+
+<DeMoivreYRaices />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Calcula $(1+i)^4$ usando De Moivre.
+
+**Solución.** $1+i$ tiene $r=\sqrt2$, $\theta=45°$. $(1+i)^4=(\sqrt2)^4(\cos180°+
+i\sin180°)=4(-1+0i)=-4$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla las $2$ raíces cuadradas de $z=4(\cos60°+i\sin60°)$.
+
+**Solución.** $\sqrt[2]4=2$; ángulos $\frac{60°+360°k}{2}$ para $k=0,1$:
+$30°$ y $210°$. Raíces: $2(\cos30°+i\sin30°)$ y $2(\cos210°+i\sin210°)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla las $3$ raíces cúbicas de la unidad ($z=1$).
+
+**Solución.** $z=1(\cos0°+i\sin0°)$. Raíces: $\frac{0°+360°k}{3}$ para
+$k=0,1,2$: $0°,120°,240°$. Raíces: $1$, $\cos120°+i\sin120°=-\frac12+
+\frac{\sqrt3}2i$, $\cos240°+i\sin240°=-\frac12-\frac{\sqrt3}2i$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica que la suma de las $3$ raíces cúbicas de la unidad
+(ejemplo anterior) es $0$.
+
+**Solución.**
+$1+\left(-\frac12+\frac{\sqrt3}2i\right)+\left(-\frac12-\frac{\sqrt3}2i\right)=
+1-\frac12-\frac12+\left(\frac{\sqrt3}2-\frac{\sqrt3}2\right)i=0$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Calcula $(2(\cos30°+i\sin30°))^3$ usando De Moivre.
+
+<Solucion>
+
+$2^3(\cos90°+i\sin90°)=8(0+i)=8i$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla las $2$ raíces cuadradas de $z=9(\cos0°+i\sin0°)$.
+
+<Solucion>
+
+$\sqrt9=3$; ángulos $0°$ y $180°$. Raíces: $3$ y $-3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla las $4$ raíces cuartas de la unidad.
+
+<Solucion>
+
+Ángulos $\frac{360°k}{4}$ para $k=0,1,2,3$: $0°,90°,180°,270°$. Raíces:
+$1,i,-1,-i$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Calcula $(\cos45°+i\sin45°)^8$.
+
+<Solucion>
+
+$\cos(8\times45°)+i\sin(8\times45°)=\cos360°+i\sin360°=1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que las $n$ raíces enésimas de la unidad forman un polígono regular
+de $n$ lados inscrito en el círculo unitario.
+
+<Solucion>
+
+Las raíces son $w_k=\cos\frac{360°k}{n}+i\sin\frac{360°k}{n}$ para
+$k=0,\ldots,n-1$: todas tienen módulo $1$ (están en el círculo unitario) y sus
+argumentos están igualmente espaciados cada $\frac{360°}{n}$ grados. Puntos
+igualmente espaciados sobre un círculo, unidos en orden, forman un polígono
+regular de $n$ lados. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $w$ es una raíz enésima de la unidad distinta de $1$, entonces
+$1+w+w^2+\cdots+w^{n-1}=0$.
+
+<Solucion>
+
+Por el cociente notable (visto en polinomios),
+$1+w+w^2+\cdots+w^{n-1}=\dfrac{w^n-1}{w-1}$ (válido pues $w\neq1$, así que
+$w-1\neq0$). Como $w$ es raíz enésima de la unidad, $w^n=1$, así que el
+numerador es $1-1=0$. Por lo tanto la suma es $0$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La fórmula de De Moivre establece que z^n es igual a:",
+      opciones: ["r^n(cos(nθ)+i·sen(nθ))", "r(cos(nθ)+i·sen(nθ))", "r^n(cosθ+i·senθ)", "n·r(cosθ+i·senθ)"],
+      correcta: 0,
+      explicacion: "Se demuestra por inducción usando las identidades de suma de ángulos.",
+    },
+    {
+      enunciado: "Un número complejo no nulo tiene exactamente n raíces enésimas, que están:",
+      opciones: ["Todas en el mismo punto", "Igualmente espaciadas en un círculo de radio ⁿ√r", "En una línea recta", "Siempre en el eje real"],
+      correcta: 1,
+      explicacion: "Los ángulos difieren en múltiplos de 360°/n.",
+    },
+    {
+      enunciado: "Las raíces cúbicas de la unidad suman:",
+      opciones: ["3", "1", "0", "-1"],
+      correcta: 2,
+      explicacion: "Se verifica sumando las tres raíces explícitamente.",
+    },
+    {
+      enunciado: "Las 4 raíces cuartas de la unidad son:",
+      opciones: ["1,-1,2,-2", "1,i,-1,-i", "1,2i,-1,-2i", "0,1,2,3"],
+      correcta: 1,
+      explicacion: "Corresponden a los ángulos 0°,90°,180°,270°.",
+    },
+    {
+      enunciado: "(1+i)⁴ es igual a:",
+      opciones: ["4", "-4", "4i", "-4i"],
+      correcta: 1,
+      explicacion: "r=√2, θ=45°; (√2)⁴(cos180°+i·sen180°)=4(-1)=-4.",
+    },
+    {
+      enunciado: "Si w es raíz enésima de la unidad distinta de 1, entonces 1+w+...+w^(n-1) es:",
+      opciones: ["n", "1", "0", "w"],
+      correcta: 2,
+      explicacion: "Se demuestra con el cociente notable (w^n-1)/(w-1) y w^n=1.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar dividir entre $n$ el término $360°k$** — el ángulo de cada raíz es
+  $\frac{\theta+360°k}{n}$, no $\theta+360°k$.
+- **Usar solo $k=0$** — hay que recorrer $k=0,1,\ldots,n-1$ para obtener **todas**
+  las $n$ raíces distintas.
+- **Confundir "raíz enésima de un número" con "elevar a la potencia
+  $\frac1n$" sin considerar los múltiples valores** — a diferencia de los
+  reales positivos, en $\mathbb{C}$ hay $n$ raíces enésimas distintas.
+- **Aplicar De Moivre con el ángulo en grados y radianes mezclados** — hay que
+  ser consistente con la unidad angular en todo el cálculo.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/forma-polar-y-exponencial-de-un-complejo", label: "Forma polar y exponencial de un número complejo" },
+    { href: "/matematica/algebra/funciones-polinomiales/productos-y-cocientes-notables", label: "Productos y cocientes notables" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/teorema-fundamental-del-algebra-y-factorizacion-compleja", label: "Teorema fundamental del álgebra y factorización compleja de polinomios" },
+  ]}
+/>

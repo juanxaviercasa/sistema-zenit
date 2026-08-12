@@ -1,0 +1,231 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { OperacionesConPolinomios } from "@/components/interactive/algebra";
+
+# Operaciones con polinomios
+
+<Objetivo>
+
+Sumar, restar y multiplicar polinomios, y demostrar cómo se comporta el grado del
+resultado en cada operación.
+
+</Objetivo>
+
+## Marco teórico
+
+**Suma y resta**: se combinan los coeficientes de los términos semejantes (mismos
+exponentes). **Multiplicación**: se aplica la propiedad distributiva a cada par de
+términos, uno de cada factor, sumando sus exponentes.
+
+**Enunciado.** Para $P,Q$ polinomios no nulos de grados $m$ y $n$:
+$\operatorname{grado}(P\cdot Q)=m+n$.
+
+**Demostración.** Sea $p$ el coeficiente del término de mayor grado de $P$ (grado
+$m$), y $q$ el de $Q$ (grado $n$); ambos son no nulos por ser los términos
+líderes. Al multiplicar $P\cdot Q$ mediante la distributiva, cada término del
+resultado proviene de multiplicar un término de $P$ (grado $\leq m$) por uno de
+$Q$ (grado $\leq n$), dando un término de grado $\leq m+n$. El **único** par que
+alcanza exactamente el grado $m+n$ es el de los dos términos líderes (cualquier
+otro par usa al menos un término de grado estrictamente menor, dando una suma
+estrictamente menor que $m+n$). Ese término tiene coeficiente $p\cdot q\neq0$
+(producto de no nulos). Por lo tanto, el término de grado $m+n$ no se cancela:
+$\operatorname{grado}(P\cdot Q)=m+n$. $\blacksquare$
+
+**Enunciado.** $\operatorname{grado}(P+Q)\leq\max(\operatorname{grado}(P),
+\operatorname{grado}(Q))$, con igualdad si los grados de $P$ y $Q$ son distintos.
+
+**Demostración.** Ningún término de $P+Q$ puede tener grado mayor que el mayor de
+los dos grados originales, porque la suma no crea exponentes nuevos. Si
+$\operatorname{grado}(P)\neq\operatorname{grado}(Q)$, el término de mayor grado
+entre ambos (digamos, de $P$, si $\operatorname{grado}(P)>\operatorname{grado}(Q)$)
+no tiene con qué cancelarse en $Q$ (que no tiene término de ese grado), así que
+sobrevive en la suma: $\operatorname{grado}(P+Q)=\max(\operatorname{grado}(P),
+\operatorname{grado}(Q))$. (Si los grados son iguales, los términos líderes
+podrían cancelarse, y el grado de la suma podría ser menor.) $\blacksquare$
+
+## Visualización interactiva
+
+<OperacionesConPolinomios />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Suma $(x^2+3x-2)+(2x-5)$.
+
+**Solución.** $x^2+3x-2+2x-5=x^2+5x-7$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Resta $(x^2+3x-2)-(2x-5)$.
+
+**Solución.** $x^2+3x-2-2x+5=x^2+x+3$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Multiplica $(x+2)(x^2-3x+1)$.
+
+**Solución.**
+$x(x^2-3x+1)+2(x^2-3x+1)=x^3-3x^2+x+2x^2-6x+2=x^3-x^2-5x+2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Sin multiplicar completamente, halla el grado de
+$(3x^4-x+1)(2x^3+5x-2)$.
+
+**Solución.** Por el teorema, el grado del producto es la suma de los grados:
+$4+3=7$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Suma $(2x^2-x+4)+(x^2+3x-1)$.
+
+<Solucion>
+
+$3x^2+2x+3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Resta $(2x^2-x+4)-(x^2+3x-1)$.
+
+<Solucion>
+
+$x^2-4x+5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Multiplica $(x-1)(x+1)(x-2)$.
+
+<Solucion>
+
+$(x-1)(x+1)=x^2-1$. $(x^2-1)(x-2)=x^3-2x^2-x+2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el grado de $(x^5-3x^2)(x^2+1)(x-4)$.
+
+<Solucion>
+
+$5+2+1=8$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $P$ y $Q$ tienen el mismo grado $n$ pero coeficientes líderes
+opuestos, entonces $\operatorname{grado}(P+Q)<n$.
+
+<Solucion>
+
+Sea $p$ el coeficiente líder de $P$ y $-p$ el de $Q$ (opuestos, ambos de grado
+$n$). El término de grado $n$ en $P+Q$ tiene coeficiente $p+(-p)=0$: se cancela.
+Por lo tanto $P+Q$ no tiene término de grado $n$, así que su grado es
+estrictamente menor que $n$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $P$ y $Q$ son ambos no nulos, entonces $P\cdot Q$ tampoco es el
+polinomio nulo.
+
+<Solucion>
+
+Por el teorema del grado del producto, $\operatorname{grado}(P\cdot
+Q)=\operatorname{grado}(P)+\operatorname{grado}(Q)$, un número bien definido
+(finito). Si $P\cdot Q$ fuera el polinomio nulo, no tendría un grado definido (o,
+por convención, su grado no está definido) — contradicción. Por lo tanto
+$P\cdot Q\neq0$. $\blacksquare$ (Esto refleja que los polinomios reales no tienen
+"divisores de cero".)
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Para sumar dos polinomios, se combinan:",
+      opciones: ["Todos los coeficientes en uno solo", "Los términos semejantes (mismos exponentes)", "Solo los términos de mayor grado", "Los coeficientes al azar"],
+      correcta: 1,
+      explicacion: "Solo se pueden sumar términos con exactamente los mismos exponentes.",
+    },
+    {
+      enunciado: "El grado de un producto de dos polinomios no nulos es:",
+      opciones: ["El mayor de los dos grados", "La suma de los dos grados", "El producto de los dos grados", "Siempre el mismo que el primero"],
+      correcta: 1,
+      explicacion: "Se demuestra que el término líder del producto es el producto de los términos líderes.",
+    },
+    {
+      enunciado: "El grado de una suma P+Q es, como máximo:",
+      opciones: ["El producto de los grados", "El mayor de los dos grados", "La suma de los grados", "Siempre el grado de P"],
+      correcta: 1,
+      explicacion: "La suma no puede crear un exponente mayor que los que ya existían.",
+    },
+    {
+      enunciado: "Si P y Q tienen el mismo grado con coeficientes líderes opuestos, grado(P+Q):",
+      opciones: ["Es siempre el mismo grado", "Puede ser menor (el término líder se cancela)", "Siempre es 0", "No se puede determinar"],
+      correcta: 1,
+      explicacion: "Los coeficientes líderes opuestos se cancelan, bajando el grado de la suma.",
+    },
+    {
+      enunciado: "El grado de (x⁵-3x²)(x²+1)(x-4) es:",
+      opciones: ["8", "7", "6", "5"],
+      correcta: 0,
+      explicacion: "Se suman los grados: 5+2+1=8.",
+    },
+    {
+      enunciado: "El producto de dos polinomios no nulos:",
+      opciones: ["Puede ser el polinomio nulo", "Nunca es el polinomio nulo", "Siempre tiene grado 0", "Depende del signo de los coeficientes"],
+      correcta: 1,
+      explicacion: "Los polinomios reales no tienen divisores de cero.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Sumar coeficientes de términos no semejantes** — solo se combinan términos
+  con exactamente los mismos exponentes en cada variable.
+- **Olvidar distribuir el signo negativo al restar** — $(P)-(Q)$ cambia el signo
+  de **todos** los términos de $Q$, no solo el primero.
+- **Pensar que el grado del producto es el mayor de los dos grados** (como en la
+  suma) — en la multiplicación, los grados se **suman**, no se comparan.
+- **Olvidar multiplicar cada término por cada término** — la propiedad
+  distributiva exige todos los productos cruzados, no solo los "alineados".
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/polinomios-definicion-grado-y-clases-especiales", label: "Polinomios: definición, grado y clases especiales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/productos-y-cocientes-notables", label: "Productos y cocientes notables" },
+  ]}
+/>

@@ -1,0 +1,226 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { RaizYRacionalizacion } from "@/components/interactive/algebra";
+
+# Raíz cuadrada de un polinomio y racionalización de denominadores
+
+<Objetivo>
+
+Calcular la raíz cuadrada de un trinomio cuadrado perfecto reconociendo su
+estructura, y racionalizar denominadores con radicales usando el factor
+racionalizante adecuado.
+
+</Objetivo>
+
+## Marco teórico
+
+**Raíz cuadrada de un trinomio cuadrado perfecto.** Un trinomio de la forma
+$a^2+2ab+b^2$ (o $a^2-2ab+b^2$) es un cuadrado perfecto, y su raíz cuadrada es
+$a+b$ (o $a-b$).
+
+**Enunciado.** $ax^2+bx+c$ es un trinomio cuadrado perfecto si y solo si
+$b^2=4ac$ (con $a,c\geq0$).
+
+**Demostración.** Si $ax^2+bx+c=(\sqrt a\,x+\sqrt c)^2=ax^2+2\sqrt{ac}\,x+c$
+(suponiendo $a,c\geq0$), comparando coeficientes: $b=2\sqrt{ac}$, así que
+$b^2=4ac$. Recíprocamente, si $b^2=4ac$, entonces $b=\pm2\sqrt{ac}$, y
+$ax^2+bx+c=ax^2\pm2\sqrt{ac}\,x+c=(\sqrt a\,x\pm\sqrt c)^2$. $\blacksquare$
+
+**Racionalización de denominadores.** Consiste en multiplicar numerador y
+denominador por un **factor racionalizante** que elimine el radical del
+denominador, sin alterar el valor de la fracción (se multiplica por
+$\frac{k}{k}=1$).
+
+- Denominador $\sqrt a$: factor racionalizante $\sqrt a$, pues
+  $\sqrt a\cdot\sqrt a=a$.
+- Denominador $\sqrt[n]{a^m}$ (con $m<n$): factor racionalizante
+  $\sqrt[n]{a^{n-m}}$, pues $\sqrt[n]{a^m}\cdot\sqrt[n]{a^{n-m}}=\sqrt[n]{a^n}=a$.
+- Denominador $\sqrt a+\sqrt b$ (o $\sqrt a-\sqrt b$): factor racionalizante el
+  **conjugado** $\sqrt a-\sqrt b$ (o $\sqrt a+\sqrt b$), pues
+  $(\sqrt a+\sqrt b)(\sqrt a-\sqrt b)=a-b$ (diferencia de cuadrados).
+
+## Visualización interactiva
+
+<RaizYRacionalizacion />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla la raíz cuadrada de $x^2+6x+9$.
+
+**Solución.** $9=3^2$ y $6x=2(x)(3)$: es $(x+3)^2$. Raíz: $x+3$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Racionaliza $\dfrac{5}{\sqrt3}$.
+
+**Solución.** $\dfrac{5}{\sqrt3}\cdot\dfrac{\sqrt3}{\sqrt3}=\dfrac{5\sqrt3}{3}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Racionaliza $\dfrac{1}{\sqrt5-\sqrt2}$.
+
+**Solución.** Multiplicando por el conjugado
+$\dfrac{\sqrt5+\sqrt2}{\sqrt5+\sqrt2}$: $\dfrac{\sqrt5+\sqrt2}{5-2}=
+\dfrac{\sqrt5+\sqrt2}{3}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Racionaliza $\dfrac{1}{\sqrt[3]{4}}$.
+
+**Solución.** $\sqrt[3]4=\sqrt[3]{2^2}$; el factor racionalizante es
+$\sqrt[3]{2^1}=\sqrt[3]2$ (para completar $\sqrt[3]{2^3}=2$):
+$\dfrac{1}{\sqrt[3]4}\cdot\dfrac{\sqrt[3]2}{\sqrt[3]2}=\dfrac{\sqrt[3]2}{2}$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla la raíz cuadrada de $x^2-10x+25$.
+
+<Solucion>
+
+$25=5^2$, $10x=2(x)(5)$: es $(x-5)^2$. Raíz: $x-5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Racionaliza $\dfrac{3}{\sqrt7}$.
+
+<Solucion>
+
+$\dfrac{3\sqrt7}{7}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Racionaliza $\dfrac{2}{\sqrt6+\sqrt2}$.
+
+<Solucion>
+
+$\dfrac{2(\sqrt6-\sqrt2)}{6-2}=\dfrac{2(\sqrt6-\sqrt2)}{4}=\dfrac{\sqrt6-\sqrt2}{2}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Para qué valor de $k$ es $4x^2+kx+9$ un trinomio cuadrado perfecto (con $k>0$)?
+
+<Solucion>
+
+Se necesita $k^2=4(4)(9)=144$, así que $k=12$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $\sqrt a+\sqrt b$ y $\sqrt a-\sqrt b$ son conjugados válidos para
+racionalizar, mostrando que su producto elimina ambos radicales.
+
+<Solucion>
+
+$(\sqrt a+\sqrt b)(\sqrt a-\sqrt b)=(\sqrt a)^2-(\sqrt b)^2=a-b$ (diferencia de
+cuadrados), que ya no contiene radicales (suponiendo $a,b\geq0$ racionales).
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que el factor racionalizante de $\sqrt[n]{a^m}$ (con $0<m<n$) es
+$\sqrt[n]{a^{n-m}}$.
+
+<Solucion>
+
+$\sqrt[n]{a^m}\cdot\sqrt[n]{a^{n-m}}=\sqrt[n]{a^m\cdot a^{n-m}}=\sqrt[n]{a^n}=a$
+(usando la propiedad del producto de radicales del mismo índice y la ley de
+exponentes $a^m\cdot a^{n-m}=a^n$). El resultado es $a$, sin radical.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "ax²+bx+c es trinomio cuadrado perfecto si y solo si:",
+      opciones: ["b=ac", "b²=4ac", "a=c", "b²=ac"],
+      correcta: 1,
+      explicacion: "Se demuestra comparando coeficientes con (√a·x+√c)².",
+    },
+    {
+      enunciado: "El factor racionalizante de √a (denominador) es:",
+      opciones: ["a", "√a", "1/√a", "a²"],
+      correcta: 1,
+      explicacion: "√a·√a=a elimina el radical.",
+    },
+    {
+      enunciado: "El factor racionalizante de √a+√b es su:",
+      opciones: ["Cuadrado", "Inverso", "Conjugado √a-√b", "Mismo binomio"],
+      correcta: 2,
+      explicacion: "El producto por el conjugado da una diferencia de cuadrados, sin radicales.",
+    },
+    {
+      enunciado: "El factor racionalizante de ∛(a²) es:",
+      opciones: ["∛a", "a", "∛(a²)", "a²"],
+      correcta: 0,
+      explicacion: "∛(a²)·∛a=∛(a³)=a.",
+    },
+    {
+      enunciado: "La raíz cuadrada de x²+6x+9 es:",
+      opciones: ["x+3", "x+9", "x-3", "x+6"],
+      correcta: 0,
+      explicacion: "Es (x+3)², reconociendo 9=3² y 6x=2(x)(3).",
+    },
+    {
+      enunciado: "Racionalizar un denominador significa:",
+      opciones: ["Eliminar decimales", "Eliminar radicales del denominador sin alterar el valor", "Simplificar el numerador", "Convertir a fracción impropia"],
+      correcta: 1,
+      explicacion: "Se multiplica por una forma de 1 (factor racionalizante sobre sí mismo).",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Racionalizar $\sqrt[n]{a^m}$ multiplicando por $\sqrt[n]{a^m}$ de nuevo** en
+  vez de por $\sqrt[n]{a^{n-m}}$ — el exponente debe completar el índice, no
+  duplicarse.
+- **Olvidar multiplicar también el numerador** — el factor racionalizante debe
+  aplicarse a **toda** la fracción para no alterar su valor.
+- **Confundir el conjugado con el mismo binomio** — el conjugado cambia el signo
+  central, no repite la expresión.
+- **Pensar que todo trinomio con término cuadrático es cuadrado perfecto** — hay
+  que verificar la condición $b^2=4ac$ explícitamente.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/productos-y-cocientes-notables", label: "Productos y cocientes notables" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/mcd-y-mcm-de-polinomios", label: "MCD y MCM de polinomios" },
+  ]}
+/>

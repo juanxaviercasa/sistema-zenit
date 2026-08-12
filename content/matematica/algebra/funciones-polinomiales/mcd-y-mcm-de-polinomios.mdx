@@ -1,0 +1,234 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { MCDMCMDePolinomios } from "@/components/interactive/algebra";
+
+# MCD y MCM de polinomios
+
+<Objetivo>
+
+Calcular el máximo común divisor (MCD) y el mínimo común múltiplo (MCM) de
+polinomios factorizados, aplicando exactamente el mismo criterio de exponentes
+mínimos/máximos que en el MCD/MCM de enteros.
+
+</Objetivo>
+
+## Marco teórico
+
+Así como todo entero se descompone en factores primos, todo polinomio se
+descompone en **factores irreducibles** (polinomios que no se pueden factorizar
+más, análogos a los primos). La analogía es exacta:
+
+| Enteros | Polinomios |
+|---|---|
+| Factores primos | Factores irreducibles (p. ej. $x-2$, $x+1$) |
+| $\text{MCD}=\prod p^{\min(e_1,e_2)}$ | $\text{MCD}=\prod (\text{factor})^{\min(e_1,e_2)}$ |
+| $\text{MCM}=\prod p^{\max(e_1,e_2)}$ | $\text{MCM}=\prod (\text{factor})^{\max(e_1,e_2)}$ |
+
+**Enunciado.** Si $P=\prod_i f_i^{a_i}$ y $Q=\prod_i f_i^{b_i}$ (factorizados en
+los mismos factores irreducibles $f_i$, con exponente $0$ si un factor no
+aparece), entonces $\text{MCD}(P,Q)=\prod_i f_i^{\min(a_i,b_i)}$ y
+$\text{MCM}(P,Q)=\prod_i f_i^{\max(a_i,b_i)}$.
+
+**Demostración.** Es exactamente el mismo argumento que para el MCD/MCM de
+enteros (teorema fundamental de la aritmética, ya visto): un polinomio $D$
+divide a $P$ si y solo si el exponente de cada $f_i$ en $D$ es $\leq a_i$
+(y análogamente para $Q$); el mayor $D$ que cumple ambas condiciones a la vez
+usa el **mínimo** de $a_i,b_i$ en cada factor — eso es el MCD. Simétricamente, el
+menor múltiplo común de ambos usa el **máximo** — eso es el MCM. $\blacksquare$
+
+**Propiedad.** $\text{MCD}(P,Q)\cdot\text{MCM}(P,Q)=P\cdot Q$ (salvo constantes),
+porque $\min(a_i,b_i)+\max(a_i,b_i)=a_i+b_i$ para cada factor.
+
+## Visualización interactiva
+
+<MCDMCMDePolinomios />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla el MCD de $P=(x-2)^2(x+1)$ y $Q=(x-2)(x+1)^3$.
+
+**Solución.** Exponentes de $(x-2)$: $\min(2,1)=1$. Exponentes de $(x+1)$:
+$\min(1,3)=1$. $\text{MCD}=(x-2)(x+1)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Con los mismos $P,Q$ del ejemplo 1, halla el MCM.
+
+**Solución.** $\max(2,1)=2$ para $(x-2)$; $\max(1,3)=3$ para $(x+1)$.
+$\text{MCM}=(x-2)^2(x+1)^3$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla el MCD de $x^2-4$ y $x^2-5x+6$.
+
+**Solución.** Factorizando: $x^2-4=(x-2)(x+2)$, $x^2-5x+6=(x-2)(x-3)$. Factor
+común: $(x-2)$. $\text{MCD}=x-2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica la propiedad $\text{MCD}\cdot\text{MCM}=P\cdot Q$ con
+$P=(x-2)^2(x+1)$, $Q=(x-2)(x+1)^3$ del ejemplo 1 (comparando exponentes, sin
+expandir).
+
+**Solución.** $\text{MCD}\cdot\text{MCM}=(x-2)^{1+2}(x+1)^{1+3}=(x-2)^3(x+1)^4$.
+$P\cdot Q=(x-2)^{2+1}(x+1)^{1+3}=(x-2)^3(x+1)^4$. Coinciden ✓.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla el MCD de $(x-1)^3(x+3)$ y $(x-1)(x+3)^2$.
+
+<Solucion>
+
+$\min(3,1)=1$ para $(x-1)$; $\min(1,2)=1$ para $(x+3)$. $\text{MCD}=(x-1)(x+3)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Con los mismos polinomios del problema 1, halla el MCM.
+
+<Solucion>
+
+$\max(3,1)=3$; $\max(1,2)=2$. $\text{MCM}=(x-1)^3(x+3)^2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla el MCM de $x^2-1$ y $x^2+2x+1$.
+
+<Solucion>
+
+$x^2-1=(x-1)(x+1)$, $x^2+2x+1=(x+1)^2$. $\text{MCM}=(x-1)(x+1)^2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el MCD de $x^3-x$ y $x^2-x$.
+
+<Solucion>
+
+$x^3-x=x(x-1)(x+1)$, $x^2-x=x(x-1)$. $\text{MCD}=x(x-1)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $P$ y $Q$ no comparten ningún factor irreducible, entonces
+$\text{MCD}(P,Q)=1$ (constante) y $\text{MCM}(P,Q)=P\cdot Q$.
+
+<Solucion>
+
+Si no comparten factores, para cada factor irreducible presente en $P$, su
+exponente en $Q$ es $0$ (y viceversa). Entonces $\min(a_i,b_i)=0$ para todo $i$
+(ya que uno de los dos exponentes siempre es $0$), dando $\text{MCD}=1$. Y
+$\max(a_i,b_i)=a_i+b_i$ en ese caso (porque el otro exponente es $0$), así que
+$\text{MCM}=\prod f_i^{a_i+b_i}=P\cdot Q$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra la propiedad general $\text{MCD}(P,Q)\cdot\text{MCM}(P,Q)=P\cdot Q$
+usando que $\min(a,b)+\max(a,b)=a+b$ para cualesquiera reales $a,b$.
+
+<Solucion>
+
+Para cada factor irreducible $f_i$, el exponente en $\text{MCD}\cdot\text{MCM}$
+es $\min(a_i,b_i)+\max(a_i,b_i)$. Si $a_i\leq b_i$: $\min=a_i$, $\max=b_i$, suma
+$=a_i+b_i$. Si $a_i>b_i$: $\min=b_i$, $\max=a_i$, suma $=a_i+b_i$ (mismo
+resultado). En ambos casos, el exponente coincide con el de $f_i$ en $P\cdot Q$
+(que es $a_i+b_i$). Como esto vale para todo factor, $\text{MCD}\cdot
+\text{MCM}=P\cdot Q$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El MCD de polinomios factorizados usa, en cada factor, el exponente:",
+      opciones: ["Máximo", "Mínimo", "Promedio", "Suma"],
+      correcta: 1,
+      explicacion: "Es análogo al MCD de enteros vía factorización prima.",
+    },
+    {
+      enunciado: "El MCM de polinomios factorizados usa, en cada factor, el exponente:",
+      opciones: ["Mínimo", "Máximo", "Cero", "Producto"],
+      correcta: 1,
+      explicacion: "Es análogo al MCM de enteros: el menor múltiplo común necesita el mayor exponente.",
+    },
+    {
+      enunciado: "El MCD de (x-2)²(x+1) y (x-2)(x+1)³ es:",
+      opciones: ["(x-2)²(x+1)³", "(x-2)(x+1)", "(x-2)²(x+1)", "(x-2)(x+1)³"],
+      correcta: 1,
+      explicacion: "Se toma el mínimo exponente en cada factor: 1 y 1.",
+    },
+    {
+      enunciado: "Si P y Q no comparten factores irreducibles, MCD(P,Q) es:",
+      opciones: ["P·Q", "1 (constante)", "P+Q", "Indefinido"],
+      correcta: 1,
+      explicacion: "Ningún factor común implica que el mínimo exponente compartido es siempre 0.",
+    },
+    {
+      enunciado: "La relación entre MCD, MCM, P y Q es:",
+      opciones: ["MCD+MCM=P+Q", "MCD·MCM=P·Q", "MCD=MCM", "MCD-MCM=P-Q"],
+      correcta: 1,
+      explicacion: "Se demuestra con min(a,b)+max(a,b)=a+b.",
+    },
+    {
+      enunciado: "Los factores irreducibles de polinomios son análogos a:",
+      opciones: ["Los números pares", "Los números primos", "Los cuadrados perfectos", "Los números racionales"],
+      correcta: 1,
+      explicacion: "Ambos son los 'bloques básicos' de la factorización.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir mínimo con máximo** — MCD usa el exponente **menor** de cada
+  factor común; MCM usa el **mayor**, considerando todos los factores presentes
+  en cualquiera de los dos polinomios.
+- **Olvidar factorizar completamente antes de comparar** — si un polinomio no
+  está factorizado en irreducibles, la comparación de exponentes no es válida.
+- **Incluir en el MCD un factor que no aparece en ambos polinomios** — el MCD
+  solo contiene factores **comunes** (con exponente mínimo, que sería $0$ si
+  falta en alguno).
+- **Olvidar los factores no comunes en el MCM** — el MCM incluye **todos** los
+  factores irreducibles que aparecen en cualquiera de los dos polinomios.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/raiz-cuadrada-de-un-polinomio-y-racionalizacion", label: "Raíz cuadrada de un polinomio y racionalización de denominadores" },
+    { href: "/matematica/aritmetica/numeros-primos/mcd-mcm-y-algoritmo-de-euclides", label: "MCD, MCM y el algoritmo de Euclides" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/teorema-del-resto-y-del-factor-raices-de-polinomios", label: "Función polinomial: teorema del resto, del factor, y raíces racionales" },
+  ]}
+/>

@@ -1,0 +1,242 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ComplejoPolar } from "@/components/interactive/algebra";
+
+# Forma polar y exponencial de un número complejo
+
+<Objetivo>
+
+Representar un número complejo mediante su módulo y argumento (forma polar y
+trigonométrica), y demostrar la fórmula de Euler que conecta esa forma con la
+exponencial compleja.
+
+</Objetivo>
+
+## Marco teórico
+
+Todo número complejo $z=a+bi$ se puede ubicar como un punto (o vector) en el
+**plano complejo** (eje horizontal: parte real; eje vertical: parte imaginaria).
+
+**Módulo**: $r=|z|=\sqrt{a^2+b^2}$ (distancia al origen; nótese que
+$r^2=z\bar z$, del subtema anterior). **Argumento** $\theta$: el ángulo que
+forma el segmento $Oz$ con el eje real positivo, con $\cos\theta=\frac ar$,
+$\sin\theta=\frac br$ (es decir, $\theta=\operatorname{atan2}(b,a)$).
+
+**Forma trigonométrica**: $z=r(\cos\theta+i\sin\theta)$.
+
+**Enunciado.** $a=r\cos\theta$ y $b=r\sin\theta$ reconstruyen exactamente
+$z=a+bi$.
+
+**Demostración.** Por definición de $\cos\theta=\frac ar$ y $\sin\theta=\frac
+br$ (con $r=\sqrt{a^2+b^2}\neq0$), se sigue directamente $a=r\cos\theta$,
+$b=r\sin\theta$. Sustituyendo en $z=a+bi$: $z=r\cos\theta+ir\sin\theta=
+r(\cos\theta+i\sin\theta)$. $\blacksquare$
+
+**Fórmula de Euler** (forma exponencial): $e^{i\theta}=\cos\theta+i\sin\theta$,
+de donde $z=re^{i\theta}$.
+
+**Justificación (series de Taylor, esbozo).** Las series de $\cos\theta$,
+$\sin\theta$ y $e^x$ (contenido de cálculo posterior) cumplen:
+
+$$
+\begin{aligned}
+e^{i\theta} &= \sum_{n=0}^{\infty}\frac{(i\theta)^n}{n!} \\
+&= \left(1-\frac{\theta^2}{2!}+\frac{\theta^4}{4!}-\cdots\right) + i\left(\theta-\frac{\theta^3}{3!}+\frac{\theta^5}{5!}-\cdots\right) \\
+&= \cos\theta+i\sin\theta,
+\end{aligned}
+$$
+
+separando los términos con $i^n$ real (potencias pares) de los imaginarios
+(potencias impares), usando que $i^2=-1$, $i^3=-i$, $i^4=1$, con el patrón
+repitiéndose cada $4$ (visto al inicio del tema de potenciación en Aritmética).
+
+## Visualización interactiva
+
+<ComplejoPolar />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla el módulo y el argumento de $z=1+i$.
+
+**Solución.** $r=\sqrt{1^2+1^2}=\sqrt2$. $\theta=\operatorname{atan2}(1,1)=45°$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Escribe $z=1+i$ en forma trigonométrica.
+
+**Solución.** Con $r=\sqrt2$, $\theta=45°$: $z=\sqrt2(\cos45°+i\sin45°)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Convierte $z=2(\cos120°+i\sin120°)$ a forma rectangular.
+
+**Solución.** $\cos120°=-\frac12$, $\sin120°=\frac{\sqrt3}2$.
+$z=2\left(-\frac12+i\frac{\sqrt3}2\right)=-1+\sqrt3i$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica que $|e^{i\theta}|=1$ para cualquier $\theta$, usando la
+identidad pitagórica.
+
+**Solución.** $|e^{i\theta}|=|\cos\theta+i\sin\theta|=\sqrt{\cos^2\theta+
+\sin^2\theta}=\sqrt1=1$ (identidad pitagórica de trigonometría).
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla el módulo y el argumento de $z=\sqrt3+i$.
+
+<Solucion>
+
+$r=\sqrt{3+1}=2$. $\theta=\operatorname{atan2}(1,\sqrt3)=30°$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Escribe $z=-4$ en forma trigonométrica.
+
+<Solucion>
+
+$r=4$, $\theta=180°$: $z=4(\cos180°+i\sin180°)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Convierte $z=4\left(\cos\frac{3\pi}2+i\sin\frac{3\pi}2\right)$ a forma
+rectangular.
+
+<Solucion>
+
+$\cos\frac{3\pi}2=0$, $\sin\frac{3\pi}2=-1$: $z=4(0-i)=-4i$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el módulo y el argumento de $z=-1-i$.
+
+<Solucion>
+
+$r=\sqrt{1+1}=\sqrt2$. El punto está en el tercer cuadrante:
+$\theta=180°+45°=225°$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $z$ y $-z$ tienen el mismo módulo y argumentos que difieren en
+$180°$.
+
+<Solucion>
+
+Si $z=a+bi$ con módulo $r=\sqrt{a^2+b^2}$, entonces $-z=-a-bi$ tiene módulo
+$\sqrt{(-a)^2+(-b)^2}=\sqrt{a^2+b^2}=r$ (mismo módulo). El argumento de $-z$
+cumple $\cos\theta'=\frac{-a}r=-\cos\theta$ y $\sin\theta'=\frac{-b}r=
+-\sin\theta$, que corresponde a $\theta'=\theta+180°$ (identidades de ángulo
+suplementario/opuesto de trigonometría). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que el módulo del producto de dos complejos es el producto de sus
+módulos: $|z_1z_2|=|z_1||z_2|$, usando la forma rectangular y la propiedad
+$z\bar z=|z|^2$.
+
+<Solucion>
+
+$|z_1z_2|^2=(z_1z_2)\overline{(z_1z_2)}=z_1z_2\bar z_1\bar z_2$ (el conjugado de
+un producto es el producto de conjugados, análogo a la suma) $=(z_1\bar
+z_1)(z_2\bar z_2)=|z_1|^2|z_2|^2$. Tomando raíz cuadrada (ambos lados no
+negativos): $|z_1z_2|=|z_1||z_2|$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El módulo de z=a+bi es:",
+      opciones: ["a+b", "√(a²+b²)", "a²+b²", "a-b"],
+      correcta: 1,
+      explicacion: "Es la distancia al origen en el plano complejo.",
+    },
+    {
+      enunciado: "La fórmula de Euler establece que:",
+      opciones: ["e^(iθ)=θ", "e^(iθ)=cosθ+i·senθ", "e^(iθ)=1", "e^(iθ)=i·θ"],
+      correcta: 1,
+      explicacion: "Conecta la exponencial compleja con las funciones trigonométricas.",
+    },
+    {
+      enunciado: "|e^(iθ)| es igual a:",
+      opciones: ["θ", "0", "1", "e"],
+      correcta: 2,
+      explicacion: "Se demuestra con la identidad pitagórica cos²θ+sen²θ=1.",
+    },
+    {
+      enunciado: "El argumento de z=1+i es:",
+      opciones: ["30°", "45°", "60°", "90°"],
+      correcta: 1,
+      explicacion: "atan2(1,1)=45°.",
+    },
+    {
+      enunciado: "El módulo de un producto z₁z₂ es:",
+      opciones: ["|z₁|+|z₂|", "|z₁|·|z₂|", "|z₁|-|z₂|", "|z₁|/|z₂|"],
+      correcta: 1,
+      explicacion: "Se demuestra usando z·z̄=|z|².",
+    },
+    {
+      enunciado: "z y -z tienen argumentos que difieren en:",
+      opciones: ["90°", "180°", "270°", "0°"],
+      correcta: 1,
+      explicacion: "-z apunta en la dirección opuesta, con el mismo módulo.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Calcular $\theta$ solo con $\arctan(b/a)$ sin revisar el cuadrante** — el
+  arcotangente por sí solo no distingue cuadrantes; se necesita
+  $\operatorname{atan2}(b,a)$ o un análisis explícito del signo de $a,b$.
+- **Olvidar que $r$ siempre es no negativo** — el módulo es una distancia, nunca
+  negativo.
+- **Confundir la forma trigonométrica con la rectangular** — $r(\cos\theta+
+  i\sin\theta)$ y $a+bi$ representan el mismo número, pero no son
+  intercambiables término a término.
+- **Pensar que $e^{i\theta}$ es un número real** — es un número complejo de
+  módulo $1$, ubicado en el círculo unitario del plano complejo.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones-polinomiales/numeros-complejos-forma-rectangular-y-operaciones", label: "Números complejos: forma rectangular y operaciones" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales/formula-de-de-moivre-y-raices-enesimas", label: "Fórmula de De Moivre y raíces enésimas de un número complejo" },
+  ]}
+/>
