@@ -1,0 +1,250 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { FuncionDeEuler } from "@/components/interactive/aritmetica";
+
+# Función de Euler
+
+<Objetivo>
+
+Calcular cuántos enteros entre $1$ y $N$ son coprimos con $N$, usando la fórmula de
+la función de Euler deducida por inclusión-exclusión sobre los factores primos de
+$N$.
+
+</Objetivo>
+
+## Marco teórico
+
+La **función de Euler** $\varphi(N)$ cuenta cuántos enteros del $1$ al $N$ son
+**coprimos** con $N$ (es decir, tienen $\text{mcd}=1$ con $N$).
+
+**Enunciado.** Si $N=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$ es la descomposición
+canónica de $N$, entonces:
+
+$$
+\varphi(N) = N\left(1-\frac{1}{p_1}\right)\left(1-\frac{1}{p_2}\right)\cdots
+\left(1-\frac{1}{p_k}\right).
+$$
+
+**Demostración (caso de un solo primo, $N=p^a$).**
+
+**Paso 1 — contar los NO coprimos.** Entre $1$ y $p^a$, los números que **no** son
+coprimos con $p^a$ son exactamente los múltiplos de $p$: $p, 2p, 3p, \ldots,
+p^{a-1}\cdot p$. Hay exactamente $p^{a-1}$ de ellos.
+
+**Paso 2 — restar del total.**
+
+$$
+\varphi(p^a) = p^a - p^{a-1} = p^{a-1}(p-1) = p^a\left(1-\frac{1}{p}\right).
+$$
+
+**Extensión a varios primos.** Cuando $N$ tiene varios factores primos distintos, se
+usa el **principio de inclusión-exclusión**: de los $N$ números del $1$ al $N$, se
+excluyen los múltiplos de $p_1$, los de $p_2$, etc., sumando de vuelta las
+intersecciones para no restarlas dos veces. El resultado de aplicar este principio
+completo es exactamente el producto:
+
+$$
+\varphi(N) = N\prod_{i=1}^{k}\left(1-\frac{1}{p_i}\right). \qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<FuncionDeEuler />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla $\varphi(9)$, con $9=3^2$.
+
+**Solución.** $\varphi(9)=9\left(1-\dfrac{1}{3}\right)=9\times\dfrac{2}{3}=6$.
+(Verificación: los coprimos con $9$ entre $1$ y $9$ son $1,2,4,5,7,8$ — seis
+números.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla $\varphi(10)$, con $10=2\times5$.
+
+**Solución.**
+$\varphi(10)=10\left(1-\dfrac{1}{2}\right)\left(1-\dfrac{1}{5}\right)=10\times
+\dfrac{1}{2}\times\dfrac{4}{5}=4$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla $\varphi(360)$, con $360=2^3\times3^2\times5$.
+
+**Solución.**
+
+$$
+\varphi(360) = 360\left(\frac{1}{2}\right)\left(\frac{2}{3}\right)\left(\frac{4}{5}
+\right) = 360\times\frac{8}{30} = 96.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que si $p$ es primo, $\varphi(p)=p-1$, y explica por qué
+esto tiene sentido directamente por la definición de primo (sin usar la fórmula
+general).
+
+**Solución.** Por la fórmula: $\varphi(p)=p\left(1-\dfrac1p\right)=p-1$.
+Directamente: como $p$ es primo, sus únicos divisores son $1$ y $p$. Cualquier
+número entre $1$ y $p-1$ tiene $\text{mcd}(k,p)=1$ automáticamente (el único divisor
+de $p$ mayor que $1$ es $p$ mismo, y ningún $k<p$ es múltiplo de $p$). Por lo tanto,
+los $p-1$ números del $1$ al $p-1$ son todos coprimos con $p$: $\varphi(p)=p-1$.
+$\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla $\varphi(8)$, con $8=2^3$.
+
+<Solucion>
+
+$\varphi(8)=8\left(1-\dfrac12\right)=4$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla $\varphi(15)$, con $15=3\times5$.
+
+<Solucion>
+
+$\varphi(15)=15\left(\dfrac23\right)\left(\dfrac45\right)=8$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla $\varphi(100)$, con $100=2^2\times5^2$.
+
+<Solucion>
+
+$\varphi(100)=100\left(\dfrac12\right)\left(\dfrac45\right)=40$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla $\varphi(17)$ (nota: $17$ es primo).
+
+<Solucion>
+
+$\varphi(17)=17-1=16$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Si $\varphi(2p)=p-1$ para cierto primo impar $p$, verifica esta fórmula
+algebraicamente a partir de la fórmula general.
+
+<Solucion>
+
+Con $N=2p$ ($p$ primo impar, distinto de $2$):
+$\varphi(2p)=2p\left(1-\dfrac12\right)\left(1-\dfrac1p\right)=2p\times\dfrac12\times
+\dfrac{p-1}{p}=p\times\dfrac{p-1}{p}=p-1$. Verificado. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $\varphi(N)$ siempre es par para $N>2$.
+
+<Solucion>
+
+Si $N>2$ tiene un factor primo impar $p$, entonces $\varphi(N)$ incluye el factor
+$(p-1)$ en su descomposición (a través de $\varphi(p^{a})=p^{a-1}(p-1)$, y $p-1$ es
+par por ser $p$ impar) — así que $\varphi(N)$ es par. Si $N=2^a$ con $a\geq2$,
+$\varphi(2^a)=2^{a-1}$, que también es par (porque $a-1\geq1$). El único caso
+restante, $N=2$, da $\varphi(2)=1$ (impar), pero está excluido por la condición
+$N>2$. En todos los casos cubiertos por $N>2$, $\varphi(N)$ resulta par.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "φ(N) cuenta:",
+      opciones: ["Los divisores de N", "Los enteros de 1 a N que son coprimos con N", "Los factores primos de N", "La suma de los divisores de N"],
+      correcta: 1,
+      explicacion: "Es la definición de la función de Euler.",
+    },
+    {
+      enunciado: "φ(p) para p primo es:",
+      opciones: ["p", "p-1", "p+1", "1"],
+      correcta: 1,
+      explicacion: "Todos los números del 1 al p-1 son coprimos con p (primo).",
+    },
+    {
+      enunciado: "φ(12), con 12=2²×3, es:",
+      opciones: ["4", "6", "8", "3"],
+      correcta: 0,
+      explicacion: "φ(12)=12×(1/2)×(2/3)=4.",
+    },
+    {
+      enunciado: "La fórmula general de φ(N) se construye usando:",
+      opciones: ["El principio de inclusión-exclusión sobre los factores primos", "Solo la suma de los exponentes", "El algoritmo de Euclides", "La criba de Eratóstenes exclusivamente"],
+      correcta: 0,
+      explicacion: "Se excluyen los múltiplos de cada primo, corrigiendo las intersecciones dobles.",
+    },
+    {
+      enunciado: "φ(N) para N>2 siempre es:",
+      opciones: ["Impar", "Par", "Primo", "Igual a N"],
+      correcta: 1,
+      explicacion: "Se demuestra considerando los casos con y sin factores primos impares.",
+    },
+    {
+      enunciado: "φ(2p) para p primo impar es:",
+      opciones: ["2p-1", "p-1", "2(p-1)", "p"],
+      correcta: 1,
+      explicacion: "φ(2p) = 2p(1/2)((p-1)/p) = p-1.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar los exponentes de la descomposición canónica dentro de la fórmula** — la
+  fórmula de $\varphi(N)$ solo depende de **qué primos** dividen a $N$ (no de sus
+  exponentes) además del propio $N$; los exponentes ya están implícitos en el valor
+  de $N$.
+- **Olvidar algún factor primo distinto** al aplicar la fórmula — hay que incluir
+  $(1-1/p_i)$ por cada primo **distinto** que divide a $N$, una sola vez cada uno.
+- **Confundir "coprimo con $N$" con "primo"** — un número puede ser compuesto y
+  seguir siendo coprimo con $N$ (basta que no comparta factores primos con $N$).
+- **Aplicar la fórmula de un solo primo ($\varphi(p^a)=p^{a-1}(p-1)$) a un número con
+  varios factores primos** — para varios primos, hay que multiplicar todos los
+  factores $(1-1/p_i)$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-primos/descomposicion-canonica-y-estudio-de-divisores", label: "Descomposición canónica y estudio de divisores" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-primos/mcd-mcm-y-algoritmo-de-euclides", label: "MCD, MCM y el algoritmo de Euclides" },
+  ]}
+/>

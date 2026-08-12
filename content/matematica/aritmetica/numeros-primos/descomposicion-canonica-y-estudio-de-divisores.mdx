@@ -1,0 +1,276 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { DescomposicionCanonica } from "@/components/interactive/aritmetica";
+
+# Descomposición canónica y estudio de divisores
+
+<Objetivo>
+
+Deducir, a partir de la descomposición canónica de un número, fórmulas para calcular
+cuántos divisores tiene, cuánto suman, cuánto vale su producto, y cuánto suman sus
+inversas — sin necesidad de listarlos uno por uno.
+
+</Objetivo>
+
+## Marco teórico
+
+Sea $N = p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$ la descomposición canónica de $N$.
+
+**Enunciado (cantidad de divisores).**
+
+$$
+CD(N) = (a_1+1)(a_2+1)\cdots(a_k+1).
+$$
+
+**Demostración.** Todo divisor de $N$ tiene la forma
+$d=p_1^{b_1}p_2^{b_2}\cdots p_k^{b_k}$, con $0\leq b_i\leq a_i$ para cada $i$ (un
+divisor no puede usar un primo distinto de los de $N$, ni un exponente mayor). Para
+el exponente $b_1$ hay $a_1+1$ valores posibles ($0,1,\ldots,a_1$); para $b_2$ hay
+$a_2+1$ valores; y así sucesivamente. Por el principio de multiplicación, el número
+total de combinaciones —es decir, de divisores distintos— es
+$(a_1+1)(a_2+1)\cdots(a_k+1)$. $\blacksquare$
+
+**Enunciado (suma de divisores).**
+
+$$
+SD(N) = \frac{p_1^{a_1+1}-1}{p_1-1}\cdot\frac{p_2^{a_2+1}-1}{p_2-1}\cdots
+\frac{p_k^{a_k+1}-1}{p_k-1}.
+$$
+
+**Demostración.** Al distribuir el producto
+$(1+p_1+p_1^2+\cdots+p_1^{a_1})(1+p_2+\cdots+p_2^{a_2})\cdots$, cada término del
+resultado es exactamente un producto $p_1^{b_1}p_2^{b_2}\cdots$ con $0\leq b_i\leq
+a_i$ — es decir, exactamente un divisor de $N$, y cada divisor aparece una sola vez.
+Por lo tanto, ese producto de sumas es igual a $SD(N)$, la suma de todos los
+divisores:
+
+$$
+SD(N) = \prod_{i=1}^{k}\left(1+p_i+p_i^2+\cdots+p_i^{a_i}\right).
+$$
+
+Cada factor es una serie geométrica de razón $p_i$, con suma conocida
+$\dfrac{p_i^{a_i+1}-1}{p_i-1}$. Sustituyendo cada factor por esa fórmula se obtiene
+el resultado. $\blacksquare$
+
+**Enunciado (producto de divisores).**
+
+$$
+PD(N) = N^{CD(N)/2}.
+$$
+
+**Demostración.** Los divisores de $N$ se pueden agrupar en parejas $(d, N/d)$, cada
+una con producto $d\cdot(N/d)=N$. Como hay $CD(N)$ divisores en total, hay
+$CD(N)/2$ parejas (si $N$ es un cuadrado perfecto, $\sqrt N$ se empareja consigo
+mismo, pero la fórmula sigue funcionando: ese caso simplemente hace que $CD(N)$ sea
+impar, y la potencia $CD(N)/2$ da directamente ese factor extra). El producto de
+todos los divisores es el producto de $N$ tomado $CD(N)/2$ veces:
+$PD(N)=N^{CD(N)/2}$. $\blacksquare$
+
+**Enunciado (suma de inversas de los divisores).**
+
+$$
+\sum_{d\mid N}\frac{1}{d} = \frac{SD(N)}{N}.
+$$
+
+**Demostración.** Si $d$ recorre todos los divisores de $N$, el número $N/d$ también
+recorre todos los divisores de $N$ (es solo un reordenamiento). Por lo tanto:
+
+$$
+\sum_{d\mid N}\frac{1}{d} = \sum_{d\mid N}\frac{N/d}{N} = \frac{1}{N}\sum_{d\mid N}
+\left(\frac{N}{d}\right) = \frac{SD(N)}{N}. \qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<DescomposicionCanonica />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla $CD(360)$, sabiendo que $360=2^3\times3^2\times5$.
+
+**Solución.** $CD(360)=(3+1)(2+1)(1+1)=4\times3\times2=24$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla $SD(12)$, sabiendo que $12=2^2\times3$.
+
+**Solución.**
+
+$$
+SD(12) = \frac{2^3-1}{2-1}\times\frac{3^2-1}{3-1} = \frac{7}{1}\times\frac{8}{2} =
+7\times4=28.
+$$
+
+(Verificación: divisores de $12$ son $1,2,3,4,6,12$; suma $=28$ ✓.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla $PD(12)$.
+
+**Solución.** $CD(12)=(2+1)(1+1)=6$. $PD(12)=12^{6/2}=12^3=1728$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Halla la suma de las inversas de los divisores de $28$
+($28=2^2\times7$).
+
+**Solución.** $SD(28) = \dfrac{2^3-1}{1}\times\dfrac{7^2-1}{6} = 7\times8=56$.
+Entonces la suma de inversas es $\dfrac{SD(28)}{28}=\dfrac{56}{28}=2$. (Este es un
+caso especial: $28$ es un **número perfecto**, donde la suma de sus divisores
+propios —sin contar a $28$ mismo— es igual a $28$; por eso la suma de inversas de
+todos sus divisores da exactamente $2$.)
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla $CD(100)$, con $100=2^2\times5^2$.
+
+<Solucion>
+
+$CD(100)=(2+1)(2+1)=9$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla $SD(20)$, con $20=2^2\times5$.
+
+<Solucion>
+
+$SD(20)=\dfrac{2^3-1}{1}\times\dfrac{5^2-1}{4}=7\times6=42$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla $PD(20)$.
+
+<Solucion>
+
+$CD(20)=(2+1)(1+1)=6$. $PD(20)=20^3=8000$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla la suma de las inversas de los divisores de $20$.
+
+<Solucion>
+
+$SD(20)/20=42/20=2{,}1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un número $N=2^a\times3^2$ tiene exactamente $12$ divisores. Halla $a$.
+
+<Solucion>
+
+$CD(N)=(a+1)(2+1)=3(a+1)=12 \Rightarrow a+1=4 \Rightarrow a=3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $CD(N)$ es impar si y solo si $N$ es un cuadrado perfecto.
+
+<Solucion>
+
+$CD(N)=(a_1+1)(a_2+1)\cdots(a_k+1)$ es un producto de enteros positivos. Un
+producto de enteros es **impar** si y solo si **todos** sus factores son impares.
+Cada factor $(a_i+1)$ es impar exactamente cuando $a_i$ es par. Por lo tanto,
+$CD(N)$ es impar si y solo si **todos** los exponentes $a_i$ de la descomposición
+canónica de $N$ son pares — y esa es precisamente la condición para que
+$N=p_1^{a_1}\cdots p_k^{a_k}$ sea un cuadrado perfecto (se puede escribir como
+$\left(p_1^{a_1/2}\cdots p_k^{a_k/2}\right)^2$). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Si N = 2³×3², CD(N) es:",
+      opciones: ["6", "8", "12", "5"],
+      correcta: 2,
+      explicacion: "CD(N) = (3+1)(2+1) = 12.",
+    },
+    {
+      enunciado: "La fórmula de CD(N) se deriva de:",
+      opciones: ["El principio de adición", "El principio de multiplicación, contando las formas de elegir cada exponente", "El teorema del binomio", "La criba de Eratóstenes"],
+      correcta: 1,
+      explicacion: "Cada exponente bi puede tomar (ai+1) valores independientes; se multiplican por el principio de multiplicación.",
+    },
+    {
+      enunciado: "PD(N) = N^(CD(N)/2) se basa en:",
+      opciones: ["Que todos los divisores son iguales", "Emparejar divisores d y N/d, cada par con producto N", "Que N siempre es primo", "La suma de divisores"],
+      correcta: 1,
+      explicacion: "Cada pareja de divisores complementarios multiplica exactamente N.",
+    },
+    {
+      enunciado: "La suma de inversas de los divisores de N es igual a:",
+      opciones: ["CD(N)/N", "SD(N)/N", "SD(N)×N", "N/SD(N)"],
+      correcta: 1,
+      explicacion: "Se demuestra sustituyendo d por N/d, que también recorre los divisores.",
+    },
+    {
+      enunciado: "SD(N) para N=p^a (un solo primo) es:",
+      opciones: ["p^a", "a+1", "(p^(a+1)-1)/(p-1)", "p×a"],
+      correcta: 2,
+      explicacion: "Es la suma de la serie geométrica 1+p+p²+...+p^a.",
+    },
+    {
+      enunciado: "CD(N) es impar si y solo si:",
+      opciones: ["N es primo", "N es un cuadrado perfecto", "N es par", "N es múltiplo de 3"],
+      correcta: 1,
+      explicacion: "Todos los exponentes de la descomposición canónica deben ser pares para que CD(N) sea impar — eso equivale a que N sea un cuadrado perfecto.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Sumar los exponentes en vez de sumarles 1 y multiplicar** al calcular $CD(N)$ —
+  la fórmula correcta es $(a_1+1)(a_2+1)\cdots$, no $a_1+a_2+\cdots$.
+- **Olvidar dividir entre $(p_i-1)$** en la fórmula de $SD(N)$ — cada factor es una
+  fracción completa, no solo el numerador $p_i^{a_i+1}-1$.
+- **Calcular $PD(N)$ sin hallar antes $CD(N)$** — la fórmula depende directamente de
+  cuántos divisores tiene $N$.
+- **Confundir "suma de divisores" con "suma de divisores propios"** — $SD(N)$ tal
+  como se define aquí incluye tanto a $1$ como al propio $N$; algunos problemas piden
+  específicamente la suma sin contar $N$ mismo ($SD(N)-N$).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-primos/numeros-primos-y-compuestos-teorema-fundamental-y-criba-de-eratostenes", label: "Números primos y compuestos: teorema fundamental y criba de Eratóstenes" },
+    { href: "/matematica/aritmetica/probabilidad/principios-de-conteo-multiplicacion-adicion-y-factorial", label: "Principios de conteo" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-primos/funcion-de-euler", label: "Función de Euler" },
+    { href: "/matematica/aritmetica/numeros-primos/mcd-mcm-y-algoritmo-de-euclides", label: "MCD, MCM y el algoritmo de Euclides" },
+  ]}
+/>

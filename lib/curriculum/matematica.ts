@@ -153,6 +153,19 @@ const subtemasDivisibilidad: Subtema[] = [
   subtema("ecuaciones-diofanticas-lineales", "Ecuaciones diofánticas lineales"),
 ];
 
+const subtemasNumerosPrimos: Subtema[] = [
+  subtema(
+    "numeros-primos-y-compuestos-teorema-fundamental-y-criba-de-eratostenes",
+    "Números primos y compuestos: teorema fundamental y criba de Eratóstenes"
+  ),
+  subtema(
+    "descomposicion-canonica-y-estudio-de-divisores",
+    "Descomposición canónica y estudio de divisores"
+  ),
+  subtema("funcion-de-euler", "Función de Euler"),
+  subtema("mcd-mcm-y-algoritmo-de-euclides", "MCD, MCM y el algoritmo de Euclides"),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -195,7 +208,7 @@ const aritmetica: Area = {
       subtemasNumerosNaturalesYEnteros
     ),
     tema(9, "divisibilidad", "Divisibilidad", undefined, subtemasDivisibilidad),
-    tema(10, "numeros-primos", "Números primos"),
+    tema(10, "numeros-primos", "Números primos", undefined, subtemasNumerosPrimos),
     tema(11, "numeros-racionales-e-irracionales", "Números racionales e irracionales"),
     tema(12, "potenciacion-y-radicacion", "Potenciación y radicación"),
   ],

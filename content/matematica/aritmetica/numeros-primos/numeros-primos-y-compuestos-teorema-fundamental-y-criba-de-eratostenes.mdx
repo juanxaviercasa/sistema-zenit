@@ -1,0 +1,253 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { VerificadorDePrimalidad } from "@/components/interactive/aritmetica";
+
+# Números primos y compuestos: teorema fundamental y criba de Eratóstenes
+
+<Objetivo>
+
+Distinguir números primos de compuestos, aplicar el teorema fundamental de la
+aritmética, y demostrar por qué basta probar divisores hasta $\sqrt{N}$ para
+determinar si $N$ es primo.
+
+</Objetivo>
+
+## Marco teórico
+
+Un entero $N>1$ es **primo** si tiene exactamente dos divisores positivos: $1$ y él
+mismo. Es **compuesto** si tiene más de dos divisores positivos. El $1$ no se
+considera ni primo ni compuesto (tiene un solo divisor).
+
+**Teorema fundamental de la aritmética.** Todo entero $N>1$ se puede escribir de
+forma **única** (salvo el orden de los factores) como producto de números primos:
+
+$$
+N = p_1^{a_1} \cdot p_2^{a_2} \cdots p_k^{a_k}.
+$$
+
+Esta es la **descomposición canónica** de $N$, y es la base de casi todos los
+resultados de este tema.
+
+**Enunciado (criterio de primalidad hasta $\sqrt N$).** Para determinar si $N>1$ es
+primo, basta verificar que ningún número primo $p \leq \sqrt N$ divide a $N$.
+
+**Demostración.**
+
+**Paso 1 — suponer que $N$ es compuesto.** Si $N$ es compuesto, se puede escribir
+$N=a \cdot b$ con $1<a\leq b<N$.
+
+**Paso 2 — acotar el menor factor.** Si $a>\sqrt N$, entonces también $b\geq a>\sqrt
+N$ (porque $a\leq b$), y por lo tanto $ab>\sqrt N \cdot \sqrt N = N$ — pero eso
+contradice que $ab=N$. Por lo tanto, necesariamente $a\leq\sqrt N$.
+
+**Conclusión.** Como $a>1$, por el teorema fundamental $a$ tiene al menos un factor
+primo $p$, y ese primo cumple $p\leq a\leq\sqrt N$. Es decir: **si $N$ es compuesto,
+tiene un factor primo $\leq\sqrt N$.** Por contrapositiva: si ningún primo
+$\leq\sqrt N$ divide a $N$, entonces $N$ no puede ser compuesto — es primo.
+$\blacksquare$
+
+**Criba de Eratóstenes.** Es un algoritmo para hallar todos los primos hasta un
+límite $L$: se listan los números del $2$ al $L$, y se tacha repetidamente todo
+múltiplo (mayor que sí mismo) del menor número no tachado todavía, empezando por
+$2$, luego $3$, luego $5$ (los múltiplos de $4$ ya se tacharon como múltiplos de
+$2$), y así sucesivamente. Por el criterio recién demostrado, basta repetir el
+proceso con los primos hasta $\sqrt L$ — los números que sobreviven son todos los
+primos hasta $L$.
+
+## Visualización interactiva
+
+<VerificadorDePrimalidad />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** ¿Es $91$ primo?
+
+**Solución.** $\sqrt{91}\approx9{,}54$, así que basta probar los primos $2,3,5,7$.
+$91$ es impar (no divisible por $2$); $9+1=10$ no es múltiplo de $3$; no termina en
+$0$ o $5$; $91\div7=13$ exacto. Como $7$ divide a $91$, **no es primo** (es
+compuesto: $91=7\times13$).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Es $97$ primo?
+
+**Solución.** $\sqrt{97}\approx9{,}85$, se prueban $2,3,5,7$. Ninguno divide a $97$
+(es impar, $9+7=16$ no múltiplo de $3$, no termina en $0/5$, $97\div7\approx13{,}86$).
+**Sí es primo.**
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Escribe la descomposición canónica de $360$.
+
+**Solución.** $360=2^3\times3^2\times5$. (Verificación: $8\times9\times5=360$.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que no existe un número primo mayor que $2$ que sea par.
+
+**Solución.** Sea $N>2$ un número par. Por definición de par, $N=2k$ para algún
+entero $k>1$ (ya que $N>2$). Entonces $N$ tiene al menos tres divisores distintos:
+$1$, $2$ y $N$ mismo (y estos tres son distintos porque $N>2$). Como tiene más de
+dos divisores, $N$ es compuesto, no primo. $\blacksquare$ (El único primo par es
+exactamente el $2$.)
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+¿Es $131$ primo? (Prueba con los primos hasta $\sqrt{131}\approx11{,}4$.)
+
+<Solucion>
+
+Se prueba con $2,3,5,7,11$: ninguno divide a $131$. Es primo.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Escribe la descomposición canónica de $200$.
+
+<Solucion>
+
+$200=2^3\times5^2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿Es $221$ primo?
+
+<Solucion>
+
+$\sqrt{221}\approx14{,}87$. Probando: $221\div13=17$ exacto. No es primo:
+$221=13\times17$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Escribe la descomposición canónica de $1000$.
+
+<Solucion>
+
+$1000=2^3\times5^3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $p$ y $q$ son primos distintos, el único divisor común de $p$ y $q$
+es $1$.
+
+<Solucion>
+
+Los únicos divisores positivos de $p$ son $1$ y $p$; los de $q$ son $1$ y $q$. Como
+$p\neq q$ (son primos distintos), el único elemento en común entre $\{1,p\}$ y
+$\{1,q\}$ es $1$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que existen infinitos números primos. *(Pista: supón que hay finitos y
+llegarás a una contradicción — es la demostración clásica de Euclides.)*
+
+<Solucion>
+
+Supón, por contradicción, que solo existen finitos primos: $p_1,p_2,\ldots,p_n$
+(todos ellos). Considera el número $M=p_1\times p_2\times\cdots\times p_n+1$. Por el
+teorema fundamental, $M$ tiene al menos un factor primo $p$. Como $p_1,\ldots,p_n$
+son *todos* los primos por hipótesis, $p$ debe ser uno de ellos, digamos $p=p_i$.
+Pero entonces $p_i$ divide tanto a $p_1\times\cdots\times p_n$ (porque es uno de los
+factores) como a $M$ (por construcción) — y por el Teorema 1 de *Teoría de la
+divisibilidad*, $p_i$ dividiría también a la diferencia $M-(p_1\times\cdots\times
+p_n)=1$. Pero ningún primo divide a $1$ (el único divisor de $1$ es él mismo). Esta
+contradicción muestra que la suposición inicial era falsa: deben existir infinitos
+primos. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Un número primo tiene exactamente:",
+      opciones: ["1 divisor", "2 divisores", "3 divisores", "Un número variable de divisores"],
+      correcta: 1,
+      explicacion: "Un primo tiene exactamente 2 divisores: 1 y él mismo.",
+    },
+    {
+      enunciado: "El teorema fundamental de la aritmética afirma que todo entero >1:",
+      opciones: ["Es primo", "Tiene una única descomposición en factores primos (salvo el orden)", "Tiene infinitos divisores", "Es par"],
+      correcta: 1,
+      explicacion: "Es el enunciado exacto del teorema fundamental de la aritmética.",
+    },
+    {
+      enunciado: "Para verificar si N es primo, basta probar divisores primos hasta:",
+      opciones: ["N", "N/2", "√N", "N-1"],
+      correcta: 2,
+      explicacion: "Si N fuera compuesto, tendría un factor primo ≤√N — por eso basta probar hasta ahí.",
+    },
+    {
+      enunciado: "¿Cuál es el único número primo par?",
+      opciones: ["4", "2", "0", "No existe ningún primo par"],
+      correcta: 1,
+      explicacion: "Todo otro número par mayor que 2 tiene al 2 como divisor adicional, así que tiene más de 2 divisores.",
+    },
+    {
+      enunciado: "En la criba de Eratóstenes, para hallar los primos hasta L basta tachar múltiplos de los primos hasta:",
+      opciones: ["L", "L/2", "√L", "L-1"],
+      correcta: 2,
+      explicacion: "Por el mismo criterio de primalidad, alcanza con los primos hasta √L.",
+    },
+    {
+      enunciado: "¿Cuántos números primos existen?",
+      opciones: ["Un número finito, no determinado", "Exactamente 100", "Infinitos", "Solo los menores que 1000"],
+      correcta: 2,
+      explicacion: "La demostración de Euclides (por contradicción) prueba que hay infinitos primos.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Considerar al $1$ como primo.** Por definición, un primo tiene exactamente $2$
+  divisores; el $1$ tiene solo $1$ divisor (él mismo), así que no califica.
+- **Probar divisores más allá de $\sqrt N$** innecesariamente — una vez superada esa
+  cota sin encontrar factores, ya se puede concluir que $N$ es primo.
+- **Olvidar probar con $2$** por asumir que "los primos son todos impares" — el $2$
+  es primo y es el único par.
+- **Confundir la descomposición canónica con una lista cualquiera de factores** — debe
+  usar exclusivamente números primos, cada uno elevado a su exponente correspondiente.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/divisibilidad/teoria-de-la-divisibilidad-y-teoremas-fundamentales", label: "Teoría de la divisibilidad y teoremas fundamentales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-primos/descomposicion-canonica-y-estudio-de-divisores", label: "Descomposición canónica y estudio de divisores" },
+    { href: "/matematica/aritmetica/numeros-primos/mcd-mcm-y-algoritmo-de-euclides", label: "MCD, MCM y el algoritmo de Euclides" },
+  ]}
+/>

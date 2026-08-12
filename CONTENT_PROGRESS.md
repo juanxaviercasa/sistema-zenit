@@ -9,7 +9,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 
 ## Matemática — 51 temas
 
-### A. Aritmética (9/12)
+### A. Aritmética (10/12)
 
 - ✅ 1. Razones y proporciones
   - ✅ Razones aritmética, geométrica y armónica
@@ -56,7 +56,11 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Criterios de divisibilidad en otros sistemas de numeración
   - ✅ Restos potenciales y binomio de Newton
   - ✅ Ecuaciones diofánticas lineales
-- ⬜ 10. Números primos
+- ✅ 10. Números primos
+  - ✅ Números primos y compuestos: teorema fundamental y criba de Eratóstenes
+  - ✅ Descomposición canónica y estudio de divisores
+  - ✅ Función de Euler
+  - ✅ MCD, MCM y el algoritmo de Euclides
 - ⬜ 11. Números racionales e irracionales
 - ⬜ 12. Potenciación y radicación
 
@@ -115,7 +119,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 10/51 temas completos.**
+**Total Matemática: 11/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -146,16 +150,14 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
 - [ ] Fase 2 — Aritmética completa (12 temas), en curso: **Razones y proporciones**,
       **Magnitudes proporcionales**, **Interés simple y compuesto**, **Mezcla y
       aleación**, **Estadística**, **Probabilidad**, **Numeración**, **Números
-      naturales y enteros** y **Divisibilidad** (32 subtemas en total) completos.
-      Widgets con sliders/SVG en vez de JSXGraph sintético
+      naturales y enteros**, **Divisibilidad** y **Números primos** (36 subtemas en
+      total) completos. Widgets con sliders/SVG en vez de JSXGraph sintético
       (`components/interactive/aritmetica/*`); componentes genéricos reusados entre
       varios subtemas cuando la matemática es la misma (`MezclaPonderada`,
-      `ExploradorDeCerradura`). Divisibilidad deduce los criterios del 9 y del 11
-      desde la representación polinómica y congruencias módulo $b\mp1$ (en vez de
-      darlos memorizados), generaliza esa misma prueba a cualquier base, demuestra
-      $a^n\equiv r^n \pmod m$ con el binomio de Newton, y demuestra que la fórmula de
-      solución general de una ecuación diofántica lineal efectivamente satisface la
-      ecuación.
+      `ExploradorDeCerradura`). Números primos deduce CD(N), SD(N), PD(N), la suma de
+      inversas de los divisores, φ(N) y la relación MCD×MCM=a×b desde la
+      descomposición canónica (en vez de darlas memorizadas), y demuestra el lema de
+      Euclides que sostiene el algoritmo del mismo nombre.
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)

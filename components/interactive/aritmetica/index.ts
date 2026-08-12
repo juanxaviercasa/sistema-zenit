@@ -31,3 +31,7 @@ export { VerificadorDeCriterios } from "./verificador-de-criterios";
 export { CriteriosEnBaseB } from "./criterios-en-base-b";
 export { TablaDeRestosPotenciales } from "./tabla-de-restos-potenciales";
 export { ExploradorDiofantico } from "./explorador-diofantico";
+export { VerificadorDePrimalidad } from "./verificador-de-primalidad";
+export { DescomposicionCanonica } from "./descomposicion-canonica";
+export { FuncionDeEuler } from "./funcion-de-euler";
+export { AlgoritmoDeEuclides } from "./algoritmo-de-euclides";

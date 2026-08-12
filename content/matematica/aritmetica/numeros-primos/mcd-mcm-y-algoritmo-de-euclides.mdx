@@ -1,0 +1,260 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { AlgoritmoDeEuclides } from "@/components/interactive/aritmetica";
+
+# MCD, MCM y el algoritmo de Euclides
+
+<Objetivo>
+
+Calcular el máximo común divisor y el mínimo común múltiplo de dos números, tanto por
+descomposición canónica como por el algoritmo de Euclides, y demostrar la relación
+que los conecta.
+
+</Objetivo>
+
+## Marco teórico
+
+El **máximo común divisor** $\text{MCD}(a,b)$ es el mayor entero que divide tanto a
+$a$ como a $b$. El **mínimo común múltiplo** $\text{MCM}(a,b)$ es el menor entero
+positivo que es múltiplo de ambos.
+
+**Cálculo por descomposición canónica.** Si $a$ y $b$ están factorizados en primos,
+el $\text{MCD}$ toma, de cada primo común, el **menor** exponente; el $\text{MCM}$
+toma, de cada primo presente en cualquiera de los dos, el **mayor** exponente.
+
+**Enunciado (relación fundamental).** Para cualesquiera enteros positivos $a,b$:
+
+$$
+\text{MCD}(a,b) \times \text{MCM}(a,b) = a \times b.
+$$
+
+**Demostración.** Sea $p$ cualquier primo, con exponente $\alpha$ en $a$ y $\beta$ en
+$b$. En $\text{MCD}(a,b)$, ese primo aparece con exponente $\min(\alpha,\beta)$; en
+$\text{MCM}(a,b)$, con exponente $\max(\alpha,\beta)$. Sumando ambos exponentes:
+
+$$
+\min(\alpha,\beta) + \max(\alpha,\beta) = \alpha+\beta,
+$$
+
+(identidad válida siempre, sin importar cuál de los dos sea mayor). Pero
+$\alpha+\beta$ es exactamente el exponente de $p$ en el producto $a\times b$. Como
+esto vale para **cada** primo por separado, el producto
+$\text{MCD}(a,b)\times\text{MCM}(a,b)$ tiene, en cada primo, el mismo exponente que
+$a\times b$ — por el teorema fundamental de la aritmética (unicidad de la
+factorización), ambos números son iguales. $\blacksquare$
+
+**Algoritmo de Euclides.** Calcular el $\text{MCD}$ por descomposición canónica
+requiere factorizar, lo cual es lento para números grandes. El algoritmo de Euclides
+lo evita:
+
+**Enunciado (lema de Euclides).** Si $a=bq+r$ (división entera de $a$ entre $b$, con
+$0\leq r<b$), entonces $\text{MCD}(a,b)=\text{MCD}(b,r)$.
+
+**Demostración.** Basta ver que $a$ y $b$ tienen exactamente los mismos divisores
+comunes que $b$ y $r$. Si $d$ divide a $a$ y a $b$, entonces por el Teorema 1 de
+*Teoría de la divisibilidad*, $d$ divide a $a-bq=r$ — así que $d$ es divisor común de
+$b$ y $r$. Recíprocamente, si $d$ divide a $b$ y a $r$, entonces $d$ divide a
+$bq+r=a$ — así que $d$ es divisor común de $a$ y $b$. Como ambos pares tienen
+exactamente el mismo conjunto de divisores comunes, tienen el mismo **máximo** común
+divisor. $\blacksquare$
+
+Aplicando este lema repetidamente —dividir, quedarse con el divisor y el resto,
+repetir— el $\text{MCD}$ es el último resto no nulo de la cadena.
+
+## Visualización interactiva
+
+<AlgoritmoDeEuclides />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla $\text{MCD}(48,18)$ y $\text{MCM}(48,18)$ por descomposición
+canónica. ($48=2^4\times3$, $18=2\times3^2$.)
+
+**Solución.** $\text{MCD}=2^1\times3^1=6$ (menor exponente de cada primo).
+$\text{MCM}=2^4\times3^2=144$ (mayor exponente).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla $\text{MCD}(252,105)$ usando el algoritmo de Euclides.
+
+**Solución.** $252=105(2)+42$; $105=42(2)+21$; $42=21(2)+0$. El último resto no nulo
+es $21$: $\text{MCD}(252,105)=21$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Sabiendo que $\text{MCD}(a,b)=6$ y $a\times b=1080$, halla
+$\text{MCM}(a,b)$.
+
+**Solución.** Por la relación fundamental: $\text{MCM}=\dfrac{a\times
+b}{\text{MCD}}=\dfrac{1080}{6}=180$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Dos números tienen $\text{MCD}=8$ y $\text{MCM}=240$. Si uno de ellos
+es $40$, halla el otro.
+
+**Solución.** Por la relación fundamental: $a\times b=\text{MCD}\times\text{MCM}=
+8\times240=1920$. Con $a=40$: $b=1920/40=48$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla $\text{MCD}(36,60)$ por descomposición canónica ($36=2^2\times3^2$,
+$60=2^2\times3\times5$).
+
+<Solucion>
+
+$\text{MCD}=2^2\times3=12$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla $\text{MCD}(84,30)$ con el algoritmo de Euclides.
+
+<Solucion>
+
+$84=30(2)+24$; $30=24(1)+6$; $24=6(4)+0$. $\text{MCD}=6$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Si $\text{MCD}(a,b)=15$ y $\text{MCM}(a,b)=450$, halla $a\times b$.
+
+<Solucion>
+
+$a\times b=15\times450=6750$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Dos números tienen $\text{MCD}=12$ y uno de ellos es $60$. Si $\text{MCM}=180$, halla
+el otro número.
+
+<Solucion>
+
+$a\times b=12\times180=2160$. $b=2160/60=36$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $\text{MCD}(a,b)$ siempre divide a $\text{MCM}(a,b)$.
+
+<Solucion>
+
+Por la descomposición canónica, para cada primo $p$ con exponente $\alpha$ en $a$ y
+$\beta$ en $b$: en $\text{MCD}$ aparece con exponente $\min(\alpha,\beta)$, y en
+$\text{MCM}$ con exponente $\max(\alpha,\beta)$. Como $\min(\alpha,\beta) \leq
+\max(\alpha,\beta)$ siempre, cada exponente de $\text{MCD}$ es menor o igual que el
+correspondiente en $\text{MCM}$ — así que $\text{MCD}$ divide a $\text{MCM}$ (todos
+sus factores primos están "contenidos" en los de $\text{MCM}$, con exponente igual o
+menor). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $a$ y $b$ son coprimos ($\text{MCD}(a,b)=1$), entonces
+$\text{MCM}(a,b)=a\times b$.
+
+<Solucion>
+
+Por la relación fundamental: $\text{MCD}(a,b)\times\text{MCM}(a,b)=a\times b$. Si
+$\text{MCD}(a,b)=1$, sustituyendo: $1\times\text{MCM}(a,b)=a\times b$, así que
+$\text{MCM}(a,b)=a\times b$. $\blacksquare$ (Tiene sentido: si no comparten ningún
+factor primo, el menor múltiplo común debe incluir todos los factores de ambos, sin
+poder "ahorrar" ninguno compartido.)
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Para calcular MCD por descomposición canónica, de cada primo común se toma:",
+      opciones: ["El mayor exponente", "El menor exponente", "La suma de exponentes", "El promedio de exponentes"],
+      correcta: 1,
+      explicacion: "MCD toma el menor exponente de cada primo común; MCM toma el mayor.",
+    },
+    {
+      enunciado: "La relación fundamental entre MCD y MCM es:",
+      opciones: ["MCD + MCM = a + b", "MCD × MCM = a × b", "MCD - MCM = a - b", "MCD / MCM = a / b"],
+      correcta: 1,
+      explicacion: "MCD(a,b) × MCM(a,b) = a × b, para cualesquiera enteros positivos.",
+    },
+    {
+      enunciado: "El lema de Euclides afirma que si a=bq+r, entonces:",
+      opciones: ["MCD(a,b) = MCD(b,r)", "MCD(a,b) = a-b", "MCD(a,b) = q", "No hay relación entre estos MCD"],
+      correcta: 0,
+      explicacion: "Es la base del algoritmo de Euclides: el MCD se conserva al reemplazar (a,b) por (b,r).",
+    },
+    {
+      enunciado: "En el algoritmo de Euclides, el MCD es:",
+      opciones: ["El primer cociente obtenido", "El último resto no nulo", "El primer resto obtenido", "La suma de todos los residuos"],
+      correcta: 1,
+      explicacion: "El algoritmo termina cuando el resto es 0; el MCD es el resto anterior (el último no nulo).",
+    },
+    {
+      enunciado: "Si MCD(a,b)=1 (coprimos), entonces MCM(a,b) es:",
+      opciones: ["Igual a 1", "Igual a a×b", "Igual a a+b", "Indefinido"],
+      correcta: 1,
+      explicacion: "Con MCD=1, la relación fundamental da MCM=a×b directamente.",
+    },
+    {
+      enunciado: "MCD(a,b) siempre ___ MCM(a,b).",
+      opciones: ["Es mayor que", "Divide a", "Es igual a", "No tiene relación con"],
+      correcta: 1,
+      explicacion: "El MCD siempre divide al MCM, porque sus exponentes primos son siempre menores o iguales.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir menor y mayor exponente** al calcular MCD y MCM por descomposición
+  canónica — MCD usa el **menor**, MCM usa el **mayor**.
+- **Olvidar incluir un primo que aparece en solo uno de los dos números** al calcular
+  el MCM — el MCM incluye **todos** los primos que aparecen en cualquiera de los dos,
+  no solo los comunes.
+- **Aplicar el algoritmo de Euclides con la división en el orden equivocado** — se
+  divide siempre el número mayor entre el menor (o el anterior dividendo entre el
+  resto anterior).
+- **Olvidar la relación fundamental** al resolver problemas donde se conocen MCD, MCM
+  y uno de los números — permite hallar el producto $a\times b$ directamente, sin
+  necesidad de factorizar.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-primos/funcion-de-euler", label: "Función de Euler" },
+    { href: "/matematica/aritmetica/divisibilidad/ecuaciones-diofanticas-lineales", label: "Ecuaciones diofánticas lineales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-racionales-e-irracionales", label: "Números racionales e irracionales" },
+  ]}
+/>
