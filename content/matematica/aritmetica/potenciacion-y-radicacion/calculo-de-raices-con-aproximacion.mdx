@@ -1,0 +1,274 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { AproximacionDeRaizPorNewton } from "@/components/interactive/aritmetica";
+
+# Cálculo de raíces con aproximación
+
+<Objetivo>
+
+Aproximar raíces cuadradas irracionales con la precisión decimal deseada, usando dos
+métodos: el desplazamiento por potencias de $10$ (que reutiliza la raíz entera) y el
+método iterativo de Newton, de convergencia rápida.
+
+</Objetivo>
+
+## Marco teórico
+
+**Método del desplazamiento por potencias de $10$.** Para aproximar $\sqrt N$ con
+$n$ cifras decimales, se calcula la raíz cuadrada **entera** de $M=N\times10^{2n}$, y
+se divide entre $10^n$.
+
+**Justificación.** Sea $k=\lfloor\sqrt M\rfloor$, es decir $k^2\leq M<(k+1)^2$
+(subtema anterior). Dividiendo toda la desigualdad entre $10^{2n}=(10^n)^2$:
+
+$$
+\left(\frac{k}{10^n}\right)^2 \leq \frac{M}{10^{2n}} = N <
+\left(\frac{k+1}{10^n}\right)^2.
+$$
+
+Tomando raíz cuadrada (la función raíz preserva el orden entre números positivos):
+
+$$
+\frac{k}{10^n} \leq \sqrt N < \frac{k+1}{10^n}.
+$$
+
+Por lo tanto, $\dfrac{k}{10^n}$ aproxima a $\sqrt N$ con un error menor que
+$\dfrac1{10^n}$ — exactamente la cota de error por truncamiento demostrada en el tema
+anterior para irracionales. $\blacksquare$
+
+**Método de Newton (aproximaciones sucesivas).** Partiendo de cualquier valor inicial
+$x_0>0$, la sucesión
+
+$$
+x_{i+1} = \frac{x_i + N/x_i}{2}
+$$
+
+converge muy rápidamente a $\sqrt N$.
+
+**Demostración de la velocidad de convergencia.** Sea $e_i=x_i-\sqrt N$ el error en
+el paso $i$. Entonces:
+
+$$
+e_{i+1} = x_{i+1}-\sqrt N = \frac{x_i+N/x_i}{2}-\sqrt N =
+\frac{x_i^2+N-2x_i\sqrt N}{2x_i} = \frac{(x_i-\sqrt N)^2}{2x_i} =
+\frac{e_i^2}{2x_i}.
+$$
+
+Como el nuevo error es (aproximadamente) el **cuadrado** del anterior dividido entre
+$2x_i$, cuando $e_i$ ya es pequeño, $e_{i+1}$ es muchísimo más pequeño: el número de
+cifras decimales correctas se **duplica** aproximadamente en cada iteración.
+$\blacksquare$
+
+## Visualización interactiva
+
+<AproximacionDeRaizPorNewton />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Aproxima $\sqrt2$ con $2$ cifras decimales usando el método de
+desplazamiento.
+
+**Solución.** $M=2\times10^4=20000$. $141^2=19881\leq20000<20164=142^2$, así que
+$k=141$. La aproximación es $141/100=1{,}41$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Aplica dos iteraciones del método de Newton para aproximar $\sqrt5$,
+partiendo de $x_0=5$.
+
+**Solución.** $x_1=\dfrac{5+5/5}{2}=\dfrac{5+1}{2}=3$.
+$x_2=\dfrac{3+5/3}{2}=\dfrac{3+1{,}6667}{2}\approx2{,}3333$. (El valor real es
+$\sqrt5\approx2{,}2361$: cada paso se acerca notablemente más.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Aproxima $\sqrt7$ con $3$ cifras decimales usando el método de
+desplazamiento.
+
+**Solución.** $M=7\times10^6=7\,000\,000$. $2645^2=6\,996\,025\leq7\,000\,000<
+7\,001\,316=2646^2$, así que $k=2645$. La aproximación es
+$2645/1000=2{,}645$. (Valor real: $\sqrt7\approx2{,}6457513$.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Deduce la fórmula del error de Newton
+$e_{i+1}=\dfrac{e_i^2}{2x_i}$ sin mirar el marco teórico.
+
+**Solución.**
+
+$$
+x_{i+1}-\sqrt N = \frac{x_i+N/x_i}{2}-\sqrt N = \frac{x_i^2+N-2x_i\sqrt N}{2x_i}.
+$$
+
+El numerador es $x_i^2-2x_i\sqrt N+N=(x_i-\sqrt N)^2$ (un trinomio cuadrado
+perfecto), así que:
+
+$$
+x_{i+1}-\sqrt N = \frac{(x_i-\sqrt N)^2}{2x_i} = \frac{e_i^2}{2x_i}. \qquad\blacksquare
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Aproxima $\sqrt3$ con $2$ cifras decimales usando el método de desplazamiento.
+
+<Solucion>
+
+$M=3\times10^4=30000$. $173^2=29929\leq30000<30276=174^2$: $k=173$. Aproximación:
+$173/100=1{,}73$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Aplica una iteración de Newton para aproximar $\sqrt{10}$, partiendo de $x_0=10$.
+
+<Solucion>
+
+$x_1=\dfrac{10+10/10}{2}=\dfrac{10+1}{2}=5{,}5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Aplica dos iteraciones de Newton para aproximar $\sqrt2$, partiendo de $x_0=2$.
+
+<Solucion>
+
+$x_1=\dfrac{2+2/2}{2}=\dfrac{2+1}{2}=1{,}5$.
+$x_2=\dfrac{1{,}5+2/1{,}5}{2}=\dfrac{1{,}5+1{,}3333}{2}\approx1{,}4167$. (Valor real:
+$\sqrt2\approx1{,}4142$.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Aproxima $\sqrt{11}$ con $1$ cifra decimal usando el método de desplazamiento.
+
+<Solucion>
+
+$M=11\times10^2=1100$. $33^2=1089\leq1100<1156=34^2$: $k=33$. Aproximación:
+$33/10=3{,}3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que el método de desplazamiento aproxima $\sqrt N$ con un error menor que
+$10^{-n}$.
+
+<Solucion>
+
+Con $k=\lfloor\sqrt{N\times10^{2n}}\rfloor$, se tiene $k^2\leq N\times10^{2n}<
+(k+1)^2$. Dividiendo entre $10^{2n}$ y tomando raíz cuadrada:
+$\dfrac{k}{10^n}\leq\sqrt N<\dfrac{k+1}{10^n}$. Restando $\dfrac{k}{10^n}$:
+$0\leq\sqrt N-\dfrac{k}{10^n}<\dfrac1{10^n}$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para cualquier $x_i>0$, la siguiente aproximación de Newton cumple
+$x_{i+1}\geq\sqrt N$ (usando la desigualdad entre la media aritmética y la media
+geométrica).
+
+<Solucion>
+
+$x_{i+1}=\dfrac{x_i+N/x_i}{2}$ es la **media aritmética** de $x_i$ y $N/x_i$. Por la
+desigualdad MA-MG (media aritmética $\geq$ media geométrica, para números
+positivos), esa media aritmética es mayor o igual que la media geométrica de los
+mismos dos números: $\sqrt{x_i\cdot(N/x_i)}=\sqrt N$. Por lo tanto
+$x_{i+1}\geq\sqrt N$. $\blacksquare$ (Esto explica por qué, después del primer paso,
+la sucesión de Newton siempre se acerca a $\sqrt N$ desde arriba.)
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Para aproximar √N con n cifras decimales por el método de desplazamiento, se multiplica N por:",
+      opciones: ["10^n", "10^(2n)", "n²", "2^n"],
+      correcta: 1,
+      explicacion: "Se necesita una potencia par de 10 para que al tomar raíz cuadrada salga 10^n como factor.",
+    },
+    {
+      enunciado: "La fórmula de la iteración de Newton para √N es:",
+      opciones: ["x_(i+1) = x_i + N", "x_(i+1) = (x_i + N/x_i)/2", "x_(i+1) = x_i²/N", "x_(i+1) = N/x_i"],
+      correcta: 1,
+      explicacion: "Es el promedio entre la aproximación actual y N dividido entre esa aproximación.",
+    },
+    {
+      enunciado: "La velocidad de convergencia de Newton se describe como:",
+      opciones: ["Lineal (el error se reduce a la mitad cada vez)", "Cuadrática (el número de cifras correctas se duplica cada vez)", "No converge", "Solo funciona para N par"],
+      correcta: 1,
+      explicacion: "e_(i+1) = e_i²/(2x_i): el error se eleva al cuadrado, duplicando la precisión.",
+    },
+    {
+      enunciado: "La fórmula del error de Newton e_(i+1)=e_i²/(2x_i) se deduce de:",
+      opciones: ["Un trinomio cuadrado perfecto en el numerador de x_(i+1)-√N", "La criba de Eratóstenes", "El algoritmo de Euclides", "La función de Euler"],
+      correcta: 0,
+      explicacion: "x_i²-2x_i√N+N = (x_i-√N)², que es exactamente e_i².",
+    },
+    {
+      enunciado: "Después del primer paso, la sucesión de Newton siempre se acerca a √N:",
+      opciones: ["Desde abajo", "Desde arriba (x_(i+1) ≥ √N, por la desigualdad MA-MG)", "Oscilando aleatoriamente", "No se puede saber"],
+      correcta: 1,
+      explicacion: "x_(i+1) es la media aritmética de x_i y N/x_i, que siempre es ≥ la media geométrica √N.",
+    },
+    {
+      enunciado: "En el método de desplazamiento, tras hallar k=⌊√(N×10^(2n))⌋, la aproximación de √N es:",
+      opciones: ["k", "k×10^n", "k/10^n", "k²"],
+      correcta: 2,
+      explicacion: "Se divide k entre 10^n para deshacer el desplazamiento inicial.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Multiplicar $N$ por una potencia impar de $10$** en el método de desplazamiento
+  (por ejemplo $10^n$ en vez de $10^{2n}$) — rompe la justificación, porque
+  $\sqrt{10^n}$ no es un entero cuando $n$ es impar.
+- **Olvidar dividir entre $10^n$ al final** del método de desplazamiento — el
+  resultado de la raíz entera de $M$ es $k$, no la aproximación de $\sqrt N$
+  directamente.
+- **Pensar que una sola iteración de Newton ya da la respuesta exacta** — cada paso
+  se acerca mucho, pero solo en el límite (infinitas iteraciones) se alcanza el valor
+  exacto.
+- **Confundir la fórmula de Newton con un promedio simple** — no es el promedio de
+  dos valores cualesquiera, sino específicamente de $x_i$ y $N/x_i$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion/raiz-cuadrada-y-raiz-cubica-propiedades-de-los-residuos", label: "Raíz cuadrada y raíz cúbica: propiedades de los residuos" },
+    { href: "/matematica/aritmetica/numeros-racionales-e-irracionales/numeros-irracionales-representacion-y-aproximacion", label: "Números irracionales: representación decimal y aproximación por racionales" },
+    { href: "/matematica/aritmetica/razones-y-proporciones/medias-aritmetica-geometrica-y-armonica", label: "Medias aritmética, geométrica y armónica" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra", label: "Álgebra" },
+  ]}
+/>

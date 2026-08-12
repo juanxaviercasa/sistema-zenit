@@ -1,0 +1,265 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ExploradorDeExponentes } from "@/components/interactive/aritmetica";
+
+# Teoremas fundamentales de la potenciación
+
+<Objetivo>
+
+Deducir y demostrar las leyes de la potenciación (producto y cociente de potencias,
+potencia de potencia, potencia de un producto) a partir de la definición de potencia
+como producto repetido, y extenderlas a exponentes cero y negativos.
+
+</Objetivo>
+
+## Marco teórico
+
+Para $n$ entero positivo y $a$ real, la **potencia** $a^n$ se define como el producto
+de $a$ consigo mismo $n$ veces: $a^n=\underbrace{a\cdot a\cdots a}_{n\text{ veces}}$.
+
+**Enunciado (producto de potencias de igual base).** $a^m\cdot a^n=a^{m+n}$, para
+$m,n$ enteros positivos.
+
+**Demostración.**
+
+$$
+a^m\cdot a^n = \underbrace{a\cdots a}_{m}\cdot\underbrace{a\cdots a}_{n} =
+\underbrace{a\cdots a}_{m+n} = a^{m+n}.
+$$
+
+Simplemente se cuenta el total de factores $a$: $m$ del primer grupo más $n$ del
+segundo. $\blacksquare$
+
+**Enunciado (potencia de una potencia).** $(a^m)^n=a^{mn}$.
+
+**Demostración.** $(a^m)^n$ es el producto de $a^m$ consigo mismo $n$ veces. Aplicando
+el teorema anterior repetidamente ($n-1$ veces):
+
+$$
+(a^m)^n = \underbrace{a^m\cdot a^m\cdots a^m}_{n} = a^{\overbrace{m+m+\cdots+m}^{n}} =
+a^{mn}. \qquad\blacksquare
+$$
+
+**Enunciado (potencia de un producto).** $(ab)^n=a^nb^n$.
+
+**Demostración.**
+
+$$
+(ab)^n = \underbrace{(ab)(ab)\cdots(ab)}_{n}.
+$$
+
+Por la conmutatividad y asociatividad de la multiplicación, los factores se pueden
+reordenar agrupando todas las $a$ y todas las $b$: $=\underbrace{a\cdots
+a}_{n}\cdot\underbrace{b\cdots b}_{n}=a^nb^n$. $\blacksquare$ (De forma análoga,
+$(a/b)^n=a^n/b^n$ para $b\neq0$.)
+
+**Extensión a exponente cero y negativo.** Para que el primer teorema siga
+funcionando cuando alguno de los exponentes es $0$ o negativo, los valores de $a^0$ y
+$a^{-n}$ **no se eligen libremente**: quedan forzados por la consistencia con la
+regla ya demostrada.
+
+Si $a^m\cdot a^0$ debe seguir siendo $a^{m+0}=a^m$, y $a^m\neq0$ (para $a\neq0$), se
+puede despejar:
+
+$$
+a^0 = 1 \qquad (a\neq0).
+$$
+
+Si $a^n\cdot a^{-n}$ debe seguir siendo $a^{n+(-n)}=a^0=1$, entonces $a^{-n}$ debe ser
+el recíproco de $a^n$:
+
+$$
+a^{-n} = \frac{1}{a^n} \qquad (a\neq0).
+$$
+
+**Enunciado (cociente de potencias de igual base).** $\dfrac{a^m}{a^n}=a^{m-n}$
+($a\neq0$).
+
+**Demostración.** $\dfrac{a^m}{a^n}=a^m\cdot a^{-n}=a^{m+(-n)}=a^{m-n}$, usando la
+extensión del teorema del producto a exponentes negativos. $\blacksquare$
+
+## Visualización interactiva
+
+<ExploradorDeExponentes />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Simplifica $2^3\times2^4$.
+
+**Solución.** $2^3\times2^4=2^{3+4}=2^7=128$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Simplifica $(3^2)^3$.
+
+**Solución.** $(3^2)^3=3^{2\times3}=3^6=729$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Simplifica $(2\times5)^3$ y verifica el resultado de dos formas.
+
+**Solución.** Por el teorema: $(2\times5)^3=2^3\times5^3=8\times125=1000$.
+Verificación directa: $2\times5=10$, y $10^3=1000$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Deduce el valor de $5^0$ exigiendo que la regla del producto siga
+siendo válida.
+
+**Solución.** Si $5^3\cdot5^0$ debe ser igual a $5^{3+0}=5^3$, y $5^3=125\neq0$,
+entonces $5^0=\dfrac{5^3}{5^3}=1$. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Simplifica $3^2\times3^5$.
+
+<Solucion>
+
+$3^{2+5}=3^7=2187$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Simplifica $(2^3)^2$.
+
+<Solucion>
+
+$2^{3\times2}=2^6=64$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Simplifica $\left(\dfrac23\right)^3$.
+
+<Solucion>
+
+$\dfrac{2^3}{3^3}=\dfrac{8}{27}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Simplifica $7^5/7^2$.
+
+<Solucion>
+
+$7^{5-2}=7^3=343$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $a^{-n}=\dfrac{1}{a^n}$ a partir de la regla del producto extendida a
+exponente $0$.
+
+<Solucion>
+
+Si $a^n\cdot a^{-n}$ debe seguir la regla del producto, entonces
+$a^n\cdot a^{-n}=a^{n+(-n)}=a^0=1$. Como $a^n\neq0$ (para $a\neq0$), se despeja
+$a^{-n}=\dfrac{1}{a^n}$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $(ab)^{-n}=a^{-n}b^{-n}$, para $n$ entero positivo y $a,b\neq0$.
+
+<Solucion>
+
+Por la definición de exponente negativo y el teorema de la potencia de un producto:
+
+$$
+(ab)^{-n} = \frac{1}{(ab)^n} = \frac{1}{a^nb^n} = \frac{1}{a^n}\cdot\frac{1}{b^n} =
+a^{-n}b^{-n}. \qquad\blacksquare
+$$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "aᵐ × aⁿ es igual a:",
+      opciones: ["a^(m×n)", "a^(m+n)", "a^(m-n)", "(a×a)^(m+n)"],
+      correcta: 1,
+      explicacion: "Se cuentan los factores a de ambos grupos: m+n en total.",
+    },
+    {
+      enunciado: "(aᵐ)ⁿ es igual a:",
+      opciones: ["a^(m+n)", "a^(mn)", "a^m + a^n", "a^(m/n)"],
+      correcta: 1,
+      explicacion: "Se aplica la regla del producto n-1 veces, sumando m un total de n veces.",
+    },
+    {
+      enunciado: "a⁰ se define como 1 (a≠0) porque:",
+      opciones: ["Es una convención arbitraria sin justificación", "Es lo que exige la consistencia de la regla del producto: aᵐ·a⁰=aᵐ", "Todo número elevado a 0 es par", "Así lo dice la calculadora"],
+      correcta: 1,
+      explicacion: "Se deduce, no se elige libremente: debe cumplir aᵐ·a⁰=aᵐ⁺⁰=aᵐ.",
+    },
+    {
+      enunciado: "a⁻ⁿ (a≠0) es igual a:",
+      opciones: ["-aⁿ", "1/aⁿ", "0", "aⁿ"],
+      correcta: 1,
+      explicacion: "Se deduce de aⁿ·a⁻ⁿ=a⁰=1, así que a⁻ⁿ es el recíproco de aⁿ.",
+    },
+    {
+      enunciado: "(ab)ⁿ es igual a:",
+      opciones: ["aⁿ + bⁿ", "aⁿbⁿ", "a+b elevado a n", "abⁿ"],
+      correcta: 1,
+      explicacion: "Se reordenan los factores por conmutatividad, agrupando las a y las b.",
+    },
+    {
+      enunciado: "aᵐ/aⁿ (a≠0) es igual a:",
+      opciones: ["a^(m/n)", "a^(m-n)", "a^(mn)", "a^(n-m)"],
+      correcta: 1,
+      explicacion: "aᵐ/aⁿ = aᵐ·a⁻ⁿ = a^(m-n).",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir $a^m\cdot a^n=a^{m+n}$ con $a^m\cdot a^n=a^{mn}$** — el producto de
+  potencias de igual base **suma** los exponentes, no los multiplica.
+- **Confundir $(a^m)^n=a^{mn}$ con $(a^m)^n=a^{m+n}$** — es al revés que el caso
+  anterior: la potencia de una potencia **multiplica** los exponentes.
+- **Pensar que $a^0=0$** — por la deducción del marco teórico, $a^0=1$ para todo
+  $a\neq0$ (y $0^0$ queda indefinido, no se usa en este curso).
+- **Olvidar la condición $a\neq0$** al usar exponente cero o negativo — $a^0$ y
+  $a^{-n}$ no están definidos cuando $a=0$ (no se puede dividir entre $0$).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-naturales-y-enteros/numeros-enteros-operaciones-propiedades-y-limitaciones", label: "Números enteros: operaciones, propiedades y limitaciones" },
+    { href: "/matematica/aritmetica/numeros-primos/descomposicion-canonica-y-estudio-de-divisores", label: "Descomposición canónica y estudio de divisores" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion/cuadrado-y-cubo-perfecto", label: "Cuadrado y cubo perfecto" },
+  ]}
+/>

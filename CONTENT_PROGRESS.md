@@ -9,7 +9,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 
 ## Matemática — 51 temas
 
-### A. Aritmética (11/12)
+### A. Aritmética (12/12) ✅ completa
 
 - ✅ 1. Razones y proporciones
   - ✅ Razones aritmética, geométrica y armónica
@@ -66,7 +66,11 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Fracciones ordinarias y decimales
   - ✅ Expresiones decimales periódicas y generatriz de una expresión decimal
   - ✅ Números irracionales: representación decimal y aproximación por racionales
-- ⬜ 12. Potenciación y radicación
+- ✅ 12. Potenciación y radicación
+  - ✅ Teoremas fundamentales de la potenciación
+  - ✅ Cuadrado y cubo perfecto
+  - ✅ Raíz cuadrada y raíz cúbica: propiedades de los residuos
+  - ✅ Cálculo de raíces con aproximación
 
 ### B. Álgebra (0/9)
 
@@ -123,7 +127,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 12/51 temas completos.**
+**Total Matemática: 13/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -151,22 +155,27 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       `components/pedagogy/*` (Objetivo, EjemploResuelto, Problema/Solucion, Quiz,
       ErroresFrecuentes, Conexiones) y `components/interactive/*`
       (JSXGraphBoard, FiguraInteractiva, FiguraDemostracion, jsxgraph-utils).
-- [ ] Fase 2 — Aritmética completa (12 temas), en curso: **Razones y proporciones**,
-      **Magnitudes proporcionales**, **Interés simple y compuesto**, **Mezcla y
-      aleación**, **Estadística**, **Probabilidad**, **Numeración**, **Números
-      naturales y enteros**, **Divisibilidad**, **Números primos** y **Números
-      racionales e irracionales** (40 subtemas en total) completos. Widgets con
-      sliders/SVG en vez de JSXGraph sintético (`components/interactive/aritmetica/*`);
-      componentes genéricos reusados entre varios subtemas cuando la matemática es la
-      misma (`MezclaPonderada`, `ExploradorDeCerradura`). Números primos deduce CD(N),
-      SD(N), PD(N), la suma de inversas de los divisores, φ(N) y la relación
-      MCD×MCM=a×b desde la descomposición canónica, y demuestra el lema de Euclides.
-      Números racionales e irracionales construye Q como clases de equivalencia y
-      demuestra su densidad, deriva el criterio de decimal exacta (2^m×5^n) y la
-      fórmula de la generatriz por manipulación algebraica, y demuestra la
-      irracionalidad de √N (N no cuadrado perfecto) reusando la paridad de exponentes
-      de la descomposición canónica de Números primos. Falta **Potenciación y
-      radicación** para cerrar la fase.
+- [x] Fase 2 — Aritmética completa (12 temas, 48 subtemas): **Razones y
+      proporciones**, **Magnitudes proporcionales**, **Interés simple y compuesto**,
+      **Mezcla y aleación**, **Estadística**, **Probabilidad**, **Numeración**,
+      **Números naturales y enteros**, **Divisibilidad**, **Números primos**,
+      **Números racionales e irracionales** y **Potenciación y radicación**. Widgets
+      con sliders/SVG en vez de JSXGraph sintético
+      (`components/interactive/aritmetica/*`); componentes genéricos reusados entre
+      varios subtemas cuando la matemática es la misma (`MezclaPonderada`,
+      `ExploradorDeCerradura`). Números primos deduce CD(N), SD(N), PD(N), la suma de
+      inversas de los divisores, φ(N) y la relación MCD×MCM=a×b desde la
+      descomposición canónica, y demuestra el lema de Euclides. Números racionales e
+      irracionales construye Q como clases de equivalencia y demuestra su densidad,
+      deriva el criterio de decimal exacta (2^m×5^n) y la fórmula de la generatriz por
+      manipulación algebraica, y demuestra la irracionalidad de √N (N no cuadrado
+      perfecto) reusando la paridad de exponentes de la descomposición canónica.
+      Potenciación y radicación deduce las leyes de exponentes (incluida la extensión
+      a exponente cero y negativo) desde la definición como producto repetido,
+      demuestra los criterios de última cifra y módulo 4 para cuadrados perfectos,
+      acota el residuo de la raíz entera (cuadrada y cúbica), y demuestra la
+      convergencia cuadrática del método de Newton para aproximar raíces —cerrando
+      así Aritmética con las 48 subtemas del área.
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)

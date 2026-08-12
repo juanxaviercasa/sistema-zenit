@@ -39,3 +39,7 @@ export { DensidadDeRacionales } from "./densidad-de-racionales";
 export { ConversorFraccionADecimal } from "./conversor-fraccion-a-decimal";
 export { GeneratrizDecimal } from "./generatriz-decimal";
 export { AproximacionDeIrracionales } from "./aproximacion-de-irracionales";
+export { ExploradorDeExponentes } from "./explorador-de-exponentes";
+export { CriterioDeCuadradosYCubos } from "./criterio-de-cuadrados-y-cubos";
+export { RaizConResiduo } from "./raiz-con-residuo";
+export { AproximacionDeRaizPorNewton } from "./aproximacion-de-raiz-por-newton";

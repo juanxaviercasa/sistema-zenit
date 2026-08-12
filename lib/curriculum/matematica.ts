@@ -182,6 +182,16 @@ const subtemasNumerosRacionalesEIrracionales: Subtema[] = [
   ),
 ];
 
+const subtemasPotenciacionYRadicacion: Subtema[] = [
+  subtema("teoremas-fundamentales-de-la-potenciacion", "Teoremas fundamentales de la potenciación"),
+  subtema("cuadrado-y-cubo-perfecto", "Cuadrado y cubo perfecto"),
+  subtema(
+    "raiz-cuadrada-y-raiz-cubica-propiedades-de-los-residuos",
+    "Raíz cuadrada y raíz cúbica: propiedades de los residuos"
+  ),
+  subtema("calculo-de-raices-con-aproximacion", "Cálculo de raíces con aproximación"),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -232,7 +242,13 @@ const aritmetica: Area = {
       undefined,
       subtemasNumerosRacionalesEIrracionales
     ),
-    tema(12, "potenciacion-y-radicacion", "Potenciación y radicación"),
+    tema(
+      12,
+      "potenciacion-y-radicacion",
+      "Potenciación y radicación",
+      undefined,
+      subtemasPotenciacionYRadicacion
+    ),
   ],
 };
 

@@ -1,0 +1,259 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { CriterioDeCuadradosYCubos } from "@/components/interactive/aritmetica";
+
+# Cuadrado y cubo perfecto
+
+<Objetivo>
+
+Definir cuadrado y cubo perfecto, demostrar el criterio de la última cifra y el
+criterio módulo $4$ para descartar rápidamente si un número puede ser cuadrado
+perfecto, y contrastarlo con el caso de los cubos perfectos.
+
+</Objetivo>
+
+## Marco teórico
+
+Un entero $n\geq0$ es **cuadrado perfecto** si $n=k^2$ para algún entero $k\geq0$; es
+**cubo perfecto** si $n=k^3$ para algún entero $k$.
+
+**Enunciado (última cifra de un cuadrado perfecto).** La cifra de las unidades de
+todo cuadrado perfecto pertenece a $\{0,1,4,5,6,9\}$ — nunca puede ser $2,3,7$ u $8$.
+
+**Demostración.** Sea $k=10a+b$, donde $b$ es la cifra de las unidades de $k$
+($0\leq b\leq9$). Entonces:
+
+$$
+k^2 = (10a+b)^2 = 100a^2+20ab+b^2 = 10(10a^2+2ab)+b^2.
+$$
+
+El término $10(10a^2+2ab)$ es múltiplo de $10$, así que no afecta la cifra de las
+unidades de $k^2$: esa cifra es exactamente la cifra de las unidades de $b^2$. Basta
+revisar los $10$ casos posibles de $b$:
+
+| $b$ | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| última cifra de $b^2$ | $0$ | $1$ | $4$ | $9$ | $6$ | $5$ | $6$ | $9$ | $4$ | $1$ |
+
+Las cifras que aparecen son exactamente $\{0,1,4,5,6,9\}$ — nunca $2,3,7$ u $8$.
+$\blacksquare$
+
+**Enunciado (cuadrado perfecto módulo $4$).** Todo cuadrado perfecto es congruente
+con $0$ o $1$ módulo $4$.
+
+**Demostración.** Si $k$ es par, $k=2j$, entonces $k^2=4j^2\equiv0\pmod4$. Si $k$ es
+impar, $k=2j+1$, entonces $k^2=4j^2+4j+1\equiv1\pmod4$. En ambos casos, $k^2\equiv0$
+o $1\pmod4$. $\blacksquare$ (Este criterio es más fuerte que el de la última cifra:
+descarta números que la última cifra por sí sola no descarta.)
+
+**Cubos perfectos: sin restricción de última cifra.** A diferencia del cuadrado, la
+función "última cifra de la base $\to$ última cifra del cubo" es una **biyección** de
+$\{0,\ldots,9\}$ en sí mismo:
+
+| $b$ | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| última cifra de $b^3$ | $0$ | $1$ | $8$ | $7$ | $4$ | $5$ | $6$ | $3$ | $2$ | $9$ |
+
+Cada cifra del $0$ al $9$ aparece **exactamente una vez** en la segunda fila — así
+que un cubo perfecto puede terminar en cualquier cifra, y además la cifra final del
+cubo determina de forma única la cifra final de su raíz cúbica.
+
+## Visualización interactiva
+
+<CriterioDeCuadradosYCubos />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** ¿Puede $1234$ ser un cuadrado perfecto?
+
+**Solución.** Termina en $4$, que sí está permitido por el criterio de la última
+cifra — no se puede descartar todavía. Probando el criterio módulo $4$:
+$1234=4\times308+2$, resto $2$. Como el resto no es $0$ ni $1$, $1234$ **no** puede
+ser cuadrado perfecto.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Puede $4933$ ser un cuadrado perfecto?
+
+**Solución.** Termina en $3$, que no pertenece a $\{0,1,4,5,6,9\}$. No puede ser
+cuadrado perfecto.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Un cubo perfecto termina en $8$. ¿En qué cifra termina su raíz
+cúbica?
+
+**Solución.** De la tabla, la única cifra $b$ con $b^3$ terminado en $8$ es $b=2$
+($2^3=8$). La raíz cúbica termina en $2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra formalmente que ningún cuadrado perfecto puede terminar en
+$2$, usando $(10a+b)^2$.
+
+**Solución.** $(10a+b)^2=10(10a^2+2ab)+b^2$, así que la última cifra de $(10a+b)^2$
+es la última cifra de $b^2$. Para que esa cifra sea $2$, necesitaríamos algún dígito
+$b\in\{0,\ldots,9\}$ con $b^2$ terminado en $2$. Revisando los diez casos (tabla del
+marco teórico), ningún $b^2$ termina en $2$. Por lo tanto, ningún cuadrado perfecto
+puede terminar en $2$. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+¿Puede $1444$ ser un cuadrado perfecto? (De hecho, $38^2=1444$.)
+
+<Solucion>
+
+Termina en $4$ (permitido). En efecto, $38^2=1444$: sí es cuadrado perfecto.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Puede $2345678$ ser un cuadrado perfecto?
+
+<Solucion>
+
+Termina en $8\notin\{0,1,4,5,6,9\}$. No puede ser cuadrado perfecto.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿Puede $729$ ser un cuadrado perfecto?
+
+<Solucion>
+
+Termina en $9$ (permitido). Módulo $4$: $729=4\times182+1$, resto $1$ (permitido).
+Ambos criterios pasan; en efecto, $27^2=729$ sí es cuadrado perfecto (y también es
+cubo perfecto: $9^3=729$).
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Un cubo perfecto termina en $7$. ¿En qué cifra termina su raíz cúbica?
+
+<Solucion>
+
+De la tabla, $3^3=27$ termina en $7$. La raíz cúbica termina en $3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que todo cuadrado perfecto es congruente con $0$ o $1$ módulo $4$.
+
+<Solucion>
+
+Si $k$ es par, $k=2j$: $k^2=4j^2\equiv0\pmod4$. Si $k$ es impar, $k=2j+1$:
+$k^2=4j^2+4j+1\equiv1\pmod4$. Como todo entero es par o impar, $k^2\equiv0$ o
+$1\pmod4$ siempre. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra, usando la tabla de últimas cifras de los cubos, que a cada cifra final de
+un cubo perfecto le corresponde una **única** cifra final posible de su raíz cúbica.
+
+<Solucion>
+
+La tabla del marco teórico enumera $b^3\bmod10$ para los diez valores
+$b=0,1,\ldots,9$, y los diez resultados obtenidos ($0,1,8,7,4,5,6,3,2,9$) son todos
+**distintos entre sí** — cubren exactamente $\{0,\ldots,9\}$ sin repetir ninguno. Como
+la función $b\mapsto b^3\bmod10$ toma $10$ valores de entrada y produce $10$ salidas
+distintas, es una biyección: cada cifra final del cubo tiene exactamente un $b$ que
+la produce, así que la cifra final de la raíz cúbica queda determinada de forma
+única. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La cifra de las unidades de un cuadrado perfecto puede ser:",
+      opciones: ["Cualquier cifra del 0 al 9", "Solo 0, 1, 4, 5, 6 o 9", "Solo cifras pares", "Solo cifras impares"],
+      correcta: 1,
+      explicacion: "Se deduce de que la última cifra de k² depende solo de la última cifra de k, revisando los 10 casos.",
+    },
+    {
+      enunciado: "Todo cuadrado perfecto, módulo 4, es congruente con:",
+      opciones: ["0 o 1", "2 o 3", "Cualquier resto", "Siempre 0"],
+      correcta: 0,
+      explicacion: "k par da resto 0; k impar da resto 1 — nunca 2 ni 3.",
+    },
+    {
+      enunciado: "¿Puede un número terminado en 8 ser cuadrado perfecto?",
+      opciones: ["Sí, siempre", "No, nunca", "Solo si es par", "Solo si es múltiplo de 8"],
+      correcta: 1,
+      explicacion: "8 no aparece en la tabla de últimas cifras de b², para ningún b de 0 a 9.",
+    },
+    {
+      enunciado: "¿Puede un cubo perfecto terminar en 8?",
+      opciones: ["No, nunca", "Sí, por ejemplo 2³=8", "Solo si es par", "Solo si es negativo"],
+      correcta: 1,
+      explicacion: "A diferencia de los cuadrados, los cubos pueden terminar en cualquier cifra.",
+    },
+    {
+      enunciado: "La función 'última cifra de la base → última cifra del cubo' es:",
+      opciones: ["Biyectiva (cada cifra final del cubo viene de una única cifra de la base)", "No definida para algunos dígitos", "La misma que para el cuadrado", "Solo válida para cifras pares"],
+      correcta: 0,
+      explicacion: "Las diez últimas cifras posibles del cubo son todas distintas entre sí.",
+    },
+    {
+      enunciado: "Que la última cifra de N sea 6 significa que N:",
+      opciones: ["Es necesariamente un cuadrado perfecto", "Podría ser un cuadrado perfecto, pero hace falta verificar más (es condición necesaria, no suficiente)", "Nunca puede ser un cuadrado perfecto", "Es siempre un cubo perfecto"],
+      correcta: 1,
+      explicacion: "El criterio de última cifra solo descarta candidatos; no confirma que un número sea cuadrado perfecto.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Pensar que terminar en $0,1,4,5,6$ o $9$ garantiza ser cuadrado perfecto** — es
+  una condición **necesaria**, no suficiente; hace falta verificar más (por ejemplo,
+  con el criterio módulo $4$, o calculando la raíz directamente).
+- **Aplicar el criterio de la última cifra a los cubos** — no aplica: los cubos
+  perfectos pueden terminar en cualquier cifra del $0$ al $9$.
+- **Detenerse en un solo criterio al descartar candidatos** — combinar el criterio de
+  última cifra con el de módulo $4$ descarta más números que cualquiera de los dos
+  por separado.
+- **Confundir "cuadrado perfecto" con "número par"** — son propiedades
+  independientes: $9$ es cuadrado perfecto e impar; $8$ es par y no es cuadrado
+  perfecto.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion/teoremas-fundamentales-de-la-potenciacion", label: "Teoremas fundamentales de la potenciación" },
+    { href: "/matematica/aritmetica/divisibilidad/restos-potenciales-y-binomio-de-newton", label: "Restos potenciales y binomio de Newton" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion/raiz-cuadrada-y-raiz-cubica-propiedades-de-los-residuos", label: "Raíz cuadrada y raíz cúbica: propiedades de los residuos" },
+  ]}
+/>
