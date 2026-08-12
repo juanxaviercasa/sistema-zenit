@@ -1,0 +1,256 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ContadorDeCifras } from "@/components/interactive/aritmetica";
+
+# Conteo de números y de cifras
+
+<Objetivo>
+
+Contar cuántos números hay en un rango dado con cierta cantidad de cifras, y calcular
+cuántas cifras en total se usan al escribir todos los números de una secuencia.
+
+</Objetivo>
+
+## Marco teórico
+
+Dos preguntas clásicas de este tipo de problemas:
+
+**¿Cuántos números hay entre $1$ y $N$?** Simplemente $N$ (todos los enteros desde
+$1$ hasta $N$). Pero si se pide cuántos hay con una propiedad específica (por ejemplo,
+"de $2$ cifras"), hay que restringir el conteo a ese subconjunto — usando la fórmula
+de extremos de $n$ cifras del subtema anterior.
+
+**¿Cuántas cifras en total se usan al escribir los números de $1$ a $N$?** Se agrupan
+los números según su cantidad de cifras (los de $1$ cifra: del $1$ al $9$; los de $2$
+cifras: del $10$ al $99$; los de $3$ cifras: del $100$ al $999$; y así sucesivamente),
+se cuenta cuántos números hay en cada grupo (hasta donde llegue $N$), y se multiplica
+esa cantidad por el número de cifras de ese grupo. La suma de todos los grupos da el
+total de cifras.
+
+**Enunciado.** Si $N$ tiene exactamente $k$ cifras, el total de cifras usadas para
+escribir todos los enteros de $1$ a $N$ es:
+
+$$
+\text{total} = \sum_{i=1}^{k-1} 9 \cdot 10^{i-1} \cdot i \;+\; k\left(N - 10^{k-1} +
+1\right).
+$$
+
+**Demostración (idea del cálculo).**
+
+**Paso 1 — sumar las cifras de los grupos completos.** Cada grupo de números de $i$
+cifras ($i < k$) está **completo** dentro del rango (va de $10^{i-1}$ a $10^i - 1$,
+lo cual es menor que $N$), y contiene $9 \cdot 10^{i-1}$ números (por la fórmula de
+cantidad de números de $i$ cifras en base $10$, vista en el subtema anterior). Cada
+uno aporta $i$ cifras, así que ese grupo aporta $9\cdot10^{i-1}\cdot i$ cifras en
+total. Sumando sobre todos los grupos completos ($i=1$ hasta $k-1$) se obtiene la
+primera parte de la fórmula.
+
+**Paso 2 — sumar el grupo incompleto (el de $k$ cifras).** El último grupo, el de los
+números de $k$ cifras, **no** está completo — solo llega hasta $N$, no hasta
+$10^k-1$. La cantidad de números en este grupo parcial es $N - 10^{k-1} + 1$, y cada
+uno aporta $k$ cifras.
+
+**Conclusión.** Sumando ambas partes se obtiene el total de cifras usadas. $\blacksquare$
+
+En la práctica, es más simple aplicar el Paso 1 y el Paso 2 numéricamente para cada
+problema (como en los ejemplos) que memorizar la fórmula general.
+
+## Visualización interactiva
+
+<ContadorDeCifras />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** ¿Cuántas cifras se usan para escribir todos los números del $1$ al
+$9$?
+
+**Solución.** Son $9$ números, todos de $1$ cifra: $9 \times 1 = 9$ cifras.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Cuántas cifras se usan para escribir todos los números del $1$ al
+$50$?
+
+**Solución.** Del $1$ al $9$: $9$ números de $1$ cifra $=9$ cifras. Del $10$ al $50$:
+$41$ números de $2$ cifras $=82$ cifras. Total: $9+82=91$ cifras.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿Cuántas cifras se usan para escribir todos los números del $1$ al
+$300$?
+
+**Solución.** Del $1$ al $9$: $9$ números $\times 1 = 9$ cifras. Del $10$ al $99$:
+$90$ números $\times 2 = 180$ cifras. Del $100$ al $300$: $201$ números $\times 3 =
+603$ cifras. Total: $9+180+603 = 792$ cifras.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Al escribir todos los números del $1$ al $N$ se usaron exactamente
+$189$ cifras, y se sabe que $N$ tiene $2$ cifras. Halla $N$.
+
+**Solución.** Del $1$ al $9$: $9$ cifras. Quedan $189-9=180$ cifras para el grupo de
+$2$ cifras, a razón de $2$ cifras por número: $180/2=90$ números de $2$ cifras.
+Empezando en $10$, el número $90$ de esa lista es $10+90-1=99$. Entonces $N=99$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+¿Cuántas cifras se usan para escribir los números del $1$ al $20$?
+
+<Solucion>
+
+$1$–$9$: $9$ cifras. $10$–$20$: $11$ números $\times 2 = 22$ cifras. Total: $31$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Cuántas cifras se usan para escribir los números del $1$ al $99$?
+
+<Solucion>
+
+$9\times1 + 90\times2 = 9+180=189$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿Cuántas cifras se usan para escribir los números del $1$ al $500$?
+
+<Solucion>
+
+$9\times1+90\times2+401\times3 = 9+180+1203=1392$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Cuántos números del $1$ al $1000$ tienen exactamente $3$ cifras?
+
+<Solucion>
+
+Del $100$ al $999$: $900$ números.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Al escribir los números del $1$ al $N$ se usaron $1560$ cifras, y se sabe que $N$
+tiene $3$ cifras. Halla $N$.
+
+<Solucion>
+
+Del $1$ al $9$: $9$ cifras. Del $10$ al $99$: $180$ cifras. Subtotal: $189$ cifras.
+Quedan $1560-189=1371$ cifras para números de $3$ cifras, a razón de $3$ cifras cada
+uno: $1371/3=457$ números de $3$ cifras. Empezando en $100$, el número $457$ de esa
+lista es $100+457-1=556$. Entonces $N=556$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para $N = 10^k-1$ (es decir, $N=9, 99, 999,\dots$, el mayor número de
+$k$ cifras), el total de cifras usadas para escribir del $1$ al $N$ es exactamente
+$\displaystyle\sum_{i=1}^{k} 9\cdot10^{i-1}\cdot i$ — sin necesidad del término del
+grupo incompleto de la fórmula general.
+
+<Solucion>
+
+En la fórmula general, el grupo incompleto corresponde a los números de $k$ cifras
+que van desde $10^{k-1}$ hasta $N$. Pero como aquí $N=10^k-1$ es precisamente el
+**mayor** número de $k$ cifras, ese grupo va de $10^{k-1}$ hasta $10^k-1$ — es decir,
+está **completo**, no incompleto. Por lo tanto, el término correspondiente al grupo
+de $k$ cifras es simplemente $9\cdot10^{k-1}\cdot k$, igual que los demás términos de
+la suma, y la fórmula general se reduce exactamente a
+$\sum_{i=1}^{k} 9\cdot10^{i-1}\cdot i$, sin ningún término adicional. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "¿Cuántas cifras se usan para escribir los números del 1 al 9?",
+      opciones: ["9", "10", "18", "1"],
+      correcta: 0,
+      explicacion: "9 números de 1 cifra cada uno: 9 cifras en total.",
+    },
+    {
+      enunciado: "¿Cuántas cifras se usan para escribir los números del 1 al 99?",
+      opciones: ["99", "189", "198", "90"],
+      correcta: 1,
+      explicacion: "9×1 (del 1 al 9) + 90×2 (del 10 al 99) = 9+180=189.",
+    },
+    {
+      enunciado: "Al contar cifras de 1 a N, el grupo de números de mayor cantidad de cifras (el que contiene a N) suele estar:",
+      opciones: ["Siempre completo", "Incompleto, salvo que N sea exactamente el mayor número de esa cantidad de cifras", "Vacío siempre", "Repetido dos veces"],
+      correcta: 1,
+      explicacion: "Solo está completo si N coincide con el mayor número de esa cantidad de cifras (como 9, 99, 999...).",
+    },
+    {
+      enunciado: "¿Cuántos números del 1 al 999 tienen exactamente 2 cifras?",
+      opciones: ["90", "99", "89", "100"],
+      correcta: 0,
+      explicacion: "Del 10 al 99: 90 números.",
+    },
+    {
+      enunciado: "¿Cuántas cifras se usan para escribir los números del 1 al 105?",
+      opciones: ["197", "207", "9+180+18=207", "300"],
+      correcta: 1,
+      explicacion: "9×1+90×2+6×3 = 9+180+18=207 (del 100 al 105 hay 6 números de 3 cifras).",
+    },
+    {
+      enunciado: "Para N=999 (el mayor número de 3 cifras), el grupo de 3 cifras en el conteo está:",
+      opciones: ["Incompleto", "Completo — va de 100 a 999 exactamente", "Vacío", "No existe ese grupo"],
+      correcta: 1,
+      explicacion: "999 es exactamente el mayor número de 3 cifras, así que ese grupo está completo (900 números).",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar que el último grupo suele estar incompleto.** Solo está completo si $N$
+  coincide exactamente con el mayor número de esa cantidad de cifras.
+- **Confundir "cantidad de números" con "cantidad de cifras"** — hay que multiplicar
+  la cantidad de números de cada grupo por el número de cifras que aporta cada uno,
+  no simplemente sumar cantidades de números.
+- **Olvidar sumar los grupos anteriores completos** al calcular el total — el conteo
+  siempre empieza desde los números de $1$ cifra, incluso si la pregunta se centra en
+  un grupo posterior.
+- **Errores de conteo por "uno de más o uno de menos"** al calcular cuántos números
+  hay en el grupo incompleto — recuerda usar $N - (\text{inicio del grupo}) + 1$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeracion/propiedades-de-la-numeracion", label: "Propiedades de la numeración" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-naturales-y-enteros", label: "Números naturales y números enteros" },
+    { href: "/matematica/aritmetica/divisibilidad", label: "Divisibilidad" },
+  ]}
+/>
+

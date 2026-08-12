@@ -1,0 +1,258 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ConversorDeBases } from "@/components/interactive/aritmetica";
+
+# Cambios de base
+
+<Objetivo>
+
+Convertir un número de base $10$ a cualquier otra base mediante el algoritmo de
+divisiones sucesivas, demostrar por qué funciona, y aplicarlo también a conversiones
+entre dos bases distintas de $10$.
+
+</Objetivo>
+
+## Marco teórico
+
+Hay tres situaciones posibles al cambiar de base:
+
+**De base $b$ a base $10$.** Se evalúa la representación polinómica del número (ya
+visto en el subtema anterior): se multiplica cada cifra por la potencia de $b$ que le
+corresponde y se suma todo.
+
+**De base $10$ a base $b$.** Se usa el **algoritmo de divisiones sucesivas**: se
+divide el número entre $b$; el residuo de esa división es la cifra de las unidades
+(la de menor peso). Se vuelve a dividir el cociente obtenido entre $b$; ese nuevo
+residuo es la siguiente cifra. Se repite hasta que el cociente sea $0$. Las cifras del
+resultado se leen en orden **inverso** al que se obtuvieron: del último residuo
+calculado al primero.
+
+**Enunciado (por qué funciona el algoritmo).** El residuo de dividir $N$ entre $b$ es
+siempre la cifra de las unidades de $N$ en base $b$.
+
+**Demostración.** Sea $N = a_nb^n + a_{n-1}b^{n-1} + \cdots + a_1b + a_0$ la
+representación polinómica de $N$ en base $b$ (con $0 \le a_0 < b$).
+
+**Paso 1 — factorizar $b$ de todos los términos salvo el último.**
+
+$$
+N = b\left(a_nb^{n-1} + a_{n-1}b^{n-2} + \cdots + a_1\right) + a_0.
+$$
+
+**Paso 2 — reconocer la forma de una división con residuo.** Esta expresión tiene
+exactamente la forma $N = b \cdot q + r$, con $q = a_nb^{n-1}+\cdots+a_1$ (un entero)
+y $r = a_0$, donde además $0 \le a_0 < b$ — que es precisamente la condición que debe
+cumplir un residuo al dividir entre $b$.
+
+**Conclusión.** Como el cociente y el residuo de una división entera son únicos, se
+concluye que el residuo de $N \div b$ es exactamente $a_0$ — la cifra de las
+unidades. $\blacksquare$ Y como el cociente $q = a_nb^{n-1}+\cdots+a_1$ es, a su vez,
+el número formado por las cifras restantes, repetir la división sobre $q$ extrae la
+siguiente cifra $a_1$, y así sucesivamente.
+
+**De base $b$ a base $b'$ (ninguna es $10$).** Se hace en dos pasos: primero se
+convierte de base $b$ a base $10$ (evaluando el polinomio), y luego de base $10$ a
+base $b'$ (divisiones sucesivas).
+
+## Visualización interactiva
+
+<ConversorDeBases />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Convierte $156$ (base $10$) a base $4$.
+
+**Solución.** Divisiones sucesivas: $156 \div 4 = 39$ resto $0$; $39 \div 4 = 9$ resto
+$3$; $9 \div 4 = 2$ resto $1$; $2 \div 4 = 0$ resto $2$. Leyendo los residuos de
+abajo hacia arriba: $\overline{2130}_{(4)}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Convierte $45$ (base $10$) a base $2$ (binario).
+
+**Solución.** $45\div2=22$ resto $1$; $22\div2=11$ resto $0$; $11\div2=5$ resto $1$;
+$5\div2=2$ resto $1$; $2\div2=1$ resto $0$; $1\div2=0$ resto $1$. Resultado:
+$\overline{101101}_{(2)}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Convierte $\overline{234}_{(5)}$ directamente a base $3$.
+
+**Solución.** Primer paso, a base $10$: $2(25)+3(5)+4 = 50+15+4=69$. Segundo paso, de
+$69$ a base $3$: $69\div3=23$ resto $0$; $23\div3=7$ resto $2$; $7\div3=2$ resto $1$;
+$2\div3=0$ resto $2$. Resultado: $\overline{2120}_{(3)}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un número se escribe $\overline{2x1}_{(6)}$ en base $6$. Al convertirlo
+a base $10$, se obtiene un número que, dividido entre $7$, da residuo $3$. Halla el
+menor valor posible de $x$ (con $0 \le x \le 5$).
+
+**Solución.** $\overline{2x1}_{(6)} = 2(36)+6x+1 = 73+6x$. Se necesita
+$(73+6x) \equiv 3 \pmod 7$. Como $73 = 70+3 \equiv 3 \pmod 7$, la condición se reduce
+a $6x \equiv 0 \pmod 7$. Como $6$ y $7$ son primos entre sí, esto exige $x \equiv 0
+\pmod 7$; el único valor de $x$ en el rango $\{0,\dots,5\}$ que cumple esto es
+$x = 0$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Convierte $100$ (base $10$) a base $3$.
+
+<Solucion>
+
+$100\div3=33$ r$1$; $33\div3=11$ r$0$; $11\div3=3$ r$2$; $3\div3=1$ r$0$; $1\div3=0$
+r$1$. Resultado: $\overline{10201}_{(3)}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Convierte $58$ (base $10$) a base $2$.
+
+<Solucion>
+
+$58\div2=29$ r$0$; $29\div2=14$ r$1$; $14\div2=7$ r$0$; $7\div2=3$ r$1$; $3\div2=1$
+r$1$; $1\div2=0$ r$1$. Resultado: $\overline{111010}_{(2)}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Convierte $\overline{143}_{(5)}$ directamente a base $4$.
+
+<Solucion>
+
+A base $10$: $1(25)+4(5)+3=48$. A base $4$: $48\div4=12$ r$0$; $12\div4=3$ r$0$;
+$3\div4=0$ r$3$. Resultado: $\overline{300}_{(4)}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Qué número en base $10$ corresponde a $\overline{1000}_{(2)}$? Explica el resultado
+en términos de potencias de $2$.
+
+<Solucion>
+
+$1(2^3)+0+0+0=8$. Tiene sentido: $\overline{1000}_{(2)}$ es exactamente $2^3$,
+igual que $1000$ en base $10$ es $10^3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un número $N$ en base $10$ se convierte a base $7$ y resulta tener exactamente $3$
+cifras. Halla el rango de valores posibles de $N$.
+
+<Solucion>
+
+Un número de $3$ cifras en base $7$ va desde $\overline{100}_{(7)} = 7^2 = 49$ hasta
+$\overline{666}_{(7)} = 7^3-1 = 342$. Entonces $49 \le N \le 342$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, al convertir un número $N>0$ de base $10$ a base $2$, la cantidad de
+divisiones sucesivas que se realizan (hasta llegar a cociente $0$) es igual a la
+cantidad de cifras del resultado en base $2$.
+
+<Solucion>
+
+Cada división sucesiva extrae exactamente una cifra del resultado (el residuo de esa
+división), empezando por la cifra de menor peso y terminando en la de mayor peso —
+el proceso se detiene justo cuando el cociente llega a $0$, momento en que ya se
+extrajeron todas las cifras del número, ninguna de más ni de menos. Como hay una
+división por cada cifra extraída, el número de divisiones realizadas coincide
+exactamente con el número de cifras del resultado. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Para convertir un número de base 10 a base b, se usa:",
+      opciones: ["La suma de potencias de b", "El algoritmo de divisiones sucesivas entre b", "La multiplicación por b", "No existe un método general"],
+      correcta: 1,
+      explicacion: "Se divide sucesivamente entre b, guardando los residuos.",
+    },
+    {
+      enunciado: "En el algoritmo de divisiones sucesivas, el primer residuo obtenido corresponde a:",
+      opciones: ["La cifra de mayor peso", "La cifra de menor peso (unidades)", "El número de cifras total", "La base misma"],
+      correcta: 1,
+      explicacion: "El primer residuo es siempre la cifra de las unidades; las cifras se leen en orden inverso al obtenerlas.",
+    },
+    {
+      enunciado: "45 (base 10) en base 2 es:",
+      opciones: ["101101", "110101", "101011", "111001"],
+      correcta: 0,
+      explicacion: "45 = 32+8+4+1 = 101101 en base 2.",
+    },
+    {
+      enunciado: "Para convertir de base b a base b' (ninguna es 10), el método más directo es:",
+      opciones: ["Convertir directamente sin pasos intermedios usando una fórmula única", "Pasar primero por base 10 (b→10, luego 10→b')", "Es imposible hacer esa conversión", "Solo funciona si b=b'"],
+      correcta: 1,
+      explicacion: "Se usa base 10 como paso intermedio: primero se evalúa el polinomio, luego se aplican las divisiones sucesivas.",
+    },
+    {
+      enunciado: "¿Cuándo se detiene el algoritmo de divisiones sucesivas?",
+      opciones: ["Cuando el residuo es 0", "Cuando el cociente llega a 0", "Después de exactamente 5 divisiones siempre", "Nunca se detiene"],
+      correcta: 1,
+      explicacion: "El proceso continúa hasta que el cociente de la división es 0.",
+    },
+    {
+      enunciado: "1000 (base 2) equivale, en base 10, a:",
+      opciones: ["8", "1000", "4", "2"],
+      correcta: 0,
+      explicacion: "1000 (base 2) = 2³ = 8.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Leer los residuos en el orden en que se obtuvieron**, sin invertir — el resultado
+  se lee del último residuo al primero, no al revés.
+- **Detener las divisiones antes de que el cociente llegue a $0$** — se pierde la
+  cifra o cifras de mayor peso.
+- **Confundir cuál algoritmo usar según la dirección de la conversión** — evaluar el
+  polinomio va de base $b$ a base $10$; dividir sucesivamente va de base $10$ a base
+  $b$. Son procesos inversos, no intercambiables.
+- **Intentar convertir de base $b$ a base $b'$ sin pasar por base $10$** cuando no se
+  conoce un atajo directo — el método de dos pasos siempre funciona y es el más
+  confiable.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeracion/sistemas-de-numeracion-y-representacion-polinomial", label: "Sistemas de numeración y representación polinomial" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeracion/propiedades-de-la-numeracion", label: "Propiedades de la numeración" },
+    { href: "/matematica/aritmetica/numeracion/conteo-de-numeros-y-de-cifras", label: "Conteo de números y de cifras" },
+  ]}
+/>

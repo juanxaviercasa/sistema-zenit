@@ -1,0 +1,257 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ConstructorDeNumero } from "@/components/interactive/aritmetica";
+
+# Sistemas de numeración y representación polinomial
+
+<Objetivo>
+
+Explicar cómo se forma un sistema de numeración posicional de base $b$, y escribir la
+representación polinómica de cualquier número real en esa base.
+
+</Objetivo>
+
+## Marco teórico
+
+Un **sistema de numeración** es el conjunto de reglas y símbolos (cifras) con los que
+se representan cantidades. En un sistema **posicional de base $b$** ($b$ entero,
+$b \geq 2$), se usan exactamente $b$ símbolos distintos: $0, 1, 2, \dots, b-1$. El
+valor que aporta cada cifra depende de su **posición** dentro del número — cada
+posición vale una potencia distinta de la base.
+
+**Notación.** Un número de $n+1$ cifras enteras en base $b$ se escribe:
+
+$$
+N = \overline{a_n a_{n-1} \cdots a_1 a_0}_{(b)}, \qquad 0 \le a_i < b \text{ para
+todo } i, \qquad a_n \neq 0.
+$$
+
+($a_n \neq 0$ porque la primera cifra, la de mayor peso, no puede ser $0$ — si lo
+fuera, el número tendría en realidad menos cifras.)
+
+**Representación polinómica.** Todo número se puede expresar como la suma de cada
+cifra multiplicada por la potencia de la base que le corresponde a su posición:
+
+$$
+N = a_n b^n + a_{n-1}b^{n-1} + \cdots + a_1b + a_0.
+$$
+
+Esta suma es, literalmente, cómo se calcula el valor en base $10$ de un número escrito
+en cualquier otra base — evaluando el polinomio.
+
+**Extensión a números con parte decimal.** La misma idea se extiende a la parte
+fraccionaria, usando potencias **negativas** de la base:
+
+$$
+\overline{a_n \cdots a_0, c_1c_2 \cdots c_m}_{(b)} = a_nb^n+\cdots+a_0 + c_1b^{-1} +
+c_2b^{-2} + \cdots + c_mb^{-m}.
+$$
+
+Por ejemplo, en base $10$: $345{,}67 = 3(10^2)+4(10)+5+6(10^{-1})+7(10^{-2})$.
+
+**Bases mayores que 10.** Cuando $b>10$, se necesitan símbolos adicionales para las
+cifras $10, 11, \dots, b-1$ — por convención se usan letras: $A=10$, $B=11$, $C=12$,
+etc. (igual que en el sistema hexadecimal, base $16$, muy usado en informática).
+
+## Visualización interactiva
+
+<ConstructorDeNumero />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Escribe la representación polinómica de $3452$ (base $10$) y calcula su
+valor a partir de ella.
+
+**Solución.**
+
+$$
+3452 = 3(10^3) + 4(10^2) + 5(10) + 2 = 3000+400+50+2 = 3452.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla el valor en base $10$ de $\overline{432}_{(5)}$.
+
+**Solución.**
+
+$$
+\overline{432}_{(5)} = 4(5^2)+3(5)+2 = 100+15+2 = 117.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Escribe la representación polinómica de $27{,}305$ (base $10$).
+
+**Solución.**
+
+$$
+27{,}305 = 2(10)+7+3(10^{-1})+0(10^{-2})+5(10^{-3}).
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** El número $\overline{4a2}_{(6)}$ equivale a $158$ en base $10$. Halla
+el valor de la cifra $a$.
+
+**Solución.** Por representación polinómica:
+
+$$
+\overline{4a2}_{(6)} = 4(6^2) + a(6) + 2 = 144 + 6a + 2 = 146+6a.
+$$
+
+Igualando a $158$:
+
+$$
+146+6a = 158 \;\Longrightarrow\; 6a = 12 \;\Longrightarrow\; a = 2.
+$$
+
+(Verificación: $\overline{422}_{(6)} = 4(36)+2(6)+2 = 144+12+2=158$ ✓.)
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Escribe la representación polinómica de $5183$ (base $10$).
+
+<Solucion>
+
+$5183 = 5(10^3)+1(10^2)+8(10)+3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla el valor en base $10$ de $\overline{253}_{(6)}$.
+
+<Solucion>
+
+$2(36)+5(6)+3 = 72+30+3=105$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Escribe la representación polinómica de $8{,}47$ (base $10$) usando potencias
+negativas.
+
+<Solucion>
+
+$8{,}47 = 8 + 4(10^{-1}) + 7(10^{-2})$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el valor en base $10$ de $\overline{1101}_{(2)}$ (número binario).
+
+<Solucion>
+
+$1(2^3)+1(2^2)+0(2)+1 = 8+4+0+1=13$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+El número $\overline{3b5}_{(8)}$ equivale a $237$ en base $10$. Halla $b$.
+
+<Solucion>
+
+$3(64)+8b+5 = 237 \Rightarrow 192+8b+5=237 \Rightarrow 8b=40 \Rightarrow b=5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para cualquier base $b \geq 2$, el número de dos cifras iguales
+$\overline{aa}_{(b)}$ (con $a \neq 0$) es siempre múltiplo de $(b+1)$.
+
+<Solucion>
+
+Por representación polinómica: $\overline{aa}_{(b)} = a(b) + a = a(b+1)$. Como
+$a(b+1)$ es el producto de $a$ por $(b+1)$, el número es —por definición— múltiplo de
+$(b+1)$, para cualquier valor válido de $a$ (con $1 \le a \le b-1$). $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "En un sistema de base b, las cifras posibles son:",
+      opciones: ["Solo 0 y 1", "0, 1, 2, ..., b-1", "1, 2, ..., b", "Depende del número, no de la base"],
+      correcta: 1,
+      explicacion: "Un sistema de base b usa exactamente b símbolos: del 0 al b-1.",
+    },
+    {
+      enunciado: "El valor en base 10 de 342 (base 5) es:",
+      opciones: ["97", "342", "77", "100"],
+      correcta: 0,
+      explicacion: "3(25)+4(5)+2 = 75+20+2 = 97.",
+    },
+    {
+      enunciado: "¿Por qué la primera cifra de un número (la de mayor peso) no puede ser 0?",
+      opciones: ["Por una convención arbitraria sin motivo", "Porque si lo fuera, el número tendría en realidad menos cifras", "Porque 0 no es un símbolo válido en ningún sistema", "Sí puede ser 0 sin problema"],
+      correcta: 1,
+      explicacion: "Un 0 inicial no aporta valor posicional real — el número se leería con una cifra menos.",
+    },
+    {
+      enunciado: "En un sistema de base 16 (hexadecimal), la cifra 'B' representa el valor:",
+      opciones: ["2", "11", "16", "B no es válido en base 16"],
+      correcta: 1,
+      explicacion: "Por convención, A=10, B=11, C=12, D=13, E=14, F=15 en hexadecimal.",
+    },
+    {
+      enunciado: "La representación polinómica de 12,5 (base 10) es:",
+      opciones: ["1(10)+2+5(10⁻¹)", "1(10)+2+5(10)", "12+5", "1(100)+2(10)+5"],
+      correcta: 0,
+      explicacion: "12,5 = 1(10)+2+5(10⁻¹): la parte decimal usa potencias negativas de la base.",
+    },
+    {
+      enunciado: "El número 4a2 (base 6) vale 158 en base 10. La cifra a es:",
+      opciones: ["1", "2", "3", "4"],
+      correcta: 1,
+      explicacion: "4(36)+6a+2=158 → 146+6a=158 → a=2.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar una cifra igual o mayor que la base.** En base $5$, por ejemplo, la cifra
+  $6$ no existe — las cifras válidas son solo $0,1,2,3,4$.
+- **Olvidar que la primera cifra no puede ser $0$** en la representación de un número
+  con una cantidad de cifras específica.
+- **Invertir el orden de las potencias** al escribir la representación polinómica —
+  la cifra más a la izquierda siempre lleva la potencia más alta.
+- **Aplicar potencias positivas a la parte decimal** — la parte después de la coma usa
+  potencias **negativas**, no positivas, de la base.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeracion/cambios-de-base", label: "Cambios de base" },
+    { href: "/matematica/aritmetica/numeracion/propiedades-de-la-numeracion", label: "Propiedades de la numeración" },
+    { href: "/matematica/aritmetica/numeracion/conteo-de-numeros-y-de-cifras", label: "Conteo de números y de cifras" },
+  ]}
+/>

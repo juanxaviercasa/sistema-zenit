@@ -115,6 +115,16 @@ const subtemasProbabilidad: Subtema[] = [
   ),
 ];
 
+const subtemasNumeracion: Subtema[] = [
+  subtema(
+    "sistemas-de-numeracion-y-representacion-polinomial",
+    "Sistemas de numeración y representación polinomial"
+  ),
+  subtema("cambios-de-base", "Cambios de base"),
+  subtema("propiedades-de-la-numeracion", "Propiedades de la numeración"),
+  subtema("conteo-de-numeros-y-de-cifras", "Conteo de números y de cifras"),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -148,7 +158,7 @@ const aritmetica: Area = {
     tema(4, "mezcla-y-aleacion", "Mezcla y aleación", undefined, subtemasMezclaYAleacion),
     tema(5, "estadistica", "Estadística", undefined, subtemasEstadistica),
     tema(6, "probabilidad", "Probabilidad", undefined, subtemasProbabilidad),
-    tema(7, "numeracion", "Numeración"),
+    tema(7, "numeracion", "Numeración", undefined, subtemasNumeracion),
     tema(8, "numeros-naturales-y-enteros", "Números naturales y números enteros"),
     tema(9, "divisibilidad", "Divisibilidad"),
     tema(10, "numeros-primos", "Números primos"),

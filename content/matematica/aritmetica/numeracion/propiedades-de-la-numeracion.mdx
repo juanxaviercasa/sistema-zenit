@@ -1,0 +1,246 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ExtremosDeNCifras } from "@/components/interactive/aritmetica";
+
+# Propiedades de la numeración
+
+<Objetivo>
+
+Aplicar las propiedades fundamentales de un sistema posicional: valor absoluto y
+relativo de una cifra, los extremos y la cantidad de números de $n$ cifras en base
+$b$, y los números capicúas.
+
+</Objetivo>
+
+## Marco teórico
+
+**Valor absoluto de una cifra** es el símbolo mismo, sin importar su posición (en
+$352$, la cifra $5$ tiene valor absoluto $5$). **Valor relativo** es el valor real
+que esa cifra aporta al número, según su posición (en $352$, el $5$ está en la
+posición de las decenas, así que su valor relativo es $5 \times 10 = 50$).
+
+**Extremos de los números de $n$ cifras en base $b$.** El menor número de $n$ cifras
+es $\overline{10\cdots0}_{(b)} = b^{n-1}$. El mayor es
+$\overline{(b-1)(b-1)\cdots(b-1)}_{(b)} = b^n - 1$.
+
+**Enunciado (cantidad de números de $n$ cifras en base $b$).**
+
+$$
+\text{cantidad} = b^{n-1}(b-1).
+$$
+
+**Demostración.**
+
+**Paso 1 — identificar los extremos.** Por lo anterior, el menor es $b^{n-1}$ y el
+mayor es $b^n-1$.
+
+**Paso 2 — contar los enteros en ese rango.** La cantidad de enteros desde $b^{n-1}$
+hasta $b^n-1$ (ambos incluidos) es:
+
+$$
+(b^n - 1) - b^{n-1} + 1 = b^n - b^{n-1}.
+$$
+
+**Conclusión.** Factorizando $b^{n-1}$:
+
+$$
+b^n - b^{n-1} = b^{n-1}(b - 1). \qquad \blacksquare
+$$
+
+**Números capicúas.** Un número es **capicúa** (o palíndromo) si se lee igual de
+izquierda a derecha que de derecha a izquierda (por ejemplo, $1331$ o $252$).
+
+## Visualización interactiva
+
+<ExtremosDeNCifras />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** En el número $4867$, halla el valor absoluto y el valor relativo de la
+cifra $6$.
+
+**Solución.** Valor absoluto de $6$: es $6$. Valor relativo: está en la posición de
+las decenas, así que su valor relativo es $6 \times 10 = 60$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Cuántos números de $3$ cifras existen en base $10$?
+
+**Solución.** $b^{n-1}(b-1) = 10^2(9) = 900$. (Verificación directa: van del $100$ al
+$999$, que son $999-100+1=900$ números.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿Cuántos números de $4$ cifras existen en base $5$?
+
+**Solución.** $b^{n-1}(b-1) = 5^3(4) = 125 \times 4 = 500$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** ¿Cuántos números capicúas de $4$ cifras existen en base $10$?
+
+**Solución.** Un capicúa de $4$ cifras tiene la forma $\overline{abba}$ (la primera y
+la última cifra son iguales; la segunda y la tercera también). La cifra $a$ (primera y
+última) no puede ser $0$: tiene $9$ valores posibles ($1$ a $9$). La cifra $b$
+(segunda y tercera) puede ser cualquier dígito: $10$ valores posibles ($0$ a $9$). Por
+el principio de multiplicación:
+
+$$
+9 \times 10 = 90 \text{ capicúas de 4 cifras.}
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+En el número $7358$, halla el valor relativo de la cifra $3$.
+
+<Solucion>
+
+Está en la posición de las centenas: $3 \times 100 = 300$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Cuántos números de $2$ cifras existen en base $10$?
+
+<Solucion>
+
+$10^1(9) = 90$ (van del $10$ al $99$).
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿Cuántos números de $3$ cifras existen en base $4$?
+
+<Solucion>
+
+$4^2(3) = 48$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el mayor y el menor número de $4$ cifras en base $6$, expresados en base $10$.
+
+<Solucion>
+
+Menor: $6^3 = 216$. Mayor: $6^4-1 = 1295$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+¿Cuántos números capicúas de $3$ cifras existen en base $10$?
+
+<Solucion>
+
+Forma $\overline{aba}$: $a$ tiene $9$ valores ($1$–$9$), $b$ tiene $10$ valores
+($0$–$9$). Total: $9\times10=90$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que la cantidad de números capicúas de $2n$ cifras (cantidad par de cifras)
+en base $10$ es la misma que la cantidad de capicúas de $2n-1$ cifras (una cifra
+menos, cantidad impar).
+
+<Solucion>
+
+Un capicúa de $2n$ cifras queda completamente determinado por sus primeras $n$
+cifras (la primera no puede ser $0$: $9$ opciones; las siguientes $n-1$ cifras: $10$
+opciones cada una) — la segunda mitad es un espejo de la primera. Total:
+$9 \times 10^{n-1}$. Un capicúa de $2n-1$ cifras queda determinado por sus primeras
+$n$ cifras también (la cifra central no se repite, pero sigue siendo una de las $n$
+cifras "libres" que determinan todo el número): la primera no puede ser $0$
+($9$ opciones), las siguientes $n-1$ tienen $10$ opciones cada una. Total:
+$9\times10^{n-1}$ — exactamente la misma cantidad. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "En el número 4826, el valor absoluto de la cifra 8 es:",
+      opciones: ["800", "8", "80", "4826"],
+      correcta: 1,
+      explicacion: "El valor absoluto es el símbolo mismo, sin importar la posición: 8.",
+    },
+    {
+      enunciado: "En el número 4826, el valor relativo de la cifra 8 es:",
+      opciones: ["8", "80", "800", "8000"],
+      correcta: 2,
+      explicacion: "El 8 está en la posición de las centenas: 8×100=800.",
+    },
+    {
+      enunciado: "La cantidad de números de n cifras en base b es:",
+      opciones: ["b^n", "b^(n-1)(b-1)", "b-1", "n(b-1)"],
+      correcta: 1,
+      explicacion: "Se deriva de restar los extremos: (b^n-1) - b^(n-1) + 1 = b^(n-1)(b-1).",
+    },
+    {
+      enunciado: "¿Cuántos números de 3 cifras hay en base 10?",
+      opciones: ["900", "999", "100", "899"],
+      correcta: 0,
+      explicacion: "10²(9) = 900.",
+    },
+    {
+      enunciado: "Un número capicúa se caracteriza por:",
+      opciones: ["Ser múltiplo de 11 siempre", "Leerse igual de izquierda a derecha que de derecha a izquierda", "Tener todas sus cifras iguales", "Ser siempre de 3 cifras"],
+      correcta: 1,
+      explicacion: "Esa es la definición de capicúa (palíndromo numérico).",
+    },
+    {
+      enunciado: "¿Cuántos capicúas de 4 cifras existen en base 10?",
+      opciones: ["100", "90", "81", "9"],
+      correcta: 1,
+      explicacion: "Forma abba: 9 opciones para a, 10 para b: 9×10=90.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir valor absoluto con valor relativo.** El valor absoluto es siempre el
+  mismo símbolo; el valor relativo cambia según la posición dentro del número.
+- **Permitir que la primera cifra sea $0$** al contar números de $n$ cifras o
+  capicúas — la cifra inicial siempre debe ser distinta de $0$.
+- **Olvidar el $+1$ al contar enteros en un rango** (cantidad = mayor − menor + 1, no
+  solo mayor − menor).
+- **Aplicar la fórmula de cantidad de números de $n$ cifras con una base incorrecta**
+  — verifica siempre que $b$ corresponda al sistema de numeración del problema.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeracion/cambios-de-base", label: "Cambios de base" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeracion/conteo-de-numeros-y-de-cifras", label: "Conteo de números y de cifras" },
+  ]}
+/>

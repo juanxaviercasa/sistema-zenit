@@ -9,7 +9,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 
 ## Matemática — 51 temas
 
-### A. Aritmética (6/12)
+### A. Aritmética (7/12)
 
 - ✅ 1. Razones y proporciones
   - ✅ Razones aritmética, geométrica y armónica
@@ -42,7 +42,11 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Principios de conteo: multiplicación, adición y factorial
   - ✅ Permutaciones y combinaciones
   - ✅ Variable aleatoria discreta y esperanza matemática
-- ⬜ 7. Numeración
+- ✅ 7. Numeración
+  - ✅ Sistemas de numeración y representación polinomial
+  - ✅ Cambios de base
+  - ✅ Propiedades de la numeración
+  - ✅ Conteo de números y de cifras
 - ⬜ 8. Números naturales y números enteros
 - ⬜ 9. Divisibilidad
 - ⬜ 10. Números primos
@@ -104,7 +108,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 7/51 temas completos.**
+**Total Matemática: 8/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -134,15 +138,16 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       (JSXGraphBoard, FiguraInteractiva, FiguraDemostracion, jsxgraph-utils).
 - [ ] Fase 2 — Aritmética completa (12 temas), en curso: **Razones y proporciones**,
       **Magnitudes proporcionales**, **Interés simple y compuesto**, **Mezcla y
-      aleación**, **Estadística** y **Probabilidad** (21 subtemas en total) completos.
-      Widgets con sliders/SVG en vez de JSXGraph sintético
+      aleación**, **Estadística**, **Probabilidad** y **Numeración** (25 subtemas en
+      total) completos. Widgets con sliders/SVG en vez de JSXGraph sintético
       (`components/interactive/aritmetica/*`); `functiongraph` de JSXGraph con `axis`
       activado solo donde la interpretación gráfica es literal (DP/IP, interés
       compuesto). Componentes genéricos reusados entre varios subtemas cuando la
       matemática es la misma (`MezclaPonderada`). Probabilidad incluye un simulador de
-      lanzamientos (frecuencia relativa → probabilidad teórica, Ley de los Grandes
-      Números) y deduce V(n,r) y C(n,r) desde el principio de multiplicación en vez de
-      darlas como fórmulas memorizadas.
+      lanzamientos (Ley de los Grandes Números) y deduce V(n,r)/C(n,r) desde el
+      principio de multiplicación. Numeración demuestra por qué el algoritmo de
+      divisiones sucesivas funciona (no solo lo aplica) y deduce la fórmula de cantidad
+      de números de n cifras en base b.
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)

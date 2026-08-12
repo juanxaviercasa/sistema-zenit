@@ -20,3 +20,7 @@ export { SimuladorDeLanzamientos } from "./simulador-de-lanzamientos";
 export { PrincipiosDeConteo } from "./principios-de-conteo";
 export { PermutacionesYCombinaciones } from "./permutaciones-y-combinaciones";
 export { VariableAleatoriaYEsperanza } from "./variable-aleatoria-y-esperanza";
+export { ConstructorDeNumero } from "./constructor-de-numero";
+export { ConversorDeBases } from "./conversor-de-bases";
+export { ExtremosDeNCifras } from "./extremos-de-n-cifras";
+export { ContadorDeCifras } from "./contador-de-cifras";
