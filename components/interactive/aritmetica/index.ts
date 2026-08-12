@@ -12,3 +12,7 @@ export { ComparadorInteresSimpleYCompuesto } from "./comparador-interes-simple-y
 export { ComparadorDescuentos } from "./comparador-descuentos";
 export { VencimientoComun } from "./vencimiento-comun";
 export { MezclaPonderada } from "./mezcla-ponderada";
+export { PoblacionYMuestra } from "./poblacion-y-muestra";
+export { TablaYGraficoDeFrecuencias } from "./tabla-y-grafico-de-frecuencias";
+export { MedidasDeTendenciaCentral } from "./medidas-de-tendencia-central";
+export { MedidasDeDispersion } from "./medidas-de-dispersion";

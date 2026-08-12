@@ -1,0 +1,246 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { PoblacionYMuestra } from "@/components/interactive/aritmetica";
+
+# Población, muestra y variables estadísticas
+
+<Objetivo>
+
+Distinguir población de muestra, reconocer cuándo una muestra es representativa, y
+clasificar correctamente una variable estadística según su naturaleza.
+
+</Objetivo>
+
+## Marco teórico
+
+La **Estadística** es la ciencia que recolecta, organiza, analiza e interpreta datos
+para extraer conclusiones y apoyar decisiones.
+
+**Población** es el conjunto de **todos** los elementos sobre los que se quiere
+obtener conclusiones (personas, objetos, eventos...). **Muestra** es un
+**subconjunto** de la población, del cual se obtienen datos reales cuando estudiar la
+población completa es inviable por costo, tiempo o accesibilidad.
+
+Para que las conclusiones obtenidas de una muestra puedan generalizarse válidamente a
+toda la población, la muestra debe ser **representativa** — típicamente lograda
+mediante selección **aleatoria**, no arbitraria. Una muestra elegida sin aleatoriedad
+(por ejemplo, encuestar solo a los primeros que responden) puede introducir sesgos que
+invalidan las conclusiones, sin importar cuán grande sea.
+
+**Variables estadísticas.** Son las características que se miden en cada elemento de
+la población o muestra. Se clasifican en dos grandes familias:
+
+- **Cualitativas** (expresan una cualidad, no un número):
+  - **Nominales:** sin orden natural entre sus categorías (color de ojos, sexo, distrito
+    de residencia).
+  - **Ordinales:** con un orden natural entre sus categorías (nivel educativo, grado de
+    satisfacción: bajo/medio/alto).
+- **Cuantitativas** (expresan una cantidad numérica):
+  - **Discretas:** toman valores contables, generalmente enteros (número de hijos,
+    número de mascotas).
+  - **Continuas:** pueden tomar cualquier valor dentro de un intervalo (estatura, peso,
+    tiempo).
+
+## Visualización interactiva
+
+<PoblacionYMuestra />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Se quiere conocer la estatura promedio de los $3000$ estudiantes de una
+universidad, y para ello se mide a $150$ estudiantes elegidos al azar. Identifica la
+población y la muestra.
+
+**Solución.** Población: los $3000$ estudiantes de la universidad. Muestra: los $150$
+estudiantes elegidos al azar y efectivamente medidos.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Clasifica la variable "número de hermanos" de un estudiante.
+
+**Solución.** Es cuantitativa (se expresa con números) y discreta (solo toma valores
+enteros contables: 0, 1, 2, 3...).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Clasifica las siguientes variables: (a) nivel de dolor reportado
+(ninguno/leve/moderado/severo), (b) tiempo de reacción en segundos, (c) marca de
+celular que usa una persona.
+
+**Solución.** (a) Cualitativa ordinal (hay un orden claro de intensidad). (b)
+Cuantitativa continua (el tiempo puede tomar cualquier valor real dentro de un
+intervalo). (c) Cualitativa nominal (no hay un orden natural entre marcas).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un canal de noticias encuesta a quienes llaman voluntariamente a un
+número de teléfono en vivo, preguntando si apoyan cierta política pública. Explica por
+qué esta muestra probablemente NO es representativa de la población general.
+
+**Solución.** La muestra está sesgada por **autoselección**: solo responde quien
+decide activamente llamar, lo cual suele correlacionarse con tener una opinión más
+fuerte (a favor o en contra) que el ciudadano promedio, y con tener disponibilidad de
+tiempo y acceso al medio. El resultado no refleja proporcionalmente a toda la
+población — para eso se necesitaría una selección aleatoria, donde cada miembro de la
+población tenga una probabilidad conocida (y usualmente igual) de ser elegido.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Un estudio mide el peso de $80$ pacientes de un hospital que tiene $500$ pacientes en
+total. Identifica población y muestra.
+
+<Solucion>
+
+Población: los $500$ pacientes del hospital. Muestra: los $80$ pacientes medidos.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Clasifica la variable "color favorito".
+
+<Solucion>
+
+Cualitativa nominal (no hay orden natural entre colores).
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Clasifica: (a) número de goles anotados en un partido, (b) talla de camisa (S/M/L/XL).
+
+<Solucion>
+
+(a) Cuantitativa discreta. (b) Cualitativa ordinal (hay un orden de tamaño).
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿La variable "temperatura corporal en °C" es discreta o continua? Justifica.
+
+<Solucion>
+
+Continua: en principio puede tomar cualquier valor real dentro de un rango (36,1°C,
+36,15°C, 36,153°C...), no solo valores contables aislados.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Una empresa quiere estimar el ingreso promedio de sus $10000$ clientes. Un analista
+propone tomar como muestra a los $200$ clientes con mayor gasto histórico. Explica el
+problema con esta muestra y propón una alternativa mejor.
+
+<Solucion>
+
+El problema es que la muestra está sesgada intencionalmente hacia los clientes de
+**mayor** gasto, que probablemente tienen ingresos más altos que el cliente promedio —
+la muestra no representa a toda la población de clientes. Una alternativa mejor es
+seleccionar $200$ clientes **al azar** de los $10000$ (por ejemplo, numerarlos y usar
+un generador de números aleatorios), garantizando que cada cliente tenga la misma
+probabilidad de ser incluido.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Explica por qué "número de estrellas en el cielo visibles a simple vista" es una
+variable cuantitativa discreta, mientras que "brillo aparente de una estrella" es una
+variable cuantitativa continua.
+
+<Solucion>
+
+El número de estrellas visibles es un **conteo** — solo puede tomar valores enteros no
+negativos (no tiene sentido "2,5 estrellas"), así que es discreta. El brillo aparente
+se mide en una escala continua (magnitud aparente, que puede tomar cualquier valor
+real, incluyendo decimales arbitrariamente precisos), así que es continua.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La población es:",
+      opciones: ["Un subconjunto pequeño de datos", "El conjunto de todos los elementos de interés", "Siempre un grupo de personas", "Lo mismo que la muestra"],
+      correcta: 1,
+      explicacion: "Población es el conjunto TOTAL de elementos sobre los que se quiere concluir.",
+    },
+    {
+      enunciado: "¿Por qué se usa una muestra en vez de estudiar toda la población?",
+      opciones: ["Porque siempre da resultados más precisos", "Por razones de costo, tiempo o accesibilidad", "Porque la población nunca se puede definir", "No hay ninguna razón válida"],
+      correcta: 1,
+      explicacion: "Estudiar la población completa suele ser costoso, lento o imposible; la muestra es una alternativa práctica.",
+    },
+    {
+      enunciado: "'Nivel de estudios (primaria/secundaria/superior)' es una variable:",
+      opciones: ["Cuantitativa discreta", "Cuantitativa continua", "Cualitativa nominal", "Cualitativa ordinal"],
+      correcta: 3,
+      explicacion: "Es cualitativa (no numérica) y tiene un orden natural: ordinal.",
+    },
+    {
+      enunciado: "'Cantidad de mensajes enviados en un día' es una variable:",
+      opciones: ["Cuantitativa discreta", "Cuantitativa continua", "Cualitativa nominal", "Cualitativa ordinal"],
+      correcta: 0,
+      explicacion: "Es numérica y contable (0, 1, 2, 3...): discreta.",
+    },
+    {
+      enunciado: "Una muestra elegida por conveniencia (no al azar):",
+      opciones: ["Siempre es representativa", "Puede estar sesgada y no representar bien a la población", "Es matemáticamente idéntica a una muestra aleatoria", "Solo aplica a variables cualitativas"],
+      correcta: 1,
+      explicacion: "La falta de aleatoriedad puede introducir sesgos que invalidan la generalización a la población.",
+    },
+    {
+      enunciado: "'Tiempo de espera en minutos' es una variable:",
+      opciones: ["Cualitativa nominal", "Cualitativa ordinal", "Cuantitativa discreta", "Cuantitativa continua"],
+      correcta: 3,
+      explicacion: "El tiempo puede tomar cualquier valor real dentro de un intervalo: continua.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir población con muestra.** La población es el universo completo; la
+  muestra es solo la parte efectivamente estudiada.
+- **Asumir que una muestra grande siempre es representativa.** El tamaño no basta —
+  también importa **cómo** se seleccionó (aleatoriedad, ausencia de sesgo).
+- **Confundir variable discreta con continua** cuando los datos observados parecen
+  "enteros" — lo que define la categoría es qué valores **podrían** tomarse en
+  principio, no solo los valores observados en un caso particular.
+- **Confundir cualitativa ordinal con cuantitativa** — una escala como "bajo, medio,
+  alto" sigue siendo cualitativa (una categoría), aunque tenga orden; no es un número
+  con el que se puedan hacer operaciones aritméticas directas.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  seUsaEn={[
+    { href: "/matematica/aritmetica/estadistica/tablas-y-graficos-estadisticos", label: "Tablas y gráficos estadísticos" },
+    { href: "/matematica/aritmetica/estadistica/medidas-de-tendencia-central", label: "Medidas de tendencia central" },
+    { href: "/matematica/aritmetica/probabilidad", label: "Probabilidad" },
+  ]}
+/>

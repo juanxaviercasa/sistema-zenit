@@ -1,0 +1,258 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TablaYGraficoDeFrecuencias } from "@/components/interactive/aritmetica";
+
+# Tablas y gráficos estadísticos
+
+<Objetivo>
+
+Construir una tabla de frecuencias completa (fi, hi, Fi, Hi) a partir de datos, y
+elegir el gráfico estadístico apropiado según el tipo de variable que se represente.
+
+</Objetivo>
+
+## Marco teórico
+
+Una **tabla de frecuencias** organiza los datos (o los intervalos de clase, si los
+datos son continuos) junto con cuatro columnas:
+
+- **Frecuencia absoluta ($f_i$):** número de veces que aparece un valor o cae dentro de
+  un intervalo.
+- **Frecuencia relativa ($h_i$):** proporción respecto al total: $h_i = f_i / n$.
+- **Frecuencia acumulada ($F_i$):** suma de las frecuencias absolutas hasta esa clase
+  (inclusive).
+- **Frecuencia acumulada relativa ($H_i$):** $H_i = F_i / n$.
+
+**Elección del gráfico.**
+
+- **Gráfico de barras:** para variables cualitativas o cuantitativas discretas — las
+  barras van **separadas**, porque las categorías son distintas entre sí.
+- **Histograma:** para variables cuantitativas continuas agrupadas en intervalos — las
+  barras van **contiguas** (sin separación), porque el eje horizontal representa una
+  escala continua.
+- **Polígono de frecuencias:** se obtiene uniendo con segmentos los puntos
+  (marca de clase, $f_i$) de un histograma — muestra la misma información como una
+  línea en vez de barras.
+- **Ojiva:** grafica la frecuencia acumulada ($F_i$ o $H_i$) contra el límite superior
+  de cada intervalo — siempre es una curva creciente (nunca decrece).
+- **Diagrama circular (de sectores):** reparte $360°$ proporcionalmente entre las
+  categorías — ideal para mostrar la composición de un total.
+- **Pictograma:** usa íconos, donde cada ícono (o fracción de ícono) representa una
+  cantidad fija — útil para comunicación visual con público no técnico.
+
+**Enunciado (ángulo de un sector circular).** En un diagrama circular, el ángulo
+correspondiente a una categoría con frecuencia relativa $h_i$ es:
+
+$$
+\theta_i = h_i \times 360°.
+$$
+
+**Demostración.** El círculo completo ($360°$) representa el $100\%$ de los datos
+($n$ elementos). Por la regla de tres directa (a más proporción de datos, más ángulo):
+
+$$
+\frac{360°}{100\%} = \frac{\theta_i}{h_i \times 100\%} \;\Longrightarrow\;
+\theta_i = h_i \times 360°. \qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<TablaYGraficoDeFrecuencias />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Se registran las edades de $20$ personas agrupadas en 2 intervalos:
+$[0-30)$ con $8$ personas y $[30-60]$ con $12$ personas. Halla $h_1$ y $h_2$.
+
+**Solución.** $h_1 = 8/20 = 0{,}40 = 40\%$. $h_2 = 12/20 = 0{,}60 = 60\%$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Con los datos del Ejemplo 1, halla $F_1$, $F_2$, $H_1$ y $H_2$.
+
+**Solución.** $F_1 = 8$ (acumulado hasta el primer intervalo). $F_2 = 8+12=20$.
+$H_1 = 8/20=40\%$. $H_2 = 20/20=100\%$ (la última frecuencia acumulada relativa
+siempre es $100\%$).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En una encuesta de $n=50$ personas sobre su color favorito: $15$
+prefieren azul, $20$ prefieren rojo, $10$ prefieren verde y $5$ prefieren otro. Halla
+el ángulo del sector circular para "rojo".
+
+**Solución.** $h_{\text{rojo}} = 20/50 = 0{,}40$.
+$\theta = 0{,}40 \times 360° = 144°$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Se quiere representar (a) las ventas mensuales de 4 sucursales de una
+tienda y (b) la distribución de estaturas de 200 estudiantes agrupadas en intervalos.
+¿Qué gráfico es más apropiado para cada caso, y por qué?
+
+**Solución.** (a) Un **gráfico de barras** (o un diagrama circular, si se quiere
+enfatizar la proporción del total) — las sucursales son categorías discretas y
+separadas, no hay continuidad entre ellas. (b) Un **histograma** — la estatura es una
+variable continua agrupada en intervalos consecutivos, así que las barras deben ir
+contiguas para reflejar esa continuidad.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+En una tabla con $n=40$, un intervalo tiene $f_i=10$. Halla $h_i$.
+
+<Solucion>
+
+$h_i = 10/40 = 0{,}25 = 25\%$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Si $F_3 = 35$ y $n=50$, halla $H_3$.
+
+<Solucion>
+
+$H_3 = 35/50 = 0{,}70 = 70\%$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Una categoría tiene $h_i = 0{,}25$. Halla su ángulo en un diagrama circular.
+
+<Solucion>
+
+$\theta = 0{,}25 \times 360° = 90°$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+En un diagrama circular, una categoría ocupa un ángulo de $126°$. Halla su frecuencia
+relativa $h_i$ en porcentaje.
+
+<Solucion>
+
+$h_i = 126°/360° = 0{,}35 = 35\%$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Una tabla de frecuencias tiene 4 intervalos con $f_1=6$, $f_2=x$, $f_3=14$, $f_4=10$,
+y $n=50$. Halla $x$ y el ángulo del segundo intervalo en un diagrama circular.
+
+<Solucion>
+
+$x = 50-6-14-10=20$. $h_2 = 20/50=0{,}40$. $\theta_2 = 0{,}40\times 360°=144°$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que la suma de los ángulos de todas las categorías de un diagrama circular
+siempre es exactamente $360°$ (sin importar cuántas categorías haya).
+
+<Solucion>
+
+Cada ángulo es $\theta_i = h_i \times 360°$. La suma de todos los ángulos es:
+
+$$
+\sum \theta_i = \sum (h_i \times 360°) = 360° \sum h_i.
+$$
+
+Como $\sum h_i = \sum \dfrac{f_i}{n} = \dfrac{\sum f_i}{n} = \dfrac{n}{n} = 1$ (la suma
+de todas las frecuencias relativas siempre es $1$, o $100\%$, porque cada dato cae en
+exactamente una categoría), se obtiene $\sum \theta_i = 360° \times 1 = 360°$.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La frecuencia relativa hi se calcula como:",
+      opciones: ["fi × n", "fi / n", "fi + n", "n / fi"],
+      correcta: 1,
+      explicacion: "hi es la proporción: frecuencia absoluta entre el total de datos.",
+    },
+    {
+      enunciado: "¿Cuál gráfico usa barras contiguas (sin separación)?",
+      opciones: ["Gráfico de barras", "Histograma", "Diagrama circular", "Pictograma"],
+      correcta: 1,
+      explicacion: "El histograma refleja la continuidad de la variable con barras contiguas.",
+    },
+    {
+      enunciado: "La ojiva representa:",
+      opciones: ["La frecuencia absoluta de cada intervalo", "La frecuencia acumulada", "Solo la moda", "El ángulo de cada sector"],
+      correcta: 1,
+      explicacion: "La ojiva grafica la frecuencia acumulada (Fi o Hi), siempre creciente.",
+    },
+    {
+      enunciado: "Si hi = 30%, el ángulo correspondiente en un diagrama circular es:",
+      opciones: ["30°", "108°", "300°", "3,6°"],
+      correcta: 1,
+      explicacion: "θ = 0,30 × 360° = 108°.",
+    },
+    {
+      enunciado: "¿Qué gráfico se obtiene uniendo con segmentos los puntos (marca de clase, fi)?",
+      opciones: ["El histograma", "La ojiva", "El polígono de frecuencias", "El pictograma"],
+      correcta: 2,
+      explicacion: "El polígono de frecuencias conecta esos puntos con líneas rectas.",
+    },
+    {
+      enunciado: "La suma de todos los ángulos en un diagrama circular siempre es:",
+      opciones: ["100°", "360°, sin importar el número de categorías", "Depende del número de categorías", "180°"],
+      correcta: 1,
+      explicacion: "Como Σhi = 1 siempre, Σθi = 360°×1 = 360° siempre.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar barras separadas para un histograma** (o barras contiguas para un gráfico de
+  barras) — la continuidad o no de la variable determina el estilo correcto.
+- **Confundir frecuencia absoluta con frecuencia relativa** al leer o construir una
+  tabla — $f_i$ es un conteo; $h_i$ es una proporción.
+- **Olvidar que $H_i$ del último intervalo siempre es $100\%$** (o $1$) — es una buena
+  forma de verificar que la tabla está bien construida.
+- **Calcular el ángulo de un sector sin convertir $h_i$ a tanto por uno primero** — la
+  fórmula $\theta_i = h_i \times 360°$ requiere $h_i$ en tanto por uno (no en
+  porcentaje directamente, salvo que ajustes la fórmula a $\theta_i = \frac{h_i\%}{100}
+  \times 360°$).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/estadistica/poblacion-muestra-y-variables-estadisticas", label: "Población, muestra y variables estadísticas" },
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/tanto-por-ciento-y-tanto-por-uno", label: "Tanto por ciento y tanto por uno" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/estadistica/medidas-de-tendencia-central", label: "Medidas de tendencia central" },
+    { href: "/matematica/aritmetica/estadistica/medidas-de-dispersion-varianza-y-desviacion-estandar", label: "Medidas de dispersión: varianza y desviación estándar" },
+  ]}
+/>

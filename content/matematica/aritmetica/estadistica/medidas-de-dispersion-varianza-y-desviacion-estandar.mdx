@@ -1,0 +1,286 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { MedidasDeDispersion } from "@/components/interactive/aritmetica";
+
+# Medidas de dispersión: varianza y desviación estándar
+
+<Objetivo>
+
+Calcular la varianza y la desviación estándar de un conjunto de datos, demostrar la
+fórmula abreviada de cálculo, e interpretar qué indican sobre la dispersión de los
+datos respecto a su media.
+
+</Objetivo>
+
+## Marco teórico
+
+Dos conjuntos de datos pueden tener exactamente la **misma media** y, sin embargo,
+verse muy distintos: uno con los datos muy juntos alrededor de la media, otro con los
+datos muy dispersos. Las **medidas de dispersión** cuantifican esa diferencia.
+
+**Varianza ($\sigma^2$).** El promedio de las desviaciones al cuadrado respecto a la
+media:
+
+$$
+\sigma^2 = \frac{\sum (x_i - \bar{x})^2}{n}.
+$$
+
+Se eleva al cuadrado para que las desviaciones negativas y positivas no se cancelen
+entre sí al sumar (si no se elevaran al cuadrado, $\sum(x_i-\bar{x})$ siempre daría
+$0$, sin importar la dispersión real).
+
+**Desviación estándar ($\sigma$).** La raíz cuadrada de la varianza:
+
+$$
+\sigma = \sqrt{\sigma^2}.
+$$
+
+Como la varianza está en unidades **al cuadrado** (por ejemplo, cm², si los datos son
+en cm), la desviación estándar —en las unidades originales— es más fácil de
+interpretar directamente.
+
+**Enunciado (fórmula abreviada de la varianza).**
+
+$$
+\sigma^2 = \frac{\sum x_i^2}{n} - \bar{x}^2.
+$$
+
+**Demostración.**
+
+**Paso 1 — expandir el cuadrado del binomio.**
+
+$$
+\sum (x_i-\bar{x})^2 = \sum \left(x_i^2 - 2x_i\bar{x} + \bar{x}^2\right) =
+\sum x_i^2 - 2\bar{x}\sum x_i + n\bar{x}^2.
+$$
+
+**Paso 2 — usar que $\sum x_i = n\bar{x}$** (por definición de media).
+
+$$
+\sum x_i^2 - 2\bar{x}(n\bar{x}) + n\bar{x}^2 = \sum x_i^2 - 2n\bar{x}^2 + n\bar{x}^2 =
+\sum x_i^2 - n\bar{x}^2.
+$$
+
+**Conclusión.** Dividiendo entre $n$:
+
+$$
+\sigma^2 = \frac{\sum x_i^2 - n\bar{x}^2}{n} = \frac{\sum x_i^2}{n} - \bar{x}^2.
+\qquad \blacksquare
+$$
+
+Esta versión suele ser más rápida de calcular a mano, porque evita restar $\bar x$ a
+cada dato individualmente antes de elevar al cuadrado.
+
+## Visualización interactiva
+
+<MedidasDeDispersion />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla la varianza y la desviación estándar de: $4, 6, 8$.
+
+**Solución.** $\bar{x} = \dfrac{4+6+8}{3}=6$. Desviaciones: $-2, 0, 2$. Cuadrados:
+$4, 0, 4$. $\sigma^2 = \dfrac{4+0+4}{3} = \dfrac{8}{3} \approx 2{,}67$.
+$\sigma = \sqrt{8/3} \approx 1{,}63$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Repite el Ejemplo 1 usando la fórmula abreviada, para verificar.
+
+**Solución.** $\sum x_i^2 = 16+36+64=116$. $\bar{x}^2 = 36$.
+$\sigma^2 = \dfrac{116}{3} - 36 = 38{,}67 - 36 = 2{,}67$. Coincide con el Ejemplo 1.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Dos grupos de estudiantes tienen la misma media de notas ($14$), pero
+el Grupo A tiene notas $12, 14, 16$ y el Grupo B tiene notas $2, 14, 26$. Compara sus
+desviaciones estándar e interpreta.
+
+**Solución.** Grupo A: desviaciones $-2,0,2$; $\sigma_A^2 = (4+0+4)/3 \approx 2{,}67$;
+$\sigma_A \approx 1{,}63$. Grupo B: desviaciones $-12,0,12$;
+$\sigma_B^2 = (144+0+144)/3=96$; $\sigma_B \approx 9{,}80$. Aunque ambos grupos tienen
+la misma media, el Grupo B tiene una dispersión mucho mayor — sus notas están mucho
+más alejadas del promedio que las del Grupo A.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Dos máquinas producen piezas cuyo diámetro debería ser $10$ mm. Máquina
+1: diámetros $9{,}8, 10{,}0, 10{,}2$. Máquina 2: diámetros $9{,}5, 10{,}0, 10{,}5$.
+Ambas tienen media $10$. ¿Cuál máquina es más confiable (consistente)?
+
+**Solución.** Máquina 1: desviaciones $\pm 0{,}2$ y $0$; $\sigma_1^2 =
+(0{,}04+0+0{,}04)/3 \approx 0{,}0267$; $\sigma_1 \approx 0{,}163$. Máquina 2:
+desviaciones $\pm 0{,}5$ y $0$; $\sigma_2^2 = (0{,}25+0+0{,}25)/3 \approx 0{,}1667$;
+$\sigma_2 \approx 0{,}408$. La Máquina 1 es más confiable: tiene menor desviación
+estándar, así que sus piezas están más consistentemente cerca del diámetro objetivo.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla la varianza de: $3, 5, 7$.
+
+<Solucion>
+
+$\bar{x}=5$. Desviaciones: $-2,0,2$. $\sigma^2 = (4+0+4)/3 \approx 2{,}67$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla la desviación estándar de: $2, 2, 2, 2$.
+
+<Solucion>
+
+Todos los datos son iguales a la media, así que todas las desviaciones son $0$:
+$\sigma = 0$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Usa la fórmula abreviada para hallar la varianza de: $1, 3, 5, 7$.
+
+<Solucion>
+
+$\bar{x} = 16/4=4$. $\sum x_i^2 = 1+9+25+49=84$.
+$\sigma^2 = 84/4 - 16 = 21-16=5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Un conjunto de datos tiene $\sigma^2 = 12{,}25$. Halla su desviación estándar.
+
+<Solucion>
+
+$\sigma = \sqrt{12{,}25} = 3{,}5$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si a cada dato de un conjunto se le suma una misma constante $k$ (es
+decir, $y_i = x_i+k$), la varianza **no cambia**: $\sigma_y^2 = \sigma_x^2$.
+
+<Solucion>
+
+La nueva media es $\bar{y} = \bar{x}+k$ (sumar $k$ a todos los datos desplaza la media
+en $k$). Las nuevas desviaciones son:
+
+$$
+y_i - \bar{y} = (x_i+k) - (\bar{x}+k) = x_i - \bar{x},
+$$
+
+exactamente las mismas desviaciones que antes. Como la varianza depende solo de esas
+desviaciones al cuadrado, $\sigma_y^2 = \dfrac{\sum(y_i-\bar y)^2}{n} =
+\dfrac{\sum(x_i-\bar x)^2}{n} = \sigma_x^2$. $\blacksquare$ (Sumar una constante
+traslada los datos, pero no cambia qué tan dispersos están entre sí.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Usando el resultado del Problema 5, demuestra que si cada dato se multiplica por una
+constante $k$ ($y_i = kx_i$), la varianza queda multiplicada por $k^2$:
+$\sigma_y^2 = k^2\sigma_x^2$.
+
+<Solucion>
+
+La nueva media es $\bar y = k\bar x$. Las nuevas desviaciones:
+$y_i - \bar y = kx_i - k\bar x = k(x_i-\bar x)$. Elevando al cuadrado:
+$(y_i-\bar y)^2 = k^2(x_i-\bar x)^2$. Sumando y dividiendo entre $n$:
+
+$$
+\sigma_y^2 = \frac{\sum k^2(x_i-\bar x)^2}{n} = k^2 \cdot \frac{\sum(x_i-\bar x)^2}{n}
+= k^2\sigma_x^2. \qquad \blacksquare
+$$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La varianza mide:",
+      opciones: ["El valor central de los datos", "Qué tan dispersos están los datos respecto a la media", "El valor más frecuente", "La cantidad total de datos"],
+      correcta: 1,
+      explicacion: "Es el promedio de las desviaciones al cuadrado respecto a la media.",
+    },
+    {
+      enunciado: "¿Por qué se elevan al cuadrado las desviaciones al calcular la varianza?",
+      opciones: ["Para que el resultado sea más grande", "Porque las desviaciones positivas y negativas se cancelarían si no se elevan al cuadrado", "Es una convención sin motivo matemático", "Para convertir a porcentaje"],
+      correcta: 1,
+      explicacion: "Σ(xi - x̄) siempre da 0; elevar al cuadrado evita esa cancelación.",
+    },
+    {
+      enunciado: "La desviación estándar es:",
+      opciones: ["El cuadrado de la varianza", "La raíz cuadrada de la varianza", "Lo mismo que la media", "Siempre igual a 1"],
+      correcta: 1,
+      explicacion: "σ = √σ².",
+    },
+    {
+      enunciado: "Dos conjuntos de datos con la misma media pueden tener:",
+      opciones: ["La misma varianza siempre", "Distinta varianza", "Nunca la misma mediana", "Solo datos idénticos"],
+      correcta: 1,
+      explicacion: "La media no determina la dispersión — pueden diferir mucho en varianza aun con la misma media.",
+    },
+    {
+      enunciado: "La fórmula abreviada de la varianza es:",
+      opciones: ["σ² = Σxi²/n - x̄²", "σ² = Σxi/n - x̄", "σ² = (Σxi)²/n", "σ² = x̄² - Σxi²/n"],
+      correcta: 0,
+      explicacion: "σ² = (Σxi²)/n - x̄², derivada de expandir el binomio (xi-x̄)².",
+    },
+    {
+      enunciado: "Una máquina con menor desviación estándar en sus productos es:",
+      opciones: ["Menos confiable", "Más confiable/consistente", "No tiene relación con la confiabilidad", "Siempre más lenta"],
+      correcta: 1,
+      explicacion: "Menor dispersión significa que los productos están más consistentemente cerca del valor esperado.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Olvidar elevar al cuadrado las desviaciones** antes de sumarlas — sumar las
+  desviaciones sin elevarlas al cuadrado siempre da $0$, sin importar la dispersión
+  real.
+- **Confundir varianza con desviación estándar** — la varianza está en unidades al
+  cuadrado; la desviación estándar, en las unidades originales de los datos.
+- **Olvidar la raíz cuadrada** al pasar de $\sigma^2$ a $\sigma$ (o viceversa, elevar
+  al cuadrado quien ya era $\sigma$).
+- **Mezclar la fórmula poblacional (entre $n$) con la muestral (entre $n-1$).** Algunos
+  textos usan $n-1$ en el denominador para estimar la varianza de una población a
+  partir de una muestra (corrección de Bessel). En este curso se usa la fórmula
+  poblacional (entre $n$), salvo que el problema indique explícitamente lo contrario.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/estadistica/medidas-de-tendencia-central", label: "Medidas de tendencia central" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/probabilidad", label: "Probabilidad" },
+  ]}
+/>

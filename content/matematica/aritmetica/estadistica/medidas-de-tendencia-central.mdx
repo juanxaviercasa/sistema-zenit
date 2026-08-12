@@ -1,0 +1,266 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { MedidasDeTendenciaCentral } from "@/components/interactive/aritmetica";
+
+# Medidas de tendencia central
+
+<Objetivo>
+
+Calcular la media, la mediana y la moda de un conjunto de datos (simples o agrupados
+en tabla de frecuencias), y aplicar la media ponderada, geométrica y armónica al
+contexto estadístico correcto para cada una.
+
+</Objetivo>
+
+## Marco teórico
+
+**Media aritmética ($\bar{x}$).** El promedio de todos los datos:
+
+$$
+\bar{x} = \frac{x_1+x_2+\cdots+x_n}{n}.
+$$
+
+Si los datos están agrupados en una tabla de frecuencias (cada valor distinto $x_i$
+con su frecuencia $f_i$), la media se calcula ponderando cada valor por su frecuencia
+— exactamente la "regla de la mezcla" de *Mezcla y aleación*:
+
+$$
+\bar{x} = \frac{\sum x_if_i}{\sum f_i} = \frac{\sum x_if_i}{n}.
+$$
+
+**Mediana ($M_e$).** El valor que ocupa la posición central de los datos **ordenados**.
+Con $n$ datos:
+
+$$
+M_e = \begin{cases}
+x_{\left(\frac{n+1}{2}\right)} & \text{si } n \text{ es impar} \\[4pt]
+\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} & \text{si } n \text{ es par}
+\end{cases}
+$$
+
+A diferencia de la media, la mediana **no** se ve afectada por valores extremos
+(outliers) — solo depende del orden, no de la magnitud exacta de cada dato.
+
+**Moda ($M_o$).** El valor (o los valores) que se repite con mayor frecuencia. Puede no
+existir (si todos los datos son distintos) o no ser única (si hay un empate — la
+distribución se llama *bimodal*, *trimodal*, etc.).
+
+**Media ponderada, geométrica y armónica en estadística.** Ya demostraste sus
+propiedades en *Medias aritmética, geométrica y armónica*; en estadística se aplican
+según el tipo de dato:
+
+- **Media ponderada:** cuando cada dato tiene una importancia (peso) distinta —por
+  ejemplo, notas con distinto número de créditos:
+  $$\bar{x}_p = \frac{\sum x_iw_i}{\sum w_i}.$$
+- **Media geométrica:** para promediar **tasas de crecimiento** o números índice, donde
+  los cambios se multiplican en vez de sumarse período a período:
+  $$GM = \sqrt[n]{x_1 \cdot x_2 \cdots x_n}.$$
+- **Media armónica:** para promediar **razones o tasas** donde el denominador varía
+  (velocidades, rendimientos por unidad de costo):
+  $$HM = \frac{n}{\sum \frac{1}{x_i}}.$$
+
+## Visualización interactiva
+
+<MedidasDeTendenciaCentral />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla la media, la mediana y la moda de: $4, 7, 7, 9, 12$.
+
+**Solución.** Media: $\bar{x} = \dfrac{4+7+7+9+12}{5} = \dfrac{39}{5} = 7{,}8$.
+Mediana ($n=5$, impar): el dato central (ya ordenados) es $7$. Moda: $7$ (se repite
+dos veces, más que cualquier otro valor).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla la mediana de: $3, 5, 8, 10$ ($n=4$, par).
+
+**Solución.** $M_e = \dfrac{5+8}{2} = 6{,}5$ (promedio de los dos datos centrales).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Un estudiante obtuvo notas $14$, $16$ y $18$ en cursos de $2$, $3$ y $5$
+créditos respectivamente. Halla su promedio ponderado.
+
+**Solución.**
+
+$$
+\bar{x}_p = \frac{14(2)+16(3)+18(5)}{2+3+5} = \frac{28+48+90}{10} = \frac{166}{10}
+= 16{,}6.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Las ventas de una empresa crecieron $20\%$ el primer año, $50\%$ el
+segundo año y $10\%$ el tercer año. Halla la tasa de crecimiento anual promedio
+correcta (no el promedio aritmético de los porcentajes).
+
+**Solución.** Cada año el capital se multiplica por un factor: $1{,}20$, $1{,}50$,
+$1{,}10$. La tasa promedio correcta usa la **media geométrica** de esos factores:
+
+$$
+GM = \sqrt[3]{1{,}20 \times 1{,}50 \times 1{,}10} = \sqrt[3]{1{,}98} \approx 1{,}2573.
+$$
+
+La tasa de crecimiento anual promedio es aproximadamente $25{,}73\%$ — **no** el
+$26{,}67\%$ que daría el promedio aritmético simple de $20\%, 50\%, 10\%$ (que
+sobreestima el crecimiento real acumulado).
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla la media, mediana y moda de: $5, 8, 8, 10, 14$.
+
+<Solucion>
+
+Media: $(5+8+8+10+14)/5 = 45/5 = 9$. Mediana: $8$ (dato central). Moda: $8$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla la mediana de: $2, 6, 9, 11, 15, 20$ ($n=6$).
+
+<Solucion>
+
+$M_e = (9+11)/2 = 10$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Un estudiante tiene notas $12$, $15$ y $17$ en cursos de $4$, $2$ y $4$ créditos.
+Halla su promedio ponderado.
+
+<Solucion>
+
+$\bar{x}_p = \dfrac{12(4)+15(2)+17(4)}{10} = \dfrac{48+30+68}{10} = 14{,}6$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+En una tabla de frecuencias, los valores $3, 5, 8$ tienen frecuencias $4, 6, 10$
+respectivamente. Halla la media.
+
+<Solucion>
+
+$\bar{x} = \dfrac{3(4)+5(6)+8(10)}{20} = \dfrac{12+30+80}{20} = \dfrac{122}{20} =
+6{,}1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Una inversión creció $10\%$, luego $30\%$, luego cayó $10\%$ (tres años). Halla la
+tasa de crecimiento geométrica promedio anual.
+
+<Solucion>
+
+Factores: $1{,}10$, $1{,}30$, $0{,}90$.
+$GM = \sqrt[3]{1{,}10 \times 1{,}30 \times 0{,}90} = \sqrt[3]{1{,}287} \approx 1{,}0879$.
+Tasa promedio anual $\approx 8{,}79\%$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, si todos los datos de un conjunto son iguales a una constante $c$, la
+media, la mediana y la moda coinciden y son todas iguales a $c$.
+
+<Solucion>
+
+**Media:** $\bar{x} = \dfrac{c+c+\cdots+c}{n} = \dfrac{nc}{n} = c$. **Mediana:** al
+ordenar los datos, todos son $c$, así que cualquier posición central (o el promedio de
+dos posiciones centrales, ambas iguales a $c$) da $c$. **Moda:** como todos los
+valores son idénticos, $c$ es, trivialmente, el valor "más frecuente" (el único
+valor). Las tres medidas coinciden en $c$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La mediana de 3, 8, 10, 15, 20 es:",
+      opciones: ["8", "10", "11,2", "15"],
+      correcta: 1,
+      explicacion: "Con n=5 (impar), la mediana es el dato central ya ordenado: 10.",
+    },
+    {
+      enunciado: "¿Qué medida de tendencia central NO se afecta por valores extremos (outliers)?",
+      opciones: ["La media", "La mediana", "Ambas se afectan igual", "Ninguna se afecta"],
+      correcta: 1,
+      explicacion: "La mediana solo depende del orden, no de la magnitud de los datos extremos.",
+    },
+    {
+      enunciado: "Para promediar tasas de crecimiento sucesivas, la medida correcta es:",
+      opciones: ["La media aritmética", "La media geométrica", "La media armónica", "La moda"],
+      correcta: 1,
+      explicacion: "Los factores de crecimiento se multiplican, así que la media geométrica da el promedio correcto.",
+    },
+    {
+      enunciado: "Notas 10 y 18 en cursos de 5 y 1 créditos dan un promedio ponderado de:",
+      opciones: ["14", "11,33", "12", "13,5"],
+      correcta: 1,
+      explicacion: "(10·5+18·1)/6 = (50+18)/6 = 68/6 ≈ 11,33.",
+    },
+    {
+      enunciado: "Un conjunto de datos donde todos los valores son distintos entre sí:",
+      opciones: ["Tiene una moda muy alta", "No tiene moda", "Tiene mediana indefinida", "Tiene media igual a cero"],
+      correcta: 1,
+      explicacion: "Si ningún valor se repite, no existe un valor 'más frecuente': no hay moda.",
+    },
+    {
+      enunciado: "Para datos agrupados en tabla de frecuencias, la media se calcula:",
+      opciones: ["Como el promedio simple de los valores distintos, ignorando fi", "Ponderando cada valor por su frecuencia: Σ(xi·fi)/n", "Siempre igual a la moda", "Solo con el valor de mayor frecuencia"],
+      correcta: 1,
+      explicacion: "Es un promedio ponderado por la frecuencia de cada valor.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar la media aritmética para promediar tasas de crecimiento** — sobreestima el
+  crecimiento real; la media geométrica es la correcta (Ejemplo 4).
+- **Olvidar ordenar los datos antes de hallar la mediana** — la fórmula de posición
+  central solo es válida sobre datos ya ordenados.
+- **Asumir que la moda siempre existe y es única** — puede no haber ningún valor
+  repetido, o puede haber varios empatados.
+- **Ignorar los pesos al calcular un promedio ponderado**, tratándolo como si fuera un
+  promedio simple — cada dato debe multiplicarse por su propio peso antes de sumar.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/estadistica/tablas-y-graficos-estadisticos", label: "Tablas y gráficos estadísticos" },
+    { href: "/matematica/aritmetica/razones-y-proporciones/medias-aritmetica-geometrica-y-armonica", label: "Medias aritmética, geométrica y armónica" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/estadistica/medidas-de-dispersion-varianza-y-desviacion-estandar", label: "Medidas de dispersión: varianza y desviación estándar" },
+    { href: "/matematica/aritmetica/probabilidad", label: "Probabilidad" },
+  ]}
+/>

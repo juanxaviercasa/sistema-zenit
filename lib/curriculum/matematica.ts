@@ -89,6 +89,19 @@ const subtemasMezclaYAleacion: Subtema[] = [
   ),
 ];
 
+const subtemasEstadistica: Subtema[] = [
+  subtema(
+    "poblacion-muestra-y-variables-estadisticas",
+    "Población, muestra y variables estadísticas"
+  ),
+  subtema("tablas-y-graficos-estadisticos", "Tablas y gráficos estadísticos"),
+  subtema("medidas-de-tendencia-central", "Medidas de tendencia central"),
+  subtema(
+    "medidas-de-dispersion-varianza-y-desviacion-estandar",
+    "Medidas de dispersión: varianza y desviación estándar"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -120,7 +133,7 @@ const aritmetica: Area = {
       subtemasInteresSimpleYCompuesto
     ),
     tema(4, "mezcla-y-aleacion", "Mezcla y aleación", undefined, subtemasMezclaYAleacion),
-    tema(5, "estadistica", "Estadística"),
+    tema(5, "estadistica", "Estadística", undefined, subtemasEstadistica),
     tema(6, "probabilidad", "Probabilidad"),
     tema(7, "numeracion", "Numeración"),
     tema(8, "numeros-naturales-y-enteros", "Números naturales y números enteros"),
