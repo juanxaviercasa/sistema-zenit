@@ -9,7 +9,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 
 ## Matemática — 51 temas
 
-### A. Aritmética (3/12)
+### A. Aritmética (4/12)
 
 - ✅ 1. Razones y proporciones
   - ✅ Razones aritmética, geométrica y armónica
@@ -27,7 +27,11 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Interés compuesto y capitalización continua
   - ✅ Descuento comercial y racional
   - ✅ Intercambio de letras y vencimiento común
-- ⬜ 4. Mezcla y aleación
+- ✅ 4. Mezcla y aleación
+  - ✅ Mezcla de sustancias de diferentes precios
+  - ✅ Mezcla de sustancias de diferentes concentraciones
+  - ✅ Mezcla de sustancias de diferentes densidades
+  - ✅ Aleación de metales y ley de las aleaciones de oro
 - ⬜ 5. Estadística
 - ⬜ 6. Probabilidad
 - ⬜ 7. Numeración
@@ -92,7 +96,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 4/51 temas completos.**
+**Total Matemática: 5/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -121,13 +125,15 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       ErroresFrecuentes, Conexiones) y `components/interactive/*`
       (JSXGraphBoard, FiguraInteractiva, FiguraDemostracion, jsxgraph-utils).
 - [ ] Fase 2 — Aritmética completa (12 temas), en curso: **Razones y proporciones**
-      (4 subtemas), **Magnitudes proporcionales** (5 subtemas) e **Interés simple y
-      compuesto** (4 subtemas: elementos y monto, compuesto y capitalización continua
-      —con las 3 curvas comparadas en un mismo gráfico—, descuento comercial y
-      racional, y vencimiento común de letras) completos. Widgets con sliders/SVG en
-      vez de JSXGraph sintético (`components/interactive/aritmetica/*`); los que
-      necesitan interpretación gráfica real (DP/IP, crecimiento del interés, simple vs.
-      compuesto vs. continuo) usan `functiongraph` de JSXGraph con `axis` activado.
+      (4 subtemas), **Magnitudes proporcionales** (5 subtemas), **Interés simple y
+      compuesto** (4 subtemas) y **Mezcla y aleación** (4 subtemas: precio, concentración
+      —con dilución/evaporación—, densidad —distingue mezclar por volumen vs. por masa,
+      media armónica ponderada—, y ley de aleaciones de oro) completos. Widgets con
+      sliders/SVG en vez de JSXGraph sintético (`components/interactive/aritmetica/*`);
+      los que necesitan interpretación gráfica real (DP/IP, crecimiento del interés,
+      simple vs. compuesto vs. continuo) usan `functiongraph` de JSXGraph con `axis`
+      activado. `MezclaPonderada` es un único componente genérico reusado en los 4
+      subtemas de Mezcla y aleación (misma matemática, distintas etiquetas/unidades).
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)

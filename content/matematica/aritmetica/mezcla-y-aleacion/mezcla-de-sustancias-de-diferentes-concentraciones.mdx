@@ -1,0 +1,288 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { MezclaPonderada } from "@/components/interactive/aritmetica";
+
+# Mezcla de sustancias de diferentes concentraciones
+
+<Objetivo>
+
+Aplicar el promedio ponderado al caso de soluciones con distinta concentración, y
+resolver problemas de dilución (agregar solvente puro) y evaporación.
+
+</Objetivo>
+
+## Marco teórico
+
+La **concentración** $c$ (en tanto por uno o tanto por ciento) de una solución de
+volumen $V$ indica qué fracción de ese volumen es soluto puro: la cantidad de soluto es
+$c \cdot V$.
+
+**Mezcla de soluciones.** Al mezclar volúmenes $V_1, V_2, \dots, V_k$ de soluciones con
+concentraciones $c_1, c_2, \dots, c_k$, la concentración final es exactamente el mismo
+promedio ponderado del subtema anterior — con el **volumen** haciendo el papel de
+"cantidad" y la **concentración** haciendo el papel de "precio":
+
+$$
+c_f = \frac{c_1V_1 + c_2V_2 + \cdots + c_kV_k}{V_1+V_2+\cdots+V_k}.
+$$
+
+(La demostración es idéntica a la de *Mezcla de sustancias de diferentes precios*: la
+cantidad total de soluto —el equivalente al "ingreso total"— debe conservarse.)
+
+**Dilución.** Agregar un volumen $V_a$ de solvente puro (agua, concentración $0\%$) es
+el caso particular $c_2 = 0$:
+
+$$
+c_f = \frac{c_1V_1 + 0 \cdot V_a}{V_1+V_a} = \frac{c_1V_1}{V_1+V_a}.
+$$
+
+Como el denominador crece sin que el numerador cambie, diluir **siempre reduce** la
+concentración.
+
+**Evaporación.** Al evaporar solvente puro (sin quitar soluto), la cantidad de soluto
+$c_1V_1$ se mantiene constante, pero el volumen final $V_f$ es menor que $V_1$:
+
+$$
+c_1V_1 = c_f \cdot V_f \;\Longrightarrow\; V_f = \frac{c_1V_1}{c_f}.
+$$
+
+Como el numerador no cambia y $c_f > c_1$ (la concentración sube al evaporar), se
+obtiene $V_f < V_1$ — el volumen final es menor, tal como se espera.
+
+## Visualización interactiva
+
+<MezclaPonderada
+  titulo="Concentración final de una mezcla"
+  nombres={["Solución A", "Solución B", "Solución C"]}
+  etiquetaCantidad="Volumen (L)"
+  etiquetaValor="Concentración (%)"
+  etiquetaResultado="Concentración final (%)"
+  cantidadMin={0}
+  cantidadMax={40}
+  valorMin={0}
+  valorMax={100}
+  iniciales={[
+    { cantidad: 10, valor: 20 },
+    { cantidad: 15, valor: 40 },
+    { cantidad: 5, valor: 60 },
+  ]}
+  nota="Pon la concentración de un componente en 0% para simular una dilución con agua pura."
+/>
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Se mezclan $6$ L de una solución al $30\%$ con $4$ L de una solución al
+$50\%$. Halla la concentración final.
+
+**Solución.**
+
+$$
+c_f = \frac{6(0{,}30)+4(0{,}50)}{10} = \frac{1{,}8+2{,}0}{10} = \frac{3{,}8}{10} =
+0{,}38 = 38\%.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Se tienen $8$ L de una solución al $40\%$. ¿Cuántos litros de agua pura
+deben agregarse para que la concentración baje al $25\%$?
+
+**Solución.** $c_f = \dfrac{c_1V_1}{V_1+V_a}$:
+
+$$
+0{,}25 = \frac{8(0{,}40)}{8+V_a} = \frac{3{,}2}{8+V_a} \;\Longrightarrow\; 8+V_a =
+\frac{3{,}2}{0{,}25} = 12{,}8 \;\Longrightarrow\; V_a = 4{,}8 \text{ L.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Se tienen $20$ L de una solución al $15\%$. ¿Cuántos litros de agua
+deben evaporarse para que la concentración suba al $25\%$?
+
+**Solución.** El soluto se mantiene: $20(0{,}15) = 3$ L de soluto puro.
+$V_f = \dfrac{c_1V_1}{c_f} = \dfrac{3}{0{,}25} = 12$ L. El volumen evaporado es
+$20 - 12 = 8$ L.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Se mezclan $x$ litros de una solución al $10\%$ con $(30-x)$ litros de
+una solución al $70\%$, para obtener $30$ litros de una solución al $40\%$. Halla $x$.
+
+**Solución.**
+
+$$
+0{,}40 = \frac{0{,}10x + 0{,}70(30-x)}{30} \;\Longrightarrow\; 12 = 0{,}10x + 21 -
+0{,}70x \;\Longrightarrow\; 12 = 21 - 0{,}60x.
+$$
+
+$$
+0{,}60x = 9 \;\Longrightarrow\; x = 15 \text{ L.}
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Se mezclan $5$ L al $20\%$ con $5$ L al $60\%$. Halla la concentración final.
+
+<Solucion>
+
+$c_f = \dfrac{5(0{,}20)+5(0{,}60)}{10} = \dfrac{4}{10} = 40\%$ (promedio simple, por
+volúmenes iguales).
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Se tienen $10$ L al $50\%$. ¿Cuántos litros de agua deben agregarse para bajar la
+concentración al $20\%$?
+
+<Solucion>
+
+$0{,}20 = \dfrac{10(0{,}5)}{10+V_a} \Rightarrow 10+V_a = 25 \Rightarrow V_a = 15$ L.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Se tienen $15$ L al $12\%$. ¿Cuántos litros deben evaporarse para llegar al $20\%$?
+
+<Solucion>
+
+Soluto: $15(0{,}12)=1{,}8$ L. $V_f = 1{,}8/0{,}20=9$ L. Evaporado: $15-9=6$ L.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Se mezclan $12$ L al $25\%$ con $x$ L al $60\%$ para dar una mezcla al $40\%$. Halla
+$x$.
+
+<Solucion>
+
+$0{,}40 = \dfrac{12(0{,}25)+0{,}60x}{12+x} \Rightarrow 4{,}8+0{,}4x = 3+0{,}6x
+\Rightarrow 1{,}8=0{,}2x \Rightarrow x=9$ L.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un químico tiene una solución al $80\%$ y otra al $30\%$. ¿Cuántos litros de cada una
+debe mezclar para obtener $50$ litros de solución al $45\%$?
+
+<Solucion>
+
+Sea $x$ los litros de la solución al $80\%$; $(50-x)$ los de la de $30\%$:
+
+$$
+0{,}45 = \frac{0{,}80x+0{,}30(50-x)}{50} \;\Longrightarrow\; 22{,}5 = 0{,}8x+15-0{,}3x
+\;\Longrightarrow\; 7{,}5=0{,}5x \;\Longrightarrow\; x=15.
+$$
+
+$15$ L de la solución al $80\%$ y $35$ L de la de $30\%$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que evaporar y luego diluir de vuelta al volumen original **no** recupera la
+concentración original — es decir, evaporar $V_1 \to V_f$ y luego agregar agua para
+volver a $V_1$ da una concentración final igual a la original (no menor, no mayor).
+Verifica algebraicamente.
+
+<Solucion>
+
+Tras evaporar: concentración $c_f = \dfrac{c_1V_1}{V_f}$ en volumen $V_f$. La cantidad
+de soluto sigue siendo $c_1V_1$ (evaporar no quita soluto). Si ahora se agrega agua
+hasta volver al volumen original $V_1$, la concentración resultante es
+$\dfrac{\text{soluto}}{V_1} = \dfrac{c_1V_1}{V_1} = c_1$ — exactamente la
+concentración original. Tiene sentido: ni evaporar ni diluir cambian la cantidad de
+soluto, solo el volumen total; al regresar al volumen original, la concentración
+regresa también. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La cantidad de soluto en una solución de volumen V y concentración c es:",
+      opciones: ["c + V", "c · V", "c / V", "V / c"],
+      correcta: 1,
+      explicacion: "Soluto = concentración × volumen.",
+    },
+    {
+      enunciado: "Diluir una solución con agua pura siempre:",
+      opciones: ["Aumenta la concentración", "Disminuye la concentración", "No cambia la concentración", "Depende del volumen agregado"],
+      correcta: 1,
+      explicacion: "Agregar solvente puro (0% de concentración) siempre reduce la concentración final.",
+    },
+    {
+      enunciado: "Evaporar solvente puro de una solución:",
+      opciones: ["Aumenta la concentración", "Disminuye la concentración", "Elimina el soluto", "No tiene efecto"],
+      correcta: 0,
+      explicacion: "El soluto se mantiene constante mientras el volumen disminuye, así que la concentración sube.",
+    },
+    {
+      enunciado: "6 L al 20% mezclados con 4 L al 70% dan una concentración de:",
+      opciones: ["45%", "40%", "50%", "35%"],
+      correcta: 1,
+      explicacion: "cf = (6·0,2+4·0,7)/10 = (1,2+2,8)/10 = 0,4 = 40%.",
+    },
+    {
+      enunciado: "En la fórmula de dilución cf = c1V1/(V1+Va), Va representa:",
+      opciones: ["El volumen de soluto agregado", "El volumen de agua (solvente puro) agregado", "El volumen final total", "La concentración final"],
+      correcta: 1,
+      explicacion: "Va es el volumen de agua pura que se agrega para diluir.",
+    },
+    {
+      enunciado: "Si se evapora y luego se diluye de vuelta al volumen original, la concentración final:",
+      opciones: ["Queda más alta que la original", "Queda más baja que la original", "Vuelve a ser igual a la original", "Se hace cero"],
+      correcta: 2,
+      explicacion: "Ni evaporar ni diluir cambian la cantidad de soluto — al volver al volumen original, la concentración regresa también.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Sumar las concentraciones directamente** en vez de ponderarlas por volumen — igual
+  que con los precios, hay que ponderar.
+- **Olvidar que el agua pura tiene concentración $0\%$** al plantear una dilución — es
+  simplemente un componente más de la mezcla, con $c=0$.
+- **Confundir volumen de soluto con volumen de solución** — el soluto es solo la
+  fracción $c \cdot V$ del volumen total, no el volumen total.
+- **Aplicar la fórmula de evaporación sin verificar que $c_f > c_1$** — si el problema
+  da una concentración final *menor* que la inicial, no puede tratarse de evaporación
+  pura (habría que revisar el planteamiento).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/mezcla-de-sustancias-de-diferentes-precios", label: "Mezcla de sustancias de diferentes precios" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/mezcla-de-sustancias-de-diferentes-densidades", label: "Mezcla de sustancias de diferentes densidades" },
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/aleacion-de-metales-y-ley-de-las-aleaciones-de-oro", label: "Aleación de metales y ley de las aleaciones de oro" },
+  ]}
+/>

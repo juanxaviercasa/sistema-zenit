@@ -1,0 +1,312 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { MezclaPonderada } from "@/components/interactive/aritmetica";
+
+# Aleación de metales y ley de las aleaciones de oro
+
+<Objetivo>
+
+Definir aleación y amalgama, calcular la ley de una aleación en milésimas y en
+quilates, y determinar cuánto metal puro añadir para alcanzar una ley deseada.
+
+</Objetivo>
+
+## Marco teórico
+
+Una **aleación** es una mezcla homogénea de dos o más metales (o de un metal con un
+no-metal, como el acero, que es hierro con carbono). Una **amalgama** es,
+específicamente, una aleación que contiene mercurio.
+
+**Ley de una aleación.** Es la proporción de metal fino (puro) respecto al peso total
+de la aleación. Se expresa de dos formas equivalentes:
+
+- **En milésimas (‰):** partes de metal puro por cada $1000$ partes de aleación.
+  $$L_{\text{milésimas}} = \frac{\text{peso de metal puro}}{\text{peso total}} \times 1000.$$
+- **En quilates (solo para oro):** una escala de $0$ a $24$, donde $24$ quilates
+  equivale a oro puro ($1000$ milésimas). La conversión es directamente proporcional:
+  $$\text{quilates} = \frac{L_{\text{milésimas}}}{1000} \times 24, \qquad
+  L_{\text{milésimas}} = \frac{\text{quilates}}{24} \times 1000.$$
+
+**Ley de una mezcla de aleaciones.** Al fundir y mezclar varias aleaciones de pesos
+$P_1, \dots, P_k$ y leyes $L_1, \dots, L_k$, la ley resultante es la misma "regla de la
+mezcla" ya conocida, con el **peso** como "cantidad" y la **ley** como "valor":
+
+$$
+L_f = \frac{P_1L_1+P_2L_2+\cdots+P_kL_k}{P_1+P_2+\cdots+P_k}.
+$$
+
+**Enunciado (agregar metal puro).** Si a una aleación de peso $P_0$ y ley $L_0$ se le
+agrega un peso $P_p$ de metal **puro** (ley $1000$‰), la cantidad de metal puro
+necesaria para alcanzar una ley deseada $L_f$ es:
+
+$$
+P_p = \frac{P_0(L_f - L_0)}{1000 - L_f}.
+$$
+
+**Demostración.**
+
+**Paso 1 — aplicar la regla de la mezcla.** El metal puro es, simplemente, un segundo
+componente con ley $1000$:
+
+$$
+L_f = \frac{P_0L_0 + P_p(1000)}{P_0+P_p}.
+$$
+
+**Paso 2 — despejar $P_p$.** Multiplicando ambos lados por $(P_0+P_p)$:
+
+$$
+L_f P_0 + L_f P_p = P_0 L_0 + 1000 P_p \;\Longrightarrow\; L_f P_p - 1000P_p =
+P_0L_0 - L_fP_0.
+$$
+
+$$
+P_p(L_f - 1000) = P_0(L_0 - L_f).
+$$
+
+**Conclusión.** Dividiendo entre $(L_f - 1000)$ y simplificando el signo:
+
+$$
+P_p = \frac{P_0(L_0-L_f)}{L_f-1000} = \frac{P_0(L_f-L_0)}{1000-L_f}.
+\qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<MezclaPonderada
+  titulo="Ley de una aleación (mezcla de metales)"
+  nombres={["Metal A", "Metal B", "Metal C"]}
+  etiquetaCantidad="Peso (g)"
+  etiquetaValor="Ley (‰)"
+  etiquetaResultado="Ley final (‰)"
+  cantidadMin={0}
+  cantidadMax={500}
+  cantidadPaso={10}
+  valorMin={0}
+  valorMax={1000}
+  valorPaso={10}
+  iniciales={[
+    { cantidad: 200, valor: 750 },
+    { cantidad: 150, valor: 500 },
+    { cantidad: 50, valor: 1000 },
+  ]}
+  nota="Pon un componente en ley 1000‰ para simular agregar metal puro a la aleación."
+/>
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Un anillo de $18$ quilates, ¿qué ley tiene en milésimas?
+
+**Solución.** $L = \dfrac{18}{24} \times 1000 = 750$‰.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Se funden $300$ g de oro de ley $600$‰ con $200$ g de oro de ley
+$900$‰. Halla la ley de la aleación resultante.
+
+**Solución.**
+
+$$
+L_f = \frac{300(600)+200(900)}{500} = \frac{180000+180000}{500} = \frac{360000}{500}
+= 720.
+$$
+
+La ley resultante es $720$‰.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Se tienen $400$ g de oro de ley $500$‰. ¿Cuántos gramos de oro puro
+deben agregarse para subir la ley a $800$‰?
+
+**Solución.**
+
+$$
+P_p = \frac{400(800-500)}{1000-800} = \frac{400(300)}{200} = \frac{120000}{200} =
+600 \text{ g.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un joyero tiene una aleación de $250$ g de ley $600$‰. Quiere obtener
+una aleación de $18$ quilates fundiéndola con oro puro. ¿Cuántos gramos de oro puro
+necesita?
+
+**Solución.** $18$ quilates $= \dfrac{18}{24}\times 1000 = 750$‰.
+
+$$
+P_p = \frac{250(750-600)}{1000-750} = \frac{250(150)}{250} = 150 \text{ g.}
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Convierte $21$ quilates a milésimas.
+
+<Solucion>
+
+$L = \dfrac{21}{24}\times 1000 = 875$‰.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Se funden $100$ g de ley $400$‰ con $100$ g de ley $800$‰. Halla la ley resultante.
+
+<Solucion>
+
+$L_f = \dfrac{100(400)+100(800)}{200} = 600$‰ (promedio simple, por pesos iguales).
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Se tienen $500$ g de ley $400$‰. ¿Cuántos gramos de oro puro deben agregarse para
+llegar a $600$‰?
+
+<Solucion>
+
+$P_p = \dfrac{500(600-400)}{1000-600} = \dfrac{500(200)}{400} = 250$ g.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Se funden $150$ g de ley $L$ desconocida con $100$ g de oro puro, dando una aleación
+de $700$‰. Halla $L$.
+
+<Solucion>
+
+$700 = \dfrac{150L+100(1000)}{250} \Rightarrow 175000 = 150L+100000 \Rightarrow
+150L=75000 \Rightarrow L=500$‰.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un lingote de $600$ g tiene ley $650$‰. Se le extraen $x$ gramos de metal (con la
+misma ley del lingote) y se reemplazan por $x$ gramos de oro puro. Si la ley final es
+$800$‰, halla $x$. *(Pista: el peso total no cambia; solo cambia la composición.)*
+
+<Solucion>
+
+Al retirar $x$ g de la aleación (ley $650$‰) quedan $(600-x)$ g de ley $650$‰, y se
+agregan $x$ g de ley $1000$‰. Peso total sigue siendo $600$ g:
+
+$$
+800 = \frac{(600-x)(650) + x(1000)}{600} \;\Longrightarrow\; 480000 = 390000-650x+
+1000x.
+$$
+
+$$
+480000 = 390000 + 350x \;\Longrightarrow\; 350x = 90000 \;\Longrightarrow\;
+x \approx 257{,}14 \text{ g.}
+$$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para elevar la ley de una aleación hasta la ley máxima posible
+($1000$‰, oro puro), se necesitaría una cantidad **infinita** de oro puro — es decir,
+que $P_p \to \infty$ cuando $L_f \to 1000$ en la fórmula
+$P_p = \dfrac{P_0(L_f-L_0)}{1000-L_f}$.
+
+<Solucion>
+
+En la fórmula, el denominador es $1000 - L_f$. Cuando $L_f \to 1000$ (por valores
+menores), este denominador $\to 0^+$, mientras que el numerador $P_0(L_f - L_0)$
+tiende a un valor positivo finito $P_0(1000-L_0) > 0$ (asumiendo $L_0 < 1000$, es
+decir que la aleación original no era ya oro puro). Un numerador positivo finito
+dividido entre un denominador que tiende a cero por valores positivos da como
+resultado $P_p \to +\infty$. Tiene sentido intuitivamente: nunca se puede alcanzar
+$1000$‰ exacto agregando una cantidad *finita* de oro puro a una aleación que no lo
+sea — solo se puede acercar arbitrariamente. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La ley de una aleación mide:",
+      opciones: ["Su peso total", "La proporción de metal puro respecto al peso total", "Su densidad", "Su volumen"],
+      correcta: 1,
+      explicacion: "Ley = peso de metal puro / peso total (en milésimas o quilates).",
+    },
+    {
+      enunciado: "24 quilates equivale a:",
+      opciones: ["500‰", "750‰", "1000‰ (oro puro)", "240‰"],
+      correcta: 2,
+      explicacion: "24 quilates es la escala completa: oro 100% puro, 1000 milésimas.",
+    },
+    {
+      enunciado: "12 quilates en milésimas es:",
+      opciones: ["500‰", "480‰", "1200‰", "250‰"],
+      correcta: 0,
+      explicacion: "L = (12/24)×1000 = 500‰.",
+    },
+    {
+      enunciado: "Una amalgama es específicamente una aleación que contiene:",
+      opciones: ["Oro", "Plata", "Mercurio", "Carbono"],
+      correcta: 2,
+      explicacion: "Amalgama es el nombre específico para las aleaciones que incluyen mercurio.",
+    },
+    {
+      enunciado: "Al agregar metal puro a una aleación, la ley resultante:",
+      opciones: ["Siempre baja", "Siempre sube (o queda igual si ya era pura)", "No cambia nunca", "Depende del color del metal"],
+      correcta: 1,
+      explicacion: "El metal puro tiene la ley máxima (1000‰), así que agregarlo solo puede subir o mantener la ley promedio.",
+    },
+    {
+      enunciado: "Para alcanzar exactamente 1000‰ agregando oro puro a una aleación imperfecta, se necesitaría:",
+      opciones: ["Una cantidad finita calculable siempre", "Una cantidad infinita (nunca se alcanza exactamente con una cantidad finita)", "Exactamente el mismo peso que la aleación original", "Es imposible calcular"],
+      correcta: 1,
+      explicacion: "La fórmula Pp = P0(Lf-L0)/(1000-Lf) diverge a infinito cuando Lf → 1000.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir la escala de quilates (0 a 24) con la de milésimas (0 a 1000)** — nunca
+  mezcles ambas sin convertir primero.
+- **Olvidar que el "metal puro" tiene ley $1000$‰ ($24$ quilates)**, no $100$ o algún
+  otro valor — es el techo de ambas escalas.
+- **Aplicar la fórmula de "agregar metal puro" cuando en realidad se están fundiendo
+  dos aleaciones cualesquiera** (ninguna pura) — en ese caso, usa directamente la
+  regla de la mezcla general, no la fórmula despejada para $P_p$.
+- **No verificar que $L_f$ esté entre $L_0$ y $1000$** al agregar metal puro — si el
+  problema pide una ley final *menor* que la original, agregar metal puro no puede
+  lograrlo (habría que agregar un metal de ley más baja, no más alta).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/mezcla-de-sustancias-de-diferentes-densidades", label: "Mezcla de sustancias de diferentes densidades" },
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/mezcla-de-sustancias-de-diferentes-precios", label: "Mezcla de sustancias de diferentes precios" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/estadistica", label: "Estadística (media ponderada)" },
+  ]}
+/>

@@ -70,6 +70,25 @@ const subtemasInteresSimpleYCompuesto: Subtema[] = [
   ),
 ];
 
+const subtemasMezclaYAleacion: Subtema[] = [
+  subtema(
+    "mezcla-de-sustancias-de-diferentes-precios",
+    "Mezcla de sustancias de diferentes precios"
+  ),
+  subtema(
+    "mezcla-de-sustancias-de-diferentes-concentraciones",
+    "Mezcla de sustancias de diferentes concentraciones"
+  ),
+  subtema(
+    "mezcla-de-sustancias-de-diferentes-densidades",
+    "Mezcla de sustancias de diferentes densidades"
+  ),
+  subtema(
+    "aleacion-de-metales-y-ley-de-las-aleaciones-de-oro",
+    "Aleación de metales y ley de las aleaciones de oro"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -100,7 +119,7 @@ const aritmetica: Area = {
       undefined,
       subtemasInteresSimpleYCompuesto
     ),
-    tema(4, "mezcla-y-aleacion", "Mezcla y aleación"),
+    tema(4, "mezcla-y-aleacion", "Mezcla y aleación", undefined, subtemasMezclaYAleacion),
     tema(5, "estadistica", "Estadística"),
     tema(6, "probabilidad", "Probabilidad"),
     tema(7, "numeracion", "Numeración"),

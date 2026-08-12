@@ -11,3 +11,4 @@ export { CrecimientoInteresSimple } from "./crecimiento-interes-simple";
 export { ComparadorInteresSimpleYCompuesto } from "./comparador-interes-simple-y-compuesto";
 export { ComparadorDescuentos } from "./comparador-descuentos";
 export { VencimientoComun } from "./vencimiento-comun";
+export { MezclaPonderada } from "./mezcla-ponderada";

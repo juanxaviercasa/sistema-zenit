@@ -1,0 +1,307 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { MezclaPonderada } from "@/components/interactive/aritmetica";
+
+# Mezcla de sustancias de diferentes precios
+
+<Objetivo>
+
+Calcular el precio medio de una mezcla de sustancias de distinto precio unitario, y
+demostrar la fórmula del promedio ponderado que lo sustenta (la "regla de la mezcla").
+
+</Objetivo>
+
+## Marco teórico
+
+Al mezclar cantidades $c_1, c_2, \dots, c_k$ de $k$ sustancias, cada una con su propio
+precio unitario $p_1, p_2, \dots, p_k$, se obtiene una mezcla con un **precio medio**
+$p_m$ — el precio al que habría que vender *toda* la mezcla para obtener exactamente el
+mismo ingreso total que vendiendo cada sustancia por separado a su propio precio.
+
+**Enunciado (regla de la mezcla).**
+
+$$
+p_m = \frac{c_1p_1 + c_2p_2 + \cdots + c_kp_k}{c_1+c_2+\cdots+c_k}.
+$$
+
+**Demostración.**
+
+**Paso 1 — costo total real.** Vendiendo cada sustancia por separado, el ingreso total
+es la suma de cada cantidad por su propio precio:
+
+$$
+\text{Ingreso real} = c_1p_1 + c_2p_2 + \cdots + c_kp_k.
+$$
+
+**Paso 2 — costo total con el precio medio.** Si en cambio se vendiera **toda** la
+mezcla (cantidad total $c_1+\cdots+c_k$) al precio medio $p_m$, el ingreso sería:
+
+$$
+\text{Ingreso con } p_m = (c_1+c_2+\cdots+c_k)\, p_m.
+$$
+
+**Conclusión.** Por definición, $p_m$ es precisamente el precio que hace que ambos
+ingresos coincidan. Igualando ambas expresiones y despejando:
+
+$$
+p_m = \frac{c_1p_1+c_2p_2+\cdots+c_kp_k}{c_1+c_2+\cdots+c_k}. \qquad \blacksquare
+$$
+
+Esta es la misma técnica de **promedio ponderado** que ya usaste para el vencimiento
+común de varias letras (*Interés simple y compuesto*): cada precio "pesa" según la
+cantidad de esa sustancia en la mezcla.
+
+## Visualización interactiva
+
+<MezclaPonderada
+  titulo="Precio medio de una mezcla"
+  nombres={["Sustancia A", "Sustancia B", "Sustancia C"]}
+  etiquetaCantidad="Cantidad (kg)"
+  etiquetaValor="Precio (S/. por kg)"
+  etiquetaResultado="Precio medio (S/. por kg)"
+  cantidadMin={0}
+  cantidadMax={50}
+  valorMin={1}
+  valorMax={30}
+  iniciales={[
+    { cantidad: 20, valor: 8 },
+    { cantidad: 15, valor: 12 },
+    { cantidad: 10, valor: 20 },
+  ]}
+  nota="El precio medio siempre queda entre el precio más bajo y el más alto de los componentes — nunca fuera de ese rango."
+/>
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Se mezclan $30$ kg de café a $S/. 18$ por kg con $20$ kg de café a
+$S/. 28$ por kg. Halla el precio medio de la mezcla.
+
+**Solución.**
+
+$$
+p_m = \frac{30(18) + 20(28)}{30+20} = \frac{540+560}{50} = \frac{1100}{50} = 22.
+$$
+
+El precio medio es $S/. 22$ por kg.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Se mezclan $x$ kg de arroz a $S/. 4$ por kg con $10$ kg a $S/. 6$ por
+kg, y el precio medio resultante es $S/. 5$ por kg. Halla $x$.
+
+**Solución.**
+
+$$
+5 = \frac{4x + 10(6)}{x+10} \;\Longrightarrow\; 5x + 50 = 4x + 60 \;\Longrightarrow\;
+x = 10.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Se mezclan $10$ kg a $S/. 5$, $15$ kg a $S/. 8$ y $25$ kg a $S/. 10$
+por kg. Halla el precio medio.
+
+**Solución.**
+
+$$
+p_m = \frac{10(5)+15(8)+25(10)}{10+15+25} = \frac{50+120+250}{50} = \frac{420}{50}
+= 8{,}4.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Un comerciante mezcla café de $S/. 15$ por kg con café de $S/. 25$ por
+kg para obtener $40$ kg de mezcla a $S/. 18$ por kg. ¿Cuántos kg de cada tipo usó?
+
+**Solución.** Sea $x$ los kg del café de $S/. 15$; entonces $40-x$ son del de $S/. 25$.
+
+$$
+18 = \frac{15x + 25(40-x)}{40} \;\Longrightarrow\; 720 = 15x + 1000 - 25x
+\;\Longrightarrow\; 720 = 1000 - 10x \;\Longrightarrow\; x = 28.
+$$
+
+Usó $28$ kg del café de $S/. 15$ y $12$ kg del de $S/. 25$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Se mezclan $20$ kg a $S/. 10$ por kg con $30$ kg a $S/. 15$ por kg. Halla el precio
+medio.
+
+<Solucion>
+
+$p_m = \dfrac{20(10)+30(15)}{50} = \dfrac{200+450}{50} = 13$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Se mezclan $12$ kg a $S/. 20$ con $x$ kg a $S/. 30$, dando un precio medio de
+$S/. 26$. Halla $x$.
+
+<Solucion>
+
+$26 = \dfrac{12(20)+30x}{12+x} \Rightarrow 312+26x = 240+30x \Rightarrow 72=4x
+\Rightarrow x=18$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Se mezclan $5$ kg a $S/. 12$, $8$ kg a $S/. 18$ y $7$ kg a $S/. 24$ por kg. Halla el
+precio medio.
+
+<Solucion>
+
+$p_m = \dfrac{5(12)+8(18)+7(24)}{20} = \dfrac{60+144+168}{20} = \dfrac{372}{20} =
+18{,}6$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Cuántos kg de café a $S/. 30$ por kg deben mezclarse con $15$ kg de café a $S/. 18$
+por kg, para obtener una mezcla de $S/. 22$ por kg?
+
+<Solucion>
+
+$22 = \dfrac{30x + 15(18)}{x+15} \Rightarrow 22x+330 = 30x+270 \Rightarrow 60=8x
+\Rightarrow x=7{,}5$ kg.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Un comerciante mezcla tres tipos de arroz. Del primero, a $S/. 3$ por kg, usa el
+doble de kg que del segundo, a $S/. 5$ por kg; y del tercero, a $S/. 9$ por kg, usa
+$10$ kg. Si el precio medio de toda la mezcla es $S/. 5$ por kg, halla cuántos kg
+usó de cada tipo.
+
+<Solucion>
+
+Sea $y$ los kg del segundo tipo; el primero usa $2y$ kg. Cantidad total:
+$2y+y+10 = 3y+10$.
+
+$$
+5 = \frac{3(2y) + 5y + 9(10)}{3y+10} = \frac{6y+5y+90}{3y+10} = \frac{11y+90}{3y+10}.
+$$
+
+$$
+5(3y+10) = 11y+90 \;\Longrightarrow\; 15y+50 = 11y+90 \;\Longrightarrow\; 4y=40
+\;\Longrightarrow\; y=10.
+$$
+
+Entonces: segundo tipo $=10$ kg, primer tipo $=2(10)=20$ kg, tercer tipo $=10$ kg.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si se mezclan cantidades iguales ($c_1=c_2=\cdots=c_k=c$) de $k$
+sustancias con precios $p_1,\dots,p_k$, el precio medio se reduce al promedio
+aritmético simple de los precios.
+
+<Solucion>
+
+Con $c_1=c_2=\cdots=c_k=c$:
+
+$$
+p_m = \frac{c\,p_1+c\,p_2+\cdots+c\,p_k}{c+c+\cdots+c} = \frac{c(p_1+p_2+\cdots+p_k)}
+{kc} = \frac{p_1+p_2+\cdots+p_k}{k},
+$$
+
+que es exactamente el promedio aritmético (simple) de los $k$ precios — el peso de
+cada uno se vuelve igual cuando las cantidades son iguales, así que la ponderación deja
+de tener efecto. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "La fórmula del precio medio de una mezcla es:",
+      opciones: ["El promedio simple de los precios", "(Σ cantidad·precio) ÷ (Σ cantidad)", "El precio más alto de los componentes", "La suma de todos los precios"],
+      correcta: 1,
+      explicacion: "Es un promedio ponderado por la cantidad de cada componente.",
+    },
+    {
+      enunciado: "Se mezclan 10 kg a S/. 4 con 10 kg a S/. 8. El precio medio es:",
+      opciones: ["6", "12", "4", "8"],
+      correcta: 0,
+      explicacion: "Con cantidades iguales, es el promedio simple: (4+8)/2 = 6.",
+    },
+    {
+      enunciado: "El precio medio de una mezcla siempre está:",
+      opciones: ["Por encima del precio más alto", "Por debajo del precio más bajo", "Entre el precio más bajo y el más alto de los componentes", "Es siempre el promedio simple, sin importar las cantidades"],
+      correcta: 2,
+      explicacion: "Al ser un promedio ponderado, cae necesariamente en ese rango.",
+    },
+    {
+      enunciado: "Si se usa más cantidad de la sustancia más cara, el precio medio se acerca más:",
+      opciones: ["Al precio de la sustancia más barata", "Al precio de la sustancia más cara", "Al promedio simple sin importar las cantidades", "A cero"],
+      correcta: 1,
+      explicacion: "Mayor cantidad implica mayor peso en el promedio ponderado.",
+    },
+    {
+      enunciado: "Se mezclan 8 kg a S/. 5 y 12 kg a S/. 10. El precio medio es:",
+      opciones: ["7,5", "8", "7", "6"],
+      correcta: 1,
+      explicacion: "pm = (8·5+12·10)/20 = (40+120)/20 = 8.",
+    },
+    {
+      enunciado: "¿Qué técnica matemática es la base de la regla de la mezcla?",
+      opciones: ["El teorema de Pitágoras", "El promedio ponderado", "La regla de tres inversa exclusivamente", "La factorización"],
+      correcta: 1,
+      explicacion: "Es exactamente la misma técnica de promedio ponderado usada en vencimiento común y reparto proporcional.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar el promedio simple de los precios** cuando las cantidades mezcladas son
+  distintas — solo es válido promediar simple cuando las cantidades son iguales
+  (Problema 6).
+- **Ponderar por el precio en vez de por la cantidad** — el peso de cada precio en el
+  promedio es su cantidad, no al revés.
+- **Olvidar dividir entre la cantidad total** — un error común es calcular solo
+  $\sum c_ip_i$ y detenerse ahí, sin dividir entre $\sum c_i$.
+- **Esperar que el precio medio sea exactamente el punto medio del rango** — solo
+  ocurre si las cantidades mezcladas son iguales; en general depende de la proporción
+  exacta de cada componente.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/interes-simple-y-compuesto/intercambio-de-letras-y-vencimiento-comun", label: "Intercambio de letras y vencimiento común" },
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/reparto-proporcional-simple-y-compuesto", label: "Reparto proporcional simple y compuesto" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/mezcla-de-sustancias-de-diferentes-concentraciones", label: "Mezcla de sustancias de diferentes concentraciones" },
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/mezcla-de-sustancias-de-diferentes-densidades", label: "Mezcla de sustancias de diferentes densidades" },
+    { href: "/matematica/aritmetica/estadistica", label: "Estadística (media ponderada)" },
+  ]}
+/>

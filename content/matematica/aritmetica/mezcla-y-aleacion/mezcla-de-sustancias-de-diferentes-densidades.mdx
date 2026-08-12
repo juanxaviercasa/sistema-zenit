@@ -1,0 +1,289 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { MezclaPonderada } from "@/components/interactive/aritmetica";
+
+# Mezcla de sustancias de diferentes densidades
+
+<Objetivo>
+
+Calcular la densidad media de una mezcla de sustancias, distinguiendo si los datos
+dados son volúmenes o masas — porque, a diferencia de precio y concentración, la
+fórmula correcta cambia según cuál de los dos se conozca.
+
+</Objetivo>
+
+## Marco teórico
+
+La densidad relaciona masa y volumen: $\rho = \dfrac{m}{V}$, así que $m = \rho V$.
+Al mezclar sustancias (suponiendo que los volúmenes se suman sin reacción química ni
+compactación), hay **dos casos** según qué dato se conozca de cada componente.
+
+**Caso A — se conocen los volúmenes.** Si se mezclan volúmenes $V_1, \dots, V_k$ de
+sustancias con densidades $\rho_1, \dots, \rho_k$, la masa total es $\sum \rho_iV_i$ y
+el volumen total es $\sum V_i$, así que la densidad media es la misma "regla de la
+mezcla" ya conocida, con el volumen como "cantidad":
+
+$$
+\rho_m = \frac{\rho_1V_1+\rho_2V_2+\cdots+\rho_kV_k}{V_1+V_2+\cdots+V_k}.
+$$
+
+**Caso B — se conocen las masas.** Si en cambio se mezclan **masas** $m_1, \dots, m_k$
+(no volúmenes) de esas mismas sustancias, la fórmula **no** es la misma.
+
+**Demostración (Caso B).**
+
+**Paso 1 — hallar el volumen de cada componente a partir de su masa.** Como
+$\rho_i = m_i/V_i$, despejando: $V_i = \dfrac{m_i}{\rho_i}$.
+
+**Paso 2 — sumar masas y volúmenes por separado.** La masa total es $\sum m_i$; el
+volumen total es $\sum \dfrac{m_i}{\rho_i}$.
+
+**Conclusión.** La densidad media es masa total entre volumen total:
+
+$$
+\rho_m = \frac{m_1+m_2+\cdots+m_k}{\dfrac{m_1}{\rho_1}+\dfrac{m_2}{\rho_2}+\cdots+
+\dfrac{m_k}{\rho_k}}. \qquad \blacksquare
+$$
+
+Esta expresión es exactamente la **media armónica ponderada** de las densidades (ver
+*Medias aritmética, geométrica y armónica*) — no la media aritmética ponderada del
+Caso A. Usar la fórmula equivocada es el error más frecuente de este subtema.
+
+## Visualización interactiva
+
+<MezclaPonderada
+  titulo="Densidad media de una mezcla (por volumen)"
+  nombres={["Sustancia A", "Sustancia B", "Sustancia C"]}
+  etiquetaCantidad="Volumen (L)"
+  etiquetaValor="Densidad (kg/L)"
+  etiquetaResultado="Densidad media (kg/L)"
+  cantidadMin={0}
+  cantidadMax={30}
+  valorMin={0.5}
+  valorMax={10}
+  valorPaso={0.1}
+  iniciales={[
+    { cantidad: 8, valor: 0.8 },
+    { cantidad: 5, valor: 2.7 },
+    { cantidad: 2, valor: 7.9 },
+  ]}
+  nota="Este widget mezcla por volumen (Caso A). Si los datos de un problema son masas, usa la fórmula del Caso B en su lugar."
+/>
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Se mezclan $3$ L de una sustancia de densidad $0{,}8$ kg/L con $2$ L de
+otra de densidad $1{,}3$ kg/L. Halla la densidad media (Caso A: volúmenes conocidos).
+
+**Solución.**
+
+$$
+\rho_m = \frac{3(0{,}8)+2(1{,}3)}{5} = \frac{2{,}4+2{,}6}{5} = \frac{5}{5} = 1
+\text{ kg/L.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Se mezclan $4$ kg de una sustancia de densidad $2$ kg/L con $6$ kg de
+otra de densidad $3$ kg/L. Halla la densidad media (Caso B: masas conocidas).
+
+**Solución.** $V_1 = 4/2 = 2$ L; $V_2 = 6/3 = 2$ L.
+
+$$
+\rho_m = \frac{4+6}{2+2} = \frac{10}{4} = 2{,}5 \text{ kg/L.}
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Compara el resultado de "mezclar $5$ kg de densidad $1$ kg/L con
+$5$ kg de densidad $4$ kg/L" (Caso B) contra el error común de aplicarles
+directamente la fórmula del Caso A tratando los "5 kg" como si fueran "5 L".
+
+**Solución.** Correcto (Caso B): $V_1=5/1=5$ L, $V_2=5/4=1{,}25$ L.
+$\rho_m = \dfrac{10}{6{,}25} = 1{,}6$ kg/L. Incorrecto (aplicando por error la fórmula
+de volúmenes a las masas): $\dfrac{5(1)+5(4)}{10} = \dfrac{25}{10}=2{,}5$ kg/L — un
+resultado distinto y equivocado, porque $5$ kg de la sustancia densa ocupa **menos**
+volumen que $5$ kg de la sustancia menos densa, y esa diferencia de volumen es
+justamente lo que la fórmula del Caso A ignora.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Se combinan $6$ L de una sustancia de densidad $\rho_1$ desconocida con
+$4$ L de otra de densidad $5$ kg/L, dando una densidad media de $3{,}4$ kg/L. Halla
+$\rho_1$.
+
+**Solución.**
+
+$$
+3{,}4 = \frac{6\rho_1 + 4(5)}{10} \;\Longrightarrow\; 34 = 6\rho_1+20
+\;\Longrightarrow\; 6\rho_1 = 14 \;\Longrightarrow\; \rho_1 = \frac{14}{6} \approx
+2{,}33 \text{ kg/L.}
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Se mezclan $4$ L de densidad $1{,}0$ kg/L con $6$ L de densidad $2{,}0$ kg/L (Caso A).
+Halla la densidad media.
+
+<Solucion>
+
+$\rho_m = \dfrac{4(1)+6(2)}{10} = \dfrac{4+12}{10} = 1{,}6$ kg/L.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Se mezclan $10$ kg de densidad $2$ kg/L con $10$ kg de densidad $5$ kg/L (Caso B).
+Halla la densidad media.
+
+<Solucion>
+
+$V_1=10/2=5$ L; $V_2=10/5=2$ L. $\rho_m = \dfrac{20}{7} \approx 2{,}857$ kg/L.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Se mezclan $8$ L de densidad $\rho_1$ con $12$ L de densidad $3$ kg/L, dando una
+densidad media de $2{,}6$ kg/L. Halla $\rho_1$.
+
+<Solucion>
+
+$2{,}6 = \dfrac{8\rho_1+36}{20} \Rightarrow 52 = 8\rho_1+36 \Rightarrow \rho_1=2$
+kg/L.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Se mezclan $5$ kg de densidad $1$ kg/L con $x$ kg de densidad $4$ kg/L (Caso B), dando
+una densidad media de $2$ kg/L. Halla $x$.
+
+<Solucion>
+
+$V_1=5$ L, $V_2 = x/4$ L. $\rho_m = \dfrac{5+x}{5+x/4}=2 \Rightarrow 5+x = 10 +
+x/2 \Rightarrow x/2 = 5 \Rightarrow x=10$ kg.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que, en el Caso B (masas conocidas), si las dos densidades son iguales
+($\rho_1=\rho_2=\rho$), la densidad media también es $\rho$, sin importar las masas
+usadas.
+
+<Solucion>
+
+$V_1 = m_1/\rho$, $V_2 = m_2/\rho$.
+
+$$
+\rho_m = \frac{m_1+m_2}{\dfrac{m_1}{\rho}+\dfrac{m_2}{\rho}} =
+\frac{m_1+m_2}{\dfrac{m_1+m_2}{\rho}} = \rho. \qquad \blacksquare
+$$
+
+Tiene sentido: si ambas sustancias tienen la misma densidad, cualquier mezcla de ellas
+también tendrá esa densidad, sin importar cuánta masa de cada una se use.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Una aleación se forma mezclando $200$ g de un metal de densidad $8$ g/cm³ con $300$ g
+de otro de densidad $12$ g/cm³. Halla el volumen total de la aleación y su densidad
+media.
+
+<Solucion>
+
+$V_1 = 200/8 = 25$ cm³; $V_2 = 300/12 = 25$ cm³. Volumen total $=50$ cm³.
+$\rho_m = \dfrac{200+300}{50} = 10$ g/cm³.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Cuando se mezclan sustancias dando sus VOLÚMENES, la densidad media se calcula con:",
+      opciones: ["Media aritmética ponderada por volumen", "Media armónica ponderada por masa", "Siempre el promedio simple", "No se puede calcular"],
+      correcta: 0,
+      explicacion: "Caso A: ρm = Σ(ρiVi)/ΣVi — media aritmética ponderada por volumen.",
+    },
+    {
+      enunciado: "Cuando se mezclan sustancias dando sus MASAS, la densidad media se calcula con:",
+      opciones: ["Media aritmética ponderada por masa", "Media armónica ponderada por masa", "Es la misma fórmula del caso de volúmenes", "El promedio simple de las densidades"],
+      correcta: 1,
+      explicacion: "Caso B: ρm = Σmi / Σ(mi/ρi) — una media armónica ponderada.",
+    },
+    {
+      enunciado: "4 L de densidad 1 kg/L y 6 L de densidad 2 kg/L (volúmenes dados) dan una densidad media de:",
+      opciones: ["1,5", "1,6", "1,4", "2,0"],
+      correcta: 1,
+      explicacion: "ρm = (4·1+6·2)/10 = 16/10 = 1,6.",
+    },
+    {
+      enunciado: "Aplicar la fórmula del Caso A cuando los datos son masas (Caso B):",
+      opciones: ["Da el mismo resultado siempre", "Da un resultado incorrecto en general", "Es la forma correcta de resolverlo", "Solo falla si las densidades son iguales"],
+      correcta: 1,
+      explicacion: "Son fórmulas distintas; usar la del volumen con datos de masa da un resultado erróneo (salvo el caso trivial de densidades iguales).",
+    },
+    {
+      enunciado: "10 kg de densidad 2 kg/L y 10 kg de densidad 8 kg/L (masas dadas) — ¿la densidad media es mayor, menor o igual a la media aritmética simple (5)?",
+      opciones: ["Mayor que 5", "Igual a 5", "Menor que 5", "No se puede comparar"],
+      correcta: 2,
+      explicacion: "La media armónica ponderada siempre es menor o igual que la aritmética (HM ≤ AM), salvo que las densidades sean iguales.",
+    },
+    {
+      enunciado: "¿Qué asunción clave hace posible sumar volúmenes directamente al mezclar?",
+      opciones: ["Que las densidades sean iguales", "Que no haya reacción química ni compactación (volúmenes aditivos)", "Que las masas sean iguales", "Que la mezcla sea gaseosa"],
+      correcta: 1,
+      explicacion: "Se asume que los volúmenes se conservan al mezclar — no siempre cierto en la realidad química, pero es la convención de estos problemas.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **El error central de este subtema:** usar la fórmula de volúmenes (Caso A) cuando
+  los datos dados son masas (Caso B), o viceversa — son fórmulas genuinamente
+  distintas, no una simple relabelación.
+- **Olvidar convertir masa a volumen** ($V_i = m_i/\rho_i$) antes de sumar volúmenes en
+  el Caso B.
+- **Asumir volúmenes aditivos sin que el problema lo indique** — en química real, mezclar
+  líquidos no siempre da un volumen exactamente igual a la suma (aunque en estos
+  problemas de aritmética se asume que sí).
+- **Confundir densidad con peso específico o concentración** — son conceptos
+  relacionados pero no intercambiables.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/mezcla-de-sustancias-de-diferentes-concentraciones", label: "Mezcla de sustancias de diferentes concentraciones" },
+    { href: "/matematica/aritmetica/razones-y-proporciones/medias-aritmetica-geometrica-y-armonica", label: "Medias aritmética, geométrica y armónica" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/mezcla-y-aleacion/aleacion-de-metales-y-ley-de-las-aleaciones-de-oro", label: "Aleación de metales y ley de las aleaciones de oro" },
+  ]}
+/>
