@@ -1,0 +1,241 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { InversaDeFuncion } from "@/components/interactive/algebra";
+
+# Función biyectiva e inversa de una función
+
+<Objetivo>
+
+Definir función biyectiva, demostrar que una función tiene inversa si y solo si es
+biyectiva, y demostrar que la gráfica de la inversa es el reflejo de la gráfica
+original respecto a la recta $y=x$.
+
+</Objetivo>
+
+## Marco teórico
+
+Una función es **biyectiva** si es **inyectiva y sobreyectiva** a la vez.
+
+**Enunciado.** $f$ tiene una función inversa $f^{-1}$ si y solo si $f$ es
+biyectiva.
+
+**Demostración.**
+
+($\Leftarrow$) Si $f$ es biyectiva: como es **sobreyectiva**, para cada $y$ del
+codominio existe **al menos un** $x$ con $f(x)=y$ (existencia). Como es
+**inyectiva**, ese $x$ es **único** (unicidad): si $f(x_1)=f(x_2)=y$, la
+inyectividad obliga $x_1=x_2$. Existencia y unicidad juntas permiten definir
+$f^{-1}(y)=x$ (el único $x$ con $f(x)=y$) — y por la definición de función
+(subtema de dominio y rango: $\forall y,\exists! x$), esto es precisamente una
+función bien definida.
+
+($\Rightarrow$) Si $f$ tiene una inversa $f^{-1}$ (una función): para cualquier
+$y$ del codominio, $x=f^{-1}(y)$ cumple $f(x)=y$ — así que $f$ es sobreyectiva. Y
+si $f(x_1)=f(x_2)$, aplicando $f^{-1}$ a ambos lados: $x_1=f^{-1}(f(x_1))=
+f^{-1}(f(x_2))=x_2$ — así que $f$ es inyectiva. Por lo tanto $f$ es biyectiva.
+$\blacksquare$
+
+**Enunciado.** La gráfica de $f^{-1}$ es el reflejo de la gráfica de $f$ respecto
+a la recta $y=x$.
+
+**Demostración.** $(a,b)$ pertenece a la gráfica de $f$ $\iff$ $f(a)=b$ $\iff$
+$f^{-1}(b)=a$ $\iff$ $(b,a)$ pertenece a la gráfica de $f^{-1}$. Como $(b,a)$ es
+exactamente el reflejo de $(a,b)$ respecto a la recta $y=x$ (se intercambian las
+coordenadas), cada punto de la gráfica de $f$ tiene su reflejo en la gráfica de
+$f^{-1}$, y viceversa. $\blacksquare$
+
+## Visualización interactiva
+
+<InversaDeFuncion />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla la inversa de $f(x)=3x-6$.
+
+**Solución.** $y=3x-6\Rightarrow x=\dfrac{y+6}{3}$. Intercambiando el papel de las
+variables: $f^{-1}(x)=\dfrac{x+6}{3}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Verifica que $f(x)=3x-6$ y $f^{-1}(x)=\dfrac{x+6}{3}$ son
+efectivamente inversas, evaluando en $x=4$.
+
+**Solución.** $f(4)=3(4)-6=6$. $f^{-1}(6)=\dfrac{6+6}{3}=4$. Se recupera el valor
+original: $f^{-1}(f(4))=4$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿Es $f(x)=x^2$ (con dominio todo $\mathbb R$) biyectiva? ¿Tiene
+inversa como función en todo su dominio?
+
+**Solución.** No es inyectiva ($f(-2)=f(2)=4$), así que no es biyectiva. Por el
+teorema, no tiene inversa como función en todo $\mathbb R$ (para invertirla hay
+que restringir el dominio, por ejemplo a $x\geq0$).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Explica por qué restringir $f(x)=x^2$ al dominio $[0,+\infty)$ sí
+permite hallar una inversa.
+
+**Solución.** En $[0,+\infty)$, $f(x)=x^2$ es estrictamente creciente (por el
+teorema del subtema anterior, monótona implica inyectiva), y su rango es
+$[0,+\infty)$ (sobreyectiva sobre ese codominio). Siendo biyectiva en ese dominio
+restringido, por el teorema tiene inversa: $f^{-1}(x)=\sqrt x$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla la inversa de $f(x)=5x+2$.
+
+<Solucion>
+
+$y=5x+2\Rightarrow x=\dfrac{y-2}{5}$. $f^{-1}(x)=\dfrac{x-2}{5}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Verifica que $f(x)=5x+2$ y su inversa del problema 1 son correctas, evaluando en
+$x=3$.
+
+<Solucion>
+
+$f(3)=17$. $f^{-1}(17)=\dfrac{17-2}{5}=3$ ✓.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla la inversa de $f(x)=\dfrac{x-4}{3}$.
+
+<Solucion>
+
+$y=\dfrac{x-4}{3}\Rightarrow x=3y+4$. $f^{-1}(x)=3x+4$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Es $f(x)=\lvert x\rvert$ (dominio $\mathbb R$) biyectiva?
+
+<Solucion>
+
+No es inyectiva ($f(-1)=f(1)=1$): no es biyectiva, no tiene inversa en todo su
+dominio.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $(f^{-1})^{-1}=f$ (la inversa de la inversa es la función original).
+
+<Solucion>
+
+Por definición, $f^{-1}(y)=x \iff f(x)=y$. Aplicando la misma definición a
+$f^{-1}$: $(f^{-1})^{-1}(x)=y \iff f^{-1}(y)=x$, que es exactamente la misma
+condición que $f(x)=y$. Por lo tanto $(f^{-1})^{-1}(x)=y=f(x)$: $(f^{-1})^{-1}=f$.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $f$ y $g$ son ambas biyectivas, entonces $(f\circ g)^{-1}=
+g^{-1}\circ f^{-1}$.
+
+<Solucion>
+
+Basta verificar que $g^{-1}\circ f^{-1}$ deshace $f\circ g$:
+$\big[(g^{-1}\circ f^{-1})\circ(f\circ g)\big](x) = g^{-1}\big(f^{-1}(f(g(x)))\big)
+= g^{-1}(g(x)) = x$ (usando $f^{-1}(f(t))=t$ y luego $g^{-1}(g(x))=x$). Como
+componer $g^{-1}\circ f^{-1}$ después de $f\circ g$ recupera $x$, es su inversa:
+$(f\circ g)^{-1}=g^{-1}\circ f^{-1}$. $\blacksquare$ (Nótese que el orden se
+invierte, igual que al ponerse y quitarse calcetines y zapatos.)
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Una función biyectiva es:",
+      opciones: ["Solo inyectiva", "Solo sobreyectiva", "Inyectiva y sobreyectiva", "Ni inyectiva ni sobreyectiva"],
+      correcta: 2,
+      explicacion: "Es la definición de biyectiva.",
+    },
+    {
+      enunciado: "f tiene inversa (como función) si y solo si:",
+      opciones: ["f es continua", "f es biyectiva", "f es par", "f es acotada"],
+      correcta: 1,
+      explicacion: "Es el teorema central de este subtema.",
+    },
+    {
+      enunciado: "La gráfica de f⁻¹ es:",
+      opciones: ["Igual a la de f", "El reflejo de la gráfica de f respecto a y=x", "Siempre una recta", "El reflejo respecto al eje x"],
+      correcta: 1,
+      explicacion: "Se demuestra intercambiando las coordenadas de cada punto.",
+    },
+    {
+      enunciado: "f(x)=x² con dominio todo R no tiene inversa porque:",
+      opciones: ["No es continua", "No es inyectiva (f(-2)=f(2))", "No tiene dominio", "Es par siempre"],
+      correcta: 1,
+      explicacion: "Falla la inyectividad, así que no es biyectiva.",
+    },
+    {
+      enunciado: "(f⁻¹)⁻¹ es igual a:",
+      opciones: ["f", "f⁻¹", "La función identidad", "0"],
+      correcta: 0,
+      explicacion: "La inversa de la inversa recupera la función original.",
+    },
+    {
+      enunciado: "(f∘g)⁻¹ es igual a:",
+      opciones: ["f⁻¹∘g⁻¹", "g⁻¹∘f⁻¹", "f⁻¹+g⁻¹", "(f∘g)"],
+      correcta: 1,
+      explicacion: "El orden se invierte al tomar la inversa de una composición.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Pensar que toda función tiene inversa** — solo las biyectivas la tienen (como
+  función en todo su dominio).
+- **Confundir $f^{-1}(x)$ con $\dfrac1{f(x)}$** — la inversa no es el recíproco;
+  son conceptos completamente distintos que comparten notación.
+- **Olvidar restringir el dominio** de funciones no inyectivas (como $x^2$) antes
+  de intentar hallar una inversa.
+- **Invertir mal el orden en $(f\circ g)^{-1}$** — es $g^{-1}\circ f^{-1}$, no
+  $f^{-1}\circ g^{-1}$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones/composicion-y-operaciones-con-funciones", label: "Composición y operaciones con funciones reales" },
+    { href: "/matematica/algebra/funciones/funcion-definicion-dominio-y-rango", label: "Función: definición, dominio, rango y representación gráfica" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones/variacion-directa-e-inversa", label: "Variación directa e inversa de dos variables" },
+  ]}
+/>

@@ -1,0 +1,240 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { OperacionesYComposicion } from "@/components/interactive/algebra";
+
+# Composición y operaciones con funciones reales
+
+<Objetivo>
+
+Definir la composición de funciones y las operaciones aritméticas entre funciones
+reales, y demostrar que la composición es asociativa pero no conmutativa.
+
+</Objetivo>
+
+## Marco teórico
+
+**Composición.** $(f\circ g)(x)=f(g(x))$, con dominio $\{x\in\operatorname{dom}(g) :
+g(x)\in\operatorname{dom}(f)\}$ (primero se aplica $g$, y su salida debe estar en
+el dominio de $f$).
+
+**Operaciones aritméticas.** Para $f,g$ con el mismo tipo de entrada:
+
+$$
+\begin{aligned}
+(f+g)(x)&=f(x)+g(x), & (f-g)(x)&=f(x)-g(x), \\
+(f\cdot g)(x)&=f(x)\cdot g(x), & \left(\frac fg\right)(x)&=\frac{f(x)}{g(x)}.
+\end{aligned}
+$$
+
+Los dominios de $f+g$, $f-g$ y $f\cdot g$ son la **intersección** de los dominios
+de $f$ y $g$; el de $f/g$ es esa intersección, **excluyendo** además los puntos
+donde $g(x)=0$.
+
+**Enunciado.** La composición **no es conmutativa** en general: existen $f,g$ con
+$(f\circ g)(x)\neq(g\circ f)(x)$.
+
+**Demostración (por contraejemplo).** Con $f(x)=x+1$ y $g(x)=2x$:
+$(f\circ g)(x)=f(2x)=2x+1$, pero $(g\circ f)(x)=g(x+1)=2(x+1)=2x+2$. Como
+$2x+1\neq2x+2$ para todo $x$, $f\circ g\neq g\circ f$. $\blacksquare$
+
+**Enunciado.** La composición **es asociativa**: $(f\circ g)\circ h = f\circ(g\circ
+h)$.
+
+**Demostración.**
+
+$$
+\big[(f\circ g)\circ h\big](x) = (f\circ g)(h(x)) = f\big(g(h(x))\big).
+$$
+
+$$
+\big[f\circ(g\circ h)\big](x) = f\big((g\circ h)(x)\big) = f\big(g(h(x))\big).
+$$
+
+Ambas expresiones son exactamente $f(g(h(x)))$: las dos formas de agrupar la
+composición triple dan el mismo resultado. $\blacksquare$
+
+## Visualización interactiva
+
+<OperacionesYComposicion />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Con $f(x)=x+3$ y $g(x)=x^2$, halla $(f+g)(2)$.
+
+**Solución.** $f(2)=5$, $g(2)=4$. $(f+g)(2)=5+4=9$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Con las mismas $f,g$, halla $(f\circ g)(2)$.
+
+**Solución.** $g(2)=4$. $(f\circ g)(2)=f(4)=4+3=7$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Con $f(x)=x^2$ y $g(x)=x-1$, verifica que $(f\circ g)(x)\neq(g\circ
+f)(x)$ evaluando ambas en $x=3$.
+
+**Solución.** $(f\circ g)(3)=f(g(3))=f(2)=4$. $(g\circ f)(3)=g(f(3))=g(9)=8$. En
+efecto, $4\neq8$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Con $f(x)=\dfrac1x$ y $g(x)=x-2$, halla el dominio de $f/g$.
+
+**Solución.** $f$ requiere $x\neq0$; $g$ está definida en todo $\mathbb R$. Además
+$f/g$ excluye donde $g(x)=0$, es decir $x=2$. Dominio: $\mathbb R-\{0,2\}$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Con $f(x)=2x$ y $g(x)=x+5$, halla $(f-g)(3)$.
+
+<Solucion>
+
+$f(3)=6$, $g(3)=8$. $(f-g)(3)=6-8=-2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Con las mismas $f,g$, halla $(g\circ f)(3)$.
+
+<Solucion>
+
+$f(3)=6$. $(g\circ f)(3)=g(6)=11$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Con $f(x)=x^2-1$ y $g(x)=x+1$, halla $(f\circ g)(x)$ como expresión general (no
+solo un valor).
+
+<Solucion>
+
+$(f\circ g)(x)=f(x+1)=(x+1)^2-1=x^2+2x+1-1=x^2+2x$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Con $f(x)=\sqrt x$ y $g(x)=x-4$, halla el dominio de $f\circ g$.
+
+<Solucion>
+
+Se necesita $g(x)\geq0$ (para que $f$ esté definida): $x-4\geq0\Rightarrow
+x\geq4$. Dominio: $[4,+\infty)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $f$ es la función identidad ($f(x)=x$), entonces
+$f\circ g=g\circ f=g$ para cualquier función $g$.
+
+<Solucion>
+
+$(f\circ g)(x)=f(g(x))=g(x)$ (porque $f$ deja cualquier entrada igual). Análogamente
+$(g\circ f)(x)=g(f(x))=g(x)$. Ambas coinciden con $g(x)$, así que
+$f\circ g=g\circ f=g$. $\blacksquare$ (La identidad actúa como "elemento neutro"
+de la composición.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $(f\cdot g)(x)=(g\cdot f)(x)$ para todo $f,g$ (a diferencia de la
+composición, el producto de funciones sí es conmutativo).
+
+<Solucion>
+
+$(f\cdot g)(x)=f(x)\cdot g(x)$. Como el producto de números reales es
+conmutativo, $f(x)\cdot g(x)=g(x)\cdot f(x)=(g\cdot f)(x)$. Por lo tanto
+$f\cdot g=g\cdot f$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "(f∘g)(x) se define como:",
+      opciones: ["f(x)·g(x)", "f(g(x))", "g(f(x))", "f(x)+g(x)"],
+      correcta: 1,
+      explicacion: "Primero se aplica g, y su resultado se usa como entrada de f.",
+    },
+    {
+      enunciado: "El dominio de f/g excluye, además de las restricciones de f y g:",
+      opciones: ["Donde f(x)=0", "Donde g(x)=0", "Todo x negativo", "Nada adicional"],
+      correcta: 1,
+      explicacion: "No se puede dividir entre 0.",
+    },
+    {
+      enunciado: "En general, f∘g y g∘f:",
+      opciones: ["Son siempre iguales", "Son generalmente distintas (no conmutativa)", "Nunca están definidas", "Son siempre inversas"],
+      correcta: 1,
+      explicacion: "Se demuestra con un contraejemplo: el orden de composición importa.",
+    },
+    {
+      enunciado: "La composición de funciones es:",
+      opciones: ["Conmutativa pero no asociativa", "Asociativa pero no conmutativa (en general)", "Ni conmutativa ni asociativa", "Ambas"],
+      correcta: 1,
+      explicacion: "(f∘g)∘h = f∘(g∘h) siempre, pero f∘g ≠ g∘f en general.",
+    },
+    {
+      enunciado: "El producto de funciones f·g:",
+      opciones: ["No es conmutativo", "Es conmutativo, porque el producto de reales lo es", "Solo es conmutativo si f=g", "Nunca está definido"],
+      correcta: 1,
+      explicacion: "f(x)·g(x)=g(x)·f(x) para todo x, por la conmutatividad del producto real.",
+    },
+    {
+      enunciado: "Si f es la función identidad, f∘g es igual a:",
+      opciones: ["g", "f", "0", "1"],
+      correcta: 0,
+      explicacion: "La identidad actúa como elemento neutro de la composición.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir $(f\circ g)(x)$ con $(f\cdot g)(x)$** — la composición aplica $f$ al
+  resultado de $g$; el producto multiplica los dos valores.
+- **Suponer que $f\circ g=g\circ f$** — en general son distintas; siempre hay que
+  verificar el orden.
+- **Olvidar el dominio de la composición** — no basta con el dominio de $g$; el
+  resultado $g(x)$ también debe caer en el dominio de $f$.
+- **Olvidar excluir del dominio de $f/g$ los ceros de $g$** — además de las
+  restricciones propias de $f$ y de $g$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones/clasificacion-de-funciones", label: "Clasificación de funciones" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones/funcion-biyectiva-e-inversa", label: "Función biyectiva e inversa de una función" },
+  ]}
+/>

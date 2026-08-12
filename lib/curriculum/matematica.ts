@@ -240,6 +240,28 @@ const subtemasEcuacionesSegundoGrado: Subtema[] = [
   ),
 ];
 
+const subtemasFunciones: Subtema[] = [
+  subtema(
+    "funcion-definicion-dominio-y-rango",
+    "Función: definición, dominio, rango y representación gráfica"
+  ),
+  subtema("funciones-elementales", "Funciones elementales"),
+  subtema(
+    "clasificacion-de-funciones",
+    "Clasificación de funciones: par, impar, inyectiva, sobreyectiva, monótona, acotada"
+  ),
+  subtema(
+    "composicion-y-operaciones-con-funciones",
+    "Composición y operaciones con funciones reales"
+  ),
+  subtema("funcion-biyectiva-e-inversa", "Función biyectiva e inversa de una función"),
+  subtema("variacion-directa-e-inversa", "Variación directa e inversa de dos variables"),
+  subtema(
+    "tecnicas-de-graficacion-por-transformaciones",
+    "Técnicas de graficación por transformaciones"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -320,7 +342,7 @@ const algebra: Area = {
       undefined,
       subtemasEcuacionesSegundoGrado
     ),
-    tema(3, "funciones", "Funciones"),
+    tema(3, "funciones", "Funciones", undefined, subtemasFunciones),
     tema(4, "funciones-polinomiales", "Funciones polinomiales", "incluye números complejos"),
     tema(5, "funcion-exponencial-y-logaritmica", "Función exponencial y logarítmica"),
     tema(6, "matrices-y-determinantes", "Matrices y determinantes"),

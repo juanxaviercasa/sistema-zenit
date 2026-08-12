@@ -1,0 +1,233 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { GraficadorDeFunciones } from "@/components/interactive/algebra";
+
+# Funciones elementales
+
+<Objetivo>
+
+Reconocer y graficar las funciones elementales (constante, identidad, lineal,
+afín, cuadrática, cúbica, valor absoluto, máximo entero), y demostrar la propiedad
+que define a la función máximo entero.
+
+</Objetivo>
+
+## Marco teórico
+
+| Función | Fórmula | Dominio | Rango |
+|---|---|---|---|
+| Constante | $f(x)=c$ | $\mathbb R$ | $\{c\}$ |
+| Identidad | $f(x)=x$ | $\mathbb R$ | $\mathbb R$ |
+| Lineal | $f(x)=mx$ | $\mathbb R$ | $\mathbb R$ (si $m\neq0$) |
+| Afín | $f(x)=mx+b$ | $\mathbb R$ | $\mathbb R$ (si $m\neq0$) |
+| Cuadrática | $f(x)=ax^2+bx+c$ | $\mathbb R$ | depende del vértice |
+| Cúbica | $f(x)=x^3$ | $\mathbb R$ | $\mathbb R$ |
+| Valor absoluto | $f(x)=\lvert x\rvert$ | $\mathbb R$ | $[0,+\infty)$ |
+| Máximo entero | $f(x)=\lfloor x\rfloor$ | $\mathbb R$ | $\mathbb Z$ |
+
+**Función máximo entero** (o parte entera): $\lfloor x\rfloor$ es el **mayor
+entero** que es menor o igual que $x$ (ya estudiada como raíz entera en
+Aritmética, aplicada aquí a cualquier real, no solo a raíces).
+
+**Enunciado.** Para todo $x\in\mathbb R$: $\lfloor x\rfloor \leq x <
+\lfloor x\rfloor+1$.
+
+**Demostración.** Por definición, $\lfloor x\rfloor$ es el mayor entero
+$\leq x$, así que $\lfloor x\rfloor\leq x$ directamente. Para la segunda
+desigualdad: si $\lfloor x\rfloor+1\leq x$ fuera cierto, entonces
+$\lfloor x\rfloor+1$ sería un entero **también** menor o igual que $x$, y mayor
+que $\lfloor x\rfloor$ — contradiciendo que $\lfloor x\rfloor$ es el **mayor**
+entero $\leq x$. Por lo tanto $\lfloor x\rfloor+1>x$, es decir
+$x<\lfloor x\rfloor+1$. $\blacksquare$ Esta es la razón por la que la gráfica de
+$\lfloor x\rfloor$ tiene forma de escalera: es constante en cada intervalo
+$[n,n+1)$ y salta al siguiente entero exactamente en $x=n+1$.
+
+## Visualización interactiva
+
+<GraficadorDeFunciones />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Evalúa $\lfloor3{,}7\rfloor$ y $\lfloor-2{,}3\rfloor$.
+
+**Solución.** $\lfloor3{,}7\rfloor=3$ (el mayor entero $\leq3{,}7$).
+$\lfloor-2{,}3\rfloor=-3$ (el mayor entero $\leq-2{,}3$ es $-3$, no $-2$, porque
+$-2>-2{,}3$).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Halla el rango de $f(x)=x^2-4$.
+
+**Solución.** Es una cuadrática con vértice en $(0,-4)$, abriendo hacia arriba:
+rango $[-4,+\infty)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Verifica la propiedad $\lfloor x\rfloor\leq x<\lfloor x\rfloor+1$
+con $x=5{,}9$.
+
+**Solución.** $\lfloor5{,}9\rfloor=5$. Se cumple $5\leq5{,}9<6$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que $\lfloor x+n\rfloor=\lfloor x\rfloor+n$ para
+cualquier entero $n$.
+
+**Solución.** Por la propiedad demostrada, $\lfloor x\rfloor\leq x<\lfloor
+x\rfloor+1$. Sumando $n$ (entero) a toda la desigualdad:
+$\lfloor x\rfloor+n\leq x+n<\lfloor x\rfloor+n+1$. Como $\lfloor x\rfloor+n$ es
+un entero que cumple exactamente la definición de "mayor entero $\leq x+n$", se
+concluye $\lfloor x+n\rfloor=\lfloor x\rfloor+n$. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Evalúa $\lfloor7{,}2\rfloor$ y $\lfloor-0{,}5\rfloor$.
+
+<Solucion>
+
+$\lfloor7{,}2\rfloor=7$. $\lfloor-0{,}5\rfloor=-1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Halla el rango de $f(x)=-x^2+9$.
+
+<Solucion>
+
+Vértice en $(0,9)$, abre hacia abajo: rango $(-\infty,9]$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Verifica $\lfloor x\rfloor\leq x<\lfloor x\rfloor+1$ con $x=-1{,}2$.
+
+<Solucion>
+
+$\lfloor-1{,}2\rfloor=-2$. Se cumple $-2\leq-1{,}2<-1$ ✓.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Para qué valores de $x$ se cumple $\lfloor x\rfloor=3$?
+
+<Solucion>
+
+$3\leq x<4$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $\lfloor x\rfloor=x$ si y solo si $x$ es entero.
+
+<Solucion>
+
+Si $x$ es entero, $x$ es el mayor entero $\leq x$ (él mismo), así que
+$\lfloor x\rfloor=x$. Recíprocamente, si $\lfloor x\rfloor=x$, como
+$\lfloor x\rfloor$ es siempre un entero (por definición), $x$ también lo es.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que la función máximo entero no es inyectiva.
+
+<Solucion>
+
+Basta un contraejemplo: $\lfloor0{,}2\rfloor=0$ y $\lfloor0{,}8\rfloor=0$; dos
+valores distintos de $x$ ($0{,}2\neq0{,}8$) dan el mismo valor de $f(x)=0$. Por lo
+tanto $f$ no es inyectiva. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "⌊x⌋ se define como:",
+      opciones: ["El entero más cercano a x", "El mayor entero menor o igual que x", "x redondeado hacia arriba", "El menor entero mayor que x"],
+      correcta: 1,
+      explicacion: "Es la definición de la función máximo entero (parte entera).",
+    },
+    {
+      enunciado: "⌊-2,3⌋ es igual a:",
+      opciones: ["-2", "-3", "-2,3", "3"],
+      correcta: 1,
+      explicacion: "El mayor entero ≤ -2,3 es -3 (no -2, que es mayor que -2,3).",
+    },
+    {
+      enunciado: "Para todo x real, se cumple:",
+      opciones: ["⌊x⌋ = x", "⌊x⌋ ≤ x < ⌊x⌋+1", "⌊x⌋ > x", "x ≤ ⌊x⌋"],
+      correcta: 1,
+      explicacion: "Es el teorema fundamental de la función máximo entero.",
+    },
+    {
+      enunciado: "El rango de f(x)=⌊x⌋ es:",
+      opciones: ["R", "Z (los enteros)", "[0,+∞)", "N"],
+      correcta: 1,
+      explicacion: "La función máximo entero solo toma valores enteros.",
+    },
+    {
+      enunciado: "El rango de una función cuadrática con vértice (0,-4) que abre hacia arriba es:",
+      opciones: ["(-∞,-4]", "[-4,+∞)", "Todo R", "{-4}"],
+      correcta: 1,
+      explicacion: "El vértice es el valor mínimo, y la parábola crece sin límite hacia arriba.",
+    },
+    {
+      enunciado: "⌊x⌋ = x se cumple si y solo si:",
+      opciones: ["x es positivo", "x es entero", "x es negativo", "x = 0"],
+      correcta: 1,
+      explicacion: "Solo cuando x ya es un entero coincide con su propio máximo entero.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Redondear en vez de tomar el máximo entero** — $\lfloor3{,}9\rfloor=3$, no $4$
+  (no se redondea, se trunca hacia abajo).
+- **Olvidar que para negativos el máximo entero "baja"** — $\lfloor-2{,}3\rfloor=-3$,
+  no $-2$.
+- **Confundir el vértice de una cuadrática con su rango completo** — el vértice da
+  el valor extremo (mínimo o máximo), pero el rango es un intervalo que empieza o
+  termina ahí.
+- **Pensar que todas las funciones elementales son inyectivas** — la cuadrática, el
+  valor absoluto y el máximo entero no lo son.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones/funcion-definicion-dominio-y-rango", label: "Función: definición, dominio, rango y representación gráfica" },
+    { href: "/matematica/aritmetica/potenciacion-y-radicacion/raiz-cuadrada-y-raiz-cubica-propiedades-de-los-residuos", label: "Raíz cuadrada y raíz cúbica: propiedades de los residuos" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones/clasificacion-de-funciones", label: "Clasificación de funciones" },
+  ]}
+/>

@@ -1,0 +1,235 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ClasificadorDeFunciones } from "@/components/interactive/algebra";
+
+# Clasificación de funciones: par, impar, inyectiva, sobreyectiva, monótona, acotada
+
+<Objetivo>
+
+Definir las clasificaciones fundamentales de una función y demostrar dos
+resultados que las relacionan: que la única función par e impar a la vez es la
+nula, y que toda función estrictamente monótona es inyectiva.
+
+</Objetivo>
+
+## Marco teórico
+
+- **Par**: $f(-x)=f(x)$ para todo $x$ del dominio (gráfica simétrica respecto al
+  eje $y$).
+- **Impar**: $f(-x)=-f(x)$ para todo $x$ (gráfica simétrica respecto al origen).
+- **Inyectiva**: $x_1\neq x_2 \Rightarrow f(x_1)\neq f(x_2)$ (elementos distintos
+  del dominio producen imágenes distintas).
+- **Sobreyectiva** (respecto a un codominio $B$): $\forall y\in B,\ \exists x$ del
+  dominio tal que $f(x)=y$.
+- **Monótona**: creciente si $x_1<x_2\Rightarrow f(x_1)<f(x_2)$; decreciente si
+  $x_1<x_2\Rightarrow f(x_1)>f(x_2)$.
+- **Acotada**: existe $M$ tal que $\lvert f(x)\rvert\leq M$ para todo $x$ del
+  dominio.
+
+**Enunciado.** La única función (con dominio simétrico respecto a $0$) que es par
+e impar a la vez es la función nula $f(x)=0$.
+
+**Demostración.** Si $f$ es par, $f(-x)=f(x)$. Si además es impar,
+$f(-x)=-f(x)$. Igualando ambas expresiones de $f(-x)$: $f(x)=-f(x)$, así que
+$2f(x)=0$, es decir $f(x)=0$. Como esto vale para todo $x$ del dominio, $f$ es
+idénticamente $0$. $\blacksquare$
+
+**Enunciado.** Toda función estrictamente monótona es inyectiva.
+
+**Demostración.** Sea $f$ estrictamente creciente (el caso decreciente es
+análogo) y sean $x_1\neq x_2$. Por tricotomía, $x_1<x_2$ o $x_2<x_1$. Si
+$x_1<x_2$: como $f$ es creciente, $f(x_1)<f(x_2)$, así que $f(x_1)\neq f(x_2)$.
+Si $x_2<x_1$: análogamente $f(x_2)<f(x_1)$, así que $f(x_1)\neq f(x_2)$. En
+ambos casos, $x_1\neq x_2$ implica $f(x_1)\neq f(x_2)$: $f$ es inyectiva.
+$\blacksquare$
+
+## Visualización interactiva
+
+<ClasificadorDeFunciones />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Determina si $f(x)=x^2$ es par, impar, o ninguna.
+
+**Solución.** $f(-x)=(-x)^2=x^2=f(x)$: es **par**.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Determina si $f(x)=x^3$ es par, impar, o ninguna.
+
+**Solución.** $f(-x)=(-x)^3=-x^3=-f(x)$: es **impar**.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿Es $f(x)=2x+1$ inyectiva?
+
+**Solución.** Es afín con pendiente $2>0$: es estrictamente creciente. Por el
+teorema, toda función estrictamente monótona es inyectiva: sí lo es.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que $f(x)=x^2$ no es inyectiva, y explica por qué esto no
+contradice el teorema de monotonía.
+
+**Solución.** $f(-1)=1=f(1)$, con $-1\neq1$: no es inyectiva (contraejemplo). Esto
+no contradice el teorema porque $f(x)=x^2$ **no es monótona** en todo su dominio
+(decrece para $x<0$ y crece para $x>0$) — el teorema solo garantiza inyectividad
+para funciones monótonas en **todo** su dominio.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Determina si $f(x)=\lvert x\rvert$ es par, impar, o ninguna.
+
+<Solucion>
+
+$f(-x)=\lvert-x\rvert=\lvert x\rvert=f(x)$: es **par**.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Determina si $f(x)=x^3-x$ es par, impar, o ninguna.
+
+<Solucion>
+
+$f(-x)=(-x)^3-(-x)=-x^3+x=-(x^3-x)=-f(x)$: es **impar**.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿Es $f(x)=-3x+5$ inyectiva? Justifica usando el teorema de monotonía.
+
+<Solucion>
+
+Pendiente $-3<0$: estrictamente decreciente en todo $\mathbb R$. Por el teorema,
+es inyectiva.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿Es $f(x)=\lvert x\rvert$ acotada?
+
+<Solucion>
+
+No: $\lvert x\rvert$ crece sin límite cuando $x\to\pm\infty$, así que no existe
+$M$ que acote $\lvert f(x)\rvert$ para todo $x$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que si $f$ y $g$ son ambas funciones impares (con el mismo dominio),
+entonces $f+g$ también es impar.
+
+<Solucion>
+
+$(f+g)(-x)=f(-x)+g(-x)=-f(x)+(-g(x))=-(f(x)+g(x))=-(f+g)(x)$. Como esto vale para
+todo $x$, $f+g$ es impar. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $f$ es estrictamente decreciente, entonces $f$ es inyectiva
+(la otra mitad del teorema, no probada en el marco teórico).
+
+<Solucion>
+
+Sean $x_1\neq x_2$. Por tricotomía, $x_1<x_2$ o $x_2<x_1$. Si $x_1<x_2$: como
+$f$ es decreciente, $f(x_1)>f(x_2)$, así que $f(x_1)\neq f(x_2)$. Si $x_2<x_1$:
+análogamente $f(x_2)>f(x_1)$, así que $f(x_1)\neq f(x_2)$. En ambos casos,
+$f(x_1)\neq f(x_2)$: $f$ es inyectiva. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Una función es par si:",
+      opciones: ["f(-x) = -f(x)", "f(-x) = f(x)", "f(x) = 0", "f(x) = x"],
+      correcta: 1,
+      explicacion: "Es la definición de simetría respecto al eje y.",
+    },
+    {
+      enunciado: "La única función par e impar a la vez es:",
+      opciones: ["f(x) = x", "f(x) = 0", "f(x) = 1", "No existe tal función"],
+      correcta: 1,
+      explicacion: "Se demuestra que f(x)=-f(x) obliga a f(x)=0.",
+    },
+    {
+      enunciado: "Una función inyectiva cumple:",
+      opciones: ["Todo elemento del codominio se alcanza", "Elementos distintos del dominio dan imágenes distintas", "Es siempre creciente", "Es siempre par"],
+      correcta: 1,
+      explicacion: "Es la definición de inyectividad.",
+    },
+    {
+      enunciado: "Toda función estrictamente monótona es:",
+      opciones: ["Par", "Impar", "Inyectiva", "Acotada"],
+      correcta: 2,
+      explicacion: "Se demuestra usando tricotomía: x₁≠x₂ siempre da f(x₁)≠f(x₂).",
+    },
+    {
+      enunciado: "f(x)=x² no es inyectiva porque:",
+      opciones: ["No está definida en x=0", "f(-1)=f(1)=1, con -1≠1", "Es par", "Es continua"],
+      correcta: 1,
+      explicacion: "Es un contraejemplo directo a la inyectividad.",
+    },
+    {
+      enunciado: "Una función es acotada si:",
+      opciones: ["Su dominio es finito", "Existe M tal que |f(x)|≤M para todo x del dominio", "Es siempre positiva", "Es monótona"],
+      correcta: 1,
+      explicacion: "Es la definición de función acotada.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Pensar que toda función es par, impar, o ninguna, sin verificar** — hay que
+  comprobar $f(-x)$ explícitamente contra $f(x)$ y $-f(x)$.
+- **Confundir inyectiva con sobreyectiva** — inyectiva evita repeticiones en las
+  imágenes; sobreyectiva exige alcanzar todo el codominio. Son propiedades
+  independientes.
+- **Creer que el teorema de monotonía es "si y solo si"** — el teorema dice que
+  monótona implica inyectiva, pero **no** toda función inyectiva es monótona (hay
+  funciones inyectivas que no son monótonas en todo su dominio, aunque son menos
+  frecuentes en el curso).
+- **Confundir "acotada" con "tiene dominio acotado"** — acotada se refiere a los
+  valores de $f(x)$ (el rango), no al dominio.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones/funciones-elementales", label: "Funciones elementales" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/numeros-reales-y-sus-propiedades", label: "Números reales y sus propiedades" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones/funcion-biyectiva-e-inversa", label: "Función biyectiva e inversa de una función" },
+  ]}
+/>

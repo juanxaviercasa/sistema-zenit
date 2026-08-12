@@ -1,0 +1,230 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { GraficadorDeFunciones } from "@/components/interactive/algebra";
+
+# Función: definición, dominio, rango y representación gráfica
+
+<Objetivo>
+
+Definir formalmente una función mediante existencia y unicidad, identificar su
+dominio y rango, y demostrar el criterio de la recta vertical para reconocer si una
+gráfica representa una función.
+
+</Objetivo>
+
+## Marco teórico
+
+Una **función** $f$ de $A$ en $B$ es una relación que asigna a **cada** elemento de
+$A$ **exactamente un** elemento de $B$. Formalmente, usando cuantificadores:
+
+$$
+\forall x\in A,\ \exists! y\in B \text{ tal que } y=f(x)
+$$
+
+($\exists!$ se lee "existe un único"): para cada $x$ del dominio, existe un valor
+$f(x)$, y solo uno. $A$ es el **dominio**; el **rango** es el subconjunto de $B$
+formado por los valores que $f$ realmente toma.
+
+**Enunciado (criterio de la recta vertical).** Una curva en el plano es la gráfica
+de una función $y=f(x)$ si y solo si ninguna recta vertical la corta en más de un
+punto.
+
+**Demostración.** Una recta vertical $x=k$ corta a la curva exactamente en los
+puntos $(k,y)$ que pertenecen a ella. Si la curva es la gráfica de una función,
+por la **unicidad** exigida en la definición, para $x=k$ existe **un único** $y$
+—así que la recta vertical corta la curva en, a lo sumo, un punto (exactamente
+uno si $k$ está en el dominio). Recíprocamente, si toda recta vertical corta la
+curva en a lo sumo un punto, entonces para cada $x$ hay a lo sumo un $y$
+asociado —que es exactamente la condición de unicidad que define a una función.
+$\blacksquare$
+
+## Visualización interactiva
+
+<GraficadorDeFunciones />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Halla el dominio y el rango de $f(x)=x^2$.
+
+**Solución.** Dominio: todo $\mathbb R$ (se puede elevar al cuadrado cualquier
+número). Rango: $[0,+\infty)$ (un cuadrado nunca es negativo, y todo valor
+$\geq0$ se alcanza).
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿La circunferencia $x^2+y^2=4$ es la gráfica de una función
+$y=f(x)$?
+
+**Solución.** No: en $x=1$, $y^2=4-1=3$, así que $y=\sqrt3$ **o** $y=-\sqrt3$ — dos
+valores de $y$ para el mismo $x$. Una recta vertical en $x=1$ corta la
+circunferencia en dos puntos, violando el criterio de la recta vertical.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Halla el dominio de $f(x)=\dfrac{1}{x-2}$.
+
+**Solución.** La división entre $0$ no está definida, así que $x-2\neq0$: el
+dominio es $\mathbb R-\{2\}$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Verifica la existencia y unicidad de $f(x)=x^2+3$ para $x=2$.
+
+**Solución.** Existencia: $f(2)=4+3=7$ está definido. Unicidad: elevar al
+cuadrado y sumar $3$ produce un **único** resultado para $x=2$ (la operación
+"elevar al cuadrado" ya es, por definición, una asignación de un único valor por
+entrada) — no hay otro valor posible además de $7$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Halla el dominio y el rango de $f(x)=|x|-2$.
+
+<Solucion>
+
+Dominio: $\mathbb R$. Rango: $[-2,+\infty)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿La gráfica de $x=y^2$ (una parábola "acostada") representa una función $y=f(x)$?
+
+<Solucion>
+
+No: en $x=4$, $y=2$ o $y=-2$ — dos valores para el mismo $x$, viola el criterio de
+la recta vertical.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Halla el dominio de $f(x)=\sqrt{x-5}$.
+
+<Solucion>
+
+Se necesita $x-5\geq0$: dominio $[5,+\infty)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Halla el dominio de $f(x)=\dfrac{1}{x^2-4}$.
+
+<Solucion>
+
+$x^2-4\neq0\Rightarrow x\neq\pm2$: dominio $\mathbb R-\{-2,2\}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $f(x)=x^3$ tiene como rango todo $\mathbb R$.
+
+<Solucion>
+
+Para cualquier $y\in\mathbb R$, $x=\sqrt[3]y$ cumple $f(x)=(\sqrt[3]y)^3=y$: todo
+real $y$ se alcanza, así que el rango es $\mathbb R$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra, usando el criterio de la recta vertical, que $y=c$ (una recta
+horizontal) **sí** es la gráfica de una función, para cualquier constante $c$.
+
+<Solucion>
+
+Cualquier recta vertical $x=k$ corta a la recta horizontal $y=c$ en exactamente un
+punto: $(k,c)$. Como ninguna recta vertical la corta en más de un punto, por el
+criterio, $y=c$ es la gráfica de una función (la función constante $f(x)=c$).
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Una función asigna a cada elemento del dominio:",
+      opciones: ["Ningún elemento", "Exactamente un elemento del codominio", "Al menos un elemento", "Todos los elementos posibles"],
+      correcta: 1,
+      explicacion: "Es la condición de existencia y unicidad (∃!).",
+    },
+    {
+      enunciado: "El criterio de la recta vertical sirve para:",
+      opciones: ["Calcular el dominio", "Determinar si una gráfica representa una función", "Hallar la inversa", "Sumar funciones"],
+      correcta: 1,
+      explicacion: "Si alguna recta vertical corta la curva en más de un punto, no es una función.",
+    },
+    {
+      enunciado: "El dominio de f(x)=1/(x-2) es:",
+      opciones: ["Todo R", "R - {2}", "R - {0}", "[2, +∞)"],
+      correcta: 1,
+      explicacion: "Se excluye el valor que hace el denominador 0.",
+    },
+    {
+      enunciado: "El rango de f(x)=x² es:",
+      opciones: ["Todo R", "[0, +∞)", "(-∞, 0]", "{0}"],
+      correcta: 1,
+      explicacion: "Un cuadrado nunca es negativo, y todo valor no negativo se alcanza.",
+    },
+    {
+      enunciado: "La circunferencia x²+y²=4 NO es una función porque:",
+      opciones: ["No tiene dominio", "Algunos valores de x dan dos valores de y", "Es una curva cerrada", "No tiene rango"],
+      correcta: 1,
+      explicacion: "Viola la unicidad: para x=1 hay dos valores de y posibles.",
+    },
+    {
+      enunciado: "El rango de una función es:",
+      opciones: ["Todo el codominio", "El subconjunto del codominio efectivamente alcanzado", "Igual al dominio siempre", "Un solo número"],
+      correcta: 1,
+      explicacion: "El rango puede ser un subconjunto propio del codominio.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Confundir codominio con rango** — el codominio es el conjunto donde "podrían"
+  caer los valores; el rango es el conjunto de valores que **realmente** se
+  alcanzan.
+- **Olvidar excluir del dominio los valores que anulan un denominador** o hacen
+  negativo el radicando de una raíz cuadrada.
+- **Pensar que toda ecuación con $x$ y $y$ define una función** — solo si cumple el
+  criterio de la recta vertical.
+- **Confundir la definición de función con la de relación** — toda función es una
+  relación, pero no toda relación es una función (falta la unicidad).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/cuantificadores", label: "Cuantificadores" },
+    { href: "/matematica/algebra/logica-conjuntos-numeros-reales-ecuaciones-e-inecuaciones/conjuntos-determinacion-y-conjuntos-especiales", label: "Conjuntos: determinación, representación y conjuntos especiales" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones/funciones-elementales", label: "Funciones elementales" },
+  ]}
+/>

@@ -1,0 +1,246 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { TransformacionesDeGraficas } from "@/components/interactive/algebra";
+
+# Técnicas de graficación por transformaciones
+
+<Objetivo>
+
+Deducir, a partir de la gráfica de $f$, cómo obtener las gráficas de
+$y=\pm f(\pm x+a)+b$, $y=f(\lvert x\rvert)$ y $y=\lvert f(x)\rvert$, demostrando en
+particular que $y=f(\lvert x\rvert)$ siempre resulta una función par.
+
+</Objetivo>
+
+## Marco teórico
+
+**Desplazamiento vertical.** La gráfica de $y=f(x)+b$ es la de $f$ desplazada $b$
+unidades hacia arriba (si $b>0$) o hacia abajo (si $b<0$): el punto $(x_0,f(x_0))$
+de $f$ corresponde al punto $(x_0,f(x_0)+b)$, misma $x$, con $y$ desplazada en
+$b$.
+
+**Desplazamiento horizontal.** La gráfica de $y=f(x+a)$ es la de $f$ desplazada
+$a$ unidades hacia la **izquierda** (si $a>0$). Sea $g(x)=f(x+a)$: para que
+$g$ alcance el valor $f(x_0)$, se necesita $x+a=x_0$, es decir $x=x_0-a$. Así, el
+punto $(x_0,f(x_0))$ de $f$ corresponde al punto $(x_0-a,\,f(x_0))$ de $g$ — la
+misma altura, pero $a$ unidades a la izquierda (cuando $a>0$).
+
+**Reflexiones.** $y=-f(x)$ refleja la gráfica respecto al **eje $x$**: el punto
+$(x_0,f(x_0))$ se convierte en $(x_0,-f(x_0))$. $y=f(-x)$ refleja respecto al
+**eje $y$**: el punto $(x_0,f(x_0))$ se convierte en $(-x_0,f(x_0))$.
+
+**Enunciado.** La gráfica de $y=f(\lvert x\rvert)$ es siempre **par**
+(simétrica respecto al eje $y$), sin importar si $f$ lo era.
+
+**Demostración.** Sea $g(x)=f(\lvert x\rvert)$. Entonces
+$g(-x)=f(\lvert-x\rvert)=f(\lvert x\rvert)=g(x)$, para todo $x$. Por definición,
+$g$ es par. $\blacksquare$ Geométricamente: para $x\geq0$, $g(x)=f(x)$ (coincide
+con $f$); para $x<0$, $g(x)=f(-x)$ (copia el valor del punto reflejado
+$x>0$) — la mitad derecha de $f$ se refleja para formar la mitad izquierda.
+
+**Enunciado.** La gráfica de $y=\lvert f(x)\rvert$ conserva la parte de $f$ que ya
+estaba en $y\geq0$, y refleja hacia arriba (respecto al eje $x$) la parte que
+estaba en $y<0$.
+
+**Demostración.** Por definición de valor absoluto: si $f(x)\geq0$,
+$\lvert f(x)\rvert=f(x)$ (sin cambios). Si $f(x)<0$, $\lvert f(x)\rvert=-f(x)$
+—exactamente el reflejo respecto al eje $x$ de ese punto. $\blacksquare$
+
+## Visualización interactiva
+
+<TransformacionesDeGraficas />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** A partir de $f(x)=x^2$, describe la gráfica de $y=x^2+3$.
+
+**Solución.** Es $f(x)+3$: la parábola $x^2$ desplazada $3$ unidades hacia
+arriba. Vértice en $(0,3)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** A partir de $f(x)=x^2$, describe la gráfica de $y=(x-2)^2$.
+
+**Solución.** Es $f(x-2)$, con $a=-2$: desplazamiento horizontal de $2$ unidades
+hacia la **derecha** (porque $a<0$). Vértice en $(2,0)$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Con $f(x)=x^3-4x$ (que tiene raíces en $-2,0,2$), describe qué le
+pasa a la gráfica al formar $y=\lvert f(x)\rvert$.
+
+**Solución.** Por el método de los puntos críticos (factorizando
+$f(x)=x(x-2)(x+2)$), $f$ es negativa en $(-\infty,-2)\cup(0,2)$ y positiva en
+$(-2,0)\cup(2,\infty)$. En $\lvert f(x)\rvert$, esas porciones negativas se
+reflejan hacia arriba; la gráfica resultante nunca baja del eje $x$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que, aunque $f(x)=x^3-4x$ es impar (no par), $y=f(\lvert
+x\rvert)$ resulta par.
+
+**Solución.** Sea $g(x)=f(\lvert x\rvert)=\lvert x\rvert^3-4\lvert x\rvert$.
+$g(-x)=\lvert-x\rvert^3-4\lvert-x\rvert=\lvert x\rvert^3-4\lvert x\rvert=g(x)$: es
+par, confirmando el teorema general, sin importar que la $f$ original fuera impar.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+A partir de $f(x)=\lvert x\rvert$, describe la gráfica de $y=\lvert x\rvert-5$.
+
+<Solucion>
+
+Desplazamiento vertical de $5$ unidades hacia abajo. Vértice en $(0,-5)$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+A partir de $f(x)=x^2$, describe la gráfica de $y=-x^2$.
+
+<Solucion>
+
+Reflexión respecto al eje $x$: la parábola ahora abre hacia abajo.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+A partir de $f(x)=x^2-4$ (raíces en $\pm2$), describe la gráfica de $y=\lvert
+f(x)\rvert$.
+
+<Solucion>
+
+$f(x)<0$ para $-2<x<2$; esa porción (que estaba entre el eje $x$ y el vértice
+$(0,-4)$) se refleja hacia arriba, quedando la gráfica siempre $\geq0$, con
+"picos" tocando el eje $x$ en $x=\pm2$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+A partir de $f(x)=x^3$, describe la gráfica de $y=f(\lvert x\rvert)$.
+
+<Solucion>
+
+$f(\lvert x\rvert)=\lvert x\rvert^3$. Para $x\geq0$ coincide con $x^3$; para
+$x<0$ se refleja la mitad derecha, dando una gráfica par con forma de "V" curvada
+hacia arriba (siempre $\geq0$), muy distinta a la $x^3$ original (que era impar).
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que $y=f(x+a)+b$ desplaza el punto $(x_0,f(x_0))$ de $f$ al punto
+$(x_0-a,\,f(x_0)+b)$.
+
+<Solucion>
+
+Sea $g(x)=f(x+a)+b$. Para que $x+a=x_0$ (y así obtener $f(x_0)$ dentro), se
+necesita $x=x_0-a$. En ese punto, $g(x_0-a)=f(x_0)+b$. Por lo tanto el punto de
+$g$ correspondiente a $(x_0,f(x_0))$ es $(x_0-a,\,f(x_0)+b)$: desplazamiento
+horizontal de $-a$ (es decir, $a$ hacia la izquierda si $a>0$) y vertical de $b$.
+$\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $y=\lvert f(x)\rvert$ nunca toma valores negativos, para cualquier
+$f$.
+
+<Solucion>
+
+Por la definición de valor absoluto, $\lvert f(x)\rvert\geq0$ para cualquier
+número real $f(x)$ (visto en Álgebra: $\lvert y\rvert\geq0$ para todo $y$). Como
+esto vale para cada $x$ del dominio, la gráfica de $y=\lvert f(x)\rvert$ nunca
+está por debajo del eje $x$. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "y = f(x) + b desplaza la gráfica:",
+      opciones: ["b unidades a la derecha", "b unidades hacia arriba (si b>0)", "b unidades hacia abajo siempre", "No cambia la gráfica"],
+      correcta: 1,
+      explicacion: "Es un desplazamiento vertical.",
+    },
+    {
+      enunciado: "y = f(x+a) con a>0 desplaza la gráfica:",
+      opciones: ["a unidades a la derecha", "a unidades a la izquierda", "a unidades hacia arriba", "No cambia la gráfica"],
+      correcta: 1,
+      explicacion: "El desplazamiento horizontal es 'al revés' de lo intuitivo: +a mueve a la izquierda.",
+    },
+    {
+      enunciado: "y = f(|x|) siempre resulta:",
+      opciones: ["Impar", "Par", "Ni par ni impar", "Depende de f"],
+      correcta: 1,
+      explicacion: "Se demuestra que g(-x)=g(x) siempre, sin importar la paridad de f.",
+    },
+    {
+      enunciado: "y = |f(x)| nunca toma valores:",
+      opciones: ["Positivos", "Negativos", "Cero", "Enteros"],
+      correcta: 1,
+      explicacion: "El valor absoluto siempre es ≥0.",
+    },
+    {
+      enunciado: "y = -f(x) refleja la gráfica respecto a:",
+      opciones: ["El eje y", "El eje x", "El origen", "La recta y=x"],
+      correcta: 1,
+      explicacion: "Cambia el signo de todos los valores de y.",
+    },
+    {
+      enunciado: "y = f(-x) refleja la gráfica respecto a:",
+      opciones: ["El eje x", "El eje y", "El origen", "La recta y=x"],
+      correcta: 1,
+      explicacion: "Cambia el signo de la entrada x.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Pensar que $f(x+a)$ desplaza hacia la derecha cuando $a>0$** — es al revés:
+  desplaza hacia la **izquierda**.
+- **Confundir $-f(x)$ con $f(-x)$** — el primero refleja respecto al eje $x$; el
+  segundo, respecto al eje $y$.
+- **Olvidar que $f(\lvert x\rvert)$ siempre da una función par** — sin importar
+  cómo era $f$ originalmente.
+- **Pensar que $\lvert f(x)\rvert$ cambia la parte positiva de la gráfica** — solo
+  refleja la parte **negativa**; la parte donde $f(x)\geq0$ queda igual.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/algebra/funciones/variacion-directa-e-inversa", label: "Variación directa e inversa de dos variables" },
+    { href: "/matematica/algebra/funciones/clasificacion-de-funciones", label: "Clasificación de funciones" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/algebra/funciones-polinomiales", label: "Funciones polinomiales" },
+    { href: "/matematica/algebra/funcion-exponencial-y-logaritmica", label: "Función exponencial y logarítmica" },
+  ]}
+/>

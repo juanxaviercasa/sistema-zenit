@@ -72,7 +72,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Raíz cuadrada y raíz cúbica: propiedades de los residuos
   - ✅ Cálculo de raíces con aproximación
 
-### B. Álgebra (2/9)
+### B. Álgebra (3/9)
 
 - ✅ 1. Lógica, conjuntos, números reales, ecuaciones e inecuaciones
   - ✅ Proposiciones y operaciones lógicas
@@ -91,7 +91,14 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Inecuaciones cuadráticas
   - ✅ Inecuaciones con dos variables
   - ✅ Inecuaciones de grado superior e interpretación geométrica
-- ⬜ 3. Funciones
+- ✅ 3. Funciones
+  - ✅ Función: definición, dominio, rango y representación gráfica
+  - ✅ Funciones elementales
+  - ✅ Clasificación de funciones: par, impar, inyectiva, sobreyectiva, monótona, acotada
+  - ✅ Composición y operaciones con funciones reales
+  - ✅ Función biyectiva e inversa de una función
+  - ✅ Variación directa e inversa de dos variables
+  - ✅ Técnicas de graficación por transformaciones
 - ⬜ 4. Funciones polinomiales (incluye números complejos)
 - ⬜ 5. Función exponencial y logarítmica
 - ⬜ 6. Matrices y determinantes
@@ -142,7 +149,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 15/51 temas completos.**
+**Total Matemática: 16/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -221,7 +228,23 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       cuadráticas). 6 widgets nuevos: resolvedor de cuadráticas con gráfica de la
       parábola, resolvedor de bicuadradas, resolvedor con radicales (detecta raíces
       extrañas), inecuación cuadrática, región de una inecuación con dos variables
-      (máscaras SVG), y signo de un polinomio factorizado.
+      (máscaras SVG), y signo de un polinomio factorizado. **Funciones** completo,
+      con 7 subtemas: define función mediante existencia y unicidad ($\forall
+      x,\exists! y$) y demuestra el criterio de la recta vertical; presenta las
+      funciones elementales, demostrando la propiedad fundamental de la función
+      máximo entero ($\lfloor x\rfloor\leq x<\lfloor x\rfloor+1$); demuestra que la
+      única función par e impar a la vez es la nula, y que toda función
+      estrictamente monótona es inyectiva; define composición y operaciones,
+      demostrando que la composición es asociativa pero no conmutativa; demuestra
+      que $f$ tiene inversa si y solo si es biyectiva, y que la gráfica de $f^{-1}$
+      es el reflejo de la de $f$ respecto a $y=x$; conecta variación directa e
+      inversa con las magnitudes proporcionales de Aritmética; y demuestra que
+      $y=f(|x|)$ siempre resulta par, cualquiera sea $f$. Nuevo componente
+      compartido `PlanoCartesiano` (graficador genérico con segmentación para
+      funciones discontinuas como el máximo entero) reusado en 5 de los 6 widgets
+      nuevos: graficador de funciones elementales, clasificador de funciones,
+      operaciones y composición, inversa de función, variación directa e inversa, y
+      transformaciones de gráficas.
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)
 - [ ] Fase 6 — Funcionalidades avanzadas (simulacro cronometrado, cuentas/progreso,
