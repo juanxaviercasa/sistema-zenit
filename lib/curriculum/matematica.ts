@@ -125,6 +125,17 @@ const subtemasNumeracion: Subtema[] = [
   subtema("conteo-de-numeros-y-de-cifras", "Conteo de números y de cifras"),
 ];
 
+const subtemasNumerosNaturalesYEnteros: Subtema[] = [
+  subtema(
+    "numeros-naturales-operaciones-propiedades-y-limitaciones",
+    "Números naturales: operaciones, propiedades y limitaciones"
+  ),
+  subtema(
+    "numeros-enteros-operaciones-propiedades-y-limitaciones",
+    "Números enteros: operaciones, propiedades y limitaciones"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -159,7 +170,13 @@ const aritmetica: Area = {
     tema(5, "estadistica", "Estadística", undefined, subtemasEstadistica),
     tema(6, "probabilidad", "Probabilidad", undefined, subtemasProbabilidad),
     tema(7, "numeracion", "Numeración", undefined, subtemasNumeracion),
-    tema(8, "numeros-naturales-y-enteros", "Números naturales y números enteros"),
+    tema(
+      8,
+      "numeros-naturales-y-enteros",
+      "Números naturales y números enteros",
+      undefined,
+      subtemasNumerosNaturalesYEnteros
+    ),
     tema(9, "divisibilidad", "Divisibilidad"),
     tema(10, "numeros-primos", "Números primos"),
     tema(11, "numeros-racionales-e-irracionales", "Números racionales e irracionales"),

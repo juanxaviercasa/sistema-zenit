@@ -24,3 +24,5 @@ export { ConstructorDeNumero } from "./constructor-de-numero";
 export { ConversorDeBases } from "./conversor-de-bases";
 export { ExtremosDeNCifras } from "./extremos-de-n-cifras";
 export { ContadorDeCifras } from "./contador-de-cifras";
+export { ExploradorDeCerradura } from "./explorador-de-cerradura";
+export { ReglasDeSignos } from "./reglas-de-signos";

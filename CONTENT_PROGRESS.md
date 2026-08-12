@@ -9,7 +9,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 
 ## Matemática — 51 temas
 
-### A. Aritmética (7/12)
+### A. Aritmética (8/12)
 
 - ✅ 1. Razones y proporciones
   - ✅ Razones aritmética, geométrica y armónica
@@ -47,7 +47,9 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Cambios de base
   - ✅ Propiedades de la numeración
   - ✅ Conteo de números y de cifras
-- ⬜ 8. Números naturales y números enteros
+- ✅ 8. Números naturales y números enteros
+  - ✅ Números naturales: operaciones, propiedades y limitaciones
+  - ✅ Números enteros: operaciones, propiedades y limitaciones
 - ⬜ 9. Divisibilidad
 - ⬜ 10. Números primos
 - ⬜ 11. Números racionales e irracionales
@@ -108,7 +110,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 8/51 temas completos.**
+**Total Matemática: 9/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -138,16 +140,15 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       (JSXGraphBoard, FiguraInteractiva, FiguraDemostracion, jsxgraph-utils).
 - [ ] Fase 2 — Aritmética completa (12 temas), en curso: **Razones y proporciones**,
       **Magnitudes proporcionales**, **Interés simple y compuesto**, **Mezcla y
-      aleación**, **Estadística**, **Probabilidad** y **Numeración** (25 subtemas en
-      total) completos. Widgets con sliders/SVG en vez de JSXGraph sintético
-      (`components/interactive/aritmetica/*`); `functiongraph` de JSXGraph con `axis`
-      activado solo donde la interpretación gráfica es literal (DP/IP, interés
-      compuesto). Componentes genéricos reusados entre varios subtemas cuando la
-      matemática es la misma (`MezclaPonderada`). Probabilidad incluye un simulador de
-      lanzamientos (Ley de los Grandes Números) y deduce V(n,r)/C(n,r) desde el
-      principio de multiplicación. Numeración demuestra por qué el algoritmo de
-      divisiones sucesivas funciona (no solo lo aplica) y deduce la fórmula de cantidad
-      de números de n cifras en base b.
+      aleación**, **Estadística**, **Probabilidad**, **Numeración** y **Números
+      naturales y enteros** (27 subtemas en total) completos. Widgets con sliders/SVG
+      en vez de JSXGraph sintético (`components/interactive/aritmetica/*`);
+      `functiongraph` de JSXGraph con `axis` activado solo donde la interpretación
+      gráfica es literal. Componentes genéricos reusados entre varios subtemas cuando
+      la matemática es la misma (`MezclaPonderada`, `ExploradorDeCerradura`). Números
+      naturales y enteros demuestra desde cero la regla de signos
+      $(-1)\times(-1)=1$ (a partir de $0=1+(-1)$ y la distributiva) en vez de darla
+      como convención arbitraria.
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)

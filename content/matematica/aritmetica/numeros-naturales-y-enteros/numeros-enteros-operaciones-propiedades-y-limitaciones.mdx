@@ -1,0 +1,282 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ReglasDeSignos, ExploradorDeCerradura } from "@/components/interactive/aritmetica";
+
+# Números enteros: operaciones, propiedades y limitaciones
+
+<Objetivo>
+
+Reconocer las propiedades de las operaciones en los números enteros, demostrar
+rigurosamente la regla de signos de la multiplicación, e identificar la limitación que
+motiva la extensión hacia los números racionales.
+
+</Objetivo>
+
+## Marco teórico
+
+Los **números enteros** extienden a los naturales agregando los opuestos de cada
+natural distinto de cero:
+
+$$
+\mathbb{Z} = \{\dots, -3, -2, -1, 0, 1, 2, 3, \dots\} = \mathbb{N} \cup \{-n : n \in
+\mathbb{N},\, n \neq 0\}.
+$$
+
+**Operaciones cerradas.** $\mathbb{Z}$ es cerrado bajo la adición, la sustracción y la
+multiplicación: para cualesquiera $a,b \in \mathbb{Z}$, los tres resultados $a+b$,
+$a-b$ y $a \times b$ son también enteros. La resta, que fallaba en $\mathbb{N}$, ahora
+siempre es posible.
+
+**Propiedades adicionales respecto a $\mathbb{N}$.** Además de conmutativa,
+asociativa, distributiva y neutro (que ya se cumplían en $\mathbb{N}$), en
+$\mathbb{Z}$ aparece el **inverso aditivo** (opuesto): para todo $a \in \mathbb{Z}$
+existe $-a \in \mathbb{Z}$ tal que $a + (-a) = 0$. Esta propiedad es precisamente lo
+que permite que la resta sea siempre posible: $a-b$ se define como $a+(-b)$.
+
+**Enunciado (regla de signos: $(-1)\times(-1)=1$).**
+
+**Demostración.** Se parte de dos hechos ya conocidos: cualquier número por $0$ da
+$0$, y $0 = 1+(-1)$ (definición de opuesto).
+
+**Paso 1 — multiplicar $-1$ por $0$, escrito como $1+(-1)$.**
+
+$$
+(-1) \times 0 = (-1) \times \big(1+(-1)\big).
+$$
+
+**Paso 2 — aplicar la propiedad distributiva al lado derecho.**
+
+$$
+(-1)\times\big(1+(-1)\big) = (-1)\times 1 + (-1)\times(-1) = -1 + (-1)\times(-1).
+$$
+
+**Conclusión.** Como el lado izquierdo, $(-1)\times 0$, vale $0$:
+
+$$
+0 = -1 + (-1)\times(-1).
+$$
+
+Sumando $1$ a ambos lados:
+
+$$
+1 = (-1)\times(-1). \qquad \blacksquare
+$$
+
+Esta misma idea (multiplicar por $0$ expresado como una suma con su opuesto, y usar la
+propiedad distributiva) es la base de **todas** las reglas de signos: signos iguales
+dan producto positivo; signos distintos dan producto negativo.
+
+**Limitación de $\mathbb{Z}$.** $\mathbb{Z}$ **no** es cerrado bajo la división:
+$3 \div 2 = 1{,}5 \notin \mathbb{Z}$.
+
+**Extensión.** Esta limitación motiva construir los **números racionales**
+$\mathbb{Q}$ (fracciones), donde dividir por cualquier número distinto de cero siempre
+es posible — tema que verás en *Números racionales e irracionales*.
+
+## Visualización interactiva
+
+<ReglasDeSignos />
+
+<ExploradorDeCerradura conjunto="ℤ (enteros)" simbolo="ℤ" min={-20} max={20} />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Calcula $(-7)+12$ y $(-7)-12$.
+
+**Solución.** $(-7)+12 = 5$. $(-7)-12 = (-7)+(-12) = -19$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Calcula $(-4)\times(-6)$ y $(-4)\times 6$.
+
+**Solución.** Signos iguales: $(-4)\times(-6)=24$. Signos distintos:
+$(-4)\times 6 = -24$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** ¿Es $\mathbb{Z}$ cerrado bajo $(-10) \div 4$? Justifica.
+
+**Solución.** $(-10)\div4 = -2{,}5 \notin \mathbb{Z}$. No es cerrado: la división de
+dos enteros no siempre da un entero.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Usando el mismo método de la demostración de $(-1)(-1)=1$, demuestra
+que $(-1)\times a = -a$ para cualquier entero $a$ (es decir, que multiplicar por $-1$
+da el opuesto).
+
+**Solución.**
+
+**Paso 1 — sumar $(-1)a$ con $a$, sacando el factor común $a$.**
+
+$$
+(-1)a + a = (-1)a + 1a = \big((-1)+1\big)a = 0 \times a = 0.
+$$
+
+**Paso 2 — reconocer la propiedad que define al opuesto.** Por definición, el opuesto
+de $a$ es el **único** número que sumado a $a$ da $0$. El Paso 1 muestra exactamente
+que $(-1)a$ sumado a $a$ da $0$.
+
+**Conclusión.** Como el opuesto de $a$ es único y $(-1)a$ cumple la propiedad que lo
+define, se concluye que $(-1)a = -a$. $\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Calcula $(-8)+(-5)$ y $(-8)-(-5)$.
+
+<Solucion>
+
+$(-8)+(-5)=-13$. $(-8)-(-5) = -8+5 = -3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Calcula $(-3)\times 7$ y $(-3)\times(-7)$.
+
+<Solucion>
+
+$(-3)\times7=-21$. $(-3)\times(-7)=21$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Da un ejemplo de dos enteros cuyo cociente NO sea entero.
+
+<Solucion>
+
+Por ejemplo, $7 \div 2 = 3{,}5 \notin \mathbb{Z}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Verifica la propiedad del inverso aditivo con $a=-9$: halla $-a$ y comprueba que
+$a+(-a)=0$.
+
+<Solucion>
+
+$-a = -(-9) = 9$. $a+(-a) = -9+9=0$ ✓.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Usando la regla de signos, determina el signo del producto
+$(-2)\times(-3)\times(-4)\times(-5)$ sin calcular el valor completo, y luego calcula
+el valor.
+
+<Solucion>
+
+Hay $4$ factores negativos (cantidad par), y por la regla de signos, un número par de
+factores negativos da producto positivo. Valor: $2\times3\times4\times5=120$, con
+signo positivo: $120$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que el producto de un número impar de enteros negativos es siempre
+negativo. *(Pista: usa inducción o agrupa los factores de dos en dos, usando que
+$(-1)(-1)=1$.)*
+
+<Solucion>
+
+Cada factor negativo se puede escribir como $-1$ multiplicado por su valor absoluto
+positivo. Si hay $k$ factores negativos (con $k$ impar), el producto de todos los
+signos es $(-1)^k$. Agrupando los factores $(-1)$ de dos en dos: cada par
+$(-1)\times(-1)=1$ (ya demostrado), así que sobrevive un solo factor $(-1)$ sin
+pareja (porque $k$ es impar). Por lo tanto $(-1)^k = 1\times1\times\cdots\times(-1) =
+-1$: el signo final del producto es negativo. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "¿Bajo qué operación adicional es cerrado Z, a diferencia de N?",
+      opciones: ["La multiplicación", "La suma", "La resta", "La división"],
+      correcta: 2,
+      explicacion: "Z es cerrado bajo suma, resta y multiplicación; N solo bajo suma y multiplicación.",
+    },
+    {
+      enunciado: "(-1)×(-1) es igual a:",
+      opciones: ["-1", "1", "0", "2"],
+      correcta: 1,
+      explicacion: "Se demuestra usando 0=1+(-1) y la propiedad distributiva.",
+    },
+    {
+      enunciado: "El inverso aditivo de un entero a es un número que cumple:",
+      opciones: ["a × (inverso) = 1", "a + (inverso) = 0", "a - (inverso) = a", "a / (inverso) = 1"],
+      correcta: 1,
+      explicacion: "El inverso aditivo (opuesto) de a es -a, y cumple a+(-a)=0.",
+    },
+    {
+      enunciado: "(-6)×(-2)×(-1) tiene signo:",
+      opciones: ["Positivo", "Negativo", "Depende del orden", "Es indefinido"],
+      correcta: 1,
+      explicacion: "3 factores negativos (cantidad impar): el producto es negativo.",
+    },
+    {
+      enunciado: "¿Por qué Z no es cerrado bajo la división?",
+      opciones: ["Porque dividir dos enteros siempre da un entero", "Porque el cociente de dos enteros puede no ser entero (ej. 3÷2)", "Porque la división no existe en Z", "Z sí es cerrado bajo la división"],
+      correcta: 1,
+      explicacion: "3÷2=1,5, que no es un entero.",
+    },
+    {
+      enunciado: "La limitación de la división en Z motiva la construcción de:",
+      opciones: ["Los números naturales", "Los números enteros", "Los números racionales", "Los números complejos"],
+      correcta: 2,
+      explicacion: "Q (racionales) se construye para que la división por cualquier número no nulo siempre sea posible.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Aplicar la regla de signos de memoria sin entender por qué funciona** — poder
+  reconstruir el argumento (multiplicar por $0$ expresado como $1+(-1)$) evita
+  confusiones en casos más complejos.
+- **Contar mal la cantidad de factores negativos** en un producto de varios términos —
+  recuerda: cantidad **par** de negativos da resultado positivo; cantidad **impar**
+  da negativo.
+- **Confundir "$-a$" con "un número negativo".** Si $a$ ya es negativo, $-a$ es
+  positivo — el símbolo "$-$" indica el opuesto, no necesariamente un valor negativo.
+- **Asumir que $\mathbb{Z}$ es cerrado bajo la división** — sigue sin serlo, igual que
+  $\mathbb{N}$; solo la suma, resta y multiplicación son cerradas en $\mathbb{Z}$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeros-naturales-y-enteros/numeros-naturales-operaciones-propiedades-y-limitaciones", label: "Números naturales: operaciones, propiedades y limitaciones" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-racionales-e-irracionales", label: "Números racionales e irracionales" },
+    { href: "/matematica/aritmetica/divisibilidad", label: "Divisibilidad" },
+  ]}
+/>

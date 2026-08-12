@@ -1,0 +1,264 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { ExploradorDeCerradura } from "@/components/interactive/aritmetica";
+
+# Números naturales: operaciones, propiedades y limitaciones
+
+<Objetivo>
+
+Reconocer las propiedades de la adición y la multiplicación en los números naturales,
+identificar sus limitaciones, y entender por qué esas limitaciones motivan la
+extensión hacia los números enteros.
+
+</Objetivo>
+
+## Marco teórico
+
+Los **números naturales** son el conjunto que se usa para contar:
+
+$$
+\mathbb{N} = \{0, 1, 2, 3, 4, \dots\}.
+$$
+
+(Algunos textos excluyen el $0$ de $\mathbb{N}$; en este curso se incluye, siguiendo
+la convención más extendida en la teoría de conjuntos.)
+
+**Operaciones cerradas.** $\mathbb{N}$ es **cerrado** bajo la adición y la
+multiplicación: para cualesquiera $a, b \in \mathbb{N}$, tanto $a+b$ como $a \times b$
+son también números naturales. Esto significa que sumar o multiplicar dos naturales
+nunca "se sale" del conjunto.
+
+**Propiedades de la adición y la multiplicación en $\mathbb{N}$.**
+
+- **Conmutativa:** $a+b=b+a$; $\; ab=ba$.
+- **Asociativa:** $(a+b)+c = a+(b+c)$; $\; (ab)c = a(bc)$.
+- **Elemento neutro:** $a+0=a$ (el $0$ es neutro aditivo); $\; a\times 1 = a$ (el $1$ es
+  neutro multiplicativo).
+- **Distributiva:** $a(b+c) = ab+ac$.
+
+**Enunciado (par + impar = impar).** La suma de un número par y un número impar
+(ambos naturales) siempre es impar.
+
+**Demostración.**
+
+**Paso 1 — expresar par e impar mediante fórmulas.** Un número par se escribe
+$2m$ para algún $m \in \mathbb{N}$; un número impar se escribe $2n+1$ para algún
+$n \in \mathbb{N}$.
+
+**Paso 2 — sumar ambas expresiones.**
+
+$$
+2m + (2n+1) = 2m+2n+1 = 2(m+n)+1.
+$$
+
+**Conclusión.** Como $m+n \in \mathbb{N}$ (por cerradura de la adición), el resultado
+tiene la forma $2k+1$ con $k=m+n \in \mathbb{N}$ — que es precisamente la forma de un
+número impar. $\blacksquare$
+
+**Limitaciones de $\mathbb{N}$.** A diferencia de la suma y la multiplicación,
+$\mathbb{N}$ **no** es cerrado bajo la sustracción ni bajo la división:
+
+- $3 - 5 = -2 \notin \mathbb{N}$.
+- $3 \div 5 = 0{,}6 \notin \mathbb{N}$.
+
+**Extensión.** Esta limitación de la resta —que una ecuación tan simple como
+$x + 5 = 3$ no tenga solución dentro de $\mathbb{N}$— es exactamente lo que motiva
+construir un conjunto más grande, los **números enteros** $\mathbb{Z}$, donde restar
+siempre es posible.
+
+## Visualización interactiva
+
+<ExploradorDeCerradura conjunto="ℕ (naturales)" simbolo="ℕ" min={0} max={20} />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Verifica la propiedad distributiva con $a=4$, $b=3$, $c=5$.
+
+**Solución.** $a(b+c) = 4(3+5)=4(8)=32$. Por otro lado, $ab+ac = 4(3)+4(5)=12+20=32$.
+Ambos coinciden: $32=32$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** ¿Es $\mathbb{N}$ cerrado bajo la operación $7-10$? Justifica.
+
+**Solución.** $7-10=-3$, que no pertenece a $\mathbb{N}$ (los naturales no incluyen
+negativos). Por lo tanto, $\mathbb{N}$ no es cerrado bajo esta resta en particular —
+de hecho, no es cerrado bajo la resta en general.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Usando el resultado demostrado arriba, determina sin calcular
+directamente si $128 + 57$ es par o impar.
+
+**Solución.** $128$ es par y $57$ es impar. Por el teorema demostrado (par + impar =
+impar), la suma es impar. (Verificación: $128+57=185$, que efectivamente es impar.)
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Demuestra que la suma de dos números impares (naturales) siempre es
+par.
+
+**Solución.** Sean $2m+1$ y $2n+1$ dos números impares, con $m,n \in \mathbb{N}$.
+
+$$
+(2m+1)+(2n+1) = 2m+2n+2 = 2(m+n+1).
+$$
+
+Como $m+n+1 \in \mathbb{N}$, el resultado tiene la forma $2k$ con $k=m+n+1$ — es par.
+$\blacksquare$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Verifica la propiedad asociativa de la suma con $a=2$, $b=5$, $c=9$.
+
+<Solucion>
+
+$(2+5)+9=7+9=16$. $2+(5+9)=2+14=16$. Coinciden.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿Es $\mathbb{N}$ cerrado bajo $8 \div 3$? Justifica.
+
+<Solucion>
+
+No: $8\div3 = 2{,}67\ldots \notin \mathbb{N}$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Sin sumar directamente, determina si $246+819$ es par o impar.
+
+<Solucion>
+
+$246$ es par, $819$ es impar. Por el teorema, la suma es impar.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Da un contraejemplo que demuestre que la resta en $\mathbb{N}$ no es conmutativa (es
+decir, que $a-b \neq b-a$ en general).
+
+<Solucion>
+
+Con $a=5$, $b=3$: $a-b=2$ pero $b-a=-2$ (ni siquiera está en $\mathbb{N}$). Como
+$2 \neq -2$, la resta no es conmutativa.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Demuestra que el producto de dos números impares (naturales) siempre es impar.
+
+<Solucion>
+
+Sean $2m+1$ y $2n+1$ impares. $(2m+1)(2n+1) = 4mn+2m+2n+1 = 2(2mn+m+n)+1$. Como
+$2mn+m+n \in \mathbb{N}$, el resultado tiene la forma $2k+1$: es impar. $\blacksquare$
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Explica, usando el concepto de cerradura, por qué la ecuación $x+8=5$ no tiene
+solución dentro de $\mathbb{N}$, y qué tipo de número haría falta para resolverla.
+
+<Solucion>
+
+Despejando, $x=5-8=-3$. Como $\mathbb{N}$ no es cerrado bajo la resta, $-3$ no
+pertenece a $\mathbb{N}$ — la ecuación no tiene solución natural. Haría falta un
+número **entero negativo**, es decir, trabajar dentro de $\mathbb{Z}$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "¿Bajo qué operaciones es cerrado el conjunto de los números naturales?",
+      opciones: ["Solo la resta", "Adición y multiplicación", "Solo la división", "Ninguna operación"],
+      correcta: 1,
+      explicacion: "ℕ es cerrado bajo suma y multiplicación, pero no bajo resta ni división en general.",
+    },
+    {
+      enunciado: "La propiedad a(b+c) = ab+ac se llama:",
+      opciones: ["Conmutativa", "Asociativa", "Distributiva", "Neutro"],
+      correcta: 2,
+      explicacion: "Es la propiedad distributiva de la multiplicación respecto a la suma.",
+    },
+    {
+      enunciado: "¿Por qué N no es cerrado bajo la resta?",
+      opciones: ["Porque restar dos naturales siempre da un natural", "Porque a-b puede dar un resultado negativo, fuera de N", "Porque la resta no existe en matemáticas", "N sí es cerrado bajo la resta"],
+      correcta: 1,
+      explicacion: "Ej: 3-5=-2, que no pertenece a N.",
+    },
+    {
+      enunciado: "La suma de un número par y uno impar (naturales) es:",
+      opciones: ["Siempre par", "Siempre impar", "A veces par, a veces impar", "Nunca un natural"],
+      correcta: 1,
+      explicacion: "Se demostró: 2m+(2n+1)=2(m+n)+1, siempre impar.",
+    },
+    {
+      enunciado: "La limitación de la resta en N motiva la construcción de:",
+      opciones: ["Los números racionales", "Los números enteros", "Los números complejos", "Los números irracionales"],
+      correcta: 1,
+      explicacion: "Z se construye precisamente para que la resta sea siempre posible.",
+    },
+    {
+      enunciado: "El elemento neutro de la multiplicación en N es:",
+      opciones: ["0", "1", "No existe", "Depende del número"],
+      correcta: 1,
+      explicacion: "a×1=a para todo a: el 1 es el neutro multiplicativo.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Asumir que $\mathbb{N}$ es cerrado bajo todas las operaciones** — solo lo es bajo
+  la suma y la multiplicación, no bajo la resta ni la división.
+- **Confundir conmutativa con asociativa.** Conmutativa cambia el **orden**
+  ($a+b=b+a$); asociativa cambia el **agrupamiento**
+  ($(a+b)+c=a+(b+c)$) — son propiedades distintas.
+- **Aplicar la resta o división en $\mathbb{N}$ sin verificar que el resultado siga
+  siendo natural** — antes de afirmar que algo "es un número natural", confirma que
+  no sea negativo ni fraccionario.
+- **Olvidar demostrar el caso general** al probar propiedades de paridad — verificar
+  con un solo ejemplo numérico no es una demostración; hay que usar la forma general
+  $2k$ o $2k+1$.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/numeracion/sistemas-de-numeracion-y-representacion-polinomial", label: "Sistemas de numeración y representación polinomial" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/numeros-naturales-y-enteros/numeros-enteros-operaciones-propiedades-y-limitaciones", label: "Números enteros: operaciones, propiedades y limitaciones" },
+    { href: "/matematica/aritmetica/divisibilidad", label: "Divisibilidad" },
+  ]}
+/>
