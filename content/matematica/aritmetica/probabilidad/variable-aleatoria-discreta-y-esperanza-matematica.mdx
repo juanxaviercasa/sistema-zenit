@@ -1,0 +1,267 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { VariableAleatoriaYEsperanza } from "@/components/interactive/aritmetica";
+
+# Variable aleatoria discreta y esperanza matemática
+
+<Objetivo>
+
+Definir una variable aleatoria discreta y su función de probabilidad, calcular la
+esperanza matemática, y demostrar cómo se transforma bajo cambios lineales.
+
+</Objetivo>
+
+## Marco teórico
+
+Una **variable aleatoria discreta** $X$ es una función que asigna un número real a
+cada resultado de un experimento aleatorio, tomando un número finito (o infinito
+numerable) de valores posibles $x_1, x_2, \dots, x_n$.
+
+**Función de probabilidad.** Asocia a cada valor $x_i$ su probabilidad
+$P(X=x_i) = p_i$. Para que sea una función de probabilidad válida, debe cumplir:
+
+$$
+p_i \geq 0 \text{ para todo } i, \qquad \sum_i p_i = 1.
+$$
+
+**Esperanza matemática (valor esperado).** Es el promedio de los valores de $X$,
+ponderado por su probabilidad:
+
+$$
+E(X) = \sum_i x_i \, p_i.
+$$
+
+Se interpreta como el valor promedio que tomaría $X$ si el experimento se repitiera
+un número muy grande de veces — no es necesariamente uno de los valores que $X$ puede
+tomar realmente.
+
+**Enunciado (linealidad de la esperanza).** Si $Y = aX+b$ (una transformación lineal
+de $X$, con $a, b$ constantes), entonces:
+
+$$
+E(Y) = aE(X) + b.
+$$
+
+**Demostración.**
+
+**Paso 1 — identificar los valores de $Y$.** Si $X$ toma el valor $x_i$ con
+probabilidad $p_i$, entonces $Y=aX+b$ toma el valor $y_i = ax_i+b$ con esa **misma**
+probabilidad $p_i$ (transformar el valor no cambia qué tan probable es).
+
+**Paso 2 — aplicar la definición de esperanza a $Y$.**
+
+$$
+E(Y) = \sum_i y_ip_i = \sum_i (ax_i+b)p_i = a\sum_i x_ip_i + b\sum_i p_i.
+$$
+
+**Conclusión.** Usando $\sum x_ip_i = E(X)$ y $\sum p_i = 1$:
+
+$$
+E(Y) = aE(X) + b. \qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<VariableAleatoriaYEsperanza />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Se lanzan dos monedas. Sea $X$ el número de caras obtenidas. Halla la
+función de probabilidad de $X$ y verifica que suma $1$.
+
+**Solución.** $X \in \{0,1,2\}$. $P(X=0)=1/4$ (SS), $P(X=1)=2/4=1/2$ (CS, SC),
+$P(X=2)=1/4$ (CC). Suma: $1/4+1/2+1/4 = 1$ ✓.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Con los datos del Ejemplo 1, halla $E(X)$.
+
+**Solución.** $E(X) = 0(1/4) + 1(1/2) + 2(1/4) = 0+0{,}5+0{,}5 = 1$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Un juego cuesta $S/. 5$ jugar. Se lanza un dado: si sale $6$, se ganan
+$S/. 20$; en cualquier otro caso, no se gana nada. Halla la ganancia neta esperada del
+jugador (considerando lo que paga por jugar).
+
+**Solución.** Sea $X$ la ganancia neta: $X = 20-5=15$ si sale $6$ (probabilidad
+$1/6$); $X=-5$ en otro caso (probabilidad $5/6$).
+
+$$
+E(X) = 15\left(\frac{1}{6}\right) + (-5)\left(\frac{5}{6}\right) = \frac{15}{6} -
+\frac{25}{6} = -\frac{10}{6} \approx -1{,}67.
+$$
+
+El juego es desfavorable para el jugador: en promedio, pierde $S/. 1{,}67$ por
+partida.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Una variable $X$ tiene $E(X) = 4$. Si se define $Y = 3X - 2$, halla
+$E(Y)$ sin recalcular toda la distribución.
+
+**Solución.** Por la linealidad de la esperanza: $E(Y) = 3E(X) - 2 = 3(4)-2 = 10$.
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Una variable $X$ toma los valores $1, 2, 3$ con probabilidades $0{,}2$, $0{,}5$,
+$0{,}3$. Verifica que es una distribución válida y halla $E(X)$.
+
+<Solucion>
+
+Suma de probabilidades: $0{,}2+0{,}5+0{,}3=1$ ✓ (válida).
+$E(X) = 1(0{,}2)+2(0{,}5)+3(0{,}3) = 0{,}2+1{,}0+0{,}9=2{,}1$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Si $E(X) = 6$, halla $E(2X)$.
+
+<Solucion>
+
+$E(2X) = 2E(X) = 12$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+Un juego de dados: si sale un número par, se ganan $S/. 10$; si sale impar, se
+pierden $S/. 8$. Halla la esperanza del juego.
+
+<Solucion>
+
+$P(\text{par})=1/2$, $P(\text{impar})=1/2$.
+$E(X) = 10(1/2) + (-8)(1/2) = 5-4=1$. El juego es favorable en promedio ($S/. 1$ por
+partida).
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Si $E(X)=5$, halla $E(4X+3)$.
+
+<Solucion>
+
+$E(4X+3) = 4(5)+3=23$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+Una variable aleatoria $X$ toma los valores $-2, 0, k$ con probabilidades $0{,}3$,
+$0{,}5$ y $0{,}2$ respectivamente. Si $E(X) = 0{,}6$, halla $k$.
+
+<Solucion>
+
+$-2(0{,}3)+0(0{,}5)+k(0{,}2) = 0{,}6 \Rightarrow -0{,}6+0{,}2k=0{,}6 \Rightarrow
+0{,}2k=1{,}2 \Rightarrow k=6$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que si $X$ es una variable aleatoria constante (toma siempre el mismo valor
+$c$, con $P(X=c)=1$), entonces $E(X)=c$. Luego, usando la linealidad de la esperanza,
+demuestra que $E(X - E(X)) = 0$ para cualquier variable aleatoria $X$ (es decir, la
+"desviación esperada respecto a la media" siempre es cero).
+
+<Solucion>
+
+**Primera parte:** $E(X) = c \cdot P(X=c) = c \cdot 1 = c$. **Segunda parte:** Sea
+$m = E(X)$, una constante conocida. Entonces $X - E(X) = X - m = 1\cdot X + (-m)$ es
+una transformación lineal de $X$ con $a=1$, $b=-m$. Por la linealidad de la
+esperanza:
+
+$$
+E(X-m) = 1\cdot E(X) + (-m) = m - m = 0. \qquad \blacksquare
+$$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Para que P(X=xi)=pi sea una función de probabilidad válida, se requiere:",
+      opciones: ["Que todas las pi sean iguales", "Que pi ≥ 0 para todo i y que la suma de todas las pi sea 1", "Que haya exactamente 2 valores posibles", "Que los xi sean todos positivos"],
+      correcta: 1,
+      explicacion: "Son las dos condiciones que definen una distribución de probabilidad válida.",
+    },
+    {
+      enunciado: "La esperanza matemática E(X) se interpreta como:",
+      opciones: ["El valor más probable de X", "El promedio de X si el experimento se repite muchas veces", "El valor máximo posible de X", "La probabilidad de que X sea positivo"],
+      correcta: 1,
+      explicacion: "Es un promedio ponderado por probabilidad, no necesariamente un valor alcanzable por X.",
+    },
+    {
+      enunciado: "Si X toma valores 0 y 1 con P(X=0)=0,4 y P(X=1)=0,6, entonces E(X) es:",
+      opciones: ["0,4", "0,5", "0,6", "1"],
+      correcta: 2,
+      explicacion: "E(X) = 0(0,4)+1(0,6) = 0,6.",
+    },
+    {
+      enunciado: "Si E(X) = 3, entonces E(5X - 1) es:",
+      opciones: ["14", "15", "13", "16"],
+      correcta: 0,
+      explicacion: "E(5X-1) = 5(3)-1 = 14.",
+    },
+    {
+      enunciado: "Un juego con esperanza negativa significa que:",
+      opciones: ["Es imposible perder", "En promedio, el jugador pierde dinero a largo plazo", "Siempre se gana en cada partida", "La probabilidad de ganar es cero"],
+      correcta: 1,
+      explicacion: "Una esperanza negativa indica una pérdida promedio por partida, a largo plazo.",
+    },
+    {
+      enunciado: "La esperanza de la 'desviación de X respecto a su propia media', E(X - E(X)), siempre es:",
+      opciones: ["Igual a E(X)", "Igual a 0", "Siempre positiva", "Indefinida"],
+      correcta: 1,
+      explicacion: "Es una consecuencia directa de la linealidad de la esperanza.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **No verificar que las probabilidades sumen $1$** antes de usar una distribución
+  dada — si no suman $1$, no es una función de probabilidad válida y cualquier cálculo
+  posterior es incorrecto.
+- **Confundir la esperanza con el valor más probable (moda).** $E(X)$ puede no ser
+  siquiera uno de los valores que $X$ puede tomar (por ejemplo, $E(X)=3{,}5$ para un
+  dado normal, aunque el dado nunca muestra $3{,}5$).
+- **Olvidar el signo en los valores de pérdida.** Si un evento representa una pérdida,
+  su valor en la variable aleatoria debe ser **negativo**, no simplemente omitido.
+- **Recalcular toda la distribución al transformar $X$**, en vez de aplicar
+  directamente $E(aX+b) = aE(X)+b$ cuando la transformación es lineal.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/probabilidad/permutaciones-y-combinaciones", label: "Permutaciones y combinaciones" },
+    { href: "/matematica/aritmetica/probabilidad/espacio-muestral-eventos-y-probabilidad", label: "Espacio muestral, eventos y probabilidad" },
+    { href: "/matematica/aritmetica/estadistica/medidas-de-tendencia-central", label: "Medidas de tendencia central" },
+  ]}
+/>

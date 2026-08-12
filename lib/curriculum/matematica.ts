@@ -102,6 +102,19 @@ const subtemasEstadistica: Subtema[] = [
   ),
 ];
 
+const subtemasProbabilidad: Subtema[] = [
+  subtema("espacio-muestral-eventos-y-probabilidad", "Espacio muestral, eventos y probabilidad"),
+  subtema(
+    "principios-de-conteo-multiplicacion-adicion-y-factorial",
+    "Principios de conteo: multiplicación, adición y factorial"
+  ),
+  subtema("permutaciones-y-combinaciones", "Permutaciones y combinaciones"),
+  subtema(
+    "variable-aleatoria-discreta-y-esperanza-matematica",
+    "Variable aleatoria discreta y esperanza matemática"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -134,7 +147,7 @@ const aritmetica: Area = {
     ),
     tema(4, "mezcla-y-aleacion", "Mezcla y aleación", undefined, subtemasMezclaYAleacion),
     tema(5, "estadistica", "Estadística", undefined, subtemasEstadistica),
-    tema(6, "probabilidad", "Probabilidad"),
+    tema(6, "probabilidad", "Probabilidad", undefined, subtemasProbabilidad),
     tema(7, "numeracion", "Numeración"),
     tema(8, "numeros-naturales-y-enteros", "Números naturales y números enteros"),
     tema(9, "divisibilidad", "Divisibilidad"),

@@ -1,0 +1,281 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { PermutacionesYCombinaciones } from "@/components/interactive/aritmetica";
+
+# Permutaciones y combinaciones
+
+<Objetivo>
+
+Deducir las fórmulas de variaciones (permutaciones) y combinaciones a partir del
+principio de multiplicación y el factorial, y decidir correctamente cuál usar según
+si el orden importa o no.
+
+</Objetivo>
+
+## Marco teórico
+
+**Variación (o permutación) de $n$ elementos tomados de $r$ en $r$** ($V(n,r)$ o
+$V_n^r$): el número de formas de **ordenar** $r$ elementos distintos elegidos de un
+total de $n$, **sin repetición**, donde el **orden importa** (elegir A luego B es
+distinto de elegir B luego A).
+
+**Enunciado.**
+
+$$
+V(n,r) = \frac{n!}{(n-r)!}.
+$$
+
+**Demostración.** Por el principio de multiplicación: para el primer lugar hay $n$
+elementos disponibles; para el segundo, $n-1$ (ya se usó uno); ...; para el $r$-ésimo
+lugar, $n-(r-1) = n-r+1$ elementos.
+
+$$
+V(n,r) = n(n-1)(n-2)\cdots(n-r+1).
+$$
+
+Multiplicando y dividiendo por $(n-r)!$ para completar el factorial:
+
+$$
+V(n,r) = \frac{n(n-1)\cdots(n-r+1) \cdot (n-r)!}{(n-r)!} = \frac{n!}{(n-r)!}.
+\qquad \blacksquare
+$$
+
+(El caso $r=n$ da $V(n,n) = n!/0! = n!$ — el ordenamiento total que ya conoces del
+subtema anterior.)
+
+**Combinación de $n$ elementos tomados de $r$ en $r$** ($C(n,r)$ o $\binom{n}{r}$): el
+número de formas de **elegir** $r$ elementos de un total de $n$, sin repetición, donde
+el **orden no importa** (elegir A y B es lo mismo que elegir B y A).
+
+**Enunciado.**
+
+$$
+C(n,r) = \frac{n!}{r!(n-r)!}.
+$$
+
+**Demostración.** Cada combinación de $r$ elementos, si se ordena internamente, genera
+$r!$ variaciones distintas (todos los órdenes posibles de esos mismos $r$ elementos).
+Por lo tanto:
+
+$$
+V(n,r) = C(n,r) \times r!.
+$$
+
+Despejando $C(n,r)$ y sustituyendo $V(n,r) = \dfrac{n!}{(n-r)!}$:
+
+$$
+C(n,r) = \frac{V(n,r)}{r!} = \frac{n!}{r!(n-r)!}. \qquad \blacksquare
+$$
+
+**La pregunta clave para elegir la fórmula correcta:** si intercambiar el orden de los
+elementos elegidos da un resultado **distinto**, usa $V(n,r)$; si da el **mismo**
+resultado, usa $C(n,r)$.
+
+## Visualización interactiva
+
+<PermutacionesYCombinaciones />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** En una carrera de $8$ atletas, ¿de cuántas formas se pueden repartir
+las medallas de oro, plata y bronce (los 3 primeros lugares, en orden)?
+
+**Solución.** El orden importa (oro ≠ plata ≠ bronce): $V(8,3) = \dfrac{8!}{5!} =
+8\times7\times6 = 336$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** De un grupo de $10$ personas, ¿de cuántas formas se puede elegir un
+comité de $3$ integrantes (sin roles distintos)?
+
+**Solución.** El orden no importa (un comité es el mismo sin importar cómo se
+nombraron sus integrantes): $C(10,3) = \dfrac{10!}{3!\,7!} = \dfrac{10\times9\times8}
+{6} = 120$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** De una baraja de $8$ cartas distintas, se eligen $3$. Compara cuántas
+selecciones hay si (a) importa el orden en que se toman, y (b) no importa el orden.
+
+**Solución.** (a) $V(8,3) = \dfrac{8!}{5!} = 336$. (b) $C(8,3) = \dfrac{8!}{3!\,5!} =
+\dfrac{336}{6} = 56$. Como era de esperar, $V(8,3) = C(8,3)\times 3! = 56\times 6=336$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** De un grupo de $10$ personas, se debe elegir un comité de $4$
+integrantes, y luego, entre esos $4$, asignar los roles distintos de presidente y
+secretario. ¿De cuántas formas se puede hacer todo el proceso?
+
+**Solución.** Primero se elige el comité (orden no importa): $C(10,4) =
+\dfrac{10!}{4!\,6!} = 210$. Luego, dentro de esos $4$ elegidos, se asignan $2$ roles
+distintos (orden sí importa): $V(4,2) = \dfrac{4!}{2!} = 12$. Por el principio de
+multiplicación (son pasos sucesivos):
+
+$$
+210 \times 12 = 2520 \text{ formas.}
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+¿De cuántas formas se pueden repartir los 3 primeros puestos (oro, plata, bronce)
+entre $6$ competidores?
+
+<Solucion>
+
+$V(6,3) = 6\times5\times4 = 120$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+¿De cuántas formas se puede elegir un grupo de $2$ delegados (sin roles) de $7$
+candidatos?
+
+<Solucion>
+
+$C(7,2) = \dfrac{7\times6}{2} = 21$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+De $9$ libros distintos, ¿de cuántas formas se pueden elegir $4$ para llevar de
+viaje (sin importar el orden en que se elijan)?
+
+<Solucion>
+
+$C(9,4) = \dfrac{9!}{4!\,5!} = 126$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿De cuántas formas se pueden asignar los cargos de presidente, vicepresidente y
+tesorero entre $6$ candidatos (cada cargo a una persona distinta)?
+
+<Solucion>
+
+$V(6,3) = 6\times5\times4=120$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+De un grupo de $12$ jugadores, se debe elegir un equipo titular de $5$ (sin
+posiciones distinguidas), y luego, entre esos $5$, elegir un capitán. ¿De cuántas
+formas totales?
+
+<Solucion>
+
+$C(12,5) \times 5 = 792 \times 5 = 3960$. (Elegir un capitán entre 5 es
+$V(5,1)=5$, equivalente a elegir 1 de 5 directamente.)
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra la identidad $C(n,r) = C(n,n-r)$ (elegir $r$ elementos para incluir es
+equivalente a elegir $n-r$ elementos para excluir), y verifícala numéricamente con
+$n=10$, $r=3$.
+
+<Solucion>
+
+$$
+C(n,n-r) = \frac{n!}{(n-r)!\,(n-(n-r))!} = \frac{n!}{(n-r)!\,r!} = C(n,r).
+\qquad \blacksquare
+$$
+
+La igualdad algebraica es inmediata porque el denominador tiene los mismos dos
+factores ($r!$ y $(n-r)!$) en ambos casos, solo en distinto orden. Verificación:
+$C(10,3) = \dfrac{10!}{3!\,7!} = 120$; $C(10,7) = \dfrac{10!}{7!\,3!} = 120$ — coinciden.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "V(n,r) se usa cuando:",
+      opciones: ["El orden no importa", "El orden importa", "Hay repetición permitida", "n es igual a r siempre"],
+      correcta: 1,
+      explicacion: "Las variaciones cuentan arreglos donde el orden distingue resultados distintos.",
+    },
+    {
+      enunciado: "C(n,r) se usa cuando:",
+      opciones: ["El orden importa", "El orden no importa", "r es mayor que n", "Nunca se usa en probabilidad"],
+      correcta: 1,
+      explicacion: "Las combinaciones cuentan selecciones donde el orden no distingue resultados.",
+    },
+    {
+      enunciado: "La relación entre V(n,r) y C(n,r) es:",
+      opciones: ["V(n,r) = C(n,r)", "V(n,r) = C(n,r) × r!", "C(n,r) = V(n,r) × r!", "No hay relación"],
+      correcta: 1,
+      explicacion: "Cada combinación genera r! variaciones distintas al ordenarla internamente.",
+    },
+    {
+      enunciado: "V(5,2) es igual a:",
+      opciones: ["10", "20", "5", "120"],
+      correcta: 1,
+      explicacion: "V(5,2) = 5!/3! = 5×4 = 20.",
+    },
+    {
+      enunciado: "C(6,2) es igual a:",
+      opciones: ["30", "15", "12", "6"],
+      correcta: 1,
+      explicacion: "C(6,2) = 6!/(2!4!) = (6×5)/2 = 15.",
+    },
+    {
+      enunciado: "Elegir 3 números para una combinación de caja fuerte (donde el orden en que se ingresan SÍ importa) requiere:",
+      opciones: ["Una combinación C(n,3)", "Una variación V(n,3)", "Un factorial simple n!", "Ninguna fórmula de conteo aplica"],
+      correcta: 1,
+      explicacion: "Aunque se llame 'combinación de caja fuerte' coloquialmente, matemáticamente es una variación porque el orden importa.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Usar $C(n,r)$ cuando el problema en realidad exige orden** (como asignar
+  cargos distintos) — antes de elegir la fórmula, pregúntate si intercambiar dos
+  elementos elegidos cambia el resultado.
+- **Confundir "combinación" en el lenguaje cotidiano** (como la "combinación" de una
+  caja fuerte, donde el orden sí importa) **con la combinación matemática** (donde el
+  orden nunca importa por definición).
+- **Olvidar la condición $r \leq n$** — no se pueden elegir más elementos de los que
+  hay disponibles sin repetición.
+- **Calcular $V(n,r)$ o $C(n,r)$ sin simplificar el factorial** — expandir $n!$
+  completo cuando $n$ es grande es innecesario; casi siempre los factores se cancelan
+  antes de multiplicar todo.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/probabilidad/principios-de-conteo-multiplicacion-adicion-y-factorial", label: "Principios de conteo: multiplicación, adición y factorial" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/probabilidad/variable-aleatoria-discreta-y-esperanza-matematica", label: "Variable aleatoria discreta y esperanza matemática" },
+  ]}
+/>

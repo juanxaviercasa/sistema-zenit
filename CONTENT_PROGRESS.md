@@ -9,7 +9,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 
 ## Matemática — 51 temas
 
-### A. Aritmética (5/12)
+### A. Aritmética (6/12)
 
 - ✅ 1. Razones y proporciones
   - ✅ Razones aritmética, geométrica y armónica
@@ -37,7 +37,11 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
   - ✅ Tablas y gráficos estadísticos
   - ✅ Medidas de tendencia central
   - ✅ Medidas de dispersión: varianza y desviación estándar
-- ⬜ 6. Probabilidad
+- ✅ 6. Probabilidad
+  - ✅ Espacio muestral, eventos y probabilidad
+  - ✅ Principios de conteo: multiplicación, adición y factorial
+  - ✅ Permutaciones y combinaciones
+  - ✅ Variable aleatoria discreta y esperanza matemática
 - ⬜ 7. Numeración
 - ⬜ 8. Números naturales y números enteros
 - ⬜ 9. Divisibilidad
@@ -100,7 +104,7 @@ Leyenda: ⬜ pendiente · 🟨 en progreso (algunos subtemas) · ✅ completo (t
 - ⬜ 10. Resolución de triángulos
 - ⬜ 11. Tópicos afines a la trigonometría (números complejos aplicados, secciones cónicas)
 
-**Total Matemática: 6/51 temas completos.**
+**Total Matemática: 7/51 temas completos.**
 
 ## Ciencias — fuera de alcance por ahora
 
@@ -130,14 +134,15 @@ estructura de datos vacía. No se genera temario hasta tener el syllabus oficial
       (JSXGraphBoard, FiguraInteractiva, FiguraDemostracion, jsxgraph-utils).
 - [ ] Fase 2 — Aritmética completa (12 temas), en curso: **Razones y proporciones**,
       **Magnitudes proporcionales**, **Interés simple y compuesto**, **Mezcla y
-      aleación** y **Estadística** (17 subtemas en total) completos. Widgets con
-      sliders/SVG en vez de JSXGraph sintético (`components/interactive/aritmetica/*`);
-      `functiongraph` de JSXGraph con `axis` activado solo donde la interpretación
-      gráfica es literal (DP/IP, interés compuesto). Componentes genéricos reusados
-      entre varios subtemas cuando la matemática es la misma (`MezclaPonderada`).
-      Estadística conecta explícitamente con *Medias aritmética, geométrica y
-      armónica* (tema 1) y *Mezcla y aleación* (tema 4) en vez de repetir sus
-      demostraciones.
+      aleación**, **Estadística** y **Probabilidad** (21 subtemas en total) completos.
+      Widgets con sliders/SVG en vez de JSXGraph sintético
+      (`components/interactive/aritmetica/*`); `functiongraph` de JSXGraph con `axis`
+      activado solo donde la interpretación gráfica es literal (DP/IP, interés
+      compuesto). Componentes genéricos reusados entre varios subtemas cuando la
+      matemática es la misma (`MezclaPonderada`). Probabilidad incluye un simulador de
+      lanzamientos (frecuencia relativa → probabilidad teórica, Ley de los Grandes
+      Números) y deduce V(n,r) y C(n,r) desde el principio de multiplicación en vez de
+      darlas como fórmulas memorizadas.
 - [ ] Fase 3 — Álgebra completa (9 temas)
 - [ ] Fase 4 — Geometría completa (19 temas)
 - [ ] Fase 5 — Trigonometría completa (11 temas)

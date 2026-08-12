@@ -1,0 +1,267 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { PrincipiosDeConteo } from "@/components/interactive/aritmetica";
+
+# Principios de conteo: multiplicación, adición y factorial
+
+<Objetivo>
+
+Aplicar el principio de multiplicación y el de adición para contar el número de
+posibilidades de una situación, y calcular el factorial de un número reconociendo qué
+cuenta exactamente.
+
+</Objetivo>
+
+## Marco teórico
+
+**Principio de multiplicación.** Si una tarea se puede descomponer en $k$ pasos
+sucesivos e independientes, y el paso $i$ se puede realizar de $n_i$ formas distintas
+(sin que las opciones de un paso dependan de las elegidas en otro), el número total de
+formas de completar toda la tarea es:
+
+$$
+n_1 \times n_2 \times \cdots \times n_k.
+$$
+
+**Principio de adición.** Si una tarea se puede realizar eligiendo **una** opción de
+un grupo de $m$ alternativas **o** una opción de otro grupo de $n$ alternativas —
+mutuamente excluyentes entre sí (no se pueden combinar ambas a la vez) — el número
+total de formas es:
+
+$$
+m + n.
+$$
+
+La clave para distinguirlos: si la tarea requiere hacer **una cosa Y otra** (pasos
+sucesivos), se multiplica; si la tarea es elegir **una cosa O la otra** (alternativas
+excluyentes), se suma.
+
+**Factorial de un número.** Para un entero $n \geq 1$:
+
+$$
+n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1, \qquad 0! = 1
+\text{ (por convención)}.
+$$
+
+**Enunciado.** $n!$ cuenta el número de formas distintas de ordenar $n$ objetos
+distintos en una fila.
+
+**Demostración.** Aplicando el principio de multiplicación paso a paso:
+
+**Paso 1.** Para el primer lugar de la fila hay $n$ objetos posibles para elegir.
+
+**Paso 2.** Una vez ocupado el primer lugar, quedan $n-1$ objetos para el segundo
+lugar.
+
+**Paso $k$.** En general, al llegar al lugar $k$-ésimo quedan $n-(k-1)$ objetos
+disponibles (los $k-1$ anteriores ya se usaron).
+
+**Conclusión.** Por el principio de multiplicación, el total de órdenes posibles es:
+
+$$
+n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1 = n!. \qquad \blacksquare
+$$
+
+## Visualización interactiva
+
+<PrincipiosDeConteo />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Un menú tiene $4$ platos de entrada y $3$ de fondo. ¿De cuántas formas
+se puede elegir una entrada y un fondo?
+
+**Solución.** Por el principio de multiplicación: $4 \times 3 = 12$ formas.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** Para viajar de una ciudad a otra hay $3$ rutas por tierra o $2$ rutas
+por aire (no se pueden combinar en un solo viaje directo). ¿De cuántas formas se puede
+elegir la ruta?
+
+**Solución.** Por el principio de adición (alternativas excluyentes): $3+2=5$ formas.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** Una contraseña consta de $2$ letras (de un alfabeto de $26$) seguidas
+de $3$ dígitos (0 al 9), sin restricción de repetición. ¿Cuántas contraseñas
+distintas existen?
+
+**Solución.** Cada posición se llena independientemente: $26 \times 26 \times 10
+\times 10 \times 10 = 676 \times 1000 = 676\,000$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** ¿De cuántas formas se pueden sentar $5$ personas en $5$ asientos en
+fila, si dos personas específicas insisten en sentarse **juntas**?
+
+**Solución.** Trata a las dos personas que deben ir juntas como un solo "bloque"
+(pueden ordenarse entre sí de $2!$ formas dentro del bloque). Ahora hay $4$ unidades
+para ordenar (el bloque + las otras $3$ personas): $4!$ formas. Por el principio de
+multiplicación:
+
+$$
+4! \times 2! = 24 \times 2 = 48 \text{ formas.}
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Una heladería tiene $5$ sabores y $3$ tipos de cono. ¿Cuántos helados distintos
+(sabor + cono) se pueden armar?
+
+<Solucion>
+
+$5 \times 3 = 15$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Para llegar a un punto hay $4$ caminos por bus o $2$ por tren (excluyentes). ¿De
+cuántas formas se puede llegar?
+
+<Solucion>
+
+$4+2=6$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+¿Cuántas placas de $2$ letras (de $27$ posibles) seguidas de $4$ dígitos existen, sin
+restricciones de repetición?
+
+<Solucion>
+
+$27 \times 27 \times 10^4 = 729 \times 10000 = 7\,290\,000$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+¿De cuántas formas distintas se pueden ordenar las letras de la palabra "AMOR" (4
+letras distintas)?
+
+<Solucion>
+
+$4! = 24$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+¿De cuántas formas se pueden ordenar en fila $6$ libros distintos si $2$ de ellos (una
+saga en dos tomos) deben ir en orden correcto y adyacentes (tomo 1 inmediatamente
+antes del tomo 2, sin poder invertirse)?
+
+<Solucion>
+
+Trata los 2 tomos como un solo bloque, pero como el orden dentro del bloque está fijo
+(no se puede invertir), no se multiplica por $2!$. Quedan $5$ unidades para ordenar
+(el bloque + los otros $4$ libros): $5! = 120$ formas.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que $n! = n \times (n-1)!$ para todo entero $n \geq 1$, y úsala para
+calcular $7!$ sabiendo que $6! = 720$.
+
+<Solucion>
+
+Por definición, $n! = n\times(n-1)\times(n-2)\times\cdots\times 1$, y
+$(n-1)! = (n-1)\times(n-2)\times\cdots\times 1$ es exactamente el mismo producto sin
+el primer factor $n$. Por lo tanto $n! = n \times (n-1)!$. $\blacksquare$ Aplicando
+con $n=7$: $7! = 7 \times 6! = 7 \times 720 = 5040$.
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "Si una tarea requiere hacer el paso A Y luego el paso B, el total de formas es:",
+      opciones: ["La suma de las formas de A y B", "El producto de las formas de A y B", "La resta", "Ninguna relación fija"],
+      correcta: 1,
+      explicacion: "Pasos sucesivos (Y): se multiplican (principio de multiplicación).",
+    },
+    {
+      enunciado: "Si una tarea se puede hacer eligiendo A O B (excluyentes), el total de formas es:",
+      opciones: ["El producto", "La suma", "La resta", "El cociente"],
+      correcta: 1,
+      explicacion: "Alternativas excluyentes (O): se suman (principio de adición).",
+    },
+    {
+      enunciado: "5! es igual a:",
+      opciones: ["20", "60", "120", "24"],
+      correcta: 2,
+      explicacion: "5! = 5×4×3×2×1 = 120.",
+    },
+    {
+      enunciado: "0! se define como:",
+      opciones: ["0", "1", "Indefinido", "-1"],
+      correcta: 1,
+      explicacion: "Por convención matemática, 0! = 1.",
+    },
+    {
+      enunciado: "Un menú con 3 entradas y 4 postres (se elige una entrada y un postre) da:",
+      opciones: ["7 combinaciones", "12 combinaciones", "1 combinación", "34 combinaciones"],
+      correcta: 1,
+      explicacion: "3×4=12, por el principio de multiplicación (se elige una Y la otra).",
+    },
+    {
+      enunciado: "n! cuenta específicamente:",
+      opciones: ["El número de subconjuntos de n elementos", "El número de formas de ordenar n objetos distintos en fila", "La suma de los primeros n números", "El número de combinaciones de n en 2"],
+      correcta: 1,
+      explicacion: "Es la definición combinatoria del factorial: permutaciones de n objetos distintos.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Multiplicar cuando se debería sumar (o viceversa).** Antes de calcular, identifica
+  si el enunciado pide "Y" (pasos sucesivos → multiplicar) u "O" (alternativas
+  excluyentes → sumar).
+- **Ignorar restricciones de "elementos juntos" o "en orden fijo"** en problemas de
+  ordenamiento — agrupar los elementos restringidos en un bloque es la técnica
+  estándar, pero hay que decidir si ese bloque interno se multiplica por su propio
+  factorial (orden libre) o no (orden fijo).
+- **Olvidar que $0! = 1$**, no $0$ — es un error común que rompe fórmulas posteriores
+  de combinatoria.
+- **No verificar si se permite repetición** — el conteo cambia radicalmente entre
+  "sin repetición" (como ordenar personas) y "con repetición" (como formar claves
+  donde un dígito puede repetirse).
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/probabilidad/espacio-muestral-eventos-y-probabilidad", label: "Espacio muestral, eventos y probabilidad" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/probabilidad/permutaciones-y-combinaciones", label: "Permutaciones y combinaciones" },
+  ]}
+/>

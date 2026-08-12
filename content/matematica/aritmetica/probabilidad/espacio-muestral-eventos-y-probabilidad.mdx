@@ -1,0 +1,286 @@
+import { Objetivo, EjemploResuelto, Problema, Solucion, Quiz, ErroresFrecuentes, Conexiones } from "@/components/pedagogy";
+import { SimuladorDeLanzamientos } from "@/components/interactive/aritmetica";
+
+# Espacio muestral, eventos y probabilidad
+
+<Objetivo>
+
+Definir experimento aleatorio, espacio muestral y evento, calcular probabilidades por
+la regla de Laplace y por vía frecuencial, y demostrar las propiedades fundamentales
+que gobiernan toda asignación de probabilidad.
+
+</Objetivo>
+
+## Marco teórico
+
+Un **experimento aleatorio** es un proceso cuyo resultado no se puede predecir con
+certeza, aunque se conozcan de antemano todos los resultados posibles (lanzar un dado,
+extraer una carta). El **espacio muestral** ($\Omega$) es el conjunto de **todos** los
+resultados posibles de ese experimento. Un **suceso o evento** ($A$) es cualquier
+subconjunto de $\Omega$.
+
+**Álgebra de eventos.** Como los eventos son conjuntos, se combinan con las mismas
+operaciones: **unión** $A \cup B$ (ocurre $A$ o $B$, o ambos), **intersección**
+$A \cap B$ (ocurren ambos a la vez), **complemento** $A'$ (no ocurre $A$). Dos eventos
+son **mutuamente excluyentes** si $A \cap B = \emptyset$ (no pueden ocurrir juntos).
+
+**Asignación de probabilidad.**
+
+- **Regla de Laplace (teórica):** cuando todos los resultados de $\Omega$ son
+  igualmente probables,
+  $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{\text{casos favorables}}{\text{casos totales}}.$$
+- **Probabilidad frecuencial:** se estima repitiendo el experimento muchas veces y
+  observando la frecuencia relativa del evento, $P(A) \approx \dfrac{f_A}{n}$. A
+  medida que $n$ crece, esta frecuencia relativa se acerca a la probabilidad teórica
+  (Ley de los Grandes Números) — lo verás en el simulador de abajo.
+
+**Propiedades fundamentales.** Toda asignación válida de probabilidad cumple:
+
+$$
+0 \le P(A) \le 1, \qquad P(\Omega) = 1, \qquad P(\emptyset) = 0.
+$$
+
+**Enunciado (regla del complemento).** $P(A') = 1 - P(A)$.
+
+**Demostración.** $A$ y $A'$ son mutuamente excluyentes y $A \cup A' = \Omega$. Por la
+regla de Laplace, $n(A) + n(A') = n(\Omega)$ (todo resultado está en $A$ o en $A'$,
+nunca en ambos). Dividiendo entre $n(\Omega)$:
+
+$$
+\frac{n(A)}{n(\Omega)} + \frac{n(A')}{n(\Omega)} = 1 \;\Longrightarrow\; P(A) + P(A') =
+1 \;\Longrightarrow\; P(A') = 1-P(A). \qquad \blacksquare
+$$
+
+**Enunciado (regla de la unión).** $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
+
+**Demostración.** Por conteo (inclusión-exclusión): al sumar $n(A) + n(B)$, los
+elementos que están en **ambos** conjuntos ($A \cap B$) se cuentan **dos veces** — hay
+que restarlos una vez para corregir:
+
+$$
+n(A \cup B) = n(A) + n(B) - n(A \cap B).
+$$
+
+Dividiendo toda la igualdad entre $n(\Omega)$:
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B). \qquad \blacksquare
+$$
+
+Si $A$ y $B$ son mutuamente excluyentes, $P(A \cap B) = 0$, y la fórmula se reduce a
+$P(A \cup B) = P(A) + P(B)$.
+
+## Visualización interactiva
+
+<SimuladorDeLanzamientos />
+
+## Ejemplos resueltos
+
+<EjemploResuelto numero={1} dificultad="basico">
+
+**Enunciado.** Se lanza un dado normal. Halla la probabilidad de obtener un número
+par.
+
+**Solución.** $\Omega = \{1,2,3,4,5,6\}$, $n(\Omega)=6$. Evento par: $\{2,4,6\}$,
+$n(A)=3$. $P(A) = 3/6 = 1/2$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={2} dificultad="basico">
+
+**Enunciado.** En una urna hay $5$ bolas rojas, $3$ azules y $2$ verdes. Se extrae una
+al azar. Halla $P(\text{no sea verde})$.
+
+**Solución.** $P(\text{verde}) = 2/10 = 0{,}2$. Por la regla del complemento:
+$P(\text{no verde}) = 1 - 0{,}2 = 0{,}8$.
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={3} dificultad="intermedio">
+
+**Enunciado.** En un grupo de $40$ estudiantes, $18$ practican fútbol, $15$ practican
+básquet y $7$ practican ambos deportes. Si se elige un estudiante al azar, halla la
+probabilidad de que practique fútbol o básquet.
+
+**Solución.** $P(F) = 18/40$, $P(B)=15/40$, $P(F \cap B) = 7/40$.
+
+$$
+P(F \cup B) = \frac{18}{40} + \frac{15}{40} - \frac{7}{40} = \frac{26}{40} = 0{,}65.
+$$
+
+</EjemploResuelto>
+
+<EjemploResuelto numero={4} dificultad="uni">
+
+**Enunciado.** Se lanzan dos dados. Halla la probabilidad de que la suma de los
+puntajes sea $7$ **o** que ambos dados muestren el mismo número.
+
+**Solución.** $\Omega$ tiene $36$ resultados igualmente probables. Suma $7$:
+$\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}$, $6$ casos. Ambos iguales:
+$\{(1,1),...,(6,6)\}$, $6$ casos. Estos dos eventos son mutuamente excluyentes (si la
+suma es $7$, los dados no pueden ser iguales, porque $7$ es impar y un par de iguales
+siempre suma un número par). Por la regla de la unión (con intersección vacía):
+
+$$
+P = \frac{6}{36} + \frac{6}{36} = \frac{12}{36} = \frac{1}{3}.
+$$
+
+</EjemploResuelto>
+
+## Problemas propuestos
+
+<Problema numero={1} nivel="basico">
+
+Se lanza un dado. Halla $P(\text{múltiplo de 3})$.
+
+<Solucion>
+
+Múltiplos de 3 en $\{1,...,6\}$: $\{3,6\}$. $P = 2/6 = 1/3$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={2} nivel="basico">
+
+Una urna tiene $12$ bolas, de las cuales $5$ son blancas. Halla $P(\text{no blanca})$.
+
+<Solucion>
+
+$P(\text{blanca}) = 5/12$. $P(\text{no blanca}) = 1-5/12 = 7/12$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={3} nivel="intermedio">
+
+En una clase de $30$ alumnos, $16$ estudian inglés, $12$ estudian francés y $5$
+estudian ambos idiomas. Halla la probabilidad de que un alumno elegido al azar
+estudie al menos uno de los dos idiomas.
+
+<Solucion>
+
+$P = 16/30+12/30-5/30 = 23/30$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={4} nivel="intermedio">
+
+Se lanza una moneda $3$ veces. Halla la probabilidad de obtener al menos una cara.
+*(Pista: usa el complemento de "ninguna cara".)*
+
+<Solucion>
+
+$\Omega$ tiene $2^3=8$ resultados. $P(\text{ninguna cara}) = P(\text{SSS}) = 1/8$.
+$P(\text{al menos una cara}) = 1-1/8 = 7/8$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={5} nivel="uni">
+
+En una encuesta a $200$ personas: $90$ tienen perro, $70$ tienen gato, y $150$ tienen
+perro o gato (o ambos). Halla cuántas personas tienen ambas mascotas, y la
+probabilidad de que una persona elegida al azar tenga ambas.
+
+<Solucion>
+
+$n(P \cup G) = n(P)+n(G)-n(P\cap G) \Rightarrow 150 = 90+70-n(P\cap G) \Rightarrow
+n(P\cap G) = 10$. $P(\text{ambas}) = 10/200 = 0{,}05$.
+
+</Solucion>
+</Problema>
+
+<Problema numero={6} nivel="uni">
+
+Demuestra que, para cualesquiera dos eventos $A$ y $B$ (no necesariamente
+excluyentes), se cumple $P(A \cap B) \geq P(A) + P(B) - 1$ (conocida como la
+desigualdad de Bonferroni). *(Pista: parte de la regla de la unión y de que
+$P(A \cup B) \leq 1$.)*
+
+<Solucion>
+
+Por la regla de la unión: $P(A\cup B) = P(A)+P(B)-P(A\cap B)$. Como $P(A\cup B)$ es
+una probabilidad, $P(A \cup B) \le 1$. Sustituyendo:
+
+$$
+P(A)+P(B)-P(A\cap B) \le 1 \;\Longrightarrow\; P(A)+P(B) - 1 \le P(A\cap B).
+\qquad \blacksquare
+$$
+
+</Solucion>
+</Problema>
+
+## Autoevaluación
+
+<Quiz
+  preguntas={[
+    {
+      enunciado: "El espacio muestral de un experimento aleatorio es:",
+      opciones: ["Un solo resultado posible", "El conjunto de todos los resultados posibles", "La probabilidad del experimento", "Siempre un número"],
+      correcta: 1,
+      explicacion: "Ω contiene TODOS los resultados posibles del experimento.",
+    },
+    {
+      enunciado: "La regla de Laplace P(A) = n(A)/n(Ω) es válida cuando:",
+      opciones: ["Siempre, sin condiciones", "Solo si todos los resultados son igualmente probables", "Solo para dados", "Nunca es válida"],
+      correcta: 1,
+      explicacion: "Laplace requiere equiprobabilidad de los resultados elementales.",
+    },
+    {
+      enunciado: "Si P(A) = 0,3, entonces P(A') es:",
+      opciones: ["0,3", "0,7", "1,3", "-0,3"],
+      correcta: 1,
+      explicacion: "P(A') = 1 - P(A) = 1 - 0,3 = 0,7.",
+    },
+    {
+      enunciado: "Si A y B son mutuamente excluyentes, P(A∪B) es:",
+      opciones: ["P(A) · P(B)", "P(A) + P(B)", "P(A) - P(B)", "P(A) + P(B) - P(A∩B), con P(A∩B)≠0"],
+      correcta: 1,
+      explicacion: "Al ser excluyentes, P(A∩B)=0, así que la fórmula general se reduce a la suma simple.",
+    },
+    {
+      enunciado: "Según la Ley de los Grandes Números, al aumentar el número de ensayos, la frecuencia relativa:",
+      opciones: ["Se aleja de la probabilidad teórica", "Se acerca a la probabilidad teórica", "No tiene relación con la probabilidad teórica", "Se vuelve siempre 0,5"],
+      correcta: 1,
+      explicacion: "Es exactamente la idea de la Ley de los Grandes Números.",
+    },
+    {
+      enunciado: "En 30 alumnos, 12 estudian arte, 10 estudian música, 4 estudian ambos. La probabilidad de estudiar arte o música es:",
+      opciones: ["22/30", "18/30", "26/30", "8/30"],
+      correcta: 1,
+      explicacion: "P = 12/30+10/30-4/30 = 18/30.",
+    },
+  ]}
+/>
+
+## Errores frecuentes
+
+<ErroresFrecuentes>
+
+- **Aplicar la regla de Laplace sin verificar equiprobabilidad.** Si el dado está
+  cargado o los resultados no son igualmente probables, $n(A)/n(\Omega)$ no da la
+  probabilidad correcta.
+- **Olvidar restar $P(A \cap B)$** en la regla de la unión — el error de conteo más
+  común: sumar $P(A)+P(B)$ y detenerse ahí, contando dos veces la intersección.
+- **Confundir "mutuamente excluyentes" con "complementarios".** Dos eventos
+  complementarios son excluyentes y además cubren todo $\Omega$; dos eventos
+  excluyentes cualesquiera no necesariamente cubren todo $\Omega$.
+- **Pensar que $P(A)=0$ significa que $A$ es imposible en un sentido absoluto** (en
+  espacios continuos esto no siempre es cierto) — en el contexto de este curso
+  (espacios finitos), sí equivale a que $A$ no tiene casos favorables.
+
+</ErroresFrecuentes>
+
+## Conexiones
+
+<Conexiones
+  requiere={[
+    { href: "/matematica/aritmetica/magnitudes-proporcionales/tanto-por-ciento-y-tanto-por-uno", label: "Tanto por ciento y tanto por uno" },
+    { href: "/matematica/aritmetica/estadistica/poblacion-muestra-y-variables-estadisticas", label: "Población, muestra y variables estadísticas" },
+  ]}
+  seUsaEn={[
+    { href: "/matematica/aritmetica/probabilidad/principios-de-conteo-multiplicacion-adicion-y-factorial", label: "Principios de conteo" },
+    { href: "/matematica/aritmetica/probabilidad/variable-aleatoria-discreta-y-esperanza-matematica", label: "Variable aleatoria discreta y esperanza matemática" },
+  ]}
+/>

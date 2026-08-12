@@ -16,3 +16,7 @@ export { PoblacionYMuestra } from "./poblacion-y-muestra";
 export { TablaYGraficoDeFrecuencias } from "./tabla-y-grafico-de-frecuencias";
 export { MedidasDeTendenciaCentral } from "./medidas-de-tendencia-central";
 export { MedidasDeDispersion } from "./medidas-de-dispersion";
+export { SimuladorDeLanzamientos } from "./simulador-de-lanzamientos";
+export { PrincipiosDeConteo } from "./principios-de-conteo";
+export { PermutacionesYCombinaciones } from "./permutaciones-y-combinaciones";
+export { VariableAleatoriaYEsperanza } from "./variable-aleatoria-y-esperanza";
