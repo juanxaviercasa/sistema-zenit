@@ -301,6 +301,24 @@ const subtemasFuncionesPolinomiales: Subtema[] = [
   ),
 ];
 
+const subtemasFuncionExponencialYLogaritmica: Subtema[] = [
+  subtema(
+    "funcion-exponencial-definicion-propiedades-y-graficas",
+    "Función exponencial: definición, propiedades y gráficas"
+  ),
+  subtema(
+    "funcion-logaritmica-definicion-propiedades-y-graficas",
+    "Función logarítmica: definición, propiedades y gráficas"
+  ),
+  subtema("el-numero-e-y-el-logaritmo-natural", "El número e y el logaritmo natural"),
+  subtema("sistemas-de-logaritmos-y-cambio-de-base", "Sistemas de logaritmos y cambio de base"),
+  subtema("ecuaciones-exponenciales-y-logaritmicas", "Ecuaciones exponenciales y logarítmicas"),
+  subtema(
+    "inecuaciones-exponenciales-y-logaritmicas",
+    "Inecuaciones exponenciales y logarítmicas"
+  ),
+];
+
 // Temario oficial — ver docs/temario-oficial.txt (fuente de verdad literal).
 // Los subtemas se completan tema por tema, en la fase de desarrollo de contenido.
 
@@ -389,7 +407,13 @@ const algebra: Area = {
       "incluye números complejos",
       subtemasFuncionesPolinomiales
     ),
-    tema(5, "funcion-exponencial-y-logaritmica", "Función exponencial y logarítmica"),
+    tema(
+      5,
+      "funcion-exponencial-y-logaritmica",
+      "Función exponencial y logarítmica",
+      undefined,
+      subtemasFuncionExponencialYLogaritmica
+    ),
     tema(6, "matrices-y-determinantes", "Matrices y determinantes"),
     tema(7, "sistemas-de-ecuaciones-e-inecuaciones", "Sistemas de ecuaciones e inecuaciones"),
     tema(8, "optimizacion-lineal", "Optimización lineal"),
