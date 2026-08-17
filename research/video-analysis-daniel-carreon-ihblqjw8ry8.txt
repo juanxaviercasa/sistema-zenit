@@ -1,0 +1,84 @@
+Starting video analysis...
+Submitting video analysis task...
+Task submitted (ID: video-analysis-b73664eb-c64d-45e7-8927-7c2bbccecbda)
+[8s] Status: Analyzing video content with AI...
+[26s] Status: Analysis completed
+[26s] Analysis completed!
+Full analysis result saved to: /home/ubuntu/sistema-zenit/video_IHblqjW8RY8_analysis_20260817_015129.md
+Note: This tool performs AI-based visual and audio analysis, not verbatim transcription. For detailed speech transcription, use `manus-speech-to-text` instead.
+Analysis result:
+
+Como director de una plataforma educativa, analizo la estructura de Daniel Carreón como un caso de éxito en **reducción de carga cognitiva**. Su diseño no es estético por azar, sino funcional para el aprendizaje autogestionado.
+
+A continuación, el desglose técnico y la traducción a reglas de diseño para **Manim/SceneSpec**:
+
+---
+
+### 1. Análisis de Composición Visual por Intervalos
+
+#### A. Fase de Introducción y Branding (0:00 - 0:20)
+*   **Composición:** Escenario narrativo (aula animada). El personaje ocupa el centro.
+*   **Branding:** El nombre del autor y el tema aparecen en la parte inferior sobre una franja azul con tipografía blanca gruesa.
+*   **Regla Manim:** `Banner` persistente en el tercio inferior para anclar la identidad del canal sin obstruir el área de trabajo.
+
+#### B. Fase de Conceptos Teóricos (0:21 - 1:07)
+*   **Área de Trabajo:** Fondo blanco limpio que ocupa el 100% de la pantalla.
+*   **Número de Columnas:** 1 columna central.
+*   **Dinámica:** Texto en azul para definiciones, rojo para énfasis. Aparece una sola oración a la vez, sincronizada con la voz.
+*   **Regla Manim:** `Write` sincronizado con `Wait`. No mostrar más de 3 líneas de texto simultáneas para evitar el escaneo visual prematuro.
+
+#### C. Fase de Resolución de Ejercicios (1:08 - 9:32)
+*   **Tamaño y Ubicación:** La pantalla se divide en dos áreas virtuales (proporción 60/40).
+*   **Columnas:** 
+    *   **Izquierda (Resolución):** Donde ocurre la acción principal.
+    *   **Derecha (Sustitución/Verificación):** Aparece solo después de terminar la resolución.
+*   **Escala de Escritura:** Tipografía *Sans Serif* de gran tamaño (aprox. 1/10 del alto de la pantalla por carácter).
+*   **Colores:** 
+    *   Azul: Ecuación original.
+    *   Negro: Pasos intermedios.
+    *   Rojo: El número que "se mueve" o el resultado final.
+    *   Verde: Flechas indicadoras de movimiento.
+*   **Persistencia:** La ecuación original nunca se borra; sirve de ancla visual.
+*   **Regla Manim:** Uso de `VGroup` para alinear los signos `=` verticalmente. Esto es vital para que el estudiante entienda el equilibrio de la ecuación.
+
+---
+
+### 2. Recursos de Facilitación para Principiantes
+
+1.  **Aislamiento de Estímulos:** Cuando un número pasa al otro lado del signo igual, cambia de color (rojo) y se acompaña de una flecha verde. Esto traduce una regla abstracta en un movimiento físico visual.
+2.  **Validación Inmediata (Sustitución):** Al terminar cada ejercicio, el autor no pasa al siguiente, sino que "prueba" que el resultado es correcto en la columna derecha. Esto construye confianza en el método.
+3.  **Sincronización Perfecta:** No hay elementos "fantasma" en pantalla. Si el locutor no ha mencionado el "+5", el "+5" no existe visualmente.
+
+---
+
+### 3. Reglas Implementables en Manim / SceneSpec
+
+Para replicar este estilo de alta efectividad pedagógica, sugiero las siguientes reglas de código:
+
+#### Regla 1: El Ancla del Signo Igual (`Alignment Rule`)
+*   **Implementación:** Todos los pasos de la ecuación deben estar alineados respecto al eje X del signo `=`.
+*   **Manim:** Utilizar `DecimalNumber` o `MathTex` y alinear con `.next_to(previous_line, DOWN, aligned_edge=ORIGIN)`.
+
+#### Regla 2: Semántica del Color (`Color Coding`)
+*   **Operación Activa:** El término que está siendo despejado o calculado debe transformarse a `RED`.
+*   **Indicadores:** Las flechas de transposición deben ser `GREEN` y usar `ShowCreation` con una duración de 0.5s.
+
+#### Regla 3: La Doble Columna Condicional (`Verification Layout`)
+*   **Escena:** Dividir el `config.frame_width` en dos. 
+*   **Lógica:** 
+    1.  `self.play(FadeIn(columna_izquierda))`
+    2.  Resolver.
+    3.  `self.play(Indicate(resultado_final))`
+    4.  `self.play(Write(titulo_sustitucion_derecha))`
+    5.  Ejecutar sustitución.
+
+#### Regla 4: Persistencia y Borrado (`Memory Management`)
+*   **Prohibición:** No borrar el paso anterior hasta que la pantalla esté saturada (mínimo 5 líneas).
+*   **Borrado:** Usar `FadeOut` grupal solo al cambiar de ejercicio, manteniendo un `Wait(2)` para permitir que el estudiante procese el resultado final.
+
+#### Regla 5: Señalamiento Dinámico (`Pointing`)
+*   **Recurso:** Antes de operar, usar un `Arrow` o un `Circle` temporal sobre el número en cuestión.
+*   **SceneSpec:** `{"action": "point", "target": "variable_x", "color": "green"}`.
+
+### Conclusión del Director:
+El video es una **"Calculadora Narrada"**. La clave no es la animación compleja, sino la **coordinación temporal**. En Manim, esto se traduce en evitar el uso de `lag_ratio` altos y preferir animaciones secuenciales que sigan el ritmo del habla humana, asegurando que el ojo del estudiante siempre sepa exactamente dónde mirar.

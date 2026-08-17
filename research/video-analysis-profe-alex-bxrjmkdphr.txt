@@ -1,0 +1,49 @@
+Starting video analysis...
+Submitting video analysis task...
+Task submitted (ID: video-analysis-87a4cc31-be21-4a52-9082-a3fb97d81bbf)
+[8s] Status: Analyzing video content with AI...
+[28s] Status: Analysis completed
+[28s] Analysis completed!
+Full analysis result saved to: /home/ubuntu/sistema-zenit/video_BxrJmKdPHRs_analysis_20260817_015031.md
+Note: This tool performs AI-based visual and audio analysis, not verbatim transcription. For detailed speech transcription, use `manus-speech-to-text` instead.
+Analysis result:
+
+Como director de diseño instruccional audiovisual, he analizado la estructura del video de "Matemáticas Profe Alex" para extraer las reglas lógicas y estéticas necesarias para replicar este estilo en un generador como Manim o SceneSpec.
+
+### 1. Composición del Lienzo y Encuadre
+*   **Fondo:** Blanco con una cuadrícula gris tenue (estilo papel milimetrado) que proporciona una guía visual constante.
+*   **Encuadre:** Plano fijo cenital o frontal (cámara fija), simulando una pizarra blanca. No hay zooms ni paneos, lo que reduce la carga cognitiva.
+*   **Jerarquía de Columnas:** 
+    *   **0:16 - 6:20:** Estructura de **dos columnas principales**. Izquierda para la declaración del problema y valores de variables; derecha para el desarrollo procedimental.
+    *   **6:20 - 8:38:** Transición a **dos columnas de resultados** ($x_1$ y $x_2$) para manejar la bifurcación del signo $\pm$.
+
+### 2. Código de Colores y Tipografía
+*   **Rojo:** Ecuación original del problema (ej. $2x^2 + 9x + 10 = 0$). Indica el "punto de partida".
+*   **Negro:** Fórmulas generales y desarrollo de cálculos. Es el color "neutro" del proceso.
+*   **Azul:** Etiquetas de variables ($a, b, c$), títulos y comparaciones conceptuales ($ax^2 + bx + c = 0$). Indica "metadatos" o teoría.
+*   **Tipografía:** Estilo manuscrito claro. En Manim, se recomienda usar fuentes tipo `Tex` con un grosor de línea medio para simular marcador.
+
+### 3. Análisis por Intervalos y Dinámica de Información
+
+| Intervalo | Acción de Diseño Instruccional | Composición y Desplazamiento |
+| :--- | :--- | :--- |
+| **0:08 - 0:16** | **Anclaje de Título:** Aparece el tema central en azul, negrita y con sombra. | Centrado, desaparece para dar paso al lienzo de trabajo. |
+| **0:16 - 1:02** | **Planteamiento:** Se escribe el problema (rojo, arriba izq.) y la fórmula (negro, centro). | La fórmula general actúa como el eje visual central. |
+| **1:02 - 1:20** | **Comparación Teórica:** Se alinea la forma general $ax^2 + bx + c$ justo debajo del problema. | Alineación vertical perfecta para facilitar la correspondencia visual. |
+| **1:20 - 2:38** | **Extracción de Datos:** Se crea una lista vertical de variables a la izquierda. | $a=, b=, c=$ se escriben antes de poner los valores. |
+| **2:38 - 6:20** | **Sustitución Progresiva:** La fórmula se reescribe reemplazando letras por paréntesis vacíos `( )`. | **Regla Manim:** Primero renderizar la estructura con paréntesis y luego "rellenar" los números. |
+| **6:20 - 8:38** | **Bifurcación:** Se borra el lienzo (limpieza visual) y se divide en dos columnas. | La expresión simplificada se mueve al tope central antes de dividirse. |
+| **8:38 - Fin** | **Práctica Independiente:** Nueva ecuación en rojo. | Se muestran los resultados finales en dos columnas tras una pausa. |
+
+### 4. Reglas para Generador Manim/SceneSpec (Prompt Engineering)
+
+1.  **Regla de Persistencia:** El problema original (en rojo) debe permanecer visible en la esquina superior izquierda durante todo el proceso, excepto en la resolución final de las dos raíces.
+2.  **Regla de los Paréntesis:** Para la sustitución, no reemplaces la letra directamente por el número. Crea un paso intermedio donde la fórmula se muestre con paréntesis vacíos `x = (- ( ) ± √(( )² - 4( )( ))) / 2( )`. Esto es clave para la claridad del estudiante.
+3.  **Sincronización Voz-Escritura:** El texto debe aparecer mediante un efecto `Write` a una velocidad que coincida con la mención del término. Si hay una pausa en el audio > 1s, el generador debe detener la escritura.
+4.  **Densidad Visual:** Nunca debe haber más de 5 líneas de cálculo simultáneas sin simplificar. Al llegar a la resolución de la raíz, se debe limpiar el espacio inferior para evitar el hacinamiento.
+5.  **Jerarquía de Operaciones:** Resalta (mediante un ligero escalado o cambio de color momentáneo) la operación que se está resolviendo en ese instante (ej. el discriminante dentro de la raíz).
+
+### 5. Evaluación de Claridad
+*   **Densidad:** Baja-Media. El uso de espacios en blanco es excelente, lo que permite al estudiante seguir el hilo sin perderse.
+*   **Sincronización:** Alta. La mano actúa como puntero láser, dirigiendo la atención. En Manim, esto se traduce en usar `Indicate` o `Circumscribe` sobre los términos mencionados.
+*   **Pausas:** El video permite momentos de reflexión tras cada simplificación, lo cual debe replicarse con `self.wait()` después de cada paso importante de álgebra.

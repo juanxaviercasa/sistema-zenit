@@ -51,6 +51,19 @@ class LayoutConstraint:
 
 
 @dataclass(frozen=True)
+class LayoutPlanSpec:
+    mode: str = "linear"
+    gap: float = 0.34
+    min_scale: float = 0.75
+    max_active_groups: int = 4
+    max_active_rows: int = 5
+    keep_anchor: bool = True
+    allow_compression: bool = True
+    retention_policy: str = "demote"
+    reset_trigger: str = "none"
+
+
+@dataclass(frozen=True)
 class LedgerSpec:
     keep_previous: bool = True
     previous_opacity: float = 0.38
@@ -70,6 +83,7 @@ class MicroStepSpec:
     audio: AudioCue
     visual: tuple[VisualCue, ...]
     pause_after: float
+    layout_plan: LayoutPlanSpec
     ledger: LedgerSpec
     verification: VerificationSpec
     checkpoint: CheckpointSpec | None = None
@@ -86,6 +100,7 @@ class BeatV2:
     objective: str
     microsteps: tuple[MicroStepSpec, ...]
     close_message: str
+    layout_plan: LayoutPlanSpec = field(default_factory=LayoutPlanSpec)
     duration_hint: float = 0.0
 
 
@@ -140,6 +155,7 @@ class SceneSpecV2:
                     )
                     checkpoint_raw = step_raw.get("checkpoint")
                     checkpoint = CheckpointSpec(**checkpoint_raw) if checkpoint_raw else None
+                    layout_plan = LayoutPlanSpec(**step_raw.get("layout_plan", beat_raw.get("layout_plan", {})))
                     ledger = LedgerSpec(**step_raw.get("ledger", {}))
                     constraints = tuple(LayoutConstraint(**item) for item in step_raw.get("layout_constraints", []))
                     microsteps.append(
@@ -153,6 +169,7 @@ class SceneSpecV2:
                             audio=audio,
                             visual=visual,
                             pause_after=float(step_raw["pause_after"]),
+                            layout_plan=layout_plan,
                             ledger=ledger,
                             verification=verification,
                             checkpoint=checkpoint,
@@ -169,6 +186,7 @@ class SceneSpecV2:
                         objective=beat_raw["objective"],
                         microsteps=tuple(microsteps),
                         close_message=beat_raw["close_message"],
+                        layout_plan=LayoutPlanSpec(**beat_raw.get("layout_plan", {})),
                         duration_hint=float(beat_raw.get("duration_hint", 0.0)),
                     )
                 )
@@ -255,6 +273,14 @@ def audit_scenespec_v2(spec: SceneSpecV2, project_root: str | Path | None = None
                     add("error", "NO_VISUAL_CUES", "El microstep no tiene cues visuales.", step.id)
                 if step.pause_after < 0.8:
                     add("warning", "PROCESSING_PAUSE_SHORT", "La pausa puede ser insuficiente para procesar la transformación.", step.id, {"pause": step.pause_after})
+                if step.layout_plan.mode not in {"linear", "split", "triad", "stacked", "reset"}:
+                    add("error", "UNKNOWN_LAYOUT_MODE", "El modo de composición no está permitido.", step.id, {"mode": step.layout_plan.mode})
+                if not 0.55 <= step.layout_plan.min_scale <= 1.0:
+                    add("error", "INVALID_MIN_SCALE", "La escala mínima legible debe estar entre 0.55 y 1.0.", step.id, {"min_scale": step.layout_plan.min_scale})
+                if step.layout_plan.max_active_groups < 1 or step.layout_plan.max_active_rows < 1:
+                    add("error", "INVALID_DENSITY_BUDGET", "Los presupuestos de densidad deben ser positivos.", step.id)
+                if step.layout_plan.retention_policy not in {"keep", "demote", "summarize", "clear_active", "reset_exercise"}:
+                    add("error", "UNKNOWN_RETENTION_POLICY", "La política de persistencia no está permitida.", step.id, {"retention_policy": step.layout_plan.retention_policy})
                 if not any(cue.target for cue in step.visual):
                     add("error", "AUDIO_VISUAL_DESYNC", "La narración no tiene objetivo visual asociado.", step.id)
                 if step.verification.type == "none":

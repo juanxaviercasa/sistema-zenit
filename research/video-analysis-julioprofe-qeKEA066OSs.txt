@@ -1,0 +1,54 @@
+Starting video analysis...
+Submitting video analysis task...
+Task submitted (ID: video-analysis-bc0904f0-209e-404a-b4fd-3a53c849c743)
+[8s] Status: Analyzing video content with AI...
+[21s] Status: Analysis completed
+[21s] Analysis completed!
+Full analysis result saved to: /home/ubuntu/sistema-zenit/video_qeKEA066OSs_analysis_20260817_015058.md
+Note: This tool performs AI-based visual and audio analysis, not verbatim transcription. For detailed speech transcription, use `manus-speech-to-text` instead.
+Analysis result:
+
+Este análisis desglosa la efectividad del video desde una perspectiva de **diseño instruccional audiovisual**, enfocándose en cómo la disposición espacial y el ritmo visual facilitan la retención cognitiva sin sobrecargar al estudiante.
+
+### 1. Arquitectura de la Información y Composición del Lienzo
+
+El video utiliza una estrategia de **"Menú y Anclaje"**:
+*   **El Menú (00:00 - 00:28):** Presenta las tres ecuaciones alineadas verticalmente a la izquierda, numeradas con círculos rojos. Esto establece un mapa mental del contenido total, reduciendo la ansiedad del estudiante sobre la duración y complejidad del tema.
+*   **El Anclaje (Ecuaciones individuales):** Una vez que comienza la resolución, la ecuación original se sitúa en el tercio superior del lienzo. Esta posición es inamovible ("anclada"), sirviendo como referencia constante mientras el desarrollo matemático fluye hacia abajo.
+*   **Jerarquía Visual:** Se respeta el sentido de lectura occidental (arriba-abajo, izquierda-derecha). El uso de filas horizontales para cada paso de la ecuación evita la confusión que generan las pizarras saturadas de anotaciones laterales.
+
+### 2. Sincronía Voz-Escritura y Carga Cognitiva
+
+La efectividad del video radica en la **linealidad temporal**:
+*   **Relación Voz-Escritura:** No hay "texto fantasma" (texto que aparece antes de ser explicado). La mano escribe exactamente lo que la voz describe en tiempo real. Esto obliga al ojo del estudiante a seguir un único punto focal, eliminando distracciones periféricas.
+*   **Pausas y Señalamiento:** El instructor usa su dedo o el marcador para señalar términos específicos (como el "-1" o el "5") antes de moverlos al otro lado de la igualdad. Este gesto físico actúa como un "puntero láser" que prepara la mente para el siguiente cambio visual.
+*   **Persistencia y Limpieza:** La pizarra se limpia completamente entre ecuaciones. Esto funciona como un **"reset cognitivo"**, indicando al estudiante que una tarea ha terminado y puede liberar memoria de trabajo para la siguiente.
+
+### 3. Código de Color y Señalética Visual
+
+El uso del color no es estético, sino funcional:
+*   **Negro:** Información base y desarrollo estándar.
+*   **Rojo:** Operaciones de transición y jerarquía (números de ejercicio y flechas de propiedad distributiva). El rojo indica "atención aquí, algo está cambiando".
+*   **Azul/Nube:** El resultado final se encierra en una forma orgánica (nube) azul. Esto rompe la rigidez de las líneas rectas del desarrollo y señala inequívocamente el cierre del proceso.
+
+---
+
+### Reglas para Manim / SceneSpec (Réplica de Estilo)
+
+Para replicar esta efectividad en una animación programada sin copiar la estética manual, implementa las siguientes reglas técnicas:
+
+1.  **Regla de Anclaje Superior:**
+    *   La `MathTex` inicial debe posicionarse en `UP * 2.5` y permanecer estática durante toda la escena.
+    *   Los pasos subsiguientes deben aparecer mediante `Write` o `FadeIn` en posiciones `DOWN` sucesivas (ej. `next_step.next_to(previous_step, DOWN, buff=0.5)`).
+
+2.  **Regla de Transformación Visual (Flechas de Operación):**
+    *   Antes de realizar una operación distributiva o un despeje, utiliza `Indicate` en el término afectado o dibuja una `CurvedArrow` en color contrastante (Hex: `#FF0000`) que desaparezca tras 1 segundo. Esto replica el señalamiento manual.
+
+3.  **Regla de Flujo Temporal:**
+    *   No permitas que la animación de escritura (`Write`) sea más rápida que el audio. El `run_time` de la animación debe estar estrictamente vinculado a la duración de la explicación locutada de ese paso específico.
+
+4.  **Regla del Resultado "Nube":**
+    *   El resultado final no debe solo aparecer; debe ser resaltado. Usa un `SurroundingRectangle` con `corner_radius` alto o una forma personalizada tipo "nube" en color azul (Hex: `#0000FF`) con una animación de creación tipo `Create`.
+
+5.  **Regla de Transición de Escena:**
+    *   Entre ejercicios, utiliza un `self.clear()` total seguido de un `Wait(1)`. No hagas transiciones laterales (paning); el "borrado de pizarra" es esencial para la segmentación del aprendizaje.

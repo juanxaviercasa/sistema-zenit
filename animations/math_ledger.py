@@ -5,6 +5,8 @@ from typing import Iterable
 
 from manim import DOWN, LEFT, RIGHT, Mobject, VGroup
 
+from animations.layout_engine import CanvasLayout, LayoutZone
+
 
 @dataclass
 class LedgerEntry:
@@ -55,19 +57,25 @@ class MathLedger:
             group.scale_to_fit_height(self.max_height)
         group.align_to(self.anchor, LEFT)
 
-    def reveal(self, entry_id: str, state: str, mobject: Mobject, *, animate=None, run_time: float = 1.4) -> Mobject:
+    def reveal(self, entry_id: str, state: str, mobject: Mobject, *, animate=None, run_time: float = 1.4, layout_zone: LayoutZone | None = None, keep_visible: int = 2, min_scale: float = 0.75, allow_compression: bool = False, gap: float | None = None) -> Mobject:
         """Añade un estado nuevo y conserva los anteriores como contexto."""
         self.generation += 1
         mobject.aquila_name = f"ledger-{entry_id}"
         self.entries.append(LedgerEntry(entry_id, state, mobject, generation=self.generation))
         self._set_opacity()
-        self._layout()
+        if layout_zone is None:
+            self._layout()
+        else:
+            self.layout_recent(layout_zone, keep=keep_visible, min_scale=min_scale, allow_compression=allow_compression, gap=self.row_gap if gap is None else gap)
         if animate is not None:
             self.scene.play(animate(mobject), run_time=run_time)
         else:
             self.scene.add(mobject)
         self._set_opacity()
-        self._layout()
+        if layout_zone is None:
+            self._layout()
+        else:
+            self.layout_recent(layout_zone, keep=keep_visible, min_scale=min_scale, allow_compression=allow_compression, gap=self.row_gap if gap is None else gap)
         return mobject
 
     def highlight(self, entry_id: str, color, run_time: float = 0.8) -> None:
@@ -86,6 +94,29 @@ class MathLedger:
         self._layout()
         self.scene.play(*[entry.mobject.animate.set_opacity(0) for entry in old], run_time=run_time)
         self.scene.remove(*[entry.mobject for entry in old])
+
+    def layout_recent(self, zone: LayoutZone, *, keep: int = 2, min_scale: float = 0.75, allow_compression: bool = False, gap: float = 0.34) -> VGroup:
+        """Coloca solo los estados recientes en el área activa.
+
+        Los ancestros siguen existiendo en el ledger y quedan atenuados, pero
+        no obligan a reducir el estado actual. El caller puede decidir luego
+        si los resume o los retira con ``remove_ancestors``.
+        """
+        recent = self.entries[-keep:] if keep > 0 else []
+        if not recent:
+            return VGroup()
+        group = VGroup(*(entry.mobject for entry in recent))
+        group.arrange(DOWN, buff=gap, aligned_edge=LEFT)
+        CanvasLayout.fit_group(group, zone, min_scale=min_scale, allow_compression=allow_compression, horizontal_align="left")
+        older = self.entries[:-keep]
+        if older:
+            memory = VGroup(*(entry.mobject for entry in older))
+            memory.arrange(RIGHT, buff=0.12)
+            memory.set_opacity(0.18)
+            memory.scale_to_fit_width(min(zone.width * 0.72, max(1.2, zone.width)))
+            memory.move_to((zone.center_x, zone.bottom + min(0.28, zone.height * 0.08), 0))
+        self._set_opacity()
+        return group
 
     def group(self) -> VGroup:
         return VGroup(*(entry.mobject for entry in self.entries))

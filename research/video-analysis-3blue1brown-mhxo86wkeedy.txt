@@ -1,0 +1,64 @@
+Starting video analysis...
+Submitting video analysis task...
+Task submitted (ID: video-analysis-4a66b695-fc64-4e94-a320-fa9e18599bfe)
+[8s] Status: Analyzing video content with AI...
+[33s] Still processing, please wait...
+[1m3s] Still processing, please wait...
+[1m33s] Still processing, please wait...
+[1m45s] Status: Analysis completed
+[1m45s] Analysis completed!
+Full analysis result saved to: /home/ubuntu/sistema-zenit/video_MHXO86wKeDY_analysis_20260817_015400.md
+Note: This tool performs AI-based visual and audio analysis, not verbatim transcription. For detailed speech transcription, use `manus-speech-to-text` instead.
+Analysis result:
+
+Este análisis se centra en la arquitectura narrativa y visual del video de Grant Sanderson (3Blue1Brown), extrayendo principios de diseño instruccional aplicables a sistemas de generación automática de video educativo como **Manim/SceneSpec**.
+
+### 1. Análisis de Diseño Instruccional y Dirección Audiovisual
+
+#### A. Introducción y Encuadre (The Hook)
+*   **Desmitificación:** No empieza con la fórmula, sino con el "trauma" colectivo de memorizarla. Utiliza la tensión narrativa: "¿Para qué sirve esto?".
+*   **Recontextualización:** Introduce un caso de uso de alta gama (Pixar/Ray-tracing) para elevar el valor percibido del tema antes de bajar a la aritmética básica.
+
+#### B. Segmentación de la Atención y Composición
+*   **El Enfoque Híbrido:** Alterna entre tres estados:
+    1.  **Busto (Talking Head):** Establece conexión empática y explica el "porqué".
+    2.  **Papel (Hand-drawn):** Simula el ritmo del pensamiento humano. Es "sucio" pero auténtico, lo que reduce la ansiedad del estudiante.
+    3.  **Animación Conceptual (Manim):** Proporciona la intuición geométrica que el papel no puede dar.
+*   **Densidad de Información:** Sanderson mantiene una densidad baja al inicio (un solo número: 35) y aumenta la complejidad gradualmente hasta llegar a la abstracción algebraica.
+
+#### C. Uso de Transformaciones y Geometría
+*   **Visualización de la Propiedad:** La transformación clave es el movimiento de una fila de cuadrados para convertir un "cuadrado incompleto" en un "rectángulo". Esta es una **transformación isométrica** (conserva el área) que valida la identidad algebraica $(x-1)(x+1) = x^2 - 1$.
+
+#### D. Color, Escala y Persistencia
+*   **Color como Ancla Semántica:** Usa colores consistentes para variables específicas ($m$ en azul, $d$ en verde). Esto permite que el ojo del espectador rastree la variable a través de diferentes ecuaciones sin re-leer.
+*   **Persistencia:** Las "Tres Verdades Clave" permanecen visibles en el margen izquierdo mientras resuelve ejemplos en el derecho. Esto libera memoria de trabajo del estudiante.
+
+#### E. Voz, Pausas y Ritmo
+*   **Pacing (Cadencia):** Grant habla al ritmo que escribe. No hay "jump cuts" en la explicación lógica. Las pausas son deliberadas después de una pregunta para permitir el "Active Recall".
+*   **Prosodia:** Usa una entonación ascendente en las dudas y descendente en las conclusiones, guiando la certeza del espectador.
+
+---
+
+### 2. Principios Transferibles al Generador Manim/SceneSpec (Zenit)
+
+Para mejorar las explicaciones paso a paso en Sistema Zenit, se deben integrar estos principios:
+
+1.  **Consistencia Cromática de Variables (Color Coding):**
+    *   *Implementación:* Si SceneSpec detecta la variable "hipotenusa", debe asignarle un color (ej. `#FF5733`) y mantenerlo en el texto, en la fórmula y en el gráfico geométrico durante toda la escena.
+2.  **Ritmo de Escritura Sincronizado:**
+    *   *Implementación:* Las fórmulas no deben aparecer de golpe. Deben usar el método `.write()` de Manim con un `run_time` proporcional a la longitud de la cadena, imitando el tiempo que tardaría un humano en explicarla.
+3.  **La "Pizarra Persistente":**
+    *   *Implementación:* Dividir el canvas en zonas. Una zona de "Reglas/Fórmulas base" que no desaparece (opacity 100%) y una zona de "Resolución de paso actual" que se limpia o desplaza.
+4.  **Transformación Algebraico-Geométrica:**
+    *   *Implementación:* Al explicar una identidad (como el binomio cuadrado), SceneSpec debería generar automáticamente la transición de los símbolos algebraicos a bloques de área, moviendo las piezas físicamente.
+
+---
+
+### 3. Qué NO copiar (Dependencia de Alta Producción)
+
+Existen elementos en el video que son fruto de una dirección humana artesanal y no son eficientes para un generador automático:
+
+1.  **La Narrativa de Anécdotas Personales:** La historia de Pixar es poderosa porque Grant la cuenta con carisma. Un generador de IA intentando forzar anécdotas suele caer en el "valle inquietante" de la pedagogía.
+2.  **El Estilo "Hand-drawn" Real:** Aunque Manim tiene `Create(..., sketch=True)`, la caligrafía real de Grant tiene una imperfección orgánica que ayuda a la retención. Simular esto por software a veces distrae más de lo que ayuda si no es perfecto.
+3.  **Interatividad Fallida (Live Polls):** El video muestra los problemas de los servidores con las encuestas en vivo. Un sistema instruccional debe priorizar la estabilidad de la explicación sobre funciones sociales complejas que pueden romper el flujo del aprendizaje.
+4.  **Animaciones Ad-hoc de Alta Complejidad:** La animación del rayo de luz golpeando la esfera es una pieza de arte única. SceneSpec debe enfocarse en **plantillas reutilizables** (gráficas, vectores, bloques) en lugar de intentar generar escenas cinematográficas únicas para cada problema.

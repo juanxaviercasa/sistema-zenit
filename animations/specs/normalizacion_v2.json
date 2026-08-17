@@ -44,6 +44,17 @@
           "title": "Identificamos la ecuación y sus coeficientes",
           "question": "¿Qué representa cada letra en la ecuación cuadrática?",
           "objective": "Reconocer a, b y c antes de operar.",
+          "layout_plan": {
+            "mode": "split",
+            "gap": 0.42,
+            "min_scale": 0.78,
+            "max_active_groups": 4,
+            "max_active_rows": 4,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "demote",
+            "reset_trigger": "beat_change"
+          },
           "duration_hint": 18.0,
           "close_message": "Ya sabemos qué papel cumple cada coeficiente.",
           "microsteps": [
@@ -195,6 +206,17 @@
           "title": "Dividimos todos los términos entre a",
           "question": "¿Qué operación deja a x al cuadrado con coeficiente uno?",
           "objective": "Aplicar la misma división a ambos miembros y simplificar término por término.",
+          "layout_plan": {
+            "mode": "split",
+            "gap": 0.42,
+            "min_scale": 0.78,
+            "max_active_groups": 4,
+            "max_active_rows": 4,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "clear_active",
+            "reset_trigger": "beat_change"
+          },
           "duration_hint": 33.0,
           "close_message": "La ecuación quedó normalizada: el coeficiente de x al cuadrado ahora es uno.",
           "microsteps": [

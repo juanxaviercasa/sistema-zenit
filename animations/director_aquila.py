@@ -13,6 +13,8 @@ from typing import Iterable
 
 from manim import Mobject, Scene, config
 
+from animations.layout_engine import CanvasLayout, LayoutError, LayoutPlan, LayoutZone
+
 
 @dataclass(frozen=True)
 class SafeBox:
@@ -130,6 +132,39 @@ class AquilaDirector:
         self.fit_height(mobject, max_height_ratio)
         return mobject
 
+    def resolve_layout(self, plan: LayoutPlan) -> dict[str, LayoutZone]:
+        """Resuelve un layout pedagógico dentro de la zona segura."""
+        try:
+            return CanvasLayout(LayoutZone("safe", self.safe.left, self.safe.right, self.safe.bottom, self.safe.top)).zones(plan)
+        except LayoutError as exc:
+            raise AquilaError(str(exc)) from exc
+
+    def fit_into_zone(self, mobject: Mobject, zone: LayoutZone, *, min_scale: float = 0.75, allow_compression: bool = True, horizontal_align: str = "center") -> Mobject:
+        """Ajusta un grupo a una zona sin reducirlo silenciosamente sin límite."""
+        try:
+            return CanvasLayout.fit_group(mobject, zone, min_scale=min_scale, allow_compression=allow_compression, horizontal_align=horizontal_align)
+        except LayoutError as exc:
+            raise AquilaError(str(exc)) from exc
+
+    def density_issues(self, mobjects: Iterable[Mobject], *, max_active_groups: int = 4, max_active_rows: int = 5) -> list[LayoutIssue]:
+        """Audita carga visual básica en la zona de trabajo."""
+        visible = []
+        for m in mobjects:
+            try:
+                opacity = m.get_opacity()
+            except AttributeError:
+                opacity = 1
+            if (opacity is None or opacity > 0) and m.get_num_points() > 0:
+                visible.append(m)
+        issues: list[LayoutIssue] = []
+        if len(visible) > max_active_groups:
+            names = tuple(getattr(m, "aquila_name", m.__class__.__name__) for m in visible)
+            issues.append(LayoutIssue("warning", "ACTIVE_GROUP_DENSITY", f"Hay {len(visible)} grupos visibles; el plan admite {max_active_groups}.", names))
+        if len(visible) > max_active_rows:
+            names = tuple(getattr(m, "aquila_name", m.__class__.__name__) for m in visible)
+            issues.append(LayoutIssue("warning", "ACTIVE_ROW_DENSITY", f"Hay {len(visible)} filas o grupos activos; el plan admite {max_active_rows}.", names))
+        return issues
+
 
 class AquilaScene(Scene):
     """Scene base: valida el layout después de cada animación y al finalizar."""
@@ -154,6 +189,11 @@ class AquilaScene(Scene):
         errors = [issue for issue in issues if issue.level == "error"]
         if errors:
             raise AquilaError(errors[0].message)
+
+    def aquila_density_check(self, *, max_active_groups: int = 4, max_active_rows: int = 5):
+        issues = self.aquila.density_issues(self.mobjects, max_active_groups=max_active_groups, max_active_rows=max_active_rows)
+        self.aquila_issues.extend(issues)
+        return issues
 
     def finish_aquila(self):
         self.aquila_check(*self.mobjects)
