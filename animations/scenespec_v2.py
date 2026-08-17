@@ -24,6 +24,25 @@ class VisualCue:
     duration: float = 0.0
     color: str | None = None
     value: str | None = None
+    semantic_key: str | None = None
+
+
+@dataclass(frozen=True)
+class VariableBindingSpec:
+    symbol: str
+    value: str
+    color: str
+    label: str
+    role: str
+
+
+@dataclass(frozen=True)
+class VisualGoalSpec:
+    purpose: str = ""
+    focus: str = ""
+    success_criterion: str = ""
+    focus_targets: tuple[str, ...] = field(default_factory=tuple)
+    max_visible_units: int = 3
 
 
 @dataclass(frozen=True)
@@ -90,6 +109,7 @@ class MicroStepSpec:
     layout_constraints: tuple[LayoutConstraint, ...] = field(default_factory=tuple)
     difficulty: str = "guided"
     hidden_targets: tuple[str, ...] = field(default_factory=tuple)
+    visual_goal: VisualGoalSpec = field(default_factory=VisualGoalSpec)
 
 
 @dataclass(frozen=True)
@@ -134,10 +154,12 @@ class SceneSpecV2:
     level: str
     modes: tuple[ModeV2, ...]
     chapters: tuple[ChapterSpec, ...]
+    variable_bindings: tuple[VariableBindingSpec, ...] = field(default_factory=tuple)
 
     @classmethod
     def from_dict(cls, raw: dict[str, Any]) -> "SceneSpecV2":
         modes = tuple(ModeV2(**item) for item in raw.get("modes", []))
+        variable_bindings = tuple(VariableBindingSpec(**item) for item in raw.get("variable_bindings", []))
         chapters: list[ChapterSpec] = []
         for chapter_raw in raw.get("chapters", []):
             beats: list[BeatV2] = []
@@ -146,6 +168,7 @@ class SceneSpecV2:
                 for step_raw in beat_raw.get("microsteps", []):
                     audio = AudioCue(**step_raw["audio"])
                     visual = tuple(VisualCue(**cue) for cue in step_raw.get("visual", []))
+                    visual_goal = VisualGoalSpec(**step_raw.get("visual_goal", {}))
                     verification_raw = step_raw.get("verification", {})
                     verification = VerificationSpec(
                         type=verification_raw.get("type", "none"),
@@ -176,6 +199,7 @@ class SceneSpecV2:
                             layout_constraints=constraints,
                             difficulty=step_raw.get("difficulty", "guided"),
                             hidden_targets=tuple(step_raw.get("hidden_targets", [])),
+                            visual_goal=visual_goal,
                         )
                     )
                 beats.append(
@@ -209,6 +233,7 @@ class SceneSpecV2:
             level=raw.get("level", "beginner"),
             modes=modes,
             chapters=tuple(chapters),
+            variable_bindings=variable_bindings,
         )
 
     @classmethod
@@ -271,6 +296,10 @@ def audit_scenespec_v2(spec: SceneSpecV2, project_root: str | Path | None = None
                     add("warning", "AUDIO_SCRIPT_MISMATCH", "El texto del audio y el texto hablado del microstep no coinciden exactamente.", step.id)
                 if not step.visual:
                     add("error", "NO_VISUAL_CUES", "El microstep no tiene cues visuales.", step.id)
+                if step.visual_goal.max_visible_units < 1:
+                    add("error", "INVALID_VISUAL_BUDGET", "El objetivo visual debe permitir al menos una unidad visible.", step.id)
+                if step.visual_goal.focus_targets and len(step.visual_goal.focus_targets) > step.visual_goal.max_visible_units:
+                    add("warning", "VISUAL_FOCUS_OVER_BUDGET", "El microstep enfoca más objetivos que su presupuesto visual.", step.id, {"targets": step.visual_goal.focus_targets})
                 if step.pause_after < 0.8:
                     add("warning", "PROCESSING_PAUSE_SHORT", "La pausa puede ser insuficiente para procesar la transformación.", step.id, {"pause": step.pause_after})
                 if step.layout_plan.mode not in {"linear", "split", "triad", "stacked", "reset"}:
@@ -298,7 +327,11 @@ def audit_scenespec_v2(spec: SceneSpecV2, project_root: str | Path | None = None
                             add("error", "SYMBOLIC_VERIFICATION_ERROR", "No fue posible analizar la transformación simbólicamente.", step.id, symbolic_result)
                     except Exception as exc:  # noqa: BLE001
                         add("error", "SYMBOLIC_ENGINE_UNAVAILABLE", "El motor simbólico no pudo ejecutarse.", step.id, {"message": str(exc)})
-                if step.operation != "show_context" and not step.ledger.keep_previous:
+                if (
+                    step.operation != "show_context"
+                    and not step.ledger.keep_previous
+                    and step.layout_plan.retention_policy not in {"clear_active", "reset_exercise"}
+                ):
                     add("error", "UNEXPLAINED_ERASURE", "La transformación elimina el historial sin una política de persistencia.", step.id)
                 if step.checkpoint is None:
                     add("warning", "NO_CHECKPOINT", "El microstep no ofrece una oportunidad explícita de observación o control.", step.id)

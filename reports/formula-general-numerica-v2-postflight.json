@@ -1,0 +1,93 @@
+{
+  "video": "public/media/zenit/videos/formula_general_numerica_v2_guiada/1080p60/FormulaGeneralNumericaV2Guiada.mp4",
+  "metadata": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 60.0,
+    "duration": 272.25
+  },
+  "frameReports": [
+    {
+      "frame": "frame-01.png",
+      "bbox": [
+        72,
+        36,
+        442,
+        110
+      ],
+      "margins": {
+        "left": 0.1125,
+        "right": 0.309375,
+        "top": 0.1,
+        "bottom": 0.6944444444444444
+      },
+      "coverage": 0.11883680555555555
+    },
+    {
+      "frame": "frame-02.png",
+      "bbox": [
+        72,
+        36,
+        442,
+        266
+      ],
+      "margins": {
+        "left": 0.1125,
+        "right": 0.309375,
+        "top": 0.1,
+        "bottom": 0.2611111111111111
+      },
+      "coverage": 0.3693576388888889
+    },
+    {
+      "frame": "frame-03.png",
+      "bbox": [
+        72,
+        36,
+        442,
+        266
+      ],
+      "margins": {
+        "left": 0.1125,
+        "right": 0.309375,
+        "top": 0.1,
+        "bottom": 0.2611111111111111
+      },
+      "coverage": 0.3693576388888889
+    },
+    {
+      "frame": "frame-04.png",
+      "bbox": [
+        72,
+        36,
+        442,
+        266
+      ],
+      "margins": {
+        "left": 0.1125,
+        "right": 0.309375,
+        "top": 0.1,
+        "bottom": 0.2611111111111111
+      },
+      "coverage": 0.3693576388888889
+    },
+    {
+      "frame": "frame-05.png",
+      "bbox": [
+        72,
+        36,
+        442,
+        266
+      ],
+      "margins": {
+        "left": 0.1125,
+        "right": 0.309375,
+        "top": 0.1,
+        "bottom": 0.2611111111111111
+      },
+      "coverage": 0.3693576388888889
+    }
+  ],
+  "findings": [],
+  "status": "PASS"
+}

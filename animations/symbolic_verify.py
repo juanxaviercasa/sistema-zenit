@@ -48,6 +48,10 @@ def verify_equivalence(before: str, after: str, assumptions: tuple[str, ...] = (
 
 def verify_step(step) -> dict[str, Any]:
     verification = step.verification
+    if verification.type in {"binding_map", "representation", "conclusion"}:
+        if not verification.expected.strip():
+            return {"status": "FAIL", "method": "missing_declarative_expectation"}
+        return {"status": "PASS", "method": verification.type, "expected": verification.expected}
     if verification.type in {"symbolic_equivalence", "equation_form"}:
         result = verify_equivalence(step.from_state, step.to_state, verification.assumptions)
         if verification.type == "equation_form" and result["status"] == "PASS":

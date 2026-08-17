@@ -1,0 +1,30 @@
+Starting video analysis...
+Submitting video analysis task...
+Task submitted (ID: video-analysis-00382b6b-b6b2-4991-8d0b-b6b79bfd1e17)
+[8s] Status: Analyzing video content with AI...
+[32s] Status: Analysis completed
+[32s] Analysis completed!
+Full analysis result saved to: /home/ubuntu/sistema-zenit/video_FormulaGeneralNumericaV2Guiada_analysis_20260817_052052.md
+Note: This tool performs AI-based visual and audio analysis, not verbatim transcription. For detailed speech transcription, use `manus-speech-to-text` instead.
+Analysis result:
+
+Como director de composición matemática, he auditado las diez escenas del video "FÓRMULA GENERAL · EJEMPLO NUMÉRICO". El resultado de la auditoría es **PASS**.
+
+La pieza cumple con los estándares de rigor pedagógico y jerarquía visual del Sistema Zenit. A continuación, el detalle de la evidencia:
+
+### Informe de Auditoría
+
+*   **Comprensión y Animación (00:01 - 04:28):** La narrativa precede a la acción visual. Se explica el "qué" y el "porqué" antes de que los números se desplacen, permitiendo que la carga cognitiva sea manejable. **PASS**.
+*   **Ausencia de Superposiciones:** No se detectan colisiones entre elementos tipográficos y cajas de datos. Los márgenes de seguridad se respetan en todas las resoluciones. **PASS**.
+*   **Funcionalidad de Layouts:**
+    *   **Triad (00:32):** Excelente uso para identificar los coeficientes $a$, $b$ y $c$ con etiquetas descriptivas (cuadrático, lineal, independiente).
+    *   **Split (02:01 y 03:36):** El uso de pantalla dividida para el discriminante y la verificación final permite comparar el proceso con el resultado sin perder el contexto de la ecuación original. **PASS**.
+*   **Escala y Correspondencia (01:11 - 01:59):** La transición del "Mapa de sustitución" a la fórmula con valores numéricos mantiene una escala 1:1. El resaltado por color (Rojo para $a=2$, Azul para $b=8$, Verde para $c=6$) es consistente y facilita el rastreo visual. **PASS**.
+*   **Separación de Ramas (02:57 - 03:34):** Las soluciones $x_1$ y $x_2$ se presentan en secuencias lineales independientes, evitando la confusión que suele generar el signo $\pm$ en estudiantes novatos. **PASS**.
+*   **Legibilidad de Verificación (03:36 - 04:02):** Las operaciones de comprobación son claras y el cierre con la igualdad $0=0$ es elocuente. **PASS**.
+*   **Contraste y Ritmo:** El uso de dorado y blanco sobre fondo negro, junto con un ritmo pausado, asegura que el espectador pueda seguir los cálculos sin necesidad de retroceder el video. **PASS**.
+
+### Pendientes Reales
+*   **Ninguno.** La pieza está lista para su distribución.
+
+**Resultado Final: PASS**

@@ -48,6 +48,19 @@ class LayoutZone:
 
 
 @dataclass(frozen=True)
+class FitMeasurement:
+    zone_name: str
+    object_width: float
+    object_height: float
+    zone_width: float
+    zone_height: float
+    required_scale: float
+    resolved_scale: float
+    min_scale: float
+    fits: bool
+
+
+@dataclass(frozen=True)
 class LayoutPlan:
     mode: LayoutMode | str = LayoutMode.LINEAR
     gap: float = 0.34
@@ -121,16 +134,34 @@ class CanvasLayout:
         raise LayoutError(f"modo de layout desconocido: {plan.mode}")
 
     @staticmethod
-    def fit_group(group: VGroup, zone: LayoutZone, *, min_scale: float = 0.75, allow_compression: bool = True, horizontal_align: str = "center") -> VGroup:
-        if group.width <= 0 or group.height <= 0:
-            return group
+    def measure_group(group: Mobject, zone: LayoutZone, *, min_scale: float = 0.75) -> FitMeasurement:
+        object_width = float(group.width)
+        object_height = float(group.height)
+        if object_width <= 0 or object_height <= 0:
+            return FitMeasurement(zone.name, object_width, object_height, zone.width, zone.height, 1.0, 1.0, min_scale, True)
         target_width = zone.width * 0.92
         target_height = zone.height * 0.88
-        width_scale = target_width / group.width
-        height_scale = target_height / group.height
-        scale = min(1.0, width_scale, height_scale)
-        if scale < min_scale and not allow_compression:
-            raise LayoutError(f"{group} no cabe en {zone.name} sin caer por debajo de escala mínima {min_scale}")
+        width_scale = target_width / object_width
+        height_scale = target_height / object_height
+        required_scale = min(1.0, width_scale, height_scale)
+        return FitMeasurement(
+            zone_name=zone.name,
+            object_width=object_width,
+            object_height=object_height,
+            zone_width=zone.width,
+            zone_height=zone.height,
+            required_scale=required_scale,
+            resolved_scale=required_scale,
+            min_scale=min_scale,
+            fits=required_scale >= min_scale,
+        )
+
+    @staticmethod
+    def fit_group(group: VGroup, zone: LayoutZone, *, min_scale: float = 0.75, allow_compression: bool = True, horizontal_align: str = "center") -> VGroup:
+        measurement = CanvasLayout.measure_group(group, zone, min_scale=min_scale)
+        if not measurement.fits and not allow_compression:
+            raise LayoutError(f"{group} no cabe en {zone.name}: requiere escala {measurement.required_scale:.2f}, mínima {min_scale:.2f}")
+        scale = measurement.required_scale
         group.scale(scale)
         group.move_to((zone.center_x, zone.center_y, 0))
         if horizontal_align == "left":

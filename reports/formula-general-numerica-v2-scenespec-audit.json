@@ -1,0 +1,13 @@
+{
+  "spec": "formula-general-numerica-v2",
+  "title": "Resolver una cuadrática: de los datos a las raíces",
+  "chapter_count": 1,
+  "beat_count": 10,
+  "microstep_count": 10,
+  "estimated_seconds": 262.42,
+  "finding_count": 0,
+  "error_count": 0,
+  "warning_count": 0,
+  "status": "PASS",
+  "findings": []
+}

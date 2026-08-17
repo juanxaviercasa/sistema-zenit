@@ -1,0 +1,10 @@
+audio/formula-general-numerica-v2/bindings-01.wav 37.160000
+audio/formula-general-numerica-v2/close-01.wav 23.560000
+audio/formula-general-numerica-v2/discriminant-01.wav 28.920000
+audio/formula-general-numerica-v2/formula-01.wav 22.600000
+audio/formula-general-numerica-v2/intermediate-01.wav 20.440000
+audio/formula-general-numerica-v2/problem-01.wav 27.920000
+audio/formula-general-numerica-v2/root-one-01.wav 14.880000
+audio/formula-general-numerica-v2/root-two-01.wav 19.160000
+audio/formula-general-numerica-v2/substitution-01.wav 22.840000
+audio/formula-general-numerica-v2/verify-01.wav 26.040000

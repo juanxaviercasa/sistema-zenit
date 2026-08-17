@@ -1,0 +1,1140 @@
+{
+  "id": "formula-general-numerica-v2",
+  "title": "Resolver una cuadrática: de los datos a las raíces",
+  "subject": "Álgebra",
+  "language": "es-419",
+  "aspect_ratio": "16:9",
+  "learning_objective": "Aplicar la fórmula general a 2x^2+8x+6=0 identificando a, b y c, sustituyendo cada dato, calculando el discriminante y verificando las dos raíces.",
+  "level": "beginner",
+  "variable_bindings": [
+    {
+      "symbol": "a",
+      "value": "2",
+      "color": "RED_C",
+      "label": "coeficiente cuadrático",
+      "role": "coefficient"
+    },
+    {
+      "symbol": "b",
+      "value": "8",
+      "color": "BLUE_C",
+      "label": "coeficiente lineal",
+      "role": "coefficient"
+    },
+    {
+      "symbol": "c",
+      "value": "6",
+      "color": "GREEN_C",
+      "label": "término independiente",
+      "role": "constant"
+    }
+  ],
+  "modes": [
+    {
+      "name": "guided",
+      "tempo": "slow",
+      "learner_control": "optional",
+      "full_solution": true,
+      "show_ledger": true,
+      "require_checkpoints": false
+    },
+    {
+      "name": "controlled",
+      "tempo": "slow",
+      "learner_control": "required",
+      "full_solution": true,
+      "show_ledger": true,
+      "require_checkpoints": true
+    },
+    {
+      "name": "practice",
+      "tempo": "adaptive",
+      "learner_control": "required",
+      "full_solution": false,
+      "show_ledger": true,
+      "require_checkpoints": true
+    }
+  ],
+  "chapters": [
+    {
+      "id": "numeric-solution",
+      "title": "De los datos a las raíces",
+      "objective": "Resolver la ecuación manteniendo visibles las correspondencias entre variables y valores.",
+      "beats": [
+        {
+          "id": "problem",
+          "title": "1. Planteamos el problema",
+          "question": "¿Qué ecuación vamos a resolver?",
+          "objective": "Entender el problema antes de introducir la fórmula.",
+          "layout_plan": {
+            "mode": "linear",
+            "gap": 0.34,
+            "min_scale": 0.82,
+            "max_active_groups": 3,
+            "max_active_rows": 3,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "keep",
+            "reset_trigger": "chapter_start"
+          },
+          "duration_hint": 8.0,
+          "close_message": "Ya tenemos una ecuación concreta y una estrategia.",
+          "microsteps": [
+            {
+              "id": "problem-01",
+              "from_state": "2*x^2 + 8*x + 6 = 0",
+              "to_state": "2*x^2 + 8*x + 6 = 0",
+              "operation": "show_context",
+              "reason": "Primero fijamos la ecuación concreta y el objetivo de encontrar sus raíces.",
+              "spoken_text": "Vamos a resolver la ecuación dos equis al cuadrado más ocho equis más seis igual a cero usando la fórmula general. Primero veremos qué representa cada número y después construiremos las dos soluciones sin saltarnos ningún cálculo.",
+              "audio": {
+                "id": "problem-01",
+                "text": "Vamos a resolver la ecuación dos equis al cuadrado más ocho equis más seis igual a cero usando la fórmula general. Primero veremos qué representa cada número y después construiremos las dos soluciones sin saltarnos ningún cálculo.",
+                "file": "audio/formula-general-numerica-v2/problem-01.wav",
+                "duration": 27.92,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "equation-problem",
+                  "at": "start",
+                  "duration": 2.4,
+                  "color": "WHITE",
+                  "semantic_key": "problem"
+                }
+              ],
+              "pause_after": 1.5,
+              "layout_plan": {
+                "mode": "linear",
+                "gap": 0.34,
+                "min_scale": 0.82,
+                "max_active_groups": 3,
+                "max_active_rows": 3,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "keep",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.38,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": false
+              },
+              "verification": {
+                "type": "representation",
+                "engine": "declarative",
+                "expected": "problem_equation_is_2x2_plus_8x_plus_6_equals_0",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "observe",
+                "prompt": "Observa la ecuación que resolveremos.",
+                "required_before_continue": false
+              },
+              "visual_goal": {
+                "purpose": "Enmarcar el problema.",
+                "focus": "La ecuación concreta.",
+                "success_criterion": "El estudiante puede repetir la ecuación antes de ver la fórmula.",
+                "focus_targets": [
+                  "equation-problem"
+                ],
+                "max_visible_units": 2
+              },
+              "layout_constraints": [
+                {
+                  "relation": "inside",
+                  "subject": "equation-problem",
+                  "target": "content"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bindings",
+          "title": "2. Relacionamos letras y datos",
+          "question": "¿Qué número ocupa el lugar de cada coeficiente?",
+          "objective": "Asociar a=2, b=8 y c=6 sin confundir posiciones.",
+          "layout_plan": {
+            "mode": "triad",
+            "gap": 0.28,
+            "min_scale": 0.78,
+            "max_active_groups": 5,
+            "max_active_rows": 3,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "demote",
+            "reset_trigger": "beat_change"
+          },
+          "duration_hint": 12.0,
+          "close_message": "Cada letra ya tiene un valor y un significado.",
+          "microsteps": [
+            {
+              "id": "bindings-01",
+              "from_state": "2*x^2 + 8*x + 6 = 0",
+              "to_state": "a=2; b=8; c=6",
+              "operation": "bind_coefficients",
+              "reason": "Comparamos término a término con la forma ax^2+bx+c=0.",
+              "spoken_text": "Comparamos la ecuación con la forma a por equis al cuadrado más b por equis más c igual a cero. El número que acompaña a equis al cuadrado es a: vale dos. El número que acompaña a equis es b: vale ocho. El término independiente es c: vale seis.",
+              "audio": {
+                "id": "bindings-01",
+                "text": "Comparamos la ecuación con la forma a por equis al cuadrado más b por equis más c igual a cero. El número que acompaña a equis al cuadrado es a: vale dos. El número que acompaña a equis es b: vale ocho. El término independiente es c: vale seis.",
+                "file": "audio/formula-general-numerica-v2/bindings-01.wav",
+                "duration": 37.16,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "highlight",
+                  "target": "binding-a",
+                  "at": "audio:0.0",
+                  "duration": 1.0,
+                  "color": "RED_C",
+                  "value": "2",
+                  "semantic_key": "a"
+                },
+                {
+                  "action": "highlight",
+                  "target": "binding-b",
+                  "at": "audio:3.7",
+                  "duration": 1.0,
+                  "color": "BLUE_C",
+                  "value": "8",
+                  "semantic_key": "b"
+                },
+                {
+                  "action": "highlight",
+                  "target": "binding-c",
+                  "at": "audio:7.5",
+                  "duration": 1.0,
+                  "color": "GREEN_C",
+                  "value": "6",
+                  "semantic_key": "c"
+                }
+              ],
+              "pause_after": 1.8,
+              "layout_plan": {
+                "mode": "triad",
+                "gap": 0.28,
+                "min_scale": 0.78,
+                "max_active_groups": 5,
+                "max_active_rows": 3,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "demote",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.38,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "binding_map",
+                "engine": "declarative",
+                "expected": "a=2,b=8,c=6",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "recall",
+                "prompt": "¿Cuánto valen a, b y c?",
+                "required_before_continue": false
+              },
+              "visual_goal": {
+                "purpose": "Construir el mapa variable-valor.",
+                "focus": "Un par variable-valor por vez.",
+                "success_criterion": "El estudiante puede decir qué número reemplaza a cada letra.",
+                "focus_targets": [
+                  "binding-a",
+                  "binding-b",
+                  "binding-c"
+                ],
+                "max_visible_units": 3
+              },
+              "layout_constraints": [
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "binding-a",
+                  "target": "binding-b"
+                },
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "binding-b",
+                  "target": "binding-c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "formula",
+          "title": "3. Fijamos la fórmula general",
+          "question": "¿Dónde aparecerá cada coeficiente?",
+          "objective": "Leer la fórmula como un mapa de sustitución.",
+          "layout_plan": {
+            "mode": "linear",
+            "gap": 0.34,
+            "min_scale": 0.8,
+            "max_active_groups": 4,
+            "max_active_rows": 3,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "keep",
+            "reset_trigger": "beat_change"
+          },
+          "duration_hint": 10.0,
+          "close_message": "La fórmula es el mapa que seguiremos.",
+          "microsteps": [
+            {
+              "id": "formula-01",
+              "from_state": "a=2; b=8; c=6",
+              "to_state": "x = (-b +or- sqrt(b^2 - 4*a*c))/(2*a)",
+              "operation": "show_formula_map",
+              "reason": "La fórmula debe estar visible antes de sustituir valores.",
+              "spoken_text": "Antes de reemplazar, dejamos visible la fórmula general. Aquí aparece menos b en el numerador, la raíz de b al cuadrado menos cuatro a c y, abajo, dos a. Esta estructura será nuestro mapa para colocar cada dato.",
+              "audio": {
+                "id": "formula-01",
+                "text": "Antes de reemplazar, dejamos visible la fórmula general. Aquí aparece menos b en el numerador, la raíz de b al cuadrado menos cuatro a c y, abajo, dos a. Esta estructura será nuestro mapa para colocar cada dato.",
+                "file": "audio/formula-general-numerica-v2/formula-01.wav",
+                "duration": 22.6,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "formula-general",
+                  "at": "start",
+                  "duration": 2.7,
+                  "color": "WHITE",
+                  "semantic_key": "formula"
+                },
+                {
+                  "action": "highlight",
+                  "target": "formula-b",
+                  "at": "audio:2.7",
+                  "duration": 0.8,
+                  "color": "BLUE_C",
+                  "semantic_key": "b"
+                },
+                {
+                  "action": "highlight",
+                  "target": "formula-a",
+                  "at": "audio:5.0",
+                  "duration": 0.8,
+                  "color": "RED_C",
+                  "semantic_key": "a"
+                },
+                {
+                  "action": "highlight",
+                  "target": "formula-c",
+                  "at": "audio:6.5",
+                  "duration": 0.8,
+                  "color": "GREEN_C",
+                  "semantic_key": "c"
+                }
+              ],
+              "pause_after": 1.5,
+              "layout_plan": {
+                "mode": "linear",
+                "gap": 0.34,
+                "min_scale": 0.8,
+                "max_active_groups": 4,
+                "max_active_rows": 3,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "keep",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.38,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": false
+              },
+              "verification": {
+                "type": "representation",
+                "engine": "declarative",
+                "expected": "quadratic_formula_map",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "observe",
+                "prompt": "Sigue los lugares de b, a y c en la fórmula.",
+                "required_before_continue": false
+              },
+              "visual_goal": {
+                "purpose": "Presentar el molde.",
+                "focus": "La estructura de la fórmula.",
+                "success_criterion": "El estudiante puede localizar b, a y c antes de ver números.",
+                "focus_targets": [
+                  "formula-general"
+                ],
+                "max_visible_units": 3
+              },
+              "layout_constraints": [
+                {
+                  "relation": "inside",
+                  "subject": "formula-general",
+                  "target": "content"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "substitution",
+          "title": "4. Sustituimos sin perder posiciones",
+          "question": "¿Qué valor entra en cada lugar?",
+          "objective": "Ver cada reemplazo como una correspondencia explícita.",
+          "layout_plan": {
+            "mode": "split",
+            "gap": 0.36,
+            "min_scale": 0.76,
+            "max_active_groups": 5,
+            "max_active_rows": 4,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "demote",
+            "reset_trigger": "beat_change"
+          },
+          "duration_hint": 12.0,
+          "close_message": "La fórmula ya contiene los datos del problema.",
+          "microsteps": [
+            {
+              "id": "substitution-01",
+              "from_state": "x = (-b +or- sqrt(b^2 - 4*a*c))/(2*a)",
+              "to_state": "x = (-(8) +or- sqrt((8)^2 - 4*(2)*(6)))/(2*(2))",
+              "operation": "substitute_values",
+              "reason": "Reemplazamos cada letra por su valor en el mismo lugar estructural.",
+              "spoken_text": "Ahora reemplazamos sin resolver todavía. El ocho ocupa el lugar de b, el dos aparece en cada lugar de a y el seis ocupa el lugar de c. Observa que cada dato conserva el lugar de la letra que está sustituyendo.",
+              "audio": {
+                "id": "substitution-01",
+                "text": "Ahora reemplazamos sin resolver todavía. El ocho ocupa el lugar de b, el dos aparece en cada lugar de a y el seis ocupa el lugar de c. Observa que cada dato conserva el lugar de la letra que está sustituyendo.",
+                "file": "audio/formula-general-numerica-v2/substitution-01.wav",
+                "duration": 22.84,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "highlight",
+                  "target": "substitution-b",
+                  "at": "audio:0.0",
+                  "duration": 1.0,
+                  "color": "BLUE_C",
+                  "value": "8",
+                  "semantic_key": "b"
+                },
+                {
+                  "action": "highlight",
+                  "target": "substitution-a",
+                  "at": "audio:3.0",
+                  "duration": 1.0,
+                  "color": "RED_C",
+                  "value": "2",
+                  "semantic_key": "a"
+                },
+                {
+                  "action": "highlight",
+                  "target": "substitution-c",
+                  "at": "audio:6.0",
+                  "duration": 1.0,
+                  "color": "GREEN_C",
+                  "value": "6",
+                  "semantic_key": "c"
+                }
+              ],
+              "pause_after": 2.0,
+              "layout_plan": {
+                "mode": "split",
+                "gap": 0.36,
+                "min_scale": 0.76,
+                "max_active_groups": 5,
+                "max_active_rows": 4,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "demote",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.38,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "representation",
+                "engine": "declarative",
+                "expected": "substitution_matches_a2_b8_c6",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "recall",
+                "prompt": "¿Dónde aparece el valor 6?",
+                "required_before_continue": false
+              },
+              "visual_goal": {
+                "purpose": "Hacer visible la correspondencia.",
+                "focus": "Una sustitución por vez.",
+                "success_criterion": "El estudiante puede explicar por qué cada número está en ese lugar.",
+                "focus_targets": [
+                  "substitution-a",
+                  "substitution-b",
+                  "substitution-c"
+                ],
+                "max_visible_units": 3
+              },
+              "layout_constraints": [
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "substitution-left",
+                  "target": "substitution-right"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "discriminant",
+          "title": "5. Calculamos el discriminante",
+          "question": "¿Qué queda dentro de la raíz?",
+          "objective": "Separar el cálculo b²−4ac del resto de la fórmula.",
+          "layout_plan": {
+            "mode": "split",
+            "gap": 0.38,
+            "min_scale": 0.78,
+            "max_active_groups": 4,
+            "max_active_rows": 4,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "clear_active",
+            "reset_trigger": "beat_change"
+          },
+          "duration_hint": 12.0,
+          "close_message": "El discriminante vale 16 y su raíz es 4.",
+          "microsteps": [
+            {
+              "id": "discriminant-01",
+              "from_state": "(8)^2 - 4*(2)*(6)",
+              "to_state": "Delta = 64 - 48 = 16",
+              "operation": "calculate_discriminant",
+              "reason": "Calculamos por separado la expresión que está dentro de la raíz.",
+              "spoken_text": "Nos concentramos en lo que está dentro de la raíz. Ocho al cuadrado es sesenta y cuatro. Cuatro por dos por seis es cuarenta y ocho. Entonces el discriminante es sesenta y cuatro menos cuarenta y ocho, igual a dieciséis.",
+              "audio": {
+                "id": "discriminant-01",
+                "text": "Nos concentramos en lo que está dentro de la raíz. Ocho al cuadrado es sesenta y cuatro. Cuatro por dos por seis es cuarenta y ocho. Entonces el discriminante es sesenta y cuatro menos cuarenta y ocho, igual a dieciséis.",
+                "file": "audio/formula-general-numerica-v2/discriminant-01.wav",
+                "duration": 28.92,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "delta-64",
+                  "at": "audio:0.0",
+                  "duration": 1.4,
+                  "color": "BLUE_C",
+                  "semantic_key": "b"
+                },
+                {
+                  "action": "write",
+                  "target": "delta-48",
+                  "at": "audio:3.0",
+                  "duration": 1.4,
+                  "color": "RED_C",
+                  "semantic_key": "a"
+                },
+                {
+                  "action": "transform",
+                  "target": "delta-16",
+                  "at": "audio:6.5",
+                  "duration": 1.5,
+                  "color": "GOLD",
+                  "semantic_key": "discriminant"
+                }
+              ],
+              "pause_after": 2.0,
+              "layout_plan": {
+                "mode": "split",
+                "gap": 0.38,
+                "min_scale": 0.78,
+                "max_active_groups": 4,
+                "max_active_rows": 4,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "clear_active",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.38,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "representation",
+                "engine": "declarative",
+                "expected": "delta_64_minus_48_equals_16",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "recall",
+                "prompt": "¿Cuánto vale el discriminante?",
+                "required_before_continue": true
+              },
+              "visual_goal": {
+                "purpose": "Aislar el cálculo radical.",
+                "focus": "64, 48 y 16 en secuencia.",
+                "success_criterion": "El estudiante sabe qué número queda dentro de la raíz.",
+                "focus_targets": [
+                  "delta-64",
+                  "delta-48",
+                  "delta-16"
+                ],
+                "max_visible_units": 3
+              },
+              "layout_constraints": [
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "delta-left",
+                  "target": "delta-right"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "intermediate",
+          "title": "6. Simplificamos la raíz",
+          "question": "¿Qué forma queda antes de separar las raíces?",
+          "objective": "Convertir la raíz de 16 en 4 y conservar el ±.",
+          "layout_plan": {
+            "mode": "linear",
+            "gap": 0.34,
+            "min_scale": 0.8,
+            "max_active_groups": 4,
+            "max_active_rows": 3,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "summarize",
+            "reset_trigger": "beat_change"
+          },
+          "duration_hint": 8.0,
+          "close_message": "La fórmula queda lista para abrir dos ramas.",
+          "microsteps": [
+            {
+              "id": "intermediate-01",
+              "from_state": "x = (-8 +or- sqrt(16))/4",
+              "to_state": "x = (-8 +or- 4)/4",
+              "operation": "simplify_root",
+              "reason": "La raíz cuadrada de 16 es 4 y el signo ± conserva dos posibilidades.",
+              "spoken_text": "La raíz cuadrada de dieciséis es cuatro. La expresión queda menos ocho más o menos cuatro, todo dividido entre cuatro. El signo más o menos nos anuncia dos cálculos, no un resultado ambiguo.",
+              "audio": {
+                "id": "intermediate-01",
+                "text": "La raíz cuadrada de dieciséis es cuatro. La expresión queda menos ocho más o menos cuatro, todo dividido entre cuatro. El signo más o menos nos anuncia dos cálculos, no un resultado ambiguo.",
+                "file": "audio/formula-general-numerica-v2/intermediate-01.wav",
+                "duration": 20.44,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "transform",
+                  "target": "sqrt-16",
+                  "at": "audio:0.0",
+                  "duration": 1.5,
+                  "color": "GOLD",
+                  "semantic_key": "discriminant"
+                },
+                {
+                  "action": "highlight",
+                  "target": "plus-minus",
+                  "at": "audio:4.0",
+                  "duration": 1.0,
+                  "color": "YELLOW",
+                  "semantic_key": "branches"
+                }
+              ],
+              "pause_after": 1.8,
+              "layout_plan": {
+                "mode": "linear",
+                "gap": 0.34,
+                "min_scale": 0.8,
+                "max_active_groups": 4,
+                "max_active_rows": 3,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "summarize",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.32,
+                "ancestor_opacity": 0.12,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "representation",
+                "engine": "declarative",
+                "expected": "sqrt_16_is_4",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "observe",
+                "prompt": "El símbolo ± abrirá dos ramas.",
+                "required_before_continue": true
+              },
+              "visual_goal": {
+                "purpose": "Preparar la bifurcación.",
+                "focus": "La raíz 4 y el signo ±.",
+                "success_criterion": "El estudiante anticipa dos cálculos separados.",
+                "focus_targets": [
+                  "sqrt-16",
+                  "plus-minus"
+                ],
+                "max_visible_units": 2
+              },
+              "layout_constraints": [
+                {
+                  "relation": "inside",
+                  "subject": "intermediate-expression",
+                  "target": "content"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "root-one",
+          "title": "7. Calculamos la primera raíz",
+          "question": "¿Qué ocurre con la rama positiva?",
+          "objective": "Resolver la rama + y obtener x₁=-1.",
+          "layout_plan": {
+            "mode": "split",
+            "gap": 0.38,
+            "min_scale": 0.78,
+            "max_active_groups": 4,
+            "max_active_rows": 4,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "demote",
+            "reset_trigger": "beat_change"
+          },
+          "duration_hint": 8.0,
+          "close_message": "La primera raíz es -1.",
+          "microsteps": [
+            {
+              "id": "root-one-01",
+              "from_state": "x = (-8 +or- 4)/4",
+              "to_state": "x1 = (-8 + 4)/4 = -1",
+              "operation": "solve_positive_branch",
+              "reason": "Seleccionamos el signo positivo y simplificamos la fracción.",
+              "spoken_text": "Comenzamos con la rama positiva. Sumamos cuatro a menos ocho: obtenemos menos cuatro. Al dividir entre cuatro, la primera solución es menos uno.",
+              "audio": {
+                "id": "root-one-01",
+                "text": "Comenzamos con la rama positiva. Sumamos cuatro a menos ocho: obtenemos menos cuatro. Al dividir entre cuatro, la primera solución es menos uno.",
+                "file": "audio/formula-general-numerica-v2/root-one-01.wav",
+                "duration": 14.88,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "root-one-calc",
+                  "at": "audio:0.0",
+                  "duration": 2.0,
+                  "color": "YELLOW",
+                  "semantic_key": "branch-positive"
+                },
+                {
+                  "action": "highlight",
+                  "target": "root-one-result",
+                  "at": "audio:4.5",
+                  "duration": 1.2,
+                  "color": "GOLD",
+                  "semantic_key": "root-one"
+                }
+              ],
+              "pause_after": 1.8,
+              "layout_plan": {
+                "mode": "split",
+                "gap": 0.38,
+                "min_scale": 0.78,
+                "max_active_groups": 4,
+                "max_active_rows": 4,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "demote",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.28,
+                "ancestor_opacity": 0.1,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "representation",
+                "engine": "declarative",
+                "expected": "root_one_equals_minus_one",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "recall",
+                "prompt": "¿Cuál es la primera raíz?",
+                "required_before_continue": true
+              },
+              "visual_goal": {
+                "purpose": "Resolver la rama positiva.",
+                "focus": "-8+4 y el resultado -1.",
+                "success_criterion": "El estudiante puede justificar x1=-1.",
+                "focus_targets": [
+                  "root-one-calc",
+                  "root-one-result"
+                ],
+                "max_visible_units": 2
+              },
+              "layout_constraints": [
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "root-one-calc",
+                  "target": "root-one-guide"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "root-two",
+          "title": "8. Calculamos la segunda raíz",
+          "question": "¿Qué ocurre con la rama negativa?",
+          "objective": "Resolver la rama − y obtener x₂=-3.",
+          "layout_plan": {
+            "mode": "split",
+            "gap": 0.38,
+            "min_scale": 0.78,
+            "max_active_groups": 4,
+            "max_active_rows": 4,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "demote",
+            "reset_trigger": "beat_change"
+          },
+          "duration_hint": 8.0,
+          "close_message": "La segunda raíz es -3.",
+          "microsteps": [
+            {
+              "id": "root-two-01",
+              "from_state": "x = (-8 +or- 4)/4",
+              "to_state": "x2 = (-8 - 4)/4 = -3",
+              "operation": "solve_negative_branch",
+              "reason": "Seleccionamos el signo negativo y simplificamos la segunda fracción.",
+              "spoken_text": "Ahora usamos la rama negativa. Menos ocho menos cuatro es menos doce. Al dividir entre cuatro, la segunda solución es menos tres. Las dos ramas nacen de la misma fórmula.",
+              "audio": {
+                "id": "root-two-01",
+                "text": "Ahora usamos la rama negativa. Menos ocho menos cuatro es menos doce. Al dividir entre cuatro, la segunda solución es menos tres. Las dos ramas nacen de la misma fórmula.",
+                "file": "audio/formula-general-numerica-v2/root-two-01.wav",
+                "duration": 19.16,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "root-two-calc",
+                  "at": "audio:0.0",
+                  "duration": 2.0,
+                  "color": "YELLOW",
+                  "semantic_key": "branch-negative"
+                },
+                {
+                  "action": "highlight",
+                  "target": "root-two-result",
+                  "at": "audio:4.5",
+                  "duration": 1.2,
+                  "color": "GOLD",
+                  "semantic_key": "root-two"
+                }
+              ],
+              "pause_after": 1.8,
+              "layout_plan": {
+                "mode": "split",
+                "gap": 0.38,
+                "min_scale": 0.78,
+                "max_active_groups": 4,
+                "max_active_rows": 4,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "demote",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.28,
+                "ancestor_opacity": 0.1,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "representation",
+                "engine": "declarative",
+                "expected": "root_two_equals_minus_three",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "recall",
+                "prompt": "¿Cuál es la segunda raíz?",
+                "required_before_continue": true
+              },
+              "visual_goal": {
+                "purpose": "Resolver la rama negativa.",
+                "focus": "-8-4 y el resultado -3.",
+                "success_criterion": "El estudiante puede justificar x2=-3.",
+                "focus_targets": [
+                  "root-two-calc",
+                  "root-two-result"
+                ],
+                "max_visible_units": 2
+              },
+              "layout_constraints": [
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "root-two-calc",
+                  "target": "root-two-guide"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "verify",
+          "title": "9. Verificamos las dos raíces",
+          "question": "¿Las respuestas satisfacen la ecuación original?",
+          "objective": "Comprobar x₁=-1 y x₂=-3 en la ecuación inicial.",
+          "layout_plan": {
+            "mode": "split",
+            "gap": 0.42,
+            "min_scale": 0.76,
+            "max_active_groups": 5,
+            "max_active_rows": 5,
+            "keep_anchor": true,
+            "allow_compression": false,
+            "retention_policy": "clear_active",
+            "reset_trigger": "beat_change"
+          },
+          "duration_hint": 14.0,
+          "close_message": "Las dos sustituciones producen cero.",
+          "microsteps": [
+            {
+              "id": "verify-01",
+              "from_state": "x1=-1; x2=-3",
+              "to_state": "P(-1)=0; P(-3)=0",
+              "operation": "verify_roots",
+              "reason": "Sustituimos cada raíz en la ecuación original y comprobamos que el resultado es cero.",
+              "spoken_text": "Comprobamos las dos respuestas en la ecuación original. Con menos uno obtenemos dos menos ocho más seis, igual a cero. Con menos tres obtenemos dieciocho menos veinticuatro más seis, también igual a cero.",
+              "audio": {
+                "id": "verify-01",
+                "text": "Comprobamos las dos respuestas en la ecuación original. Con menos uno obtenemos dos menos ocho más seis, igual a cero. Con menos tres obtenemos dieciocho menos veinticuatro más seis, también igual a cero.",
+                "file": "audio/formula-general-numerica-v2/verify-01.wav",
+                "duration": 26.04,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "verify-one",
+                  "at": "audio:0.0",
+                  "duration": 2.3,
+                  "color": "RED_C",
+                  "semantic_key": "root-one"
+                },
+                {
+                  "action": "write",
+                  "target": "verify-two",
+                  "at": "audio:5.5",
+                  "duration": 2.3,
+                  "color": "BLUE_C",
+                  "semantic_key": "root-two"
+                },
+                {
+                  "action": "highlight",
+                  "target": "verify-zero",
+                  "at": "audio:10.0",
+                  "duration": 1.0,
+                  "color": "GREEN_C",
+                  "semantic_key": "verification"
+                }
+              ],
+              "pause_after": 2.2,
+              "layout_plan": {
+                "mode": "split",
+                "gap": 0.42,
+                "min_scale": 0.76,
+                "max_active_groups": 5,
+                "max_active_rows": 5,
+                "keep_anchor": true,
+                "allow_compression": false,
+                "retention_policy": "clear_active",
+                "reset_trigger": "none"
+              },
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.24,
+                "ancestor_opacity": 0.08,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "conclusion",
+                "engine": "declarative",
+                "expected": "both_roots_satisfy_original_equation",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "observe",
+                "prompt": "Comprueba que ambos resultados son cero.",
+                "required_before_continue": true
+              },
+              "visual_goal": {
+                "purpose": "Cerrar el ciclo con evidencia.",
+                "focus": "Dos verificaciones independientes.",
+                "success_criterion": "El estudiante ve que ambas raíces funcionan.",
+                "focus_targets": [
+                  "verify-one",
+                  "verify-two",
+                  "verify-zero"
+                ],
+                "max_visible_units": 3
+              },
+              "layout_constraints": [
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "verify-one",
+                  "target": "verify-two"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "close",
+          "title": "10. Resultado final",
+          "question": "¿Cuáles son las soluciones?",
+          "objective": "Consolidar las dos raíces y el procedimiento completo.",
+          "layout_plan": {
+            "mode": "stacked",
+            "gap": 0.34,
+            "min_scale": 0.82,
+            "max_active_groups": 4,
+            "max_active_rows": 4,
+            "keep_anchor": false,
+            "allow_compression": false,
+            "retention_policy": "reset_exercise",
+            "reset_trigger": "chapter_end"
+          },
+          "duration_hint": 8.0,
+          "close_message": "Las soluciones son x1=-1 y x2=-3.",
+          "microsteps": [
+            {
+              "id": "close-01",
+              "from_state": "P(-1)=0; P(-3)=0",
+              "to_state": "x1=-1; x2=-3",
+              "operation": "state_conclusion",
+              "reason": "Después de verificar, presentamos las dos soluciones como resultado final.",
+              "spoken_text": "Las soluciones de la ecuación son menos uno y menos tres. El procedimiento completo fue: identificar a, b y c; sustituir; calcular el discriminante; separar las dos ramas y verificar.",
+              "audio": {
+                "id": "close-01",
+                "text": "Las soluciones de la ecuación son menos uno y menos tres. El procedimiento completo fue: identificar a, b y c; sustituir; calcular el discriminante; separar las dos ramas y verificar.",
+                "file": "audio/formula-general-numerica-v2/close-01.wav",
+                "duration": 23.56,
+                "start": 0.0,
+                "rate_wpm": 120
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "final-roots",
+                  "at": "audio:0.0",
+                  "duration": 2.0,
+                  "color": "GOLD",
+                  "semantic_key": "final"
+                },
+                {
+                  "action": "highlight",
+                  "target": "final-summary",
+                  "at": "audio:5.0",
+                  "duration": 1.0,
+                  "color": "TEAL_A",
+                  "semantic_key": "summary"
+                }
+              ],
+              "pause_after": 2.5,
+              "layout_plan": {
+                "mode": "stacked",
+                "gap": 0.34,
+                "min_scale": 0.82,
+                "max_active_groups": 4,
+                "max_active_rows": 4,
+                "keep_anchor": false,
+                "allow_compression": false,
+                "retention_policy": "reset_exercise",
+                "reset_trigger": "chapter_end"
+              },
+              "ledger": {
+                "keep_previous": false,
+                "previous_opacity": 0.0,
+                "ancestor_opacity": 0.0,
+                "stack_position": "below",
+                "show_operation_badge": false
+              },
+              "verification": {
+                "type": "conclusion",
+                "engine": "declarative",
+                "expected": "solutions_are_minus_one_and_minus_three",
+                "assumptions": []
+              },
+              "checkpoint": {
+                "type": "recall",
+                "prompt": "Repite las dos soluciones.",
+                "required_before_continue": false
+              },
+              "visual_goal": {
+                "purpose": "Consolidar el aprendizaje.",
+                "focus": "Las dos raíces y el resumen.",
+                "success_criterion": "El estudiante puede repetir el resultado y la secuencia de resolución.",
+                "focus_targets": [
+                  "final-roots",
+                  "final-summary"
+                ],
+                "max_visible_units": 2
+              },
+              "layout_constraints": [
+                {
+                  "relation": "inside",
+                  "subject": "final-roots",
+                  "target": "content"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

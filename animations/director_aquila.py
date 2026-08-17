@@ -13,7 +13,7 @@ from typing import Iterable
 
 from manim import Mobject, Scene, config
 
-from animations.layout_engine import CanvasLayout, LayoutError, LayoutPlan, LayoutZone
+from animations.layout_engine import CanvasLayout, FitMeasurement, LayoutError, LayoutPlan, LayoutZone
 
 
 @dataclass(frozen=True)
@@ -139,12 +139,35 @@ class AquilaDirector:
         except LayoutError as exc:
             raise AquilaError(str(exc)) from exc
 
+    def measure_into_zone(self, mobject: Mobject, zone: LayoutZone, *, min_scale: float = 0.75) -> FitMeasurement:
+        """Mide un grupo sin mutarlo para decidir si el layout debe cambiar."""
+        return CanvasLayout.measure_group(mobject, zone, min_scale=min_scale)
+
     def fit_into_zone(self, mobject: Mobject, zone: LayoutZone, *, min_scale: float = 0.75, allow_compression: bool = True, horizontal_align: str = "center") -> Mobject:
         """Ajusta un grupo a una zona sin reducirlo silenciosamente sin límite."""
+        measurement = self.measure_into_zone(mobject, zone, min_scale=min_scale)
+        if not measurement.fits and not allow_compression:
+            raise AquilaError(
+                f"{getattr(mobject, 'aquila_name', mobject.__class__.__name__)} no cabe en {zone.name}: "
+                f"escala requerida {measurement.required_scale:.2f}, mínima {min_scale:.2f}"
+            )
         try:
             return CanvasLayout.fit_group(mobject, zone, min_scale=min_scale, allow_compression=allow_compression, horizontal_align=horizontal_align)
         except LayoutError as exc:
             raise AquilaError(str(exc)) from exc
+
+    def assert_no_overlap(self, named_mobjects: dict[str, Mobject], *, tolerance: float | None = None) -> None:
+        """Falla si dos objetos nombrados invaden el mismo espacio funcional."""
+        tolerance = self.collision_tolerance if tolerance is None else tolerance
+        visible = [(name, mob) for name, mob in named_mobjects.items() if mob.get_num_points() > 0]
+        for index, (first_name, first) in enumerate(visible):
+            first_bounds = self.bounds(first)
+            for second_name, second in visible[index + 1 :]:
+                second_bounds = self.bounds(second)
+                overlap_x = min(first_bounds[1], second_bounds[1]) - max(first_bounds[0], second_bounds[0])
+                overlap_y = min(first_bounds[3], second_bounds[3]) - max(first_bounds[2], second_bounds[2])
+                if overlap_x > tolerance and overlap_y > tolerance:
+                    raise AquilaError(f"Solapamiento prohibido entre {first_name} y {second_name}")
 
     def density_issues(self, mobjects: Iterable[Mobject], *, max_active_groups: int = 4, max_active_rows: int = 5) -> list[LayoutIssue]:
         """Audita carga visual básica en la zona de trabajo."""
@@ -194,6 +217,15 @@ class AquilaScene(Scene):
         issues = self.aquila.density_issues(self.mobjects, max_active_groups=max_active_groups, max_active_rows=max_active_rows)
         self.aquila_issues.extend(issues)
         return issues
+
+    def aquila_measure(self, name: str, mobject: Mobject, zone: LayoutZone, *, min_scale: float = 0.75):
+        measurement = self.aquila.measure_into_zone(mobject, zone, min_scale=min_scale)
+        if not measurement.fits:
+            raise AquilaError(
+                f"{name} exige escala {measurement.required_scale:.2f} en {zone.name}; "
+                f"el mínimo permitido es {min_scale:.2f}"
+            )
+        return measurement
 
     def finish_aquila(self):
         self.aquila_check(*self.mobjects)
