@@ -1,0 +1,89 @@
+{
+  "scene": "formula-general",
+  "beat_count": 7,
+  "has_microsteps": false,
+  "audio_clips": 7,
+  "transcribed_segments": 82,
+  "segments_per_beat_approx": 11.71,
+  "beats": [
+    {
+      "id": "problem",
+      "narration_chars": 101,
+      "visual_units": 3,
+      "new_concepts": 1,
+      "pause_after": 1.5,
+      "audio_duration": 38.52,
+      "has_calculation": true,
+      "has_expected_action": true
+    },
+    {
+      "id": "normalize",
+      "narration_chars": 66,
+      "visual_units": 3,
+      "new_concepts": 1,
+      "pause_after": 1.5,
+      "audio_duration": 45.0,
+      "has_calculation": true,
+      "has_expected_action": true
+    },
+    {
+      "id": "square-term",
+      "narration_chars": 75,
+      "visual_units": 3,
+      "new_concepts": 1,
+      "pause_after": 2.0,
+      "audio_duration": 36.28,
+      "has_calculation": true,
+      "has_expected_action": true
+    },
+    {
+      "id": "add-to-both-sides",
+      "narration_chars": 74,
+      "visual_units": 3,
+      "new_concepts": 0,
+      "pause_after": 2.0,
+      "audio_duration": 35.96,
+      "has_calculation": true,
+      "has_expected_action": true
+    },
+    {
+      "id": "complete-square",
+      "narration_chars": 77,
+      "visual_units": 3,
+      "new_concepts": 1,
+      "pause_after": 2.0,
+      "audio_duration": 43.64,
+      "has_calculation": true,
+      "has_expected_action": true
+    },
+    {
+      "id": "isolate-root",
+      "narration_chars": 83,
+      "visual_units": 3,
+      "new_concepts": 1,
+      "pause_after": 2.0,
+      "audio_duration": 38.6,
+      "has_calculation": true,
+      "has_expected_action": true
+    },
+    {
+      "id": "solve",
+      "narration_chars": 66,
+      "visual_units": 3,
+      "new_concepts": 1,
+      "pause_after": 3.0,
+      "audio_duration": 41.96,
+      "has_calculation": true,
+      "has_expected_action": true
+    }
+  ],
+  "current_scene_behavior": {
+    "state_persistence": "beat_group_is_faded_out_before_next_beat",
+    "audio_sync_granularity": "one_audio_clip_per_beat",
+    "visual_reveal_granularity": "title_narration_expression_calculation_explanation",
+    "semantic_audio_cue_mapping": false,
+    "learner_control": false,
+    "adaptive_prior_knowledge": false,
+    "post_render_semantic_collision_detection": false
+  }
+}

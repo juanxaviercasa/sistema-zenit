@@ -1,0 +1,407 @@
+{
+  "id": "formula-general-normalizacion-v2",
+  "title": "Normalizar una ecuación cuadrática",
+  "subject": "Álgebra",
+  "language": "es-419",
+  "aspect_ratio": "16:9",
+  "learning_objective": "Dividir una ecuación cuadrática por su coeficiente principal y conservar la igualdad paso a paso.",
+  "level": "beginner",
+  "modes": [
+    {
+      "name": "guided",
+      "tempo": "slow",
+      "learner_control": "optional",
+      "full_solution": true,
+      "show_ledger": true,
+      "require_checkpoints": false
+    },
+    {
+      "name": "controlled",
+      "tempo": "slow",
+      "learner_control": "required",
+      "full_solution": true,
+      "show_ledger": true,
+      "require_checkpoints": true
+    },
+    {
+      "name": "practice",
+      "tempo": "adaptive",
+      "learner_control": "required",
+      "full_solution": false,
+      "show_ledger": true,
+      "require_checkpoints": true
+    }
+  ],
+  "chapters": [
+    {
+      "id": "normalization",
+      "title": "Dejar uno en el término cuadrático",
+      "objective": "Convertir el coeficiente de x al cuadrado en uno sin romper la igualdad.",
+      "prerequisite_ids": [],
+      "beats": [
+        {
+          "id": "identify-coefficients",
+          "title": "Identificamos la ecuación y sus coeficientes",
+          "question": "¿Qué representa cada letra en la ecuación cuadrática?",
+          "objective": "Reconocer a, b y c antes de operar.",
+          "duration_hint": 18.0,
+          "close_message": "Ya sabemos qué papel cumple cada coeficiente.",
+          "microsteps": [
+            {
+              "id": "identify-01",
+              "from_state": "a*x^2 + b*x + c = 0",
+              "to_state": "a*x^2 + b*x + c = 0",
+              "operation": "show_context",
+              "reason": "Primero observamos la forma general antes de transformarla.",
+              "spoken_text": "Partimos de una ecuación cuadrática general: a por x al cuadrado más b por x más c igual a cero.",
+              "audio": {
+                "id": "identify-01",
+                "text": "Partimos de una ecuación cuadrática general: a por x al cuadrado más b por x más c igual a cero.",
+                "file": "audio/formula-general-v2/identify-01.wav",
+                "duration": 16.08,
+                "start": 0.0,
+                "rate_wpm": 145
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "equation-original",
+                  "at": "start",
+                  "duration": 2.4
+                },
+                {
+                  "action": "highlight",
+                  "target": "equation-original",
+                  "at": "audio:0.0",
+                  "duration": 0.8,
+                  "color": "TEAL"
+                }
+              ],
+              "pause_after": 1.8,
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.38,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": false
+              },
+              "verification": {
+                "type": "equation_form",
+                "engine": "sympy",
+                "expected": "quadratic_standard_form",
+                "assumptions": [
+                  "a != 0"
+                ]
+              },
+              "checkpoint": {
+                "type": "observe",
+                "prompt": "Observa la forma general antes de hacer cualquier operación.",
+                "required_before_continue": false
+              },
+              "layout_constraints": [
+                {
+                  "relation": "inside",
+                  "subject": "equation-original",
+                  "target": "content"
+                },
+                {
+                  "relation": "below",
+                  "subject": "equation-original",
+                  "target": "scene-title"
+                }
+              ]
+            },
+            {
+              "id": "identify-02",
+              "from_state": "a*x^2 + b*x + c = 0",
+              "to_state": "a*x^2 + b*x + c = 0",
+              "operation": "label_terms",
+              "reason": "Nombrar los coeficientes reduce la carga antes de transformar la ecuación.",
+              "spoken_text": "La letra a acompaña al término cuadrático, b acompaña al término lineal y c es el término independiente.",
+              "audio": {
+                "id": "identify-02",
+                "text": "La letra a acompaña al término cuadrático, b acompaña al término lineal y c es el término independiente.",
+                "file": "audio/formula-general-v2/identify-02.wav",
+                "duration": 21.72,
+                "start": 0.0,
+                "rate_wpm": 146
+              },
+              "visual": [
+                {
+                  "action": "highlight",
+                  "target": "coefficient-a",
+                  "at": "audio:0.0",
+                  "duration": 1.0,
+                  "color": "YELLOW"
+                },
+                {
+                  "action": "highlight",
+                  "target": "coefficient-b",
+                  "at": "audio:3.0",
+                  "duration": 1.0,
+                  "color": "BLUE"
+                },
+                {
+                  "action": "highlight",
+                  "target": "coefficient-c",
+                  "at": "audio:5.5",
+                  "duration": 1.0,
+                  "color": "GREEN"
+                }
+              ],
+              "pause_after": 1.5,
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.38,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "symbol_presence",
+                "engine": "sympy",
+                "expected": "a,b,c_present",
+                "assumptions": [
+                  "a != 0"
+                ]
+              },
+              "checkpoint": {
+                "type": "recall",
+                "prompt": "¿Cuál es el coeficiente del término cuadrático?",
+                "required_before_continue": false
+              },
+              "layout_constraints": [
+                {
+                  "relation": "attached_to",
+                  "subject": "label-a",
+                  "target": "coefficient-a"
+                },
+                {
+                  "relation": "attached_to",
+                  "subject": "label-b",
+                  "target": "coefficient-b"
+                },
+                {
+                  "relation": "attached_to",
+                  "subject": "label-c",
+                  "target": "coefficient-c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "divide-by-a",
+          "title": "Dividimos todos los términos entre a",
+          "question": "¿Qué operación deja a x al cuadrado con coeficiente uno?",
+          "objective": "Aplicar la misma división a ambos miembros y simplificar término por término.",
+          "duration_hint": 33.0,
+          "close_message": "La ecuación quedó normalizada: el coeficiente de x al cuadrado ahora es uno.",
+          "microsteps": [
+            {
+              "id": "normalize-01",
+              "from_state": "a*x^2 + b*x + c = 0",
+              "to_state": "(a*x^2 + b*x + c)/a = 0/a",
+              "operation": "divide_both_sides",
+              "reason": "Como a no es cero, podemos dividir cada miembro entre a.",
+              "spoken_text": "Como a no es cero, dividimos cada término entre a.",
+              "audio": {
+                "id": "normalize-01",
+                "text": "Como a no es cero, dividimos cada término entre a.",
+                "file": "audio/formula-general-v2/normalize-01.wav",
+                "duration": 14.16,
+                "start": 0.0,
+                "rate_wpm": 143
+              },
+              "visual": [
+                {
+                  "action": "write",
+                  "target": "division-over-a",
+                  "at": "audio:0.0",
+                  "duration": 2.2
+                },
+                {
+                  "action": "highlight",
+                  "target": "both-members",
+                  "at": "audio:1.3",
+                  "duration": 1.0,
+                  "color": "YELLOW"
+                }
+              ],
+              "pause_after": 1.8,
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.42,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "symbolic_equivalence",
+                "engine": "sympy",
+                "expected": "equivalent_under_assumption:a!=0",
+                "assumptions": [
+                  "a != 0"
+                ]
+              },
+              "checkpoint": {
+                "type": "observe",
+                "prompt": "Mira la misma operación aplicada a los dos miembros.",
+                "required_before_continue": true
+              },
+              "layout_constraints": [
+                {
+                  "relation": "below",
+                  "subject": "division-over-a",
+                  "target": "equation-original"
+                },
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "division-over-a",
+                  "target": "narration-band"
+                }
+              ]
+            },
+            {
+              "id": "normalize-02",
+              "from_state": "(a*x^2 + b*x + c)/a = 0/a",
+              "to_state": "x^2 + (b/a)*x + c/a = 0",
+              "operation": "simplify_each_term",
+              "reason": "Distribuimos la división y simplificamos a por x al cuadrado entre a.",
+              "spoken_text": "El término a por x al cuadrado se convierte en x al cuadrado; b por x se convierte en b sobre a por x; y c se convierte en c sobre a.",
+              "audio": {
+                "id": "normalize-02",
+                "text": "El término a por x al cuadrado se convierte en x al cuadrado; b por x se convierte en b sobre a por x; y c se convierte en c sobre a.",
+                "file": "audio/formula-general-v2/normalize-02.wav",
+                "duration": 25.4,
+                "start": 0.0,
+                "rate_wpm": 148
+              },
+              "visual": [
+                {
+                  "action": "transform",
+                  "target": "term-quadratic",
+                  "at": "audio:0.0",
+                  "duration": 2.2,
+                  "color": "YELLOW"
+                },
+                {
+                  "action": "transform",
+                  "target": "term-linear",
+                  "at": "audio:3.6",
+                  "duration": 2.5,
+                  "color": "BLUE"
+                },
+                {
+                  "action": "transform",
+                  "target": "term-constant",
+                  "at": "audio:7.0",
+                  "duration": 2.0,
+                  "color": "GREEN"
+                }
+              ],
+              "pause_after": 2.2,
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.38,
+                "ancestor_opacity": 0.16,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "symbolic_equivalence",
+                "engine": "sympy",
+                "expected": "equivalent_under_assumption:a!=0",
+                "assumptions": [
+                  "a != 0"
+                ]
+              },
+              "checkpoint": {
+                "type": "recall",
+                "prompt": "¿Qué ocurrió con el factor a del término cuadrático?",
+                "required_before_continue": true
+              },
+              "layout_constraints": [
+                {
+                  "relation": "below",
+                  "subject": "equation-normalized",
+                  "target": "division-over-a"
+                },
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "equation-normalized",
+                  "target": "narration-band"
+                }
+              ]
+            },
+            {
+              "id": "normalize-03",
+              "from_state": "x^2 + (b/a)*x + c/a = 0",
+              "to_state": "x^2 + (b/a)*x = -c/a",
+              "operation": "move_constant",
+              "reason": "Restamos c sobre a en ambos lados para dejar los términos con x juntos.",
+              "spoken_text": "Pasamos el término independiente al otro miembro y obtenemos x al cuadrado más b sobre a por x igual a menos c sobre a.",
+              "audio": {
+                "id": "normalize-03",
+                "text": "Pasamos el término independiente al otro miembro y obtenemos x al cuadrado más b sobre a por x igual a menos c sobre a.",
+                "file": "audio/formula-general-v2/normalize-03.wav",
+                "duration": 22.0,
+                "start": 0.0,
+                "rate_wpm": 147
+              },
+              "visual": [
+                {
+                  "action": "transform",
+                  "target": "constant-to-right",
+                  "at": "audio:0.0",
+                  "duration": 3.5,
+                  "color": "GREEN"
+                },
+                {
+                  "action": "highlight",
+                  "target": "equation-normalized-moved",
+                  "at": "audio:5.3",
+                  "duration": 1.2,
+                  "color": "TEAL"
+                }
+              ],
+              "pause_after": 2.0,
+              "ledger": {
+                "keep_previous": true,
+                "previous_opacity": 0.35,
+                "ancestor_opacity": 0.14,
+                "stack_position": "below",
+                "show_operation_badge": true
+              },
+              "verification": {
+                "type": "symbolic_equivalence",
+                "engine": "sympy",
+                "expected": "equivalent",
+                "assumptions": [
+                  "a != 0"
+                ]
+              },
+              "checkpoint": {
+                "type": "observe",
+                "prompt": "Comprueba que solo se movió el término independiente.",
+                "required_before_continue": true
+              },
+              "layout_constraints": [
+                {
+                  "relation": "below",
+                  "subject": "equation-moved",
+                  "target": "equation-normalized"
+                },
+                {
+                  "relation": "must_not_overlap",
+                  "subject": "equation-moved",
+                  "target": "narration-band"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

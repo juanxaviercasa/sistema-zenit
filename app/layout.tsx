@@ -5,6 +5,8 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import "./globals.css";
 
+type LayoutProps = { children: React.ReactNode };
+
 const stixTwoText = STIX_Two_Text({
   variable: "--font-stix-two-text",
   subsets: ["latin"],
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
     "Plataforma de preparación para el examen de admisión a la UNI: teoría rigurosa, visualizaciones interactivas y práctica al nivel que exige el examen.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
       lang="es"

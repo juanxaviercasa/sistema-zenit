@@ -20,6 +20,7 @@ from pathlib import Path
 from PIL import Image, ImageChops, ImageStat
 
 from scenespec import SceneSpec, audit_scenespec
+from scenespec_v2 import SceneSpecV2, audit_scenespec_v2
 
 TARGET_RATIO = 16 / 9
 RATIO_TOLERANCE = 0.015
@@ -129,6 +130,9 @@ def main() -> int:
     spec = subparsers.add_parser("spec-audit")
     spec.add_argument("spec", type=Path)
     spec.add_argument("--report", type=Path, default=Path("reports/scenespec.json"))
+    spec_v2 = subparsers.add_parser("spec-audit-v2")
+    spec_v2.add_argument("spec", type=Path)
+    spec_v2.add_argument("--report", type=Path, default=Path("reports/scenespec-v2.json"))
     args = parser.parse_args()
     if args.command == "preflight":
         payload, findings = preflight(args.scene)
@@ -137,6 +141,9 @@ def main() -> int:
             print("No existe el video o falta ffprobe", flush=True)
             return 2
         payload, findings = audit(args.video)
+    elif args.command == "spec-audit-v2":
+        payload = audit_scenespec_v2(SceneSpecV2.load(args.spec), Path.cwd())
+        findings = [Finding(item["level"], item["code"], item["message"], {"item": item.get("item", ""), **item.get("evidence", {})}) for item in payload.pop("findings", [])]
     else:
         report, raw_findings = audit_scenespec(SceneSpec.load(args.spec))
         findings = [Finding(item["level"], item["code"], item["message"], {"beats": item.get("beats", []), **item.get("evidence", {})}) for item in raw_findings]

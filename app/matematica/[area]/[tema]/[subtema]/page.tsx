@@ -6,6 +6,8 @@ import { Container } from "@/components/ui/container";
 import { getAreaStyle } from "@/components/ui/area-style";
 import { getArea, getPrueba, getSubtema, getTema } from "@/lib/curriculum";
 
+type SubtemaPageProps = { params: Promise<{ area: string; tema: string; subtema: string }> };
+
 export function generateStaticParams() {
   const prueba = getPrueba("matematica");
   return (prueba?.areas ?? []).flatMap((area) =>
@@ -20,7 +22,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: PageProps<"/matematica/[area]/[tema]/[subtema]">
+  props: SubtemaPageProps
 ): Promise<Metadata> {
   const { area: areaSlug, tema: temaSlug, subtema: subtemaSlug } = await props.params;
   const subtema = getSubtema("matematica", areaSlug, temaSlug, subtemaSlug);
@@ -41,7 +43,7 @@ async function loadSubtemaContent(area: string, tema: string, subtema: string) {
 }
 
 export default async function SubtemaPage(
-  props: PageProps<"/matematica/[area]/[tema]/[subtema]">
+  props: SubtemaPageProps
 ) {
   const { area: areaSlug, tema: temaSlug, subtema: subtemaSlug } = await props.params;
 

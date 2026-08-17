@@ -6,6 +6,8 @@ import { CardLink } from "@/components/ui/card";
 import { getAreaStyle } from "@/components/ui/area-style";
 import { getArea, getPrueba, getTema } from "@/lib/curriculum";
 
+type TemaPageProps = { params: Promise<{ area: string; tema: string }> };
+
 export function generateStaticParams() {
   const prueba = getPrueba("matematica");
   return (prueba?.areas ?? []).flatMap((area) =>
@@ -14,7 +16,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: PageProps<"/matematica/[area]/[tema]">
+  props: TemaPageProps
 ): Promise<Metadata> {
   const { area: areaSlug, tema: temaSlug } = await props.params;
   const tema = getTema("matematica", areaSlug, temaSlug);
@@ -23,7 +25,7 @@ export async function generateMetadata(
 }
 
 export default async function TemaPage(
-  props: PageProps<"/matematica/[area]/[tema]">
+  props: TemaPageProps
 ) {
   const { area: areaSlug, tema: temaSlug } = await props.params;
   const area = getArea("matematica", areaSlug);

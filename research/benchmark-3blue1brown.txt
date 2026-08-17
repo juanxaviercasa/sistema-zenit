@@ -1,0 +1,63 @@
+Starting video analysis...
+Submitting video analysis task...
+Task submitted (ID: video-analysis-fbef41aa-cd84-4918-97cf-dc41a5135b5d)
+[8s] Status: Analyzing video content with AI...
+[31s] Status: Analysis completed
+[31s] Analysis completed!
+Full analysis result saved to: /home/ubuntu/video_OkmNXy7er84_analysis_20260817_003058.md
+Note: This tool performs AI-based visual and audio analysis, not verbatim transcription. For detailed speech transcription, use `manus-speech-to-text` instead.
+Analysis result:
+
+This video demonstrates a sophisticated teaching design centered on **conceptual reframing** and **narrative scaffolding**. Below is an analysis of the teaching design, followed by reusable patterns for an AI educational video generator.
+
+### 1. Teaching Design Analysis
+
+#### A. The "Mountain-Wall-Tunnel" Sequence
+The video follows a specific narrative arc:
+1.  **The Mountain (Challenge):** It presents a notoriously difficult problem (Putnam A6) to establish stakes and interest.
+2.  **The Wall (Struggle):** It attempts a direct solution in 3D, showing why it’s computationally heavy (surface integrals), creating a "need to know" for a better way.
+3.  **The Tunnel (Insight):** It returns to the 2D case, reframes the process, and finds a "tunnel" through the complexity that makes the 3D solution trivial.
+
+#### B. Managing Cognitive Load via Dimensionality
+The video uses **Dimensionality Reduction** as a primary scaffolding tool. By spending nearly 3 minutes on the 2D circle before returning to the 3D sphere, the creator ensures the viewer understands the *logic* of the solution without the *visual clutter* of 3D geometry.
+
+#### C. Use of "Audience Avatars"
+The "Pi" characters serve as cognitive proxies. They ask the questions the viewer is likely thinking ("How do you even start?", "Can you do a surface integral?"). This externalizes the internal dialogue of problem-solving, making the process feel collaborative rather than lectured.
+
+#### D. Visual Highlighting and Narration Timing
+*   **Pacing:** The narration frequently pauses (e.g., 1:33, 5:35) while the animation continues. This allows the viewer to "digest" the visual state before the next conceptual layer is added.
+*   **Dynamic Highlighting:** When discussing the "winning arc" (2:45), the arc changes color and pulses. The narration is perfectly synced to these transitions, ensuring the viewer’s eye is always on the relevant variable.
+
+---
+
+### 2. Reusable Patterns for Educational Video Generation
+
+To generate high-quality math/science content, an AI should follow these concrete patterns:
+
+#### Pattern 1: The "Simpler Case" Pivot
+*   **Logic:** When a problem has $N$ variables or $D$ dimensions, immediately generate a version with $N-1$ variables or $D-1$ dimensions.
+*   **Implementation:** "Before we solve [Complex Problem], let's look at a version where [Variable X] is fixed."
+
+#### Pattern 2: The "Auxiliary Construct" Reveal
+*   **Logic:** Introduce a new visual element (e.g., the dashed lines through the center at 2:44) that isn't in the problem statement but makes the solution visible.
+*   **Implementation:** Start with the "Raw" state (just points), then transition to the "Construct" state (lines/planes), then the "Solution" state (shaded regions).
+
+#### Pattern 3: The "Reframing" Loop
+*   **Logic:** Solve a problem one way (direct), then show a second, "convoluted" way to generate the same data (the coin-flip method at 6:25).
+*   **Implementation:** 
+    1. Define Procedure A (Random points).
+    2. Define Procedure B (Random lines + coin flips).
+    3. Prove Procedure B = Procedure A.
+    4. Show why Procedure B makes the final step easier.
+
+#### Pattern 4: Socratic Interjections (Avatars)
+*   **Logic:** Insert "Check-in" points where a secondary voice/character expresses doubt or asks for clarification.
+*   **Implementation:** At points of high complexity, insert a prompt: "Wait, isn't this just a surface integral?" followed by a "Yes, but..." explanation.
+
+#### Pattern 5: Visual "Ghosting" of Previous States
+*   **Logic:** When moving from a simple case to a complex one, keep the simple case visible in a corner or as a faded overlay.
+*   **Implementation:** At 5:14, the 3D sphere is shown, but the 2D logic (1/4 probability) is kept on screen to remind the viewer of the target pattern.
+
+#### Pattern 6: The "Symmetry/Outcome" Tally
+*   **Logic:** For probability problems, visually group all possible outcomes and highlight the "winning" ones.
+*   **Implementation:** Use a grid or a sequence of coin-flip animations (7:08) to show that out of $2^n$ equally likely outcomes, only 1 satisfies the condition. This transforms a calculus problem into a counting problem.

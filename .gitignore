@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Manim generated assets
+public/media/zenit/Tex/
+public/media/zenit/texts/
+public/media/zenit/videos/*/partial_movie_file_list.txt
+__pycache__/
+*.py[cod]
+public/media/zenit/videos/*/partial_movie_files/

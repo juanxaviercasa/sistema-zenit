@@ -1,0 +1,46 @@
+Starting video analysis...
+Submitting video analysis task...
+Task submitted (ID: video-analysis-b5272411-000c-4436-b9a1-0fd7c30e5524)
+[8s] Status: Analyzing video content with AI...
+[33s] Still processing, please wait...
+[35s] Status: Analysis completed
+[35s] Analysis completed!
+Full analysis result saved to: /home/ubuntu/video_aw_VM_ZDeIo_analysis_20260817_003206.md
+Note: This tool performs AI-based visual and audio analysis, not verbatim transcription. For detailed speech transcription, use `manus-speech-to-text` instead.
+Analysis result:
+
+This analysis examines the instructional design and presentation of the provided math problem-solving video, focusing on how it facilitates learner understanding through specific pedagogical techniques.
+
+### 1. Instructional Chunking
+The video is structured into four distinct problem-based chunks, each focusing on a specific "basic" integration technique:
+*   **Chunk 1 (00:27 - 02:08):** Direct application of the Power Rule to a polynomial.
+*   **Chunk 2 (02:08 - 05:00):** Algebraic manipulation (splitting fractions and exponent rules) before integration.
+*   **Chunk 3 (05:00 - 07:55):** Factoring and applying Trigonometric Identities ($1 + \tan^2\theta = \sec^2\theta$) to simplify a complex integrand.
+*   **Chunk 4 (07:55 - 10:00):** Expanding a product of binomials (FOIL) to create a polynomial integrable by the Power Rule.
+
+### 2. Written Transformations
+The visual presentation follows a consistent top-to-bottom flow:
+*   **State Persistence:** The original problem remains at the top of the page while the steps are written below, ensuring the learner never loses the context of the initial goal.
+*   **Step-by-Step Evolution:** Each line represents a single transformation (e.g., rewriting a radical as a power, then splitting the fraction, then integrating).
+*   **Visual Cues:** The instructor uses boxes to highlight final answers and occasionally uses arrows or underlines to indicate which terms are being combined or transformed.
+
+### 3. Narration and Pacing
+*   **Conceptual "Why":** The narration doesn't just state the steps but explains the reasoning. For example, in the second problem, he explains *why* you cannot integrate the numerator and denominator separately, likening it to the Quotient Rule in derivatives.
+*   **Synchronized Pacing:** The writing speed is perfectly synced with the narration. There are no "jump cuts" in the math; every term is written in real-time, allowing the learner's cognitive processing to keep pace with the information delivery.
+*   **Relational Learning:** He frequently references derivative rules to justify integration steps (e.g., explaining the negative sign in the integral of $\sin\theta$ by referencing the derivative of $\cos\theta$).
+
+### 4. Verification and Followability
+*   **Intermediate Verification:** The instructor simplifies terms immediately after integration (e.g., canceling coefficients like $2/2$ or $4/4$) to keep the expression clean and manageable for the learner.
+*   **State Tracking:** Because the work is handwritten on a large sheet of paper, the "previous state" of the equation is always visible directly above the current step. This prevents the "lost in the middle" feeling common in fast-paced digital tutorials.
+
+---
+
+### Zenit Implementation Rules
+Based on this analysis, the following rules are extracted for implementing effective math instruction in the Zenit framework:
+
+1.  **The "Original Context" Rule:** Always keep the initial problem statement visible on screen throughout the entire derivation process.
+2.  **The "Vertical Transformation" Rule:** Present each mathematical step on a new line directly beneath the previous one to maintain a clear logical flow.
+3.  **The "Algebraic Pre-processing" Rule:** Explicitly separate the "simplification phase" (algebra/trig identities) from the "calculus phase" (applying integration rules).
+4.  **The "Narrative Justification" Rule:** Narration must explain the *restriction* before the *action* (e.g., "We can't integrate this as a fraction, so we must split it first").
+5.  **The "Finality Marker" Rule:** Use a consistent visual container (like a box) to signal the completion of a problem chunk and the finality of the result.
+6.  **The "Coefficient Cleanup" Rule:** Simplify fractional coefficients immediately after applying a rule to reduce the learner's cognitive load in the next step.

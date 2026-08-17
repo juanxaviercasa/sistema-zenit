@@ -6,13 +6,15 @@ import { Badge } from "@/components/ui/badge";
 import { getAreaStyle } from "@/components/ui/area-style";
 import { getArea, getPrueba } from "@/lib/curriculum";
 
+type AreaPageProps = { params: Promise<{ area: string }> };
+
 export function generateStaticParams() {
   const prueba = getPrueba("matematica");
   return (prueba?.areas ?? []).map((area) => ({ area: area.slug }));
 }
 
 export async function generateMetadata(
-  props: PageProps<"/matematica/[area]">
+  props: AreaPageProps
 ): Promise<Metadata> {
   const { area: areaSlug } = await props.params;
   const area = getArea("matematica", areaSlug);
@@ -23,7 +25,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function AreaPage(props: PageProps<"/matematica/[area]">) {
+export default async function AreaPage(props: AreaPageProps) {
   const { area: areaSlug } = await props.params;
   const area = getArea("matematica", areaSlug);
   if (!area) notFound();
