@@ -1,0 +1,93 @@
+{
+  "video": "public/media/zenit/videos/normalizacion_v2_guiada/1080p60/NormalizacionV2Guiada.mp4",
+  "metadata": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 60.0,
+    "duration": 130.1
+  },
+  "frameReports": [
+    {
+      "frame": "frame-01.png",
+      "bbox": [
+        171,
+        27,
+        469,
+        53
+      ],
+      "margins": {
+        "left": 0.2671875,
+        "right": 0.2671875,
+        "top": 0.075,
+        "bottom": 0.8527777777777777
+      },
+      "coverage": 0.03362847222222222
+    },
+    {
+      "frame": "frame-02.png",
+      "bbox": [
+        63,
+        27,
+        507,
+        251
+      ],
+      "margins": {
+        "left": 0.0984375,
+        "right": 0.2078125,
+        "top": 0.075,
+        "bottom": 0.30277777777777776
+      },
+      "coverage": 0.43166666666666664
+    },
+    {
+      "frame": "frame-03.png",
+      "bbox": [
+        62,
+        27,
+        507,
+        251
+      ],
+      "margins": {
+        "left": 0.096875,
+        "right": 0.2078125,
+        "top": 0.075,
+        "bottom": 0.30277777777777776
+      },
+      "coverage": 0.4326388888888889
+    },
+    {
+      "frame": "frame-04.png",
+      "bbox": [
+        63,
+        27,
+        507,
+        251
+      ],
+      "margins": {
+        "left": 0.0984375,
+        "right": 0.2078125,
+        "top": 0.075,
+        "bottom": 0.30277777777777776
+      },
+      "coverage": 0.43166666666666664
+    },
+    {
+      "frame": "frame-05.png",
+      "bbox": [
+        63,
+        27,
+        507,
+        251
+      ],
+      "margins": {
+        "left": 0.0984375,
+        "right": 0.2078125,
+        "top": 0.075,
+        "bottom": 0.30277777777777776
+      },
+      "coverage": 0.43166666666666664
+    }
+  ],
+  "findings": [],
+  "status": "PASS"
+}

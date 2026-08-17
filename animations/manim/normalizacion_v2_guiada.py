@@ -22,6 +22,14 @@ STATE_LATEX = {
     "a*x^2 + b*x + c = 0": r"a x^2+b x+c=0",
 }
 
+GUIDE_COPY = {
+    "identify-01": "Observa la forma general",
+    "identify-02": "Reconoce a, b y c",
+    "normalize-01": "Divide ambos miembros entre a",
+    "normalize-02": "Simplifica término por término",
+    "normalize-03": "Mueve c/a al segundo miembro",
+}
+
 DETAIL_LABELS = {
     "coefficient-a": "a → coeficiente cuadrático",
     "coefficient-b": "b → coeficiente lineal",
@@ -63,6 +71,9 @@ class NormalizacionV2Guiada(AquilaScene):
             for mob in detail_panel.submobjects:
                 if getattr(mob, "aquila_detail_target", None) == cue_target:
                     return mob
+        # Algunas versiones de Manim exponen `get_parts_by_tex` como un
+        # atributo dinámico no invocable. El fallback seguro es resaltar toda
+        # la expresión, evitando romper el render por una búsqueda frágil.
         return expression
 
     def _detail_for_cue(self, cue_target: str, color=GREY_B) -> Text:
@@ -152,7 +163,7 @@ class NormalizacionV2Guiada(AquilaScene):
             for microstep in beat.microsteps:
                 if detail_panel is not None:
                     self.play(FadeOut(detail_panel), run_time=0.25)
-                detail_panel = self._text_panel("Paso actual", [microstep.reason], zones["right"], color=BLUE_B)
+                detail_panel = self._text_panel("Paso actual", [GUIDE_COPY.get(microstep.id, microstep.reason)], zones["right"], color=BLUE_B)
                 detail_panel.aquila_name = f"detail-panel-{microstep.id}"
                 self.play(FadeIn(detail_panel), run_time=0.35)
 
@@ -198,6 +209,7 @@ class NormalizacionV2Guiada(AquilaScene):
         closing.aquila_name = "closing-message"
         zones = self.aquila.resolve_layout(LayoutPlan(mode="stacked", keep_anchor=True))
         self.aquila.fit_into_zone(closing, zones["footer"], min_scale=0.78, allow_compression=False)
+        closing.shift(UP * 0.68)
         self.play(FadeIn(closing), run_time=0.55)
         self.wait(2.0)
         self.finish_aquila()

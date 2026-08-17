@@ -245,12 +245,12 @@
                 {
                   "action": "highlight",
                   "target": "both-members",
-                  "at": "audio:1.3",
+                  "at": "audio:1.0",
                   "duration": 1.0,
                   "color": "YELLOW"
                 }
               ],
-              "pause_after": 1.8,
+              "pause_after": 3.3,
               "ledger": {
                 "keep_previous": true,
                 "previous_opacity": 0.42,
