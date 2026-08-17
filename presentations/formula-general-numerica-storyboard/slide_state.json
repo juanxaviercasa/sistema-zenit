@@ -1,0 +1,144 @@
+{
+  "project_info": {
+    "title": "Fórmula general: de los datos a las raíces",
+    "created": 1786944185.906,
+    "last_updated": 1786944352.744,
+    "total_slides": 12
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "planteamiento",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "coeficientes",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "formula",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "sustitucion",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "discriminante",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "raiz",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "rama_uno",
+      "state": "edited",
+      "pageNum": 8
+    },
+    {
+      "id": "rama_dos",
+      "state": "edited",
+      "pageNum": 9
+    },
+    {
+      "id": "verificacion",
+      "state": "edited",
+      "pageNum": 10
+    },
+    {
+      "id": "resultado",
+      "state": "edited",
+      "pageNum": 11
+    },
+    {
+      "id": "puente_video",
+      "state": "edited",
+      "pageNum": 12
+    }
+  ],
+  "outline": [
+    {
+      "id": "cover",
+      "title": "Fórmula general: de los datos a las raíces",
+      "summary": "Portada mínima del storyboard para el ejemplo 2x² + 8x + 6 = 0, con identidad visual Zenit y promesa de resolución guiada.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "planteamiento",
+      "title": "1. Planteamos el problema",
+      "summary": "Una ecuación grande y centrada introduce el objetivo; la fórmula, los cálculos y las soluciones permanecen ocultos.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "coeficientes",
+      "title": "2. Relacionamos letras y datos",
+      "summary": "La ecuación ancla se mantiene arriba y tres tarjetas separadas construyen a=2, b=8 y c=6 con color semántico.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "formula",
+      "title": "3. Fijamos la fórmula general",
+      "summary": "La fórmula aparece como mapa de sustitución; llamadas visuales señalan b, a y c sin introducir todavía números.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "sustitucion",
+      "title": "4. Sustituimos sin perder posiciones",
+      "summary": "Dos columnas muestran la expresión sustituida y las correspondencias laterales, resaltando cada variable y su valor.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "discriminante",
+      "title": "5. Calculamos el discriminante",
+      "summary": "La izquierda conserva la fórmula y la derecha descompone 8²=64, 4·2·6=48 y Δ=16.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "raiz",
+      "title": "6. Simplificamos la raíz",
+      "summary": "La expresión se reduce a (−8 ± 4)/4 y el signo ± se presenta como la señal de dos ramas.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "rama_uno",
+      "title": "7. Calculamos la primera raíz",
+      "summary": "La rama positiva se resuelve en una composición 60/40 hasta obtener x₁=−1.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "rama_dos",
+      "title": "8. Calculamos la segunda raíz",
+      "summary": "La memoria de x₁=−1 queda atenuada mientras la rama negativa conduce a x₂=−3.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "verificacion",
+      "title": "9. Verificamos las dos raíces",
+      "summary": "Dos tarjetas paralelas sustituyen cada raíz en la ecuación original y terminan en cero.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "resultado",
+      "title": "10. Resultado final",
+      "summary": "Las dos soluciones aparecen grandes y debajo se resume la secuencia identificar → sustituir → calcular → separar → verificar.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "puente_video",
+      "title": "Del storyboard al video",
+      "summary": "El PPT se convierte en contrato de capas: fondo, título, ancla, estado, foco semántico, guía, transición y pausa para Manim y Remotion.",
+      "image_plan": "Use a suitable image if needed"
+    }
+  ]
+}

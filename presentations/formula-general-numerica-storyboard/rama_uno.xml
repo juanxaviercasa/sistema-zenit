@@ -1,0 +1,14 @@
+<slide id="rama_uno">
+  <background color="bg-charcoal"/>
+  <shape id="rama-uno-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <shape id="rama-uno-divider" type="line" x="770" y="180" width="0" height="380" stroke="guide" stroke-width="2" opacity="0.55"/>
+  <text id="rama-uno-title" x="80" y="70" width="900" height="42" font="heading" size="32" color="text-active" wrap="false">7. Calculamos la primera raíz</text>
+  <text id="rama-uno-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">PASO 07</text>
+  <text id="rama-uno-label" x="100" y="205" width="600" height="26" font="caption" size="16" color="guide" wrap="false">PROCEDIMIENTO · RAMA POSITIVA</text>
+  <text id="rama-uno-calc" x="100" y="285" width="600" height="102" font="body" size="39" color="text-active" align="center" anchor="middle" wrap="true">x₁ = (−8 + 4) / 4 = (−4) / 4</text>
+  <shape id="rama-uno-arrow" type="line" x="610" y="470" width="210" height="0" stroke="guide" stroke-width="2" arrow-end="arrow"/>
+  <text id="rama-uno-branch" x="850" y="260" width="300" height="32" font="body" size="26" color="val-a" wrap="false">Rama +</text>
+  <text id="rama-uno-result" x="850" y="330" width="300" height="72" font="display" size="42" color="result" wrap="false">x₁ = −1</text>
+  <text id="rama-uno-note" x="850" y="455" width="300" height="56" font="caption" size="16" color="text-memory" wrap="true">Primero simplificamos el numerador; después dividimos entre 4.</text>
+  <text id="rama-uno-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 08/12</text>
+</slide>

@@ -1,0 +1,20 @@
+<slide id="coeficientes">
+  <background color="bg-charcoal"/>
+  <shape id="coeficientes-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <text id="coeficientes-title" x="80" y="70" width="820" height="42" font="heading" size="32" color="text-active" wrap="false">2. Relacionamos letras y datos</text>
+  <text id="coeficientes-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">PASO 02</text>
+  <text id="coeficientes-anchor" x="260" y="171" width="760" height="58" font="body" size="36" color="text-active" align="center" anchor="middle" wrap="false">2x² + 8x + 6 = 0</text>
+  <shape id="coeficientes-card-a" type="rect" x="90" y="300" width="300" height="190" fill="none" stroke="val-a" stroke-width="2" corner-radius="12"/>
+  <text id="coeficientes-a" x="112" y="326" width="256" height="46" font="display" size="38" color="val-a" align="center" wrap="false">a → 2</text>
+  <text id="coeficientes-a-role" x="112" y="401" width="256" height="28" font="caption" size="16" color="text-active" align="center" wrap="false">coeficiente cuadrático</text>
+  <text id="coeficientes-a-cue" x="112" y="445" width="256" height="24" font="caption" size="16" color="text-memory" align="center" wrap="false">acompaña a x²</text>
+  <shape id="coeficientes-card-b" type="rect" x="450" y="300" width="300" height="190" fill="none" stroke="val-b" stroke-width="2" corner-radius="12"/>
+  <text id="coeficientes-b" x="472" y="326" width="256" height="46" font="display" size="38" color="val-b" align="center" wrap="false">b → 8</text>
+  <text id="coeficientes-b-role" x="472" y="401" width="256" height="28" font="caption" size="16" color="text-active" align="center" wrap="false">coeficiente lineal</text>
+  <text id="coeficientes-b-cue" x="472" y="445" width="256" height="24" font="caption" size="16" color="text-memory" align="center" wrap="false">acompaña a x</text>
+  <shape id="coeficientes-card-c" type="rect" x="810" y="300" width="300" height="190" fill="none" stroke="val-c" stroke-width="2" corner-radius="12"/>
+  <text id="coeficientes-c" x="832" y="326" width="256" height="46" font="display" size="38" color="val-c" align="center" wrap="false">c → 6</text>
+  <text id="coeficientes-c-role" x="832" y="401" width="256" height="28" font="caption" size="16" color="text-active" align="center" wrap="false">término independiente</text>
+  <text id="coeficientes-c-cue" x="832" y="445" width="256" height="24" font="caption" size="16" color="text-memory" align="center" wrap="false">no acompaña a x</text>
+  <text id="coeficientes-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 03/12</text>
+</slide>

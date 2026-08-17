@@ -1,0 +1,15 @@
+<design>
+  <size width="1280" height="720"></size>
+  <color name="bg-charcoal" value="#1A1C23"/>
+  <color name="text-active" value="#F8F9FA"/>
+  <color name="text-memory" value="#868E96"/>
+  <color name="val-a" value="#FF8787"/>
+  <color name="val-b" value="#4DABF7"/>
+  <color name="val-c" value="#69DB7C"/>
+  <color name="result" value="#FFD43B"/>
+  <color name="guide" value="#20C997"/>
+  <font name="display" family="Inter" size="48"/>
+  <font name="heading" family="Inter" size="32"/>
+  <font name="body" family="Inter" size="24"/>
+  <font name="caption" family="Inter" size="16"/>
+</design>

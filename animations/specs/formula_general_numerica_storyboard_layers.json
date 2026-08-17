@@ -1,0 +1,43 @@
+{
+  "id": "formula-general-numerica-storyboard-v1",
+  "deck_project": "presentations/formula-general-numerica-storyboard",
+  "canvas": {"width": 1280, "height": 720, "aspect_ratio": "16:9"},
+  "source_spec": "animations/specs/formula_general_numerica_v2.json",
+  "providers": {
+    "manim": {"responsibility": "mathematical typography, geometry, safe-area validation and deterministic writing animations"},
+    "remotion": {"responsibility": "web composition, timeline orchestration, opacity transitions and reusable preview layers"},
+    "tts": {"responsibility": "microstep narration, pauses and semantic cue timing"}
+  },
+  "layer_order": [
+    "background",
+    "slide_title",
+    "anchor",
+    "math_state",
+    "semantic_focus",
+    "guide",
+    "transition",
+    "checkpoint"
+  ],
+  "slides": [
+    {"slide_id": "planteamiento", "page": 2, "beat_id": "problem", "mode": "linear", "objective": "Enmarcar el problema", "active_zone": "active", "support_zone": "right", "focus_targets": ["equation-problem"], "must_not_overlap": [["scene-title", "problem-anchor"], ["equation-problem", "problem-goal"]]},
+    {"slide_id": "coeficientes", "page": 3, "beat_id": "bindings", "mode": "triad", "objective": "Construir el mapa variable-valor", "active_zone": "active", "support_zone": "triad", "focus_targets": ["binding-a", "binding-b", "binding-c"], "must_not_overlap": [["binding-a", "binding-b"], ["binding-b", "binding-c"]]},
+    {"slide_id": "formula", "page": 4, "beat_id": "formula", "mode": "linear", "objective": "Leer la fórmula como mapa", "active_zone": "active", "support_zone": "right", "focus_targets": ["formula-general", "formula-b", "formula-a", "formula-c"], "must_not_overlap": [["formula-general", "formula-note"]]},
+    {"slide_id": "sustitucion", "page": 5, "beat_id": "substitution", "mode": "split", "objective": "Mostrar cada sustitución", "active_zone": "left", "support_zone": "right", "focus_targets": ["substitution-a", "substitution-b", "substitution-c"], "must_not_overlap": [["substitution-left", "substitution-right"]]},
+    {"slide_id": "discriminante", "page": 6, "beat_id": "discriminant", "mode": "split", "objective": "Aislar el cálculo radical", "active_zone": "left", "support_zone": "right", "focus_targets": ["delta-64", "delta-48", "delta-16"], "must_not_overlap": [["delta-left", "delta-right"]]},
+    {"slide_id": "raiz", "page": 7, "beat_id": "intermediate", "mode": "linear", "objective": "Preparar la bifurcación", "active_zone": "active", "support_zone": "right", "focus_targets": ["sqrt-16", "plus-minus"], "must_not_overlap": [["intermediate-expression", "intermediate-note"]]},
+    {"slide_id": "rama_uno", "page": 8, "beat_id": "root-one", "mode": "split", "objective": "Resolver la rama positiva", "active_zone": "left", "support_zone": "right", "focus_targets": ["root-one-calc", "root-one-result"], "must_not_overlap": [["root-one-calc", "root-one-guide"]]},
+    {"slide_id": "rama_dos", "page": 9, "beat_id": "root-two", "mode": "split", "objective": "Resolver la rama negativa", "active_zone": "left", "support_zone": "right", "focus_targets": ["root-two-calc", "root-two-result"], "must_not_overlap": [["root-two-calc", "root-two-guide"]]},
+    {"slide_id": "verificacion", "page": 10, "beat_id": "verify", "mode": "split", "objective": "Comprobar ambas raíces", "active_zone": "left", "support_zone": "right", "focus_targets": ["verify-one", "verify-two", "verify-zero"], "must_not_overlap": [["verify-one", "verify-two"]]},
+    {"slide_id": "resultado", "page": 11, "beat_id": "close", "mode": "linear", "objective": "Consolidar el resultado", "active_zone": "active", "support_zone": "footer", "focus_targets": ["final-roots", "final-summary"], "must_not_overlap": [["final-roots", "final-summary"]]}
+  ],
+  "remotion_contract": {
+    "composition_id": "FormulaGeneralNumericaStoryboard",
+    "fps": 60,
+    "width": 1920,
+    "height": 1080,
+    "transition_frames": 18,
+    "pause_policy": "respect_scene_spec_pause_after",
+    "audio_policy": "one_audio_clip_per_microstep",
+    "semantic_color_tokens": {"a": "#FF8787", "b": "#4DABF7", "c": "#69DB7C", "result": "#FFD43B", "guide": "#20C997", "memory": "#868E96"}
+  }
+}

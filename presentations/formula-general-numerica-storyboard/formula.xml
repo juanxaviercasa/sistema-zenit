@@ -1,0 +1,16 @@
+<slide id="formula">
+  <background color="bg-charcoal"/>
+  <shape id="formula-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <text id="formula-title" x="80" y="70" width="820" height="42" font="heading" size="32" color="text-active" wrap="false">3. Fijamos la fórmula general</text>
+  <text id="formula-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">PASO 03</text>
+  <text id="formula-expression" x="250" y="255" width="780" height="78" font="body" size="45" color="text-active" align="center" anchor="middle" wrap="false">x = (−b ± √(b² − 4ac)) / 2a</text>
+  <shape id="formula-callout-b-line" type="line" x="850" y="216" width="-100" height="42" stroke="val-b" stroke-width="2"/>
+  <text id="formula-callout-b" x="920" y="178" width="220" height="30" font="body" size="24" color="val-b" wrap="false">b: aparece arriba</text>
+  <shape id="formula-callout-a-line" type="line" x="310" y="430" width="90" height="-80" stroke="val-a" stroke-width="2"/>
+  <text id="formula-callout-a" x="150" y="452" width="250" height="30" font="body" size="24" color="val-a" wrap="false">a: abajo y junto a c</text>
+  <shape id="formula-callout-c-line" type="line" x="910" y="430" width="-80" height="-64" stroke="val-c" stroke-width="2"/>
+  <text id="formula-callout-c" x="930" y="452" width="220" height="30" font="body" size="24" color="val-c" wrap="false">c: dentro de la raíz</text>
+  <shape id="formula-bottom-guide" type="line" x="250" y="520" width="780" height="0" stroke="guide" stroke-width="1" opacity="0.55"/>
+  <text id="formula-note" x="250" y="548" width="780" height="28" font="caption" size="16" color="text-memory" align="center" wrap="false">Primero entendemos el mapa; después colocamos cada dato.</text>
+  <text id="formula-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 04/12</text>
+</slide>

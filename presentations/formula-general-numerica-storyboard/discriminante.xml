@@ -1,0 +1,18 @@
+<slide id="discriminante">
+  <background color="bg-charcoal"/>
+  <shape id="discriminante-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <shape id="discriminante-divider" type="line" x="770" y="180" width="0" height="380" stroke="guide" stroke-width="2" opacity="0.55"/>
+  <text id="discriminante-title" x="80" y="70" width="900" height="42" font="heading" size="32" color="text-active" wrap="false">5. Calculamos el discriminante</text>
+  <text id="discriminante-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">PASO 05</text>
+  <text id="discriminante-left-label" x="110" y="205" width="600" height="26" font="caption" size="16" color="guide" wrap="false">LA FÓRMULA CONSERVA EL HILO</text>
+  <text id="discriminante-expression" x="110" y="292" width="600" height="72" font="body" size="40" color="text-active" align="center" anchor="middle" wrap="false">x = (−8 ± √Δ) / 4</text>
+  <text id="discriminante-left-note" x="110" y="425" width="600" height="48" font="caption" size="16" color="text-memory" align="center" wrap="true">Solo abrimos la operación que vive dentro de la raíz.</text>
+  <text id="discriminante-right-label" x="850" y="185" width="300" height="26" font="caption" size="16" color="guide" wrap="false">CÁLCULO EN TRES CAPAS</text>
+  <text id="discriminante-row-64" x="850" y="250" width="300" height="42" font="body" size="28" color="val-b" wrap="false">8² = 64</text>
+  <shape id="discriminante-line-1" type="line" x="850" y="310" width="300" height="0" stroke="guide" stroke-width="1" opacity="0.5"/>
+  <text id="discriminante-row-48" x="850" y="335" width="300" height="42" font="body" size="28" color="val-a" wrap="false">4 · 2 · 6 = 48</text>
+  <shape id="discriminante-line-2" type="line" x="850" y="395" width="300" height="0" stroke="guide" stroke-width="1" opacity="0.5"/>
+  <text id="discriminante-row-16" x="850" y="420" width="300" height="42" font="body" size="30" color="result" wrap="false">Δ = 64 − 48 = 16</text>
+  <text id="discriminante-pause" x="850" y="505" width="300" height="34" font="caption" size="16" color="result" wrap="true">Pausa: deja que el 16 se procese antes de seguir.</text>
+  <text id="discriminante-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 06/12</text>
+</slide>

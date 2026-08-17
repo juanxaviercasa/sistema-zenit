@@ -1,0 +1,26 @@
+<slide id="puente_video">
+  <background color="bg-charcoal"/>
+  <shape id="puente-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <shape id="puente-divider" type="line" x="690" y="180" width="0" height="370" stroke="guide" stroke-width="2" opacity="0.55"/>
+  <text id="puente-title" x="80" y="70" width="900" height="42" font="heading" size="32" color="text-active" wrap="false">Del storyboard al video</text>
+  <text id="puente-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">CAPA 12</text>
+  <text id="puente-left-label" x="100" y="180" width="500" height="26" font="caption" size="16" color="guide" wrap="false">ORDEN DE CONSTRUCCIÓN</text>
+  <text id="puente-layer-1" x="100" y="218" width="500" height="32" font="body" size="22" color="text-memory" wrap="false">01 · fondo y safe area</text>
+  <text id="puente-layer-2" x="100" y="268" width="500" height="32" font="body" size="22" color="text-active" wrap="false">02 · título y ancla</text>
+  <text id="puente-layer-3" x="100" y="318" width="500" height="32" font="body" size="22" color="text-active" wrap="false">03 · estado matemático</text>
+  <text id="puente-layer-4" x="100" y="368" width="500" height="32" font="body" size="22" color="result" wrap="false">04 · foco semántico</text>
+  <text id="puente-layer-5" x="100" y="418" width="500" height="32" font="body" size="22" color="guide" wrap="false">05 · guía y razón</text>
+  <text id="puente-layer-6" x="100" y="468" width="500" height="32" font="body" size="22" color="text-memory" wrap="false">06 · transición</text>
+  <text id="puente-layer-7" x="100" y="518" width="500" height="32" font="body" size="22" color="text-memory" wrap="false">07 · pausa y checkpoint</text>
+  <text id="puente-right-label" x="760" y="180" width="380" height="26" font="caption" size="16" color="guide" wrap="false">PROVEEDOR / RESPONSABILIDAD</text>
+  <shape id="puente-manin-card" type="rect" x="760" y="220" width="380" height="78" fill="none" stroke="val-b" stroke-width="2" corner-radius="10"/>
+  <text id="puente-manin-title" x="785" y="236" width="330" height="24" font="body" size="22" color="val-b" wrap="false">Manim</text>
+  <text id="puente-manin-body" x="785" y="270" width="330" height="22" font="caption" size="16" color="text-active" wrap="false">escritura matemática · geometría</text>
+  <shape id="puente-remotion-card" type="rect" x="760" y="340" width="380" height="78" fill="none" stroke="val-c" stroke-width="2" corner-radius="10"/>
+  <text id="puente-remotion-title" x="785" y="356" width="330" height="24" font="body" size="22" color="val-c" wrap="false">Remotion</text>
+  <text id="puente-remotion-body" x="785" y="390" width="330" height="22" font="caption" size="16" color="text-active" wrap="false">composición web · transiciones · capas</text>
+  <shape id="puente-tts-card" type="rect" x="760" y="460" width="380" height="78" fill="none" stroke="result" stroke-width="2" corner-radius="10"/>
+  <text id="puente-tts-title" x="785" y="476" width="330" height="24" font="body" size="22" color="result" wrap="false">TTS por microstep</text>
+  <text id="puente-tts-body" x="785" y="510" width="330" height="22" font="caption" size="16" color="text-active" wrap="false">voz · pausas · cues sincronizados</text>
+  <text id="puente-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 12/12</text>
+</slide>

@@ -1,0 +1,19 @@
+<slide id="sustitucion">
+  <background color="bg-charcoal"/>
+  <shape id="sustitucion-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <shape id="sustitucion-divider" type="line" x="770" y="180" width="0" height="380" stroke="guide" stroke-width="2" opacity="0.55"/>
+  <text id="sustitucion-title" x="80" y="70" width="900" height="42" font="heading" size="32" color="text-active" wrap="false">4. Sustituimos sin perder posiciones</text>
+  <text id="sustitucion-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">PASO 04</text>
+  <text id="sustitucion-expression-label" x="100" y="205" width="610" height="26" font="caption" size="16" color="guide" wrap="false">EXPRESIÓN EN CONSTRUCCIÓN</text>
+  <text id="sustitucion-expression" x="100" y="275" width="610" height="105" font="body" size="34" color="text-active" align="center" anchor="middle" wrap="true">x = (−(8) ± √((8)² − 4(2)(6))) / 2(2)</text>
+  <text id="sustitucion-expression-note" x="100" y="438" width="610" height="30" font="caption" size="16" color="text-memory" align="center" wrap="false">cada número ocupa el lugar de su letra</text>
+  <text id="sustitucion-map-label" x="850" y="185" width="300" height="26" font="caption" size="16" color="guide" wrap="false">MAPA DE SUSTITUCIÓN</text>
+  <shape id="sustitucion-card-b" type="rect" x="850" y="235" width="300" height="60" fill="none" stroke="val-b" stroke-width="2" corner-radius="10"/>
+  <text id="sustitucion-b" x="872" y="251" width="256" height="28" font="body" size="24" color="val-b" wrap="false">b → 8 · numerador</text>
+  <shape id="sustitucion-card-a" type="rect" x="850" y="325" width="300" height="60" fill="none" stroke="val-a" stroke-width="2" corner-radius="10"/>
+  <text id="sustitucion-a" x="872" y="341" width="256" height="28" font="body" size="24" color="val-a" wrap="false">a → 2 · denominador</text>
+  <shape id="sustitucion-card-c" type="rect" x="850" y="415" width="300" height="60" fill="none" stroke="val-c" stroke-width="2" corner-radius="10"/>
+  <text id="sustitucion-c" x="872" y="431" width="256" height="28" font="body" size="24" color="val-c" wrap="false">c → 6 · radicando</text>
+  <text id="sustitucion-pause" x="850" y="518" width="300" height="34" font="caption" size="16" color="result" wrap="true">Pausa: verifica cada posición antes de calcular.</text>
+  <text id="sustitucion-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 05/12</text>
+</slide>

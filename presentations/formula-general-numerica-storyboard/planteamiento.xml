@@ -1,0 +1,14 @@
+<slide id="planteamiento">
+  <background color="bg-charcoal"/>
+  <shape id="planteamiento-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <shape id="planteamiento-divider" type="line" x="805" y="190" width="0" height="330" stroke="guide" stroke-width="2" opacity="0.55"/>
+  <text id="planteamiento-title" x="80" y="70" width="760" height="42" font="heading" size="32" color="text-active" wrap="false">1. Planteamos el problema</text>
+  <text id="planteamiento-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">PASO 01</text>
+  <text id="planteamiento-equation" x="110" y="255" width="650" height="90" font="body" size="48" color="text-active" align="center" anchor="middle" wrap="false">2x² + 8x + 6 = 0</text>
+  <text id="planteamiento-caption" x="180" y="382" width="510" height="28" font="caption" size="16" color="text-memory" align="center" wrap="false">ecuación cuadrática de partida</text>
+  <text id="planteamiento-question-label" x="860" y="235" width="300" height="26" font="caption" size="16" color="guide" wrap="false">OBJETIVO DE LA ESCENA</text>
+  <text id="planteamiento-question" x="860" y="276" width="300" height="86" font="body" size="27" color="text-active" wrap="true">¿Qué valores de x hacen verdadera esta ecuación?</text>
+  <text id="planteamiento-hidden-label" x="860" y="410" width="300" height="26" font="caption" size="16" color="text-memory" wrap="false">TODAVÍA NO MOSTRAR</text>
+  <text id="planteamiento-hidden" x="860" y="448" width="300" height="54" font="body" size="22" color="text-memory" wrap="true">Fórmula general · discriminante · raíces</text>
+  <text id="planteamiento-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 02/12</text>
+</slide>

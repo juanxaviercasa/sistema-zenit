@@ -1,0 +1,18 @@
+<slide id="verificacion">
+  <background color="bg-charcoal"/>
+  <shape id="verificacion-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <text id="verificacion-title" x="80" y="70" width="900" height="42" font="heading" size="32" color="text-active" wrap="false">9. Verificamos las dos raíces</text>
+  <text id="verificacion-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">PASO 09</text>
+  <shape id="verificacion-divider" type="line" x="640" y="230" width="0" height="270" stroke="guide" stroke-width="2" opacity="0.55"/>
+  <shape id="verificacion-card-one" type="rect" x="100" y="205" width="490" height="320" fill="none" stroke="val-a" stroke-width="2" corner-radius="14"/>
+  <text id="verificacion-one-title" x="130" y="235" width="430" height="34" font="body" size="26" color="val-a" wrap="false">x₁ = −1</text>
+  <text id="verificacion-one-sub" x="130" y="305" width="430" height="46" font="body" size="24" color="text-active" wrap="false">2(−1)² + 8(−1) + 6</text>
+  <text id="verificacion-one-simplify" x="130" y="380" width="430" height="40" font="body" size="24" color="text-memory" wrap="false">2 − 8 + 6</text>
+  <text id="verificacion-one-result" x="130" y="452" width="430" height="42" font="display" size="32" color="val-c" wrap="false">= 0</text>
+  <shape id="verificacion-card-two" type="rect" x="690" y="205" width="490" height="320" fill="none" stroke="val-b" stroke-width="2" corner-radius="14"/>
+  <text id="verificacion-two-title" x="720" y="235" width="430" height="34" font="body" size="26" color="val-b" wrap="false">x₂ = −3</text>
+  <text id="verificacion-two-sub" x="720" y="305" width="430" height="46" font="body" size="24" color="text-active" wrap="false">2(−3)² + 8(−3) + 6</text>
+  <text id="verificacion-two-simplify" x="720" y="380" width="430" height="40" font="body" size="24" color="text-memory" wrap="false">18 − 24 + 6</text>
+  <text id="verificacion-two-result" x="720" y="452" width="430" height="42" font="display" size="32" color="val-c" wrap="false">= 0</text>
+  <text id="verificacion-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 10/12</text>
+</slide>

@@ -1,0 +1,19 @@
+<slide id="resultado">
+  <background color="bg-charcoal"/>
+  <shape id="resultado-guide" type="line" x="80" y="132" width="1120" height="0" stroke="guide" stroke-width="2" opacity="0.8"/>
+  <text id="resultado-title" x="80" y="70" width="900" height="42" font="heading" size="32" color="text-active" wrap="false">10. Resultado final</text>
+  <text id="resultado-step" x="1110" y="75" width="90" height="22" font="caption" size="16" color="guide" align="right" wrap="false">PASO 10</text>
+  <text id="resultado-roots" x="180" y="220" width="920" height="92" font="display" size="54" color="result" align="center" anchor="middle" wrap="false">x₁ = −1    ·    x₂ = −3</text>
+  <text id="resultado-caption" x="280" y="330" width="720" height="30" font="body" size="24" color="text-active" align="center" wrap="false">las dos soluciones satisfacen la ecuación original</text>
+  <shape id="resultado-divider" type="line" x="180" y="390" width="920" height="0" stroke="guide" stroke-width="2" opacity="0.65"/>
+  <text id="resultado-stage-1" x="100" y="472" width="170" height="36" font="body" size="23" color="text-active" align="center" wrap="false">identificar</text>
+  <shape id="resultado-arrow-1" type="line" x="280" y="490" width="60" height="0" stroke="guide" stroke-width="2" arrow-end="arrow"/>
+  <text id="resultado-stage-2" x="350" y="472" width="170" height="36" font="body" size="23" color="text-active" align="center" wrap="false">sustituir</text>
+  <shape id="resultado-arrow-2" type="line" x="530" y="490" width="60" height="0" stroke="guide" stroke-width="2" arrow-end="arrow"/>
+  <text id="resultado-stage-3" x="600" y="472" width="170" height="36" font="body" size="23" color="text-active" align="center" wrap="false">calcular</text>
+  <shape id="resultado-arrow-3" type="line" x="780" y="490" width="60" height="0" stroke="guide" stroke-width="2" arrow-end="arrow"/>
+  <text id="resultado-stage-4" x="850" y="472" width="170" height="36" font="body" size="23" color="text-active" align="center" wrap="false">separar</text>
+  <shape id="resultado-arrow-4" type="line" x="1030" y="490" width="60" height="0" stroke="guide" stroke-width="2" arrow-end="arrow"/>
+  <text id="resultado-stage-5" x="1090" y="472" width="130" height="36" font="body" size="23" color="guide" align="center" wrap="false">verificar</text>
+  <text id="resultado-footer" x="80" y="680" width="1120" height="22" font="caption" size="16" color="text-memory" wrap="false">ZENIT · STORYBOARD 11/12</text>
+</slide>
