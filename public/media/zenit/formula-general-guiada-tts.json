@@ -1,0 +1,19 @@
+{
+  "id": "formula-general-guided",
+  "title": "De la ecuación cuadrática a la fórmula general",
+  "language": "es-419",
+  "voice": "Erinome",
+  "delivery": "clear, warm, patient, slow mathematics teacher",
+  "video": "/media/zenit/formula-general-guiada.mp4",
+  "sceneSpec": "/animations/specs/formula_general.json",
+  "postflight": "/reports/formula-general-guiada-tts-postflight.json",
+  "beats": [
+    {"id":"problem","audio":"/audio/formula-general/beat-01.wav","duration":38.52},
+    {"id":"normalize","audio":"/audio/formula-general/beat-02.wav","duration":45.0},
+    {"id":"square-term","audio":"/audio/formula-general/beat-03.wav","duration":36.28},
+    {"id":"add-to-both-sides","audio":"/audio/formula-general/beat-04.wav","duration":35.96},
+    {"id":"complete-square","audio":"/audio/formula-general/beat-05.wav","duration":43.64},
+    {"id":"isolate-root","audio":"/audio/formula-general/beat-06.wav","duration":38.6},
+    {"id":"solve","audio":"/audio/formula-general/beat-07.wav","duration":41.96}
+  ]
+}

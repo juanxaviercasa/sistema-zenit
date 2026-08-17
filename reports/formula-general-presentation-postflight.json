@@ -1,0 +1,178 @@
+{
+  "video": "/tmp/zenit-scenespec-render/videos/formula_general_presentacion/480p15/FormulaGeneralPresentacion.mp4",
+  "metadata": {
+    "width": 854,
+    "height": 480,
+    "fps": 15.0,
+    "duration": 59.794466
+  },
+  "frameReports": [
+    {
+      "frame": "frame-01.png",
+      "bbox": [
+        112,
+        21,
+        625,
+        345
+      ],
+      "margins": {
+        "left": 0.175,
+        "right": 0.0234375,
+        "top": 0.058333333333333334,
+        "bottom": 0.041666666666666664
+      },
+      "coverage": 0.72140625
+    },
+    {
+      "frame": "frame-02.png",
+      "bbox": [
+        70,
+        21,
+        625,
+        345
+      ],
+      "margins": {
+        "left": 0.109375,
+        "right": 0.0234375,
+        "top": 0.058333333333333334,
+        "bottom": 0.041666666666666664
+      },
+      "coverage": 0.78046875
+    },
+    {
+      "frame": "frame-03.png",
+      "bbox": [
+        70,
+        21,
+        625,
+        345
+      ],
+      "margins": {
+        "left": 0.109375,
+        "right": 0.0234375,
+        "top": 0.058333333333333334,
+        "bottom": 0.041666666666666664
+      },
+      "coverage": 0.78046875
+    },
+    {
+      "frame": "frame-04.png",
+      "bbox": [
+        112,
+        21,
+        625,
+        345
+      ],
+      "margins": {
+        "left": 0.175,
+        "right": 0.0234375,
+        "top": 0.058333333333333334,
+        "bottom": 0.041666666666666664
+      },
+      "coverage": 0.72140625
+    },
+    {
+      "frame": "frame-05.png",
+      "bbox": [
+        90,
+        21,
+        625,
+        345
+      ],
+      "margins": {
+        "left": 0.140625,
+        "right": 0.0234375,
+        "top": 0.058333333333333334,
+        "bottom": 0.041666666666666664
+      },
+      "coverage": 0.75234375
+    }
+  ],
+  "findings": [
+    {
+      "level": "warning",
+      "code": "LOW_RESOLUTION",
+      "message": "La resolución es inferior al objetivo educativo 1280×720.",
+      "evidence": {
+        "width": 854,
+        "height": 480
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-01.png",
+        "margins": {
+          "left": 0.175,
+          "right": 0.0234375,
+          "top": 0.058333333333333334,
+          "bottom": 0.041666666666666664
+        },
+        "required": 0.045
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-02.png",
+        "margins": {
+          "left": 0.109375,
+          "right": 0.0234375,
+          "top": 0.058333333333333334,
+          "bottom": 0.041666666666666664
+        },
+        "required": 0.045
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-03.png",
+        "margins": {
+          "left": 0.109375,
+          "right": 0.0234375,
+          "top": 0.058333333333333334,
+          "bottom": 0.041666666666666664
+        },
+        "required": 0.045
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-04.png",
+        "margins": {
+          "left": 0.175,
+          "right": 0.0234375,
+          "top": 0.058333333333333334,
+          "bottom": 0.041666666666666664
+        },
+        "required": 0.045
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-05.png",
+        "margins": {
+          "left": 0.140625,
+          "right": 0.0234375,
+          "top": 0.058333333333333334,
+          "bottom": 0.041666666666666664
+        },
+        "required": 0.045
+      }
+    }
+  ],
+  "status": "WARN"
+}

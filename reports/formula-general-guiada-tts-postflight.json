@@ -1,0 +1,93 @@
+{
+  "video": "public/media/zenit/formula-general-guiada.mp4",
+  "metadata": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 60.0,
+    "duration": 314.033333
+  },
+  "frameReports": [
+    {
+      "frame": "frame-01.png",
+      "bbox": [
+        132,
+        32,
+        508,
+        73
+      ],
+      "margins": {
+        "left": 0.20625,
+        "right": 0.20625,
+        "top": 0.08888888888888889,
+        "bottom": 0.7972222222222223
+      },
+      "coverage": 0.06690972222222222
+    },
+    {
+      "frame": "frame-02.png",
+      "bbox": [
+        70,
+        32,
+        570,
+        324
+      ],
+      "margins": {
+        "left": 0.109375,
+        "right": 0.109375,
+        "top": 0.08888888888888889,
+        "bottom": 0.1
+      },
+      "coverage": 0.6336805555555556
+    },
+    {
+      "frame": "frame-03.png",
+      "bbox": [
+        70,
+        32,
+        570,
+        324
+      ],
+      "margins": {
+        "left": 0.109375,
+        "right": 0.109375,
+        "top": 0.08888888888888889,
+        "bottom": 0.1
+      },
+      "coverage": 0.6336805555555556
+    },
+    {
+      "frame": "frame-04.png",
+      "bbox": [
+        70,
+        32,
+        570,
+        324
+      ],
+      "margins": {
+        "left": 0.109375,
+        "right": 0.109375,
+        "top": 0.08888888888888889,
+        "bottom": 0.1
+      },
+      "coverage": 0.6336805555555556
+    },
+    {
+      "frame": "frame-05.png",
+      "bbox": [
+        70,
+        32,
+        570,
+        324
+      ],
+      "margins": {
+        "left": 0.109375,
+        "right": 0.109375,
+        "top": 0.08888888888888889,
+        "bottom": 0.1
+      },
+      "coverage": 0.6336805555555556
+    }
+  ],
+  "findings": [],
+  "status": "PASS"
+}

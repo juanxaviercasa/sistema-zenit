@@ -1,0 +1,93 @@
+{
+  "video": "public/media/zenit/formula-general.mp4",
+  "metadata": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 60.0,
+    "duration": 9.0
+  },
+  "frameReports": [
+    {
+      "frame": "frame-01.png",
+      "bbox": [
+        148,
+        19,
+        408,
+        192
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.3625,
+        "top": 0.05277777777777778,
+        "bottom": 0.4666666666666667
+      },
+      "coverage": 0.19522569444444443
+    },
+    {
+      "frame": "frame-02.png",
+      "bbox": [
+        148,
+        20,
+        492,
+        204
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.23125,
+        "top": 0.05555555555555555,
+        "bottom": 0.43333333333333335
+      },
+      "coverage": 0.2747222222222222
+    },
+    {
+      "frame": "frame-03.png",
+      "bbox": [
+        148,
+        20,
+        492,
+        207
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.23125,
+        "top": 0.05555555555555555,
+        "bottom": 0.425
+      },
+      "coverage": 0.2792013888888889
+    },
+    {
+      "frame": "frame-04.png",
+      "bbox": [
+        148,
+        20,
+        492,
+        211
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.23125,
+        "top": 0.05555555555555555,
+        "bottom": 0.41388888888888886
+      },
+      "coverage": 0.2851736111111111
+    },
+    {
+      "frame": "frame-05.png",
+      "bbox": [
+        148,
+        20,
+        492,
+        211
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.23125,
+        "top": 0.05555555555555555,
+        "bottom": 0.41388888888888886
+      },
+      "coverage": 0.2851736111111111
+    }
+  ],
+  "findings": [],
+  "status": "PASS"
+}

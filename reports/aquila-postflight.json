@@ -1,0 +1,155 @@
+{
+  "video": "/tmp/zenit-aquila-final/videos/formula_general/480p15/FormulaGeneral.mp4",
+  "metadata": {
+    "width": 854,
+    "height": 480,
+    "fps": 15.0,
+    "duration": 9.0
+  },
+  "frameReports": [
+    {
+      "frame": "frame-02.png",
+      "bbox": [
+        148,
+        19,
+        323,
+        192
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.4953125,
+        "top": 0.05277777777777778,
+        "bottom": 0.4666666666666667
+      },
+      "coverage": 0.1314019097222222
+    },
+    {
+      "frame": "frame-03.png",
+      "bbox": [
+        148,
+        19,
+        408,
+        192
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.3625,
+        "top": 0.05277777777777778,
+        "bottom": 0.4666666666666667
+      },
+      "coverage": 0.19522569444444443
+    },
+    {
+      "frame": "frame-04.png",
+      "bbox": [
+        148,
+        19,
+        408,
+        192
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.3625,
+        "top": 0.05277777777777778,
+        "bottom": 0.4666666666666667
+      },
+      "coverage": 0.19522569444444443
+    },
+    {
+      "frame": "frame-05.png",
+      "bbox": [
+        148,
+        20,
+        486,
+        192
+      ],
+      "margins": {
+        "left": 0.23125,
+        "right": 0.240625,
+        "top": 0.05555555555555555,
+        "bottom": 0.4666666666666667
+      },
+      "coverage": 0.25232638888888886
+    }
+  ],
+  "findings": [
+    {
+      "level": "warning",
+      "code": "LOW_RESOLUTION",
+      "message": "La resolución es inferior al objetivo educativo 1280×720.",
+      "evidence": {
+        "width": 854,
+        "height": 480
+      }
+    },
+    {
+      "level": "error",
+      "code": "EMPTY_FRAME",
+      "message": "Se detectó un frame completamente vacío.",
+      "evidence": {
+        "frame": "frame-01.png"
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-02.png",
+        "margins": {
+          "left": 0.23125,
+          "right": 0.4953125,
+          "top": 0.05277777777777778,
+          "bottom": 0.4666666666666667
+        },
+        "required": 0.06
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-03.png",
+        "margins": {
+          "left": 0.23125,
+          "right": 0.3625,
+          "top": 0.05277777777777778,
+          "bottom": 0.4666666666666667
+        },
+        "required": 0.06
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-04.png",
+        "margins": {
+          "left": 0.23125,
+          "right": 0.3625,
+          "top": 0.05277777777777778,
+          "bottom": 0.4666666666666667
+        },
+        "required": 0.06
+      }
+    },
+    {
+      "level": "warning",
+      "code": "TIGHT_SAFE_MARGIN",
+      "message": "El contenido se acerca demasiado al borde del lienzo.",
+      "evidence": {
+        "frame": "frame-05.png",
+        "margins": {
+          "left": 0.23125,
+          "right": 0.240625,
+          "top": 0.05555555555555555,
+          "bottom": 0.4666666666666667
+        },
+        "required": 0.06
+      }
+    }
+  ],
+  "status": "FAIL"
+}

@@ -1,0 +1,113 @@
+Starting Speech-to-Text conversion...
+Audio file size (28.1MB) exceeds limit (5MB), downsampling audio file...
+Source audio bitrate: 768 kbps
+Bitrate exceeds 128 kbps, downsampling...
+Downsampled audio saved to: /tmp/zenit-tts-check/.guided_chunks_20260816_233637/downsampled_20260816_233637.mp3
+Downsampled audio file size is 4.69 MB.
+Downsampled audio file size is within 5MB target, skipping chunking.
+Transcribing audio file: /tmp/zenit-tts-check/.guided_chunks_20260816_233637/downsampled_20260816_233637.mp3, file size: 4.69 MB
+Transcription may take some time depending on file size and audio length...
+Transcription completed successfully!
+
+TRANSCRIPTION RESULT:
+Total Duration: 307.1 seconds
+Language: spa
+Timestamped segments:
+[00:01.0 - 00:11.3] Partimos de una ecuación cuadrática general: a por x al cuadrado más b por
+[00:11.3 - 00:15.9] x más c igual a cero.
+[00:15.9 - 00:26.8] La letra a acompaña al término cuadrático, b acompaña al término lineal y
+[00:26.8 - 00:29.8] c es el término independiente.
+[00:29.8 - 00:39.7] Nuestro objetivo será despejar x de manera sistemática, sin adivinar las raíces .
+[00:39.7 - 00:48.4] Como a no es cero, dividimos cada término entre a.
+[00:48.4 - 00:55.4] El término a por x al cuadrado se convierte en x al cuadrado.
+[00:55.4 - 01:03.0] El término b por x se convierte en b sobre a por x.
+[01:03.0 - 01:07.7] Y c se convierte en c sobre a.
+[01:07.7 - 01:17.8] Pasamos el término independiente al otro miembro y obtenemos x al cuadrado más b
+[01:17.8 - 01:22.6] sobre a por x igual a menos c sobre a.
+[01:22.6 - 01:29.2] Ahora, el coeficiente de x al cuadrado es uno .
+[01:29.2 - 01:38.3] Observamos el coeficiente de x, b sobre a.
+[01:38.3 - 01:48.8] Tomamos su mitad, que es b sobre dos a, y elevamos esa mitad
+[01:48.8 - 01:49.8] al cuadrado.
+[01:49.8 - 01:59.1] Por eso aparece el término b sobre dos a, todo al cuadrado.
+[01:59.1 - 02:02.6] No es un truco aislado.
+[02:02.6 - 02:09.2] Estamos preparando la identidad de un binomio al cuadrado .
+[02:09.2 - 02:19.6] Para completar el cuadrado, sumamos el mismo término en ambos miembros,
+[02:19.6 - 02:24.2] b sobre dos a, todo al cuadrado.
+[02:24.2 - 02:34.2] En el lado izquierdo tenemos x al cuadrado más b sobre a por x más
+[02:34.2 - 02:36.1] ese término.
+[02:36.1 - 02:40.1] En el lado derecho agregamos exactamente lo mismo.
+[02:40.1 - 02:53.9] La igualdad se conserva, porque una ecuación permite realizar la misma operación a ambos lados .
+[02:53.9 - 03:04.4] Ahora reconocemos la identidad: u al cuadrado más dos u por v más
+[03:04.4 - 03:12.3] v al cuadrado es igual a u más v, todo al cuadrado.
+[03:12.3 - 03:22.4] El lado izquierdo se convierte en x más b sobre dos a, todo al
+[03:22.4 - 03:23.0] cuadrado.
+[03:23.0 - 03:35.0] Al simplificar el lado derecho, aparece el discriminante b al cuadrado menos cuatro ac, dividido
+[03:35.0 - 03:38.3] entre cuatro a al cuadrado .
+[03:38.3 - 03:46.4] Extraemos la raíz cuadrada de ambos miembros.
+[03:46.4 - 03:54.6] Al hacerlo, debemos recordar que un número y su opuesto tienen el mismo cuadrado.
+[03:54.6 - 04:01.6] Por eso aparecen dos posibilidades, más o menos.
+[04:01.6 - 04:11.7] Obtenemos x más b sobre dos a igual a más o menos
+[04:11.7 - 04:22.1] la raíz cuadrada de b al cuadrado menos cuatro ac dividido entre dos a
+[04:22.1 - 04:22.1] .
+[04:22.1 - 04:32.7] Finalmente, restamos b sobre dos a en ambos lados y simplificamos.
+[04:32.7 - 04:42.8] Así llegamos a la fórmula general: x es igual a menos b más o menos
+[04:42.8 - 04:50.9] la raíz cuadrada de b al cuadrado menos cuatro ac, todo dividido entre dos a.
+[04:50.9 - 04:58.9] El signo más menos representa las dos raíces posibles de la ecuación cuadrática.
+[04:58.9 - 05:06.7] Para comprobarla, podemos sustituir una ecuación concreta y verificar cada solución
+Complete transcription result saved to: /tmp/zenit-tts-check/guided_transcription_20260816_233645.json
+Plain text transcription saved to: /tmp/zenit-tts-check/guided_transcription_20260816_233645.txt
+[2J[H[3Jmanus-speech-to-text /tmp/zenit-tts-check/guided.wav
+Starting Speech-to-Text conversion...
+Audio file size (28.1MB) exceeds limit (5MB), downsampling audio file...
+Source audio bitrate: 768 kbps
+Bitrate exceeds 128 kbps, downsampling...
+Downsampled audio file size is 4.69 MB.
+Downsampled audio file size is within 5MB target, skipping chunking.
+Transcribing audio file: /tmp/zenit-tts-check/.guided_chunks_20260816_233637/downsampled_20260816_233637.mp3, file size: 4.69 MB
+Transcription may take some time depending on file size and audio length...
+
+Snippet of transcribed content:
+[00:01.0 - 00:11.3] Partimos de una ecuación cuadrática general: a por x al cuadrado más b por
+[00:11.3 - 00:15.9] x más c igual a cero.
+[00:15.9 - 00:26.8] La letra a acompaña al término cuadrático, b acompaña al término lineal y
+[00:26.8 - 00:29.8] c es el término independiente.
+[00:29.8 - 00:39.7] Nuestro objetivo será despejar x de manera sistemática, sin adivinar las raíces .
+[00:39.7 - 00:48.4] Como a no es cero, dividimos cada término entre a.
+[00:48.4 - 00:55.4] El término a por x al cuadrado se convierte en x al cuadrado.
+[00:55.4 - 01:03.0] El término b por x se convierte en b sobre a por x.
+[01:03.0 - 01:07.7] Y c se convierte en c sobre a.
+[01:07.7 - 01:17.8] Pasamos el término independiente al otro miembro y obtenemos x al cuadrado más b
+[01:17.8 - 01:22.6] sobre a por x igual a menos c sobre a.
+[01:22.6 - 01:29.2] Ahora, el coeficiente de x al cuadrado es uno .
+[01:29.2 - 01:38.3] Observamos el coeficiente de x, b sobre a.
+[01:38.3 - 01:48.8] Tomamos su mitad, que es b sobre dos a, y elevamos esa mitad
+[01:48.8 - 01:49.8] al cuadrado.
+[01:49.8 - 01:59.1] Por eso aparece el término b sobre dos a, todo al cuadrado.
+[01:59.1 - 02:02.6] No es un truco aislado.
+[02:02.6 - 02:09.2] Estamos preparando la identidad de un binomio al cuadrado .
+[02:09.2 - 02:19.6] Para completar el cuadrado, sumamos el mismo término en ambos miembros,
+[02:19.6 - 02:24.2] b sobre dos a, todo al cuadrado.
+[02:24.2 - 02:34.2] En el lado izquierdo tenemos x al cuadrado más b sobre a por x más
+[02:34.2 - 02:36.1] ese término.
+[02:36.1 - 02:40.1] En el lado derecho agregamos exactamente lo mismo.
+[02:40.1 - 02:53.9] La igualdad se conserva, porque una ecuación permite realizar la misma operación a ambos lados .
+[02:53.9 - 03:04.4] Ahora reconocemos la identidad: u al cuadrado más dos u por v más
+[03:04.4 - 03:12.3] v al cuadrado es igual a u más v, todo al cuadrado.
+[03:12.3 - 03:22.4] El lado izquierdo se convierte en x más b sobre dos a, todo al
+[03:22.4 - 03:23.0] cuadrado.
+[03:23.0 - 03:35.0] Al simplificar el lado derecho, aparece el discriminante b al cuadrado menos cuatro ac, dividido
+[03:35.0 - 03:38.3] entre cuatro a al cuadrado .
+[03:38.3 - 03:46.4] Extraemos la raíz cuadrada de ambos miembros.
+[03:46.4 - 03:54.6] Al hacerlo, debemos recordar que un número y su opuesto tienen el mismo cuadrado.
+[03:54.6 - 04:01.6] Por eso aparecen dos posibilidades, más o menos.
+[04:01.6 - 04:11.7] Obtenemos x más b sobre dos a igual a más o menos
+[04:11.7 - 04:22.1] la raíz cuadrada de b al cuadrado menos cuatro ac dividido entre dos a
+[04:22.1 - 04:22.1] .
+[04:22.1 - 04:32.7] Finalmente, restamos b sobre dos a en ambos lados y simplificamos.
+[04:32.7 - 04:42.8] Así llegamos a la fórmula general: x es igual a menos b más o menos
+[04:42.8 - 04:50.9] la raíz cuadrada de b al cuadrado menos cuatro ac, todo dividido entre dos a.
+[04:50.9 - 04:58.9] El signo más menos representa las dos raíces posibles de la ecuación cuadrática.
+[04:58.9 - 05:06.7] Para comprobarla, podemos sustituir una ecuación concreta y verificar cada solución
+
+Completed transcription, JSON saved to /tmp/zenit-tts-check/guided_transcription_20260816_233645.json
+Plain text transcription saved to /tmp/zenit-tts-check/guided_transcription_20260816_233645.txt

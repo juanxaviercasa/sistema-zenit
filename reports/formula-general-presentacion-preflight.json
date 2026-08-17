@@ -1,0 +1,12 @@
+{
+  "scene": "animations/manim/formula_general_presentacion.py",
+  "checks": {
+    "usesAquilaScene": true,
+    "hasFinishCheck": true,
+    "usesFitWidthOrHeight": true,
+    "usesMathTex": true,
+    "usesText": true
+  },
+  "findings": [],
+  "status": "PASS"
+}

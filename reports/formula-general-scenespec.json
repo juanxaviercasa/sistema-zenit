@@ -1,0 +1,20 @@
+{
+  "spec": "formula-general",
+  "title": "De la ecuación cuadrática a la fórmula general",
+  "objective": "Comprender cómo completar el cuadrado permite despejar x y deducir la fórmula general.",
+  "beatCount": 7,
+  "guided": {
+    "estimatedSeconds": 307.96,
+    "tempo": "slow"
+  },
+  "presentation": {
+    "estimatedSeconds": 48.0,
+    "tempo": "cinematic"
+  },
+  "density": {
+    "maxVisualUnits": 3,
+    "totalNewConcepts": 6
+  },
+  "findings": [],
+  "status": "PASS"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "formula-general",
+  "title": "De la ecuación cuadrática a la fórmula general",
+  "sceneSpec": "/animations/specs/formula_general.json",
+  "modes": {
+    "guided": {
+      "label": "Demostración guiada",
+      "description": "Ritmo lento: narración, cálculo, justificación y pausa en cada transformación.",
+      "video": "/media/zenit/formula-general-guiada.mp4",
+      "report": "/reports/formula-general-guided-production-postflight.json"
+    },
+    "presentation": {
+      "label": "Presentación elegante",
+      "description": "Ritmo cinematográfico: diapositivas, fragmentos, transiciones y barra de progreso.",
+      "video": "/media/zenit/formula-general-presentacion.mp4",
+      "report": "/reports/formula-general-presentation-production-postflight.json"
+    }
+  }
+}
