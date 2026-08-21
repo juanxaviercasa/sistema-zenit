@@ -47,3 +47,20 @@ Proyecto educativo en evolución. Algunas áreas representan material de aprendi
 ## Autor
 
 **Juan Xavier Cabello** — Bachiller en Matemáticas y desarrollador web full-stack.
+
+
+## Presentación profesional
+
+Zenit demuestra cómo una experiencia docente puede convertirse en una plataforma web estructurada. El contenido se mantiene separado de la interfaz, las fórmulas se renderizan con KaTeX y los componentes interactivos permiten explicar conceptos abstractos sin depender únicamente de texto.
+
+## Calidad y accesibilidad
+
+La evolución recomendada es añadir pruebas de navegación por teclado, contraste, lectores de pantalla, ejercicios con estados verificables y métricas de rendimiento. Cada lección debe tener objetivo, prerrequisitos, ejemplo, práctica y criterio de avance. Esto hará visible la conexión entre ingeniería y diseño pedagógico.
+
+## Relación con Scenic AI Tutor
+
+Zenit será el corpus editorial autorizado para Scenic AI Tutor. La integración futura debe recuperar fragmentos con identificadores de fuente, respetar el estado de publicación y evitar que el tutor responda con material que no esté documentado o aprobado.
+
+## Caso para reclutadores
+
+Zenit complementa tus proyectos de herramientas para Pymes y backend: demuestra contenido técnico, accesibilidad, Matemáticas, diseño de información y capacidad para transformar conocimiento especializado en una experiencia usable.
